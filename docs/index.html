@@ -4,26 +4,24 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction to R</title>
+  <title>Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:title" content="Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This GitBook is for the R Workshops" />
   <meta name="github-repo" content="ryandonovan93/rintro" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R" />
+  <meta name="twitter:title" content="Introduction to R for Advanced Research Methods (PS6183)" />
   
   <meta name="twitter:description" content="This GitBook is for the R Workshops" />
   
 
-<meta name="author" content="Ryan Donovan" />
 
 
-<meta name="date" content="2024-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,70 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -140,15 +74,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Introduction to R (University of Galway)</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> <strong>Introduction</strong></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> <strong>Overview</strong></a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-is-this-resource-for"><i class="fa fa-check"></i><b>1.1</b> Who is this resource for?</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#should-i-learn-r"><i class="fa fa-check"></i><b>1.2</b> Should I learn R?</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#what-will-i-learn-to-do-in-r"><i class="fa fa-check"></i><b>1.3</b> What will I learn to do in R?</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-will-i-not-learn-to-do-in-r"><i class="fa fa-check"></i><b>1.4</b> What will I not learn to do in R?</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#where-and-when-will-the-workshops-take-place"><i class="fa fa-check"></i><b>1.5</b> Where and when will the workshops take place?</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#are-there-any-prerequisites-for-taking-this-course"><i class="fa fa-check"></i><b>1.6</b> Are there any prerequisites for taking this course?</a></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#do-i-need-to-bring-a-laptop-to-the-class"><i class="fa fa-check"></i><b>1.7</b> Do I need to bring a laptop to the class?</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-will-i-learn-in-r"><i class="fa fa-check"></i><b>1.1</b> What will I learn in R?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-will-i-not-learn-to-do-in-r"><i class="fa fa-check"></i><b>1.2</b> What will I not learn to do in R?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-are-we-learning-r"><i class="fa fa-check"></i><b>1.3</b> Why are we learning R?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#where-and-when-will-the-classes-take-place"><i class="fa fa-check"></i><b>1.4</b> Where and when will the classes take place?</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#do-i-need-to-bring-a-laptop-to-the-class"><i class="fa fa-check"></i><b>1.5</b> Do I need to bring a laptop to the class?</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#office-hours-r-support---ryan-donovan"><i class="fa fa-check"></i><b>1.6</b> Office Hours (R Support - Ryan Donovan)</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>2</b> <strong>Getting Started with R and RStudio</strong></a>
 <ul>
@@ -168,7 +101,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="rstudio.html"><a href="rstudio.html#writing-our-first-r-code"><i class="fa fa-check"></i><b>2.6</b> Writing our first R Code</a></li>
 <li class="chapter" data-level="2.7" data-path="rstudio.html"><a href="rstudio.html#console-vs-source-script"><i class="fa fa-check"></i><b>2.7</b> Console vs Source Script</a></li>
-<li class="chapter" data-level="2.8" data-path="rstudio.html"><a href="rstudio.html#lets-write-some-statistical-code"><i class="fa fa-check"></i><b>2.8</b> Let’s write some statistical code</a>
+<li class="chapter" data-level="2.8" data-path="rstudio.html"><a href="rstudio.html#firstpieceofcode"><i class="fa fa-check"></i><b>2.8</b> Let’s write some statistical code</a>
 <ul>
 <li class="chapter" data-level="2.8.1" data-path="rstudio.html"><a href="rstudio.html#comments"><i class="fa fa-check"></i><b>2.8.1</b> Comments</a></li>
 </ul></li>
@@ -308,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="datacleaning2.html"><a href="datacleaning2.html#activity-1.2-import-your-csv-files-and-r-script-1"><i class="fa fa-check"></i><b>6.1.2</b> Activity 1.2: Import your CSV files and R script</a></li>
 <li class="chapter" data-level="6.1.3" data-path="datacleaning2.html"><a href="datacleaning2.html#activity-1.3-load-the-tidyverse-package"><i class="fa fa-check"></i><b>6.1.3</b> Activity 1.3: Load the tidyverse package</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="datacleaning2.html"><a href="datacleaning2.html#data-formats-long-and-wide-data"><i class="fa fa-check"></i><b>6.2</b> Data Formats (Long and Wide Data)</a>
+<li class="chapter" data-level="6.2" data-path="datacleaning2.html"><a href="datacleaning2.html#dataformats"><i class="fa fa-check"></i><b>6.2</b> Data Formats (Long and Wide Data)</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="datacleaning2.html"><a href="datacleaning2.html#defining-long-and-wide-data"><i class="fa fa-check"></i><b>6.2.1</b> Defining Long and Wide Data</a></li>
 </ul></li>
@@ -362,10 +295,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="data-vis.html"><a href="data-vis.html#mapping-aesthetic-properties-like-colour-and-fill-to-our-variables"><i class="fa fa-check"></i><b>7.4.1</b> Mapping Aesthetic Properties (like Colour and Fill) to Our Variables</a></li>
 <li class="chapter" data-level="7.4.2" data-path="data-vis.html"><a href="data-vis.html#changing-the-value-of-our-y-axis"><i class="fa fa-check"></i><b>7.4.2</b> Changing the Value of Our Y-Axis</a></li>
-<li class="chapter" data-level="7.4.3" data-path="data-vis.html"><a href="data-vis.html#plotting-our-data-points-in-the-graph"><i class="fa fa-check"></i><b>7.4.3</b> Plotting our Data Points in the Graph</a></li>
-<li class="chapter" data-level="7.4.4" data-path="data-vis.html"><a href="data-vis.html#adding-statistical-information-to-our-plot"><i class="fa fa-check"></i><b>7.4.4</b> Adding Statistical Information to Our Plot</a></li>
-<li class="chapter" data-level="7.4.5" data-path="data-vis.html"><a href="data-vis.html#adding-text-to-our-plot"><i class="fa fa-check"></i><b>7.4.5</b> Adding Text to Our Plot</a></li>
-<li class="chapter" data-level="7.4.6" data-path="data-vis.html"><a href="data-vis.html#exporting-our-plot"><i class="fa fa-check"></i><b>7.4.6</b> Exporting our Plot</a></li>
+<li class="chapter" data-level="7.4.3" data-path="data-vis.html"><a href="data-vis.html#changing-the-orientation"><i class="fa fa-check"></i><b>7.4.3</b> Changing the Orientation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="data-vis.html"><a href="data-vis.html#plotting-our-data-points-in-the-graph"><i class="fa fa-check"></i><b>7.4.4</b> Plotting our Data Points in the Graph</a></li>
+<li class="chapter" data-level="7.4.5" data-path="data-vis.html"><a href="data-vis.html#adding-statistical-information-to-our-plot"><i class="fa fa-check"></i><b>7.4.5</b> Adding Statistical Information to Our Plot</a></li>
+<li class="chapter" data-level="7.4.6" data-path="data-vis.html"><a href="data-vis.html#adding-text-to-our-plot"><i class="fa fa-check"></i><b>7.4.6</b> Adding Text to Our Plot</a></li>
+<li class="chapter" data-level="7.4.7" data-path="data-vis.html"><a href="data-vis.html#exporting-our-plot"><i class="fa fa-check"></i><b>7.4.7</b> Exporting our Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="data-vis.html"><a href="data-vis.html#drawing-a-scatter-plot"><i class="fa fa-check"></i><b>7.5</b> Drawing a Scatter Plot</a>
 <ul>
@@ -379,15 +313,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="data-vis.html"><a href="data-vis.html#bar-chart"><i class="fa fa-check"></i><b>7.7</b> Bar Chart</a></li>
 <li class="chapter" data-level="7.8" data-path="data-vis.html"><a href="data-vis.html#histograms"><i class="fa fa-check"></i><b>7.8</b> Histograms</a></li>
 <li class="chapter" data-level="7.9" data-path="data-vis.html"><a href="data-vis.html#line-chart"><i class="fa fa-check"></i><b>7.9</b> Line Chart</a></li>
-<li class="chapter" data-level="7.10" data-path="data-vis.html"><a href="data-vis.html#summary-9"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
-<li class="chapter" data-level="7.11" data-path="data-vis.html"><a href="data-vis.html#geoms"><i class="fa fa-check"></i><b>7.11</b> Geoms</a></li>
-<li class="chapter" data-level="7.12" data-path="data-vis.html"><a href="data-vis.html#themes"><i class="fa fa-check"></i><b>7.12</b> Themes</a></li>
+<li class="chapter" data-level="7.10" data-path="data-vis.html"><a href="data-vis.html#making-our-plots-more-inclusive"><i class="fa fa-check"></i><b>7.10</b> Making our Plots more Inclusive</a></li>
+<li class="chapter" data-level="7.11" data-path="data-vis.html"><a href="data-vis.html#summary-9"><i class="fa fa-check"></i><b>7.11</b> Summary</a></li>
+<li class="chapter" data-level="7.12" data-path="data-vis.html"><a href="data-vis.html#geoms"><i class="fa fa-check"></i><b>7.12</b> Geoms</a></li>
+<li class="chapter" data-level="7.13" data-path="data-vis.html"><a href="data-vis.html#themes"><i class="fa fa-check"></i><b>7.13</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><i class="fa fa-check"></i><b>8</b> Appendix - Understanding Boolean Operators in the Context of <code>filter()</code></a>
+<li class="chapter" data-level="8" data-path="data-vis.html"><a href="data-vis.html#data-vis"><i class="fa fa-check"></i><b>8</b> Descriptive Statistics and T-tests in R</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#how-boolean-operators-work"><i class="fa fa-check"></i><b>8.1</b> How Boolean Operators Work:</a>
+<li class="chapter" data-level="8.1" data-path="data-vis.html"><a href="data-vis.html#lets-get-set-up-3"><i class="fa fa-check"></i><b>8.1</b> Let’s Get Set Up</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#understanding-rs-evaluation-process"><i class="fa fa-check"></i><b>8.1.1</b> Understanding R’s Evaluation Process:</a></li>
+<li class="chapter" data-level="8.1.1" data-path="data-vis.html"><a href="data-vis.html#set-up-your-working-directory"><i class="fa fa-check"></i><b>8.1.1</b> Set Up Your Working Directory</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-vis.html"><a href="data-vis.html#download-and-import-your-files"><i class="fa fa-check"></i><b>8.1.2</b> Download and Import Your Files</a></li>
+<li class="chapter" data-level="8.1.3" data-path="data-vis.html"><a href="data-vis.html#open-the-set-up-r-script"><i class="fa fa-check"></i><b>8.1.3</b> Open the Set-Up R Script</a></li>
+<li class="chapter" data-level="8.1.4" data-path="data-vis.html"><a href="data-vis.html#install-and-load-your-packages"><i class="fa fa-check"></i><b>8.1.4</b> Install and Load Your Packages</a></li>
+<li class="chapter" data-level="8.1.5" data-path="data-vis.html"><a href="data-vis.html#load-in-the-wellbeing-dataset"><i class="fa fa-check"></i><b>8.1.5</b> Load in the Wellbeing Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-vis.html"><a href="data-vis.html#descriptive-statistics"><i class="fa fa-check"></i><b>8.2</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="8.3" data-path="data-vis.html"><a href="data-vis.html#introducing-the-jmv-package"><i class="fa fa-check"></i><b>8.3</b> Introducing the <code>jmv</code> package</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="data-vis.html"><a href="data-vis.html#using-the-jmv-function-to-generate-descriptive-statistics"><i class="fa fa-check"></i><b>8.3.1</b> Using the <code>jmv</code> function to generate descriptive statistics</a></li>
+<li class="chapter" data-level="8.3.2" data-path="data-vis.html"><a href="data-vis.html#using-the-jmv-function-to-generate-graphs"><i class="fa fa-check"></i><b>8.3.2</b> Using the <code>jmv</code> function to generate graphs</a></li>
+<li class="chapter" data-level="8.3.3" data-path="data-vis.html"><a href="data-vis.html#exercises-6"><i class="fa fa-check"></i><b>8.3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-vis.html"><a href="data-vis.html#independent-samples-t-test"><i class="fa fa-check"></i><b>8.4</b> Independent Samples T-Test</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="data-vis.html"><a href="data-vis.html#cleaning-our-data-set"><i class="fa fa-check"></i><b>8.4.1</b> Cleaning our Data Set</a></li>
+<li class="chapter" data-level="8.4.2" data-path="data-vis.html"><a href="data-vis.html#checking-our-parametric-assumptions"><i class="fa fa-check"></i><b>8.4.2</b> Checking our Parametric Assumptions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="data-vis.html"><a href="data-vis.html#checking-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>8.4.3</b> Checking for Homogeneity of Variance</a></li>
+<li class="chapter" data-level="8.4.4" data-path="data-vis.html"><a href="data-vis.html#running-an-independent-sample-t-test"><i class="fa fa-check"></i><b>8.4.4</b> Running an Independent Sample T-Test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="data-vis.html"><a href="data-vis.html#paired-samples-t-test"><i class="fa fa-check"></i><b>8.5</b> Paired-Samples T-Test</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="data-vis.html"><a href="data-vis.html#cleaning-our-data-set-1"><i class="fa fa-check"></i><b>8.5.1</b> Cleaning our Data Set</a></li>
+<li class="chapter" data-level="8.5.2" data-path="data-vis.html"><a href="data-vis.html#checking-our-parametric-assumptions-1"><i class="fa fa-check"></i><b>8.5.2</b> Checking our Parametric Assumptions</a></li>
+<li class="chapter" data-level="8.5.3" data-path="data-vis.html"><a href="data-vis.html#running-the-test"><i class="fa fa-check"></i><b>8.5.3</b> Running the Test</a></li>
+<li class="chapter" data-level="8.5.4" data-path="data-vis.html"><a href="data-vis.html#exercises-7"><i class="fa fa-check"></i><b>8.5.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="data-vis.html"><a href="data-vis.html#power-analysis"><i class="fa fa-check"></i><b>8.6</b> Power Analysis</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="data-vis.html"><a href="data-vis.html#independent-samples-apriori"><i class="fa fa-check"></i><b>8.6.1</b> Independent Samples (Apriori)</a></li>
+<li class="chapter" data-level="8.6.2" data-path="data-vis.html"><a href="data-vis.html#paired-samples-apriorio"><i class="fa fa-check"></i><b>8.6.2</b> Paired Samples (Apriorio)</a></li>
+<li class="chapter" data-level="8.6.3" data-path="data-vis.html"><a href="data-vis.html#post-hoc-tests"><i class="fa fa-check"></i><b>8.6.3</b> Post-Hoc Tests</a></li>
+<li class="chapter" data-level="8.6.4" data-path="data-vis.html"><a href="data-vis.html#exercises-8"><i class="fa fa-check"></i><b>8.6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="data-vis.html"><a href="data-vis.html#summary-10"><i class="fa fa-check"></i><b>8.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><i class="fa fa-check"></i><b>9</b> Appendix - Understanding Boolean Operators in the Context of <code>filter()</code></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#how-boolean-operators-work"><i class="fa fa-check"></i><b>9.1</b> How Boolean Operators Work:</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#understanding-rs-evaluation-process"><i class="fa fa-check"></i><b>9.1.1</b> Understanding R’s Evaluation Process:</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -402,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R for Advanced Research Methods (PS6183)</a>
           </h1>
         </div>
 
@@ -411,70 +386,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Introduction to R</h1>
-<p class="author"><em>Ryan Donovan</em></p>
-<p class="date"><em>2024-03-13</em></p>
+<h1 class="title">Introduction to R for Advanced Research Methods (PS6183)</h1>
 </div>
-<div id="introduction" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> <strong>Introduction</strong><a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This series of workshops describes how to use R to import, clean, and process psychological data. All materials, data, and information in these workshops are used for educational purposes only. This document should only be shared within the University of Galway’s School of Psychology and is not intended for widespread dissemination. The workshop’s e-book is very much in its draft stages and will be updated and refined in the future. Several materials are adapted from various online resources on teaching R.</p>
-<div id="who-is-this-resource-for" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Who is this resource for?<a href="index.html#who-is-this-resource-for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>These workshops are designed to help people who come from a psychology or social science background learn the necessary programming skills to use R effectively in their research. These workshops are intended for individuals with no programming experience whatsoever, teaching the necessary programming skills and ideas required to conduct statistical techniques in psychology (e.g., Power Analyses, Correlation, ANOVA, Regression, Mediation, Moderation).</p>
-<p>These workshops are <strong>not</strong> for people interested in learning about statistical theory or the who, what, where’s of any of the aforementioned statistical techniques. I want these workshops to focus entirely on how to perform statistical analyses in R; I assume you know the rest or know how to access that information.</p>
+<div id="overview" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> <strong>Overview</strong><a href="index.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Authors:</strong> Dr Ryan Donovan and Dr Ciara Egan.</p>
+<p>This is the textbook for the Advanced Research Methods module (PS6183).
+This textbook will describe how to use R programming language to import, clean, process, and visualize psychological data.
+No prior knowledge of R or any other programming language or statistical software is required to successfully complete this module.
+This textbook is still undergoing development and is not the final product.
+Consequently, all textbook materials are used for educational purposes only and should only be shared within the University of Galway’s School of Psychology.
+Any issues or errors with the textbook should be reported to Ryan Donovan (ryan.donovan@universityofgalway.ie).</p>
+<div id="what-will-i-learn-in-r" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> What will I learn in R?<a href="index.html#what-will-i-learn-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In terms of specific R skills, students will learn how to:</p>
+<ul>
+<li><p>Import, export, and create datasets.</p></li>
+<li><p>Use basic programming concepts such as data types, functions, and loops.</p></li>
+<li><p>Apply key techniques for data cleaning to enable statistical analysis.</p></li>
+<li><p>Run descriptive and inferential statistics.</p></li>
+<li><p>Create APA-standard graphs.</p></li>
+<li><p>Deal with errors or bugs with R code.</p></li>
+</ul>
 </div>
-<div id="should-i-learn-r" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Should I learn R?<a href="index.html#should-i-learn-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-will-i-not-learn-to-do-in-r" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> What will I not learn to do in R?<a href="index.html#what-will-i-not-learn-to-do-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is not an exhaustive introduction to R.
+Similar to human languages, programming languages like R are vast and will take years to master.
+After this course, you will still be considered a “newbie” in R.
+But the material covered here will at least provide you a solid foundation in R, enabling you to go ahead and pick up further skills if required as you go on.</p>
+<p>This course will teach you data cleaning and wrangling skills that will enable you to wrangle and clean a lot of data collected on Gorilla or Qualtrics.
+But you will not be able to easily handle all data cleaning problems you are likely to find out in the “wild” world of messy data.
+Such datasets can be uniquely messy, and even experienced R programmers will need to bash their head against the desk a few times to figure out a way to clean that dataset entirely in R.</p>
+<p>Similarly, do not expect to be fluent in the concepts you learn here after these workshops.
+It will take practice to become fluent.
+You might need to refer to these materials or look up help repeatedly when using R on real-life datasets.
+That’s normal - so do not be discouraged when it happens.</p>
+<p>This textbook mainly uses the tidyverse approach to R.
+The tidyverse is a particular philosophical approach to how to use R (more on that later).
+The other approach would be to use base R.
+This can incite violent debates in R communities on which approach is better.
+We will focus mainly on tidyverse and use some base R.</p>
+<p>This textbook does not teach you how to use R Markdown.
+R Markdown is a package in R that enables you to write reproducible and dynamic reports with R that can be converted into Word documents, PDFs, websites, PowerPoint presentations, books, and much more.
+There are a lot of excellent resources available to learn how to use R markdown, but it’s far more important to learn how to use R first.</p>
+</div>
+<div id="why-are-we-learning-r" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Why are we learning R?<a href="index.html#why-are-we-learning-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are many reasons to learn R.</p>
-<p>Psychological research is increasingly moving towards open-science practices. One of the key principles of open-science is that all aspects of data handling - including data wrangling, pre-processing, processing, and output generation - are openly accessible. This is not only an abstract want or desire; several top-tier journals require that you submit R scripts along with any manuscripts. If you don’t know how to use R (or at least no one in your lab does), then this may put you at a disadvantage.</p>
-<p>R enables you to import, clean, analyse, and publish manuscripts from R itself. You do not have to switch between SPSS, Excel, and Word or any other software. You can conduct your statistical analysis directly in R and have that “uploaded” directly to your manuscript. In the long run, this will save you so much time and energy.</p>
-<p>R is capable of more than statistical analysis. You can create websites, documents, and books in R. This e-book was developed in R! While these initial workshops will not be discussing how to do this (although it is something that I would like to do in the future), I wanted to mention it as an example of how powerful R can be.</p>
+<p>Psychological research is increasingly moving towards open-science practices.
+One of the key principles of open-science is that all aspects of data handling - including data wrangling, pre-processing, processing, and output generation - are openly accessible.
+This is not only an abstract want or desire; several top-tier journals require that you submit R scripts along with any manuscripts.
+If you don’t know how to use R (or at least no one in your lab does), then this may put you at a disadvantage.</p>
+<p>R enables you to import, clean, analyse, and publish manuscripts from R itself.
+You do not have to switch between SPSS, Excel, and Word or any other software.
+You can conduct your statistical analysis directly in R and have that “uploaded” directly to your manuscript.
+In the long run, this will save you so much time and energy.</p>
+<p>R is capable of more than statistical analysis.
+You can create websites, documents, and books in R.
+This e-book was developed in R!
+We will talk more in class about the advantages of using R over existing propriety statistical software.</p>
 </div>
-<div id="what-will-i-learn-to-do-in-r" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> What will I learn to do in R?<a href="index.html#what-will-i-learn-to-do-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The following workshops will teach you how to conduct statistical analysis in R.</p>
-<p>R is a statistical programming language that enables you to wrangle, process, and analyse data. By the end of these workshops, you should be able to import a data file into R, do some processing and cleaning, compute descriptive and inferential statistics, generate nice visualisations, and output your results.</p>
-<p>The learning objectives of this course are:</p>
-<ul>
-<li><p>Learn how to import and create datasets in R.</p></li>
-<li><p>Learn and apply basic programming concepts such as data types, functions, and loops.</p></li>
-<li><p>Learn key techniques for data cleaning in R to enable statistical analysis.</p></li>
-<li><p>Learn how to create APA-standard graphs in R.</p></li>
-<li><p>Learn how to deal with errors or bugs with R code.</p></li>
-<li><p>Learn how to export data.</p></li>
-</ul>
+<div id="where-and-when-will-the-classes-take-place" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Where and when will the classes take place?<a href="index.html#where-and-when-will-the-classes-take-place" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The sessions will take place in <strong>AMB-G035</strong> (Psychology PC Suite).
+The schedule for the sessions is as follows:</p>
+<p><img src="img/01-schedule.PNG" /></p>
 </div>
-<div id="what-will-i-not-learn-to-do-in-r" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> What will I not learn to do in R?<a href="index.html#what-will-i-not-learn-to-do-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This is not an exhaustive introduction to R. Similar to human languages, programming languages like R are vast and will take years to master. After this course, you will still be considered a “newbie” in R. But the material covered here will at least provide you a solid foundation in R, enabling you to go ahead and pick up further skills if required as you go on.</p>
-<p>This course will teach you data cleaning and wrangling skills that will enable you to wrangle and clean a lot of data collected on Gorilla or Qualtrics. But you will not be able to easily handle all data cleaning problems you are likely to find out in the “wild” world of messy data. Such datasets can be uniquely messy, and even experienced R programmers will need to bash their head against the wall a few times to figure out a way to clean that dataset entirely in R. If you have a particularly messy dataset, you might still need to use other programmes (e.g., Excel) to clean it up first before importing it to R.</p>
-<p>Similarly, do not expect to be fluent in the concepts you learn here after these workshops. It will take practice to become fluent. You might need to refer to these materials or look up help repeatedly when using R on real-life datasets. That’s normal.</p>
-<p>This workshop is heavily focused on the tidyverse approach to R. The tidyverse is a particular philosophical approach to how to use R (more on that later). The other approach would be to use base R. This can incite violent debates in R communities on which approach is better. We will focus mainly on tidyverse and use some base R.</p>
-<p>This workshop does not teach you how to use R Markdown. R Markdown is a package in R that enables you to write reproducible and dynamic reports with R that can be converted into Word documents, PDFs, websites, PowerPoint presentations, books, and much more. That will be covered in the intermediate workshop programme.</p>
+<div id="do-i-need-to-bring-a-laptop-to-the-class" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Do I need to bring a laptop to the class?<a href="index.html#do-i-need-to-bring-a-laptop-to-the-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you have a laptop that you work on, please bring it.
+That way, we can get R and RStudio installed onto your laptop, and you’ll be able to run R outside of the classroom.</p>
+<p>If you work with a desktop, don’t worry.
+The lab space will have computers that you can sign in and work on and use R.</p>
 </div>
-<div id="where-and-when-will-the-workshops-take-place" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Where and when will the workshops take place?<a href="index.html#where-and-when-will-the-workshops-take-place" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The sessions will take place in <strong>AMB-G035</strong> (Psychology PC Suite). The schedule for the sessions is as follows:</p>
-<ul>
-<li><p>Feb 7th: Introduction to R and RStudio</p></li>
-<li><p>Feb 14th: R Programming (Part I)</p></li>
-<li><p>Feb 21st: R Programming (Part II)</p></li>
-<li><p>Feb 28th: Data Cleaning in R (Part I)</p></li>
-<li><p>March 6th: Data Cleaning in R (Part II)</p></li>
-<li><p>March 13th: Data Visualization</p></li>
-<li><p>March 20th: Running Inferential Statistical Tests in R (Part I)</p></li>
-<li><p>March 27th: Running Inferential Statistical Tests in R (Part II)</p></li>
-</ul>
-<p>Each session is on a Wednesday and will run between 11:00 - 13:00.</p>
-</div>
-<div id="are-there-any-prerequisites-for-taking-this-course" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> Are there any prerequisites for taking this course?<a href="index.html#are-there-any-prerequisites-for-taking-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>None at all. This course is beginner-friendly. You also do not need to purchase anything (e.g., textbooks or software).</p>
-</div>
-<div id="do-i-need-to-bring-a-laptop-to-the-class" class="section level2 hasAnchor" number="1.7">
-<h2><span class="header-section-number">1.7</span> Do I need to bring a laptop to the class?<a href="index.html#do-i-need-to-bring-a-laptop-to-the-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>If you have a laptop that you work on, I strongly encourage you to bring it. That way, we can get R and RStudio installed onto your laptop, and you’ll be able to run R outside of the classroom.</p>
-<p>If you work with a desktop, don’t worry. The lab space will have computers that you can sign in and work on and use R.</p>
+<div id="office-hours-r-support---ryan-donovan" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Office Hours (R Support - Ryan Donovan)<a href="index.html#office-hours-r-support---ryan-donovan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Programming concepts can sometimes take a while to sink in.
+If you would like specific R support or help, then please feel free to see me during office hours.
+Do not be a silent martyr.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="10%" />
+<col width="14%" />
+<col width="74%" />
+</colgroup>
+<tbody>
+<tr>
+<td>Staff Member</td>
+<td>Office Hours</td>
+<td>Location</td>
+</tr>
+<tr>
+<td><p>Ryan Donovan</p>
+<p>ryan.donovan@universityofgalway.ie</p></td>
+<td><p>Wednesdays, 2.30-3.30pm.</p>
+<p>(In-person or online option).</p>
+<p>Time does not suit?</p>
+<p>Just get in touch, we can arrange a different time.</p></td>
+<td><p>2065A, which is on the top floor of the Psychology building. It is in the corridor right next to the elevator.</p>
+<p>Teams Link: <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NDQ1YjRiNmQtNDQ4MC00NjgzLWIwYTQtNWI5OTg3ZmE1NWRj%40thread.v2/0?context=%7b%22Tid%22%3a%2213e3b186-c446-4aab-9c6d-9ab9bb76816c%22%2c%22Oid%22%3a%22c088ea08-9d92-460e-8972-64cd26bc4899%22%7d">click here</a></p></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
