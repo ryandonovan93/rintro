@@ -6,7 +6,7 @@ output:
 
 # **Getting Started with R and RStudio** {#rstudio}
 
-This workshop introduces the programming language R and the RStudio application. Today, we will download both R and RStudio, set up our RStudio environment, and write and run our first piece of R Code. This will set us up for the rest of the workshops.
+This session introduces the programming language R and the RStudio application. Today, we will download both R and RStudio, set up our RStudio environment, and write and run our first piece of R Code. This will set us up for the rest of the course
 
 ## What is R?
 
@@ -35,9 +35,15 @@ But why should we learn R and not a different programming language? In contrast 
 
 ## Create a Posit Cloud Account.
 
-In the next section, I am going to show you how to download R and RStudio on your desktop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud).
+In the next section, I am going to show you how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud).
 
-Posit Cloud enables you to use R and RStudio online for free, no need to install anything. There are limitations to this service (you only get so many hours on it with the free account), and I much rather you use your own computers in class. But it will be a handy back-up option in case any technical issues pop up. During class, I might not be able to solve that issue quickly and efficiently, so if it does occur, then you can sign in to Posit Cloud and keep following along with the session.
+Posit Cloud enables you to run R and RStudio online for free, with no need to install anything. We are going to be using Posit Cloud as a back-up option in case any technical issues pop up. During class, we might not be able to solve that issue quickly and efficiently (in a large classroom, one must always account for Murphy's Law). If that does occur, then you can sign into Posit Cloud and keep following alone with the session. 
+
+You might be wondering, why not just use Posit Cloud? The reason is that there are significant restrictions to the free version of Posit Cloud, namely that you can only use 25 hours per month and you are limited in the amount of data we can use during that time. Imagine working on your assignment, with all your files and data, and then hitting your max limit! This is why I recommend using Posit Cloud as a back-up. 
+
+Similarly, the computers in the lab can be frustrating to use, particularly when you will be working with the same folder/files week by week. If you are using the computers in the lab and are having issues, feel free to pop over to Posit Cloud. 
+
+### Instructions for Creating a Posit Cloud Account
 
 To create a Posit Cloud account, please follow the following instructions:
 
@@ -63,7 +69,7 @@ include_graphics("img/01-posit-newproject.png")
 include_graphics("img/01-posit-rintro.png")
 ```
 
-Don't worry about what anything on the screen means for now. We'll come back to that once we download RStudio on your computer. For now, you can sign out of Posit Cloud.
+Don't worry about what anything on the screen means for now. We'll come back to that once we download RStudio on your computer. 
 
 ## Downloading R on to your Computer
 

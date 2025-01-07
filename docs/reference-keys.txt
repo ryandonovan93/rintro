@@ -227,3 +227,11 @@ summary-10
 appendix---understanding-boolean-operators-in-the-context-of-filter
 how-boolean-operators-work
 understanding-rs-evaluation-process
+fig:unnamed-chunk-1
+fig:unnamed-chunk-7
+fig:unnamed-chunk-10
+fig:unnamed-chunk-14
+fig:unnamed-chunk-24
+fig:unnamed-chunk-25
+fig:unnamed-chunk-27
+instructions-for-creating-a-posit-cloud-account

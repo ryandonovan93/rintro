@@ -1,0 +1,9 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+# **How to Use This Book** {#howtouse}
+
+This book provides x
