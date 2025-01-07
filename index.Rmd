@@ -19,8 +19,9 @@ editor_options:
 **Authors:** Dr Ryan Donovan and Dr Ciara Egan.
 
 This is the textbook for the Advanced Research Methods module (PS6183).
-This textbook will describe how to use R programming language to import, clean, process, and visualize psychological data.
+This textbook will describe how to use R programming language to import, clean, process, and visualise psychological data.
 No prior knowledge of R or any other programming language or statistical software is required to successfully complete this module.
+
 This textbook is still undergoing development and is not the final product.
 Consequently, all textbook materials are used for educational purposes only and should only be shared within the University of Galway's School of Psychology.
 Any issues or errors with the textbook should be reported to Ryan Donovan (ryan.donovan\@universityofgalway.ie).
@@ -73,13 +74,14 @@ There are many reasons to learn R.
 
 Psychological research is increasingly moving towards open-science practices.
 One of the key principles of open-science is that all aspects of data handling - including data wrangling, pre-processing, processing, and output generation - are openly accessible.
-This is not only an abstract want or desire; several top-tier journals require that you submit R scripts along with any manuscripts.
-If you don't know how to use R (or at least no one in your lab does), then this may put you at a disadvantage.
+This is not just an abstract ideal; several top-tier journals require that you submit R scripts along with manuscripts.
+If you don't know how to use R (or at least no one in your lab does), then this puts you at a disadvantage.
+The upside to this is that if you do know how to use R, then you will be at an advantage in your future career prospects.
 
 R enables you to import, clean, analyse, and publish manuscripts from R itself.
 You do not have to switch between SPSS, Excel, and Word or any other software.
 You can conduct your statistical analysis directly in R and have that "uploaded" directly to your manuscript.
-In the long run, this will save you so much time and energy.
+In the long run, this will save you significant time and energy.
 
 R is capable of more than statistical analysis.
 You can create websites, documents, and books in R.
@@ -101,11 +103,22 @@ That way, we can get R and RStudio installed onto your laptop, and you'll be abl
 If you work with a desktop, don't worry.
 The lab space will have computers that you can sign in and work on and use R.
 
-## Office Hours (R Support - Ryan Donovan)
+## On Office Hours and why they are so important for everyone (R Support - Ryan Donovan). 
 
-Programming concepts can sometimes take a while to sink in.
-If you would like specific R support or help, then please feel free to see me during office hours.
-Do not be a silent martyr.
+Programming concepts can take a while to sink in.
+In my experience, students often worry about asking for help, often from fears of being judged by their instructor.
+This fear is exacerbated in courses involving mathematics and programming, as students are quick to label themselves as "*no good*" at these subjects.
+
+This is a completely unwarranted belief.
+My job is to help teach you R.
+Consequently, if you are reading the material or listening in class, and it's not sinking in at all, then that is ***my fault, not yours.*** If this is happening, then it is so important that this feedback is being relayed.
+The most valuable hours I have had teaching is when I am talking with a student who is struggling to understand the material.
+This is because it forces me to see the errors in how I am communicating or explaining that material and adjust.
+I learn new and better ways to explain a concept and the student comes with away with a greater understanding of said concept.
+We all win.
+
+So pretty please, do not be a silent martyr.
+If you are struggling with any of the R-based material in this course, get in touch or drop-by at the following times.
 
 +-------------------------------------+-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Staff Member                        | Office Hours                                        | Location                                                                                                                                                                                                                                                                      |
