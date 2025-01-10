@@ -103,22 +103,20 @@ That way, we can get R and RStudio installed onto your laptop, and you'll be abl
 If you work with a desktop, don't worry.
 The lab space will have computers that you can sign in and work on and use R.
 
-## On Office Hours and why they are so important for everyone (R Support - Ryan Donovan). 
+## Office hours and why they are important for everyone (R Support - Ryan Donovan).
 
-Programming concepts can take a while to sink in.
-In my experience, students often worry about asking for help, often from fears of being judged by their instructor.
+Programming concepts can take a while to sink in and it is naturally to need additional help.  
+But in my experience, students often worry about asking for help, often from fears of being judged by their instructor.
 This fear is exacerbated in courses involving mathematics and programming, as students are quick to label themselves as "*no good*" at these subjects.
 
 This is a completely unwarranted belief.
-My job is to help teach you R.
-Consequently, if you are reading the material or listening in class, and it's not sinking in at all, then that is ***my fault, not yours.*** If this is happening, then it is so important that this feedback is being relayed.
-The most valuable hours I have had teaching is when I am talking with a student who is struggling to understand the material.
-This is because it forces me to see the errors in how I am communicating or explaining that material and adjust.
-I learn new and better ways to explain a concept and the student comes with away with a greater understanding of said concept.
+My job is to teach you R.
+Consequently, if you are reading the material or listening in class, and it's not sinking in at all, then that is ***my fault, not yours.*** If this is happening, then it is important that this feedback is being relayed.
+The most valuable teaching hours I've had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust. That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
 We all win.
 
-So pretty please, do not be a silent martyr.
-If you are struggling with any of the R-based material in this course, get in touch or drop-by at the following times.
+So pretty please, do not be a silent martyr and let me know if you are struggling with any of the R-based material in this course. 
+
 
 +-------------------------------------+-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Staff Member                        | Office Hours                                        | Location                                                                                                                                                                                                                                                                      |
