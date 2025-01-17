@@ -253,3 +253,9 @@ creating-a-visualisation
 saving-the-plot
 why-comments-are-important
 best-practices-for-comments
+fig:unnamed-chunk-41
+fig:unnamed-chunk-42
+fig:unnamed-chunk-43
+fig:unnamed-chunk-57
+data-types---so-what
+data-type-transformation

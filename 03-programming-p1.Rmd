@@ -892,14 +892,14 @@ For example, we could select the first and third rows for the **`Age`** and **`S
 
 ```{r}
 
-my_df[c(1,3), c("Age", "Score")]
+my_df[c(1,3), c("age", "score")]
 ```
 
 Similar to when we indexed vectors, this won't change the underlying data frame. To do that, we would need to assign the selection to a variable:
 
 ```{r}
 
-my_df2 <- my_df[c(1,3), c("Age", "Score")]
+my_df2 <- my_df[c(1,3), c("age", "score")]
 
 my_df2
 
@@ -921,7 +921,7 @@ Using this syntax, let's add a **`Gender`** column to our **`my_df`** dataframe:
 
 ```{r}
 
-my_df$Gender <- c("Female", "Non-binary", "Male")
+my_df$gender <- c("Female", "Non-binary", "Male")
 
 #let's see if we have successfully added a new column in
 
@@ -933,7 +933,7 @@ Let's say I noticed I mixed up the genders, and that Bob is Male and Charlie is 
 
 ```{r}
 
-my_df$Gender <- c("Female", "Male", "Non-binary")
+my_df$gender <- c("Female", "Male", "Non-binary")
 
 #let's see if we have successfully rewritten the Gender Column
 
@@ -949,7 +949,7 @@ What we need to do is actually create a new data frame that has the same columns
 
 ```{r}
 
-new_row <- data.frame(Name = "John", Age = 30, Score = 77.34, Gender = "Male")
+new_row <- data.frame(name = "John", age = 30, score = 77.34, gender = "Male")
 
 ```
 
@@ -961,6 +961,8 @@ my_df <- rbind(my_df, new_row)
 
 my_df
 ```
+
+One important thing to note when adding rows. 
 
 ### Exercises
 
@@ -980,7 +982,7 @@ my_df
 
     ```{r}
 
-    vect1 <- c("Not this", "This", "Not This", "This", "Not This", "This")
+    vect1 <- c("No, not this element", "Yes, this element", "No, not this element", "Yes, this element", "No, not this element", "Yes, this element")
 
     vect2 <- c(0, 1, 0, 1, 0, 1)
 
@@ -994,14 +996,14 @@ my_df
 
 ```{r echo = FALSE}
 
-my_df$Nationality = c("English", "American", "Irish", "Irish")
+my_df$nationality = c("English", "American", "Irish", "Irish")
 ```
 
 4.  Check whether that Nationality column has been successfully added by using the \`\$\` notation. The output should look like this.
 
 ```{r echo = FALSE}
 
-my_df$Nationality
+my_df$nationality
 
 ```
 
@@ -1009,7 +1011,7 @@ my_df$Nationality
 
 ```{r echo = FALSE}
 
-my_df[my_df$Gender != "Male", c("Name", "Age", "Nationality")]
+my_df[my_df$gender != "Male", c("name", "age", "nationality")]
 
 ```
 
