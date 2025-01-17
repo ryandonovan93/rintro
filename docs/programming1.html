@@ -250,6 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="activity-1-set-up-your-working-directory" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Activity 1: Set up your Working Directory<a href="programming1.html#activity-1-set-up-your-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It’s good practice to set your working directory when you first open RStudio. Remember that the working directory is the location where R will look or store files by default. Last week I showed you how to set the Working Directory using <a href="rstudio.html#set_wd">a button-and-click interface</a>.</p>
+<p><img src="img/gifs/set_up_working_directory.gif" /></p>
 <p>Using those instructions, create a folder called “Week2” in the <code>rintro</code> project folder for this class, and set it as your working directory.</p>
 <p>Your output should be similar to mine.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="programming1.html#cb18-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">setwd</span>(<span class="st">&quot;C:/Users/0131045s/Desktop/PS6183/rintro/week2&quot;</span>)</span></code></pre></div>
@@ -689,16 +690,22 @@ Figure 3.3: Indexing for Logical Vector
 <p>Similarly, rows are lines of data going horizontally. Imagine, I collect data from another participant (p11). I could represent the data from that individual participant like this in R:</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="programming1.html#cb124-1" tabindex="-1"></a>p11 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">175</span>)</span></code></pre></div>
 <p>So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row.</p>
-<p>So what happens when we combine different vectors (columns and rows) together? We create a <strong><code>data frame</code></strong>.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
+<img src="img/03-vectors-summarised.png" alt="Vectors can visually conceptualised as a column or row of data."  />
+<p class="caption">
+Figure 3.4: Vectors can visually conceptualised as a column or row of data.
+</p>
+</div>
+<p>What happens when we combine different vectors (columns and rows) together? We create a <strong><code>data frame</code></strong>.</p>
 </div>
 </div>
 <div id="data-frames" class="section level3 hasAnchor" number="3.6.2">
 <h3><span class="header-section-number">3.6.2</span> Data frames<a href="programming1.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A data frame is a rectangular data structure that is composed of rows and columns. A data frame in R is like a spreadsheet in Excel or a table in a word document:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
 <img src="img/03-dataframes_vectors.png" alt="The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors"  />
 <p class="caption">
-Figure 3.4: The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors
+Figure 3.5: The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors
 </p>
 </div>
 <p>Data frames are an excellent way to store and manage data in R because they can store different types of data (e.g., character, numeric, integer) all within the same structure.</p>
@@ -867,8 +874,8 @@ Figure 3.4: The relationship between data frames and vectors. The different colo
 <p>This glossary defines key terms introduced in Chapter 3.</p>
 <table>
 <colgroup>
-<col width="27%" />
-<col width="72%" />
+<col width="29%" />
+<col width="70%" />
 </colgroup>
 <thead>
 <tr>
@@ -940,8 +947,8 @@ Figure 3.4: The relationship between data frames and vectors. The different colo
 <h2><span class="header-section-number">3.9</span> Variable Name Table<a href="programming1.html#variable-name-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
-<col width="30%" />
-<col width="22%" />
+<col width="29%" />
+<col width="23%" />
 <col width="23%" />
 <col width="23%" />
 </colgroup>

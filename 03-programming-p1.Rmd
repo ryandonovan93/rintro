@@ -19,6 +19,8 @@ library(webexercises)
 
 It's good practice to set your working directory when you first open RStudio. Remember that the working directory is the location where R will look or store files by default. Last week I showed you how to set the Working Directory using [a button-and-click interface](#set_wd).
 
+![](img/gifs/set_up_working_directory.gif)
+
 Using those instructions, create a folder called "Week2" in the `rintro` project folder for this class, and set it as your working directory.
 
 Your output should be similar to mine.
@@ -749,7 +751,6 @@ You might find the discussion of vectors, elements, and operations very abstract
 
 What helped me understand vectors was realising that a vector is simply a “line of data.” Imagine we’re running a study and collecting data on participants’ age. When we open the Excel file, there will be a column called “age” with all the ages of our participants. That column is like a vector in R, containing a single line of data, where every value must be of the same type. For example, a column of ages in Excel becomes this vector in R:
 
-
 ```{r}
 
 age <- c(18, 23, 43, 23, 44,32, 56, 67, 32, 23)
@@ -771,10 +772,15 @@ p11 <- c(30, 175)
 
 ```
 
+So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row.
 
-So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row. 
+```{r fig.cap = "Vectors can visually conceptualised as a column or row of data.", warning = FALSE, echo = FALSE}
 
-So what happens when we combine different vectors (columns and rows) together? We create a **`data frame`**.
+include_graphics("img/03-vectors-summarised.png")
+
+```
+
+What happens when we combine different vectors (columns and rows) together? We create a **`data frame`**.
 
 ### Data frames
 
@@ -805,7 +811,7 @@ my_df
 
 ```
 
-Take a moment and think about what is going on inside `data.frame`. We have three variables `name`, `age`, `score`. Each of these variables correspond to a different type of vector (character, integer, and numeric). Or in other words, each of these variables correspond to different lines of data. We use the `data.frame` function to combine these vectors together into a table. 
+Take a moment and think about what is going on inside `data.frame`. We have three variables `name`, `age`, `score`. Each of these variables correspond to a different type of vector (character, integer, and numeric). Or in other words, each of these variables correspond to different lines of data. We use the `data.frame` function to combine these vectors together into a table.
 
 #### Selecting Data from a Data Frame
 
@@ -957,7 +963,7 @@ my_df <- rbind(my_df, new_row)
 my_df
 ```
 
-One important thing to note when adding rows. 
+One important thing to note when adding rows.
 
 ### Exercises
 
@@ -1023,7 +1029,7 @@ Don't feel like you need to have mastered or even remembered all the material th
 This glossary defines key terms introduced in Chapter 3.
 
 | Term | Definition |
-|--------------------|----------------------------------------------------|
+|---------------------|---------------------------------------------------|
 | Assignment | The process of assigning a value to a variable using the assignment operator (`<-` or `=`). |
 | Character | A data type representing text or strings of characters. |
 | Data Frame | A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types. |
@@ -1042,7 +1048,7 @@ This glossary defines key terms introduced in Chapter 3.
 ## Variable Name Table
 
 | Rule | Type | Incorrect Example | Correct Example |
-|----------------------|----------------|-----------------|-----------------|
+|---------------------|-----------------|-----------------|-----------------|
 | Variable names can only contain uppercase alphabetic characters A-Z, lowercase a-z, numeric characters 0-9, periods ., and underscores \_. | Strict | 1st_name | first_name |
 | Variable names must begin with a letter or a period. | Strict | \_1stname | .firstname |
 | Avoid using spaces in variable names. | Strict | my name | my_name |

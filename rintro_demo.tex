@@ -938,6 +938,8 @@ By the end of this session, you should be capable of the following:
 
 It's good practice to set your working directory when you first open RStudio. Remember that the working directory is the location where R will look or store files by default. Last week I showed you how to set the Working Directory using \hyperref[set_wd]{a button-and-click interface}.
 
+\pandocbounded{\includegraphics[keepaspectratio]{img/gifs/set_up_working_directory.gif}}
+
 Using those instructions, create a folder called ``Week2'' in the \texttt{rintro} project folder for this class, and set it as your working directory.
 
 Your output should be similar to mine.
@@ -1951,7 +1953,13 @@ Similarly, rows are lines of data going horizontally. Imagine, I collect data fr
 
 So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row.
 
-So what happens when we combine different vectors (columns and rows) together? We create a \textbf{\texttt{data\ frame}}.
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{img/03-vectors-summarised.png}}
+\caption{\label{fig:unnamed-chunk-83}Vectors can visually conceptualised as a column or row of data.}
+\end{figure}
+
+What happens when we combine different vectors (columns and rows) together? We create a \textbf{\texttt{data\ frame}}.
 
 \subsection{Data frames}\label{data-frames}
 
@@ -1960,7 +1968,7 @@ A data frame is a rectangular data structure that is composed of rows and column
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-dataframes_vectors.png}}
-\caption{\label{fig:unnamed-chunk-83}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
+\caption{\label{fig:unnamed-chunk-84}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
 \end{figure}
 
 Data frames are an excellent way to store and manage data in R because they can store different types of data (e.g., character, numeric, integer) all within the same structure.
@@ -2297,8 +2305,8 @@ Don't feel like you need to have mastered or even remembered all the material th
 This glossary defines key terms introduced in Chapter 3.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2778}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7222}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7083}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Term
@@ -2328,8 +2336,8 @@ Vector & A one-dimensional data structure in R that can hold multiple elements o
 \section{Variable Name Table}\label{variable-name-table}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3056}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}@{}}
 \toprule\noalign{}
