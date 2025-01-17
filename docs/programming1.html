@@ -682,22 +682,20 @@ Figure 3.3: Indexing for Logical Vector
 </div>
 <div id="vectors---making-it-a-little-less-abstract." class="section level4 hasAnchor" number="3.6.1.3">
 <h4><span class="header-section-number">3.6.1.3</span> Vectors - making it a little less abstract.<a href="programming1.html#vectors---making-it-a-little-less-abstract." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>You might find the discussion of vectors, elements, and operations very abstract - I did when I was learning R. While the list analogy is helpful, it only works for so long before it becomes problematic - because there’s another data structure called <strong><code>lists</code></strong>. That confused me.</p>
-<p>But what helped me understand vectors was the realisation that a vector is simply a “line of data.” Imagine that we are running a study and we collect data on participants’ age. When we open the Excel file, there will be a column called “age” with all the ages of my participants. That column is a vector of data with the variable label “age.”</p>
-<p>Creating that vector is the equivalent of creating a column in Excel (i.e. creating a vertical line of data):</p>
+<p>You might find the discussion of vectors, elements, and operations very abstract - I did when I was learning R. While the list analogy is helpful, it only works for so long before it becomes problematic, mainly because there’s another data structure called <strong><code>lists</code></strong>. This confused me.</p>
+<p>What helped me understand vectors was realising that a vector is simply a “line of data.” Imagine we’re running a study and collecting data on participants’ age. When we open the Excel file, there will be a column called “age” with all the ages of our participants. That column is like a vector in R, containing a single line of data, where every value must be of the same type. For example, a column of ages in Excel becomes this vector in R:</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="programming1.html#cb106-1" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">43</span>, <span class="dv">23</span>, <span class="dv">44</span>,<span class="dv">32</span>, <span class="dv">56</span>, <span class="dv">67</span>, <span class="dv">32</span>, <span class="dv">23</span>)</span></code></pre></div>
 <p><img src="img/03-column-vector.png" /><!-- --></p>
-<p>Similarly, rows are lines of data going horizontally. If I add data to each column of our excel dataset, I am creating a new row (line) of data. This is the equivalent of doing the following in R.</p>
+<p>Similarly, rows are lines of data going horizontally. Imagine, I collect data from another participant (p11). I could represent the data from that individual participant like this in R:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="programming1.html#cb107-1" tabindex="-1"></a>p11 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">175</span>)</span></code></pre></div>
-<p><img src="img/03-row-vector.png" /><!-- --></p>
-<p>So whenever you think of a vector, just remember that it refers to a line of data that will either be a column or a row.</p>
+<p>So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row.</p>
 <p>So what happens when we combine different vectors (columns and rows) together? We create a <strong><code>data frame</code></strong>.</p>
 </div>
 </div>
 <div id="data-frames" class="section level3 hasAnchor" number="3.6.2">
 <h3><span class="header-section-number">3.6.2</span> Data frames<a href="programming1.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A data frame is a rectangular data structure that is composed of rows and columns. A data frame in R is like a spreadsheet in Excel or a table in a word document:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
 <img src="img/03-dataframes_vectors.png" alt="The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors"  />
 <p class="caption">
 Figure 3.4: The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors

@@ -745,11 +745,10 @@ print(marks_top)
 
 #### Vectors - making it a little less abstract.
 
-You might find the discussion of vectors, elements, and operations very abstract - I did when I was learning R. While the list analogy is helpful, it only works for so long before it becomes problematic - because there's another data structure called **`lists`**. That confused me.
+You might find the discussion of vectors, elements, and operations very abstract - I did when I was learning R. While the list analogy is helpful, it only works for so long before it becomes problematic, mainly because there's another data structure called **`lists`**. This confused me.
 
-But what helped me understand vectors was the realisation that a vector is simply a "line of data." Imagine that we are running a study and we collect data on participants' age. When we open the Excel file, there will be a column called "age" with all the ages of my participants. That column is a vector of data with the variable label "age."
+What helped me understand vectors was realising that a vector is simply a “line of data.” Imagine we’re running a study and collecting data on participants’ age. When we open the Excel file, there will be a column called “age” with all the ages of our participants. That column is like a vector in R, containing a single line of data, where every value must be of the same type. For example, a column of ages in Excel becomes this vector in R:
 
-Creating that vector is the equivalent of creating a column in Excel (i.e. creating a vertical line of data):
 
 ```{r}
 
@@ -763,21 +762,17 @@ include_graphics("img/03-column-vector.png")
 
 ```
 
-Similarly, rows are lines of data going horizontally. If I add data to each column of our excel dataset, I am creating a new row (line) of data. This is the equivalent of doing the following in R.
+Similarly, rows are lines of data going horizontally. Imagine, I collect data from another participant (p11). I could represent the data from that individual participant like this in R:
 
 ```{r}
+
 p11 <- c(30, 175)
-```
-
-```{r echo=FALSE}
-
-include_graphics("img/03-row-vector.png")
-
 
 
 ```
 
-So whenever you think of a vector, just remember that it refers to a line of data that will either be a column or a row.
+
+So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row. 
 
 So what happens when we combine different vectors (columns and rows) together? We create a **`data frame`**.
 
