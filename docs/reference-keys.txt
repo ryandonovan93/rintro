@@ -69,3 +69,9 @@ adding-rows
 summary-1
 glossary-1
 variable-name-table
+fig:unnamed-chunk-38
+fig:unnamed-chunk-39
+fig:unnamed-chunk-53
+fig:unnamed-chunk-54
+how-to-read-this-chapter
+activities

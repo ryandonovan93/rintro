@@ -150,7 +150,7 @@ Follow these steps to create a new R script:
     `02-basic-programming-activities`\
     Click **Save**.
     
-::: {.callout-note collapse="true" title="Faster Way to Create Script"}
+::: {.callout-note collapse="true" title="Faster Way to Create an R Script"}
 ### Keyboard Shortcut Tip
 
 There’s a faster way to do this using your keyboard:
@@ -186,6 +186,9 @@ For the rest of the activities, make sure to write your code in the R script. Ke
 
 ## Activity 4: Data Types
 
+### Information on Data Types
+
+::: {.callout-caution title="What are the different data types?" collapse="true"}
 R categorises information into **data types**. There are four main data types you’ll encounter:
 
 1.  **Character** (often called a "string"):\
@@ -202,9 +205,13 @@ R categorises information into **data types**. There are four main data types yo
 
 4.  **Logical**:\
     A value that is either `TRUE` or `FALSE`. This is **case-sensitive**, so only the following examples will work: `TRUE`, `FALSE`, `T`, `F`.
+    
+    
+It’s essential to understand data types because certain operations are valid only for specific data types. For instance, mathematical operations can only be performed on **Numeric** or **Integer** data types.    
 
-It’s essential to understand data types because certain operations are valid only for specific data types. For instance, mathematical operations can only be performed on **Numeric** or **Integer** data types.
+:::
 
+::: {.callout-tip title="How can we check and transform data types?" collapse="true"}
 We can check the data type of a piece of information by using the `class` function
 
 ```{r}
@@ -225,6 +232,9 @@ as.logical()    # Converts to logical
 
 
 ```
+:::
+
+
 
 ### Exercises
 
@@ -281,6 +291,10 @@ Feel free to use whichever method is most comfortable for you!
 
 ## Activity 5: Variables
 
+### Information on Variables
+
+
+::: {.callout-caution title="What are variables?" collapse="true"}
 Variables are labels for pieces of information we want to save and use later. To create a variable, we first specify the variable's name, use the assignment operator (\<-),  specify the information that will be stored in that variable, and then run that line of code. 
 
 ```{r}
@@ -311,16 +325,20 @@ print(year)
 If we look in the environment pane and tab, we can see R storing and updated the information as we run our code.
 
 ![](images/03-activity4-variable-example.gif){fig-align="center"}
+:::
 
-Variables are really useful when we want to combine information to perform some operations. For example, like calculating the total and mean of someones scores on Extraversion.
+
+::: {.callout-tip title="Why are variables useful?" collapse="true"}
+
+Variables are really useful when we want perform operations across multiple pieces of information. For example, like calculating the total and mean of someones scores on Extraversion.
 
 ```{r}
 
-extra1 <- 1
+extra1 <- 1 #a participants score on our first extraversion item
 extra2 <- 2
 extra3 <- 4
 extra4 <- 2
-extra5 <- 3
+extra5 <- 3 #a participants score on our fifth extraversion item
 
 total_extra <- extra1 + extra2 + extra3 + extra4 + extra5
 
@@ -330,22 +348,8 @@ print(total_extra)
 print(mean_extra)
 ```
 
-We can also use combine different variable types (character, integer, numeric, logical). For example, by using the `paste()` function
+:::
 
-```{r}
-
-name <- "Ryan"
-
-age <- 31L
-
-height <- 175 #centimetre 
-
-live_in_hot_country <- FALSE
-
-
-paste("My name is", name, "I am", age, "years old and I am", height, "cm tall. It is", live_in_hot_country, "that I was born in a hot country")
-
-```
 
 
 
@@ -403,10 +407,14 @@ On **Mac**, press the following two keys at the same time: `Option` `-`
 
 ## Activity 6: Vectors
 
+### Information on Vectors
+
+
+::: {.callout-caution collapse="true" title="What are vectors? How do we create a vector?"}
+
 In data analysis, we rarely work with individual variables or data types. Instead, we usually work with collections of data organised in data structures.
 
 The most basic and important data structure in R is the **vector**. Vectors are like a column or row of data. 
-
 
 ### Creating a Vector
 
@@ -417,6 +425,11 @@ To create a vector, assign it a variable name, use the assignment operator (`<-`
 rintro_instructors <- c("Ryan", "Ciara", "Aoife")
 
 ```
+
+:::
+
+
+::: {.callout-note collapse="true" title="Key points about vectors"}
 
 ### Key Points about Vectors
 
@@ -482,6 +495,11 @@ summary(rintro_satisfied) # Summarise logical values
 
 ```
 
+
+:::
+
+::: {.callout-tip collapse="true" title="How do we index a vector?"}
+
 **Vector Indexing**
 
 Vectors use an **index** to keep track of the position of each element. The index is determined by the order in which the data was entered.
@@ -504,6 +522,9 @@ rintro_names[c(1:4)] # Extract elements 1 through 4
 
 
 ```
+:::
+
+
 
 ### Exercises
 
@@ -540,7 +561,9 @@ vect3 <- c("FALSE", "TRUE", "FALSE", "TRUE", "FALSE")
 
 ## Activity 7: Dataframes
 
-### Creating a Dataframe
+### Information on DataFrames
+
+::: {.callout-caution collapse="true" title="What are data frames? How do we create a data frame?"}
 
 A **data frame** is a rectangular data structure made up of rows and columns, similar to a spreadsheet in Excel or a table in a Word document. In R, each column of a data frame is a vector, and all vectors must have the same length.
 
@@ -558,12 +581,17 @@ my_df
 
 ```
 
-::: {.callout-tip collapse="true" title="Hold up. Why are we use `=` here and not `<-` to create our column vectors?"}
+
+:::
+
+::: {.callout-important collapse="true" title="Hold up. Why do use `=` instead of `<-` to create our column vectors?"}
 
 The main reason is that we are creating these vectors inside of a function. Inside functions like `data.frame`, we need to use the `=` operator to create vectors instead of `<-`. 
 
 It's hard to drill too deeply into this when we have not even covered functions yet. But just put it down to as a weird quirk of the R language! 
 :::
+
+::: {.callout-note collapse="true" title="How do we extract/index information from Data Frames?"}
 
 
 ### Extracting Information from Data Frames
@@ -637,6 +665,10 @@ my_df[c(1,3), c("age", "score")]
 
 
 ```
+:::
+
+::: {.callout-tip collapse="true" title="How do we add columns or rows to a data frame"}
+
 
 #### Adding Columns to a Data Frame
 
@@ -672,22 +704,44 @@ my_df <- rbind(my_df, new_row)
 my_df
 
 ```
+:::
+
+
+::: {.callout-important collapse="true" title="Indexing does not change a data frame without variable assignment"}
 
 #### Important Note
 
-Indexing does **not** modify the original data frame. To save changes, assign the result to a new variable:
+Indexing does **not** modify the original data frame. 
 
 ```{r}
+
+my_df[c(1,3), c("age", "score")]
+
+print(my_df)
+
+
+
+```
+
+To save changes, assign the result to a new variable:
+
+
+```{r}
+
 
 
 my_df2 <- my_df[c(1,3), c("age", "score")]
 
 
-print(my_df)
-
 print(my_df2)
 
+
 ```
+
+
+:::
+
+
 
 ### Exercises
 

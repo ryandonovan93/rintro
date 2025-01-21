@@ -9,35 +9,17 @@ By the end of this session, you should be capable of the following:
 -   Creating and using variables, and understanding best practices in naming variables.
 -   Grasping key data structures and how to construct them.
 
+## How to read this chapter
+
+If you are reading this chapter. I recommend that you type out every piece of code that I show on the screen, even the code with errors. The reason for this is that it will increase your comfortably with using R and RStudio and writing code. You can then test your understanding in the activities.
+
+## Activities
+
+There are several activities associated with this chapter. You can access them through the following link: https://ryandonovan.quarto.pub/week-2---activities-(part-1/
+
 ```{r echo=FALSE, warning=FALSE}
 
 library(webexercises)
-
-```
-
-## Activity 1: Set up your Working Directory
-
-It's good practice to set your working directory when you first open RStudio. Remember that the working directory is the location where R will look or store files by default. Last week I showed you how to set the Working Directory using [a button-and-click interface](#set_wd).
-
-![](img/gifs/set_up_working_directory.gif)
-
-Using those instructions, create a folder called "Week2" in the `rintro` project folder for this class, and set it as your working directory.
-
-Your output should be similar to mine.
-
-```{r eval = F}
-
-> setwd("C:/Users/0131045s/Desktop/PS6183/rintro/week2")
-
-```
-
-You can also use the ´getwd()´ command to check if you have successfully changed your working directory.
-
-```{r eval = F}
-
-> getwd()
-
-[1] "C:/Users/0131045s/Desktop/PS6183/rintro/week2"
 
 ```
 
@@ -954,7 +936,7 @@ Don't feel like you need to have mastered or even remembered all the material th
 This glossary defines key terms introduced in Chapter 3.
 
 | Term | Definition |
-|----------------------|--------------------------------------------------|
+|------------------------|------------------------------------------------|
 | Assignment | The process of assigning a value to a variable using the assignment operator (`<-` or `=`). |
 | Character | A data type representing text or strings of characters. |
 | Data Frame | A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types. |
@@ -973,7 +955,7 @@ This glossary defines key terms introduced in Chapter 3.
 ## Variable Name Table
 
 | Rule | Type | Incorrect Example | Correct Example |
-|--------------------|------------------|------------------|------------------|
+|-------------------|------------------|------------------|------------------|
 | Variable names can only contain uppercase alphabetic characters A-Z, lowercase a-z, numeric characters 0-9, periods ., and underscores \_. | Strict | 1st_name | first_name |
 | Variable names must begin with a letter or a period. | Strict | \_1stname | .firstname |
 | Avoid using spaces in variable names. | Strict | my name | my_name |
