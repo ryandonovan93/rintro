@@ -178,23 +178,6 @@ So when you see "+" in the console, this is R telling you that something is miss
 
 If nothing is missing, then this indicates that your code might not be correctly formatted. To break out of the endless loops of "+", press the ***Esc*** key on your keyboard.
 
-### Exercises
-
-1.  Practice performing basic calculations in R console. Calculate the following:
-    1.  25 multiplied by 4
-    2.  72 divided by 8
-    3.  0 multiplied by 4, and then divided by 2
-2.  Imagine you want to calculate the average/mean of the following 5 numbers 15, 22, 18, 30, and 25. Use the R console to find the average.
-3.  If I type the following code, then I get the `+` operator, how can I fix it? Run the code yourself and test your answer.
-
-```{r eval = FALSE}
-
-> (60 / 100
-   
-+   
-
-```
-
 ## Data Types
 
 Our overarching goal for this course is to enable you to import your data into R, prepare it for analysis, conduct descriptive and statistical analysis, and create nice data visualisations.
@@ -340,21 +323,6 @@ as.logical()    # Converts to logical
 
 ```
 
-### Exercises
-
-1.  Have a look at each of the following pieces of code and guess what data type it is. Check whether you are correct by using the `class()` function.
-    1.  `"Hello World!"`
-    2.  `43`
-    3.  `"42.34"`
-    4.  `FALSE`
-    5.  `44.4`
-    6.  `72L`
-2.  The following data types have been erroneously entered in R. Use the appropriate converting function to correct for it.
-    1.  Convert "42.34" from character to numeric.
-    2.  Convert "FALSE" from logical to character.
-    3.  Convert 2024 from numeric to string.
-    4.  Convert 1 from integer to logical (see what happens!). For bonus points, convert 0 from numerical to logical as well.
-
 ## Variables
 
 Until now, the code we have used has been disposable; once you type it, you can only view its output. However, programming languages allow us to store information in objects called ***variables.***
@@ -467,22 +435,6 @@ There are strict and recommended rules for naming variables that you should be a
     3.  **camelCase**: Every word, except the first, is capitalized (e.g., **`myAge`**, **`myName`**, **`myHeight`**).
 
 For the purposes of this course, I recommend using **`snake_case`** to maintain consistency with my code. Feel free to choose your preferred style outside of this course, but always maintain consistency.
-
-### Exercises
-
-1.  Create a variable called `favourite_colour` and assign your favourite colour to this `favourite_colour`. What data type is this variable? Check it with `class()`.
-
-2.  Create two numeric variables, `num1` and `num2`, and assign them any two different numeric values.
-
-3.  Calculate the sum of `num1` and `num2` and store it in a new variable called `sum_result`
-
-4.  Print the value of `sum_result`.
-
-5.  Create a variable named `height_cm` and assign it your height in centimeters (a numeric value).
-
-6.  Create another variable named `height_m` and assign it the height in meters by dividing `height_cm` by 100.
-
-7.  Print the values of `height_cm` and `height_m.`
 
 ## Data Structures
 
@@ -963,60 +915,33 @@ my_df <- rbind(my_df, new_row)
 my_df
 ```
 
-One important thing to note when adding rows.
+There is one important thing to note when adding rows. There must be the same amount of columns as in the original data frame. Otherwise you will get an error. See what happens when I try to add the following new row to our data frame without adding the score column.
 
-### Exercises
+```{r error = T}
 
-1.  Create one vector of each data type:
+new_row2 <- data.frame(name = "Eric", age = 34, gender = "Non-binary")
 
-    1.  Create a character vector called `friends` with the name of 3 of your friends.
+my_df <- rbind(my_df, new_row2)
 
-    2.  Create an integer vector called `years` that describes the amount of years you have been friends (if it's less than 1 year, put 1).
-
-    3.  Create a numeric vector called `extra` with their extraversion scores (out of 5).
-
-    4.  Create a logical vector called `galway` that describes whether they live (`TRUE`) or don't live (`FALSE`) in Galway.
-
-    5.  Once you have created each vector, check whether it is the correct data type using the `class()` function.
-
-2.  Index the 2th, 4th, and 6th element for each of the following vectors.
-
-    ```{r}
-
-    vect1 <- c("No, not this element", "Yes, this element", "No, not this element", "Yes, this element", "No, not this element", "Yes, this element")
-
-    vect2 <- c(0, 1, 0, 1, 0, 1)
-
-    vect3 <- c("FALSE", "TRUE", "FALSE", "TRUE", "FALSE")
-
-    ```
-
-3.  How could we extract and save the bottom 3 results from the `rintro_marks`vector? Bonus Points: Calculate the mean of both the top 3 marks and bottom 3 marks.
-
-4.  Write code that adds a column to the `my_df` data frame called `Nationality`. The values for the column should be `"Irish"`, `"American"`, `"English"`, `"Irish"`.
-
-```{r echo = FALSE}
-
-my_df$nationality = c("English", "American", "Irish", "Irish")
-```
-
-4.  Check whether that Nationality column has been successfully added by using the \`\$\` notation. The output should look like this.
-
-```{r echo = FALSE}
-
-my_df$nationality
+my_df
 
 ```
 
-5.  What code could you write that would take the \`my_df\` data frame and give you this output?
+The names in this error message refers to the names of the columns (in this example, name, age, scores, and gender). Since our new_row2 is missing a column name that is in my_df, we cannot add this row to the column.
 
-```{r echo = FALSE}
+But what if we don't have a score for Eric? Is there no way to add his result to our data frame? There is. All we need to do is add the column `score` in our `new_row2`, but give it the value of `NA`. The term `NA` basically means Not Available - as in we don't know the value for this variable.
 
-my_df[my_df$gender != "Male", c("name", "age", "nationality")]
+```{r}
+
+new_row2 <- data.frame(name = "Eric", age = 34, score = NA, gender = "Non-binary")
+
+my_df <- rbind(my_df, new_row2)
+
+my_df
 
 ```
 
-6.  Write code that adds a row to the `my_df` data frame with your information for each of the columns (e.g., my data would be: `"Ryan"`, `30L`, `100`, `"Male"`). The `score` variable is a fake exam, so give yourself whatever score you want!
+NA values can be quite common in real life datasets - sometimes data goes missing! But we'll come back to the concept of NA later on in this course and we will learn a variety of ways to deal with them.
 
 ## Summary
 
@@ -1029,7 +954,7 @@ Don't feel like you need to have mastered or even remembered all the material th
 This glossary defines key terms introduced in Chapter 3.
 
 | Term | Definition |
-|---------------------|---------------------------------------------------|
+|----------------------|--------------------------------------------------|
 | Assignment | The process of assigning a value to a variable using the assignment operator (`<-` or `=`). |
 | Character | A data type representing text or strings of characters. |
 | Data Frame | A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types. |
@@ -1048,7 +973,7 @@ This glossary defines key terms introduced in Chapter 3.
 ## Variable Name Table
 
 | Rule | Type | Incorrect Example | Correct Example |
-|---------------------|-----------------|-----------------|-----------------|
+|--------------------|------------------|------------------|------------------|
 | Variable names can only contain uppercase alphabetic characters A-Z, lowercase a-z, numeric characters 0-9, periods ., and underscores \_. | Strict | 1st_name | first_name |
 | Variable names must begin with a letter or a period. | Strict | \_1stname | .firstname |
 | Avoid using spaces in variable names. | Strict | my name | my_name |
