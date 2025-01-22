@@ -934,31 +934,13 @@ By the end of this session, you should be capable of the following:
   Grasping key data structures and how to construct them.
 \end{itemize}
 
-\section{Activity 1: Set up your Working Directory}\label{activity-1-set-up-your-working-directory}
+\section{How to read this chapter}\label{how-to-read-this-chapter}
 
-It's good practice to set your working directory when you first open RStudio. Remember that the working directory is the location where R will look or store files by default. Last week I showed you how to set the Working Directory using \hyperref[set_wd]{a button-and-click interface}.
+If you are reading this chapter. I recommend that you type out every piece of code that I show on the screen, even the code with errors. The reason for this is that it will increase your comfortably with using R and RStudio and writing code. You can then test your understanding in the activities.
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/gifs/set_up_working_directory.gif}}
+\section{Activities}\label{activities}
 
-Using those instructions, create a folder called ``Week2'' in the \texttt{rintro} project folder for this class, and set it as your working directory.
-
-Your output should be similar to mine.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\SpecialCharTok{\textgreater{}} \FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/0131045s/Desktop/PS6183/rintro/week2"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-You can also use the ´getwd()´ command to check if you have successfully changed your working directory.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\SpecialCharTok{\textgreater{}} \FunctionTok{getwd}\NormalTok{()}
-
-\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"C:/Users/0131045s/Desktop/PS6183/rintro/week2"}
-\end{Highlighting}
-\end{Shaded}
+There are several activities associated with this chapter. \href{https://ryandonovan.quarto.pub/week-2---activities/}{You can find them by clicking this link.}
 
 \section{Using the Console}\label{using-the-console}
 
@@ -1096,38 +1078,6 @@ So when you see ``+'' in the console, this is R telling you that something is mi
 \end{Shaded}
 
 If nothing is missing, then this indicates that your code might not be correctly formatted. To break out of the endless loops of ``+'', press the \textbf{\emph{Esc}} key on your keyboard.
-
-\subsection{Exercises}\label{exercises}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Practice performing basic calculations in R console. Calculate the following:
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \tightlist
-  \item
-    25 multiplied by 4
-  \item
-    72 divided by 8
-  \item
-    0 multiplied by 4, and then divided by 2
-  \end{enumerate}
-\item
-  Imagine you want to calculate the average/mean of the following 5 numbers 15, 22, 18, 30, and 25. Use the R console to find the average.
-\item
-  If I type the following code, then I get the \texttt{+} operator, how can I fix it? Run the code yourself and test your answer.
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\SpecialCharTok{\textgreater{}}\NormalTok{ (}\DecValTok{60} \SpecialCharTok{/} \DecValTok{100}
-   
-\SpecialCharTok{+}   
-\end{Highlighting}
-\end{Shaded}
 
 \section{Data Types}\label{data-types}
 
@@ -1357,47 +1307,6 @@ The following functions enable you to convert one data type to another:
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Exercises}\label{exercises-1}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Have a look at each of the following pieces of code and guess what data type it is. Check whether you are correct by using the \texttt{class()} function.
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \tightlist
-  \item
-    \texttt{"Hello\ World!"}
-  \item
-    \texttt{43}
-  \item
-    \texttt{"42.34"}
-  \item
-    \texttt{FALSE}
-  \item
-    \texttt{44.4}
-  \item
-    \texttt{72L}
-  \end{enumerate}
-\item
-  The following data types have been erroneously entered in R. Use the appropriate converting function to correct for it.
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \tightlist
-  \item
-    Convert ``42.34'' from character to numeric.
-  \item
-    Convert ``FALSE'' from logical to character.
-  \item
-    Convert 2024 from numeric to string.
-  \item
-    Convert 1 from integer to logical (see what happens!). For bonus points, convert 0 from numerical to logical as well.
-  \end{enumerate}
-\end{enumerate}
-
 \section{Variables}\label{variables}
 
 Until now, the code we have used has been disposable; once you type it, you can only view its output. However, programming languages allow us to store information in objects called \textbf{\emph{variables.}}
@@ -1563,26 +1472,6 @@ There are strict and recommended rules for naming variables that you should be a
 \end{itemize}
 
 For the purposes of this course, I recommend using \textbf{\texttt{snake\_case}} to maintain consistency with my code. Feel free to choose your preferred style outside of this course, but always maintain consistency.
-
-\subsection{Exercises}\label{exercises-2}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Create a variable called \texttt{favourite\_colour} and assign your favourite colour to this \texttt{favourite\_colour}. What data type is this variable? Check it with \texttt{class()}.
-\item
-  Create two numeric variables, \texttt{num1} and \texttt{num2}, and assign them any two different numeric values.
-\item
-  Calculate the sum of \texttt{num1} and \texttt{num2} and store it in a new variable called \texttt{sum\_result}
-\item
-  Print the value of \texttt{sum\_result}.
-\item
-  Create a variable named \texttt{height\_cm} and assign it your height in centimeters (a numeric value).
-\item
-  Create another variable named \texttt{height\_m} and assign it the height in meters by dividing \texttt{height\_cm} by 100.
-\item
-  Print the values of \texttt{height\_cm} and \texttt{height\_m.}
-\end{enumerate}
 
 \section{Data Structures}\label{data-structures}
 
@@ -1794,19 +1683,19 @@ A vector in R is like a list of items. To be more specific, vectors in R are act
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-index_numeric.png}}
-\caption{\label{fig:unnamed-chunk-68}Indexing for Numeric Vector}
+\caption{\label{fig:unnamed-chunk-65}Indexing for Numeric Vector}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-index-character.png}}
-\caption{\label{fig:unnamed-chunk-69}Indexing for Character Vector}
+\caption{\label{fig:unnamed-chunk-66}Indexing for Character Vector}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-index-logical.png}}
-\caption{\label{fig:unnamed-chunk-70}Indexing for Logical Vector}
+\caption{\label{fig:unnamed-chunk-67}Indexing for Logical Vector}
 \end{figure}
 
 This property in vectors means we are capable of extracting specific items from a vector based on their position. If I wanted to extract the first item in my list, I can do this by using \textbf{\texttt{{[}{]}}} brackets:
@@ -1956,7 +1845,7 @@ So whenever you think of a vector, just remember that it refers to a line of dat
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-vectors-summarised.png}}
-\caption{\label{fig:unnamed-chunk-83}Vectors can visually conceptualised as a column or row of data.}
+\caption{\label{fig:unnamed-chunk-80}Vectors can visually conceptualised as a column or row of data.}
 \end{figure}
 
 What happens when we combine different vectors (columns and rows) together? We create a \textbf{\texttt{data\ frame}}.
@@ -1968,7 +1857,7 @@ A data frame is a rectangular data structure that is composed of rows and column
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-dataframes_vectors.png}}
-\caption{\label{fig:unnamed-chunk-84}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
+\caption{\label{fig:unnamed-chunk-81}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
 \end{figure}
 
 Data frames are an excellent way to store and manage data in R because they can store different types of data (e.g., character, numeric, integer) all within the same structure.
@@ -2226,73 +2115,58 @@ Once we have this new data frame we can use the \textbf{\texttt{rbind()}} functi
 ## 4    John  30 77.34       Male
 \end{verbatim}
 
-One important thing to note when adding rows.
-
-\subsection{Exercises}\label{exercises-3}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Create one vector of each data type:
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \item
-    Create a character vector called \texttt{friends} with the name of 3 of your friends.
-  \item
-    Create an integer vector called \texttt{years} that describes the amount of years you have been friends (if it's less than 1 year, put 1).
-  \item
-    Create a numeric vector called \texttt{extra} with their extraversion scores (out of 5).
-  \item
-    Create a logical vector called \texttt{galway} that describes whether they live (\texttt{TRUE}) or don't live (\texttt{FALSE}) in Galway.
-  \item
-    Once you have created each vector, check whether it is the correct data type using the \texttt{class()} function.
-  \end{enumerate}
-\item
-  Index the 2th, 4th, and 6th element for each of the following vectors.
+There is one important thing to note when adding rows. There must be the same amount of columns as in the original data frame. Otherwise you will get an error. See what happens when I try to add the following new row to our data frame without adding the score column.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{vect1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"No, not this element"}\NormalTok{, }\StringTok{"Yes, this element"}\NormalTok{, }\StringTok{"No, not this element"}\NormalTok{, }\StringTok{"Yes, this element"}\NormalTok{, }\StringTok{"No, not this element"}\NormalTok{, }\StringTok{"Yes, this element"}\NormalTok{)}
+\NormalTok{new\_row2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{name =} \StringTok{"Eric"}\NormalTok{, }\AttributeTok{age =} \DecValTok{34}\NormalTok{, }\AttributeTok{gender =} \StringTok{"Non{-}binary"}\NormalTok{)}
 
-\NormalTok{vect2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
-
-\NormalTok{vect3 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"FALSE"}\NormalTok{, }\StringTok{"TRUE"}\NormalTok{, }\StringTok{"FALSE"}\NormalTok{, }\StringTok{"TRUE"}\NormalTok{, }\StringTok{"FALSE"}\NormalTok{)}
+\NormalTok{my\_df }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(my\_df, new\_row2)}
 \end{Highlighting}
 \end{Shaded}
-\item
-  How could we extract and save the bottom 3 results from the \texttt{rintro\_marks}vector? Bonus Points: Calculate the mean of both the top 3 marks and bottom 3 marks.
-\item
-  Write code that adds a column to the \texttt{my\_df} data frame called \texttt{Nationality}. The values for the column should be \texttt{"Irish"}, \texttt{"American"}, \texttt{"English"}, \texttt{"Irish"}.
-\item
-  Check whether that Nationality column has been successfully added by using the `\$` notation. The output should look like this.
-\end{enumerate}
 
 \begin{verbatim}
-## [1] "English"  "American" "Irish"    "Irish"
+## Error in rbind(deparse.level, ...): numbers of columns of arguments do not match
 \end{verbatim}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  What code could you write that would take the `my\_df` data frame and give you this output?
-\end{enumerate}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_df}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
-##      name age nationality
-## 1   Alice  25     English
-## 3 Charlie  22       Irish
+##      name age score     gender
+## 1   Alice  25 95.65     Female
+## 2     Bob  30 88.12       Male
+## 3 Charlie  22 75.33 Non-binary
+## 4    John  30 77.34       Male
 \end{verbatim}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
-\item
-  Write code that adds a row to the \texttt{my\_df} data frame with your information for each of the columns (e.g., my data would be: \texttt{"Ryan"}, \texttt{30L}, \texttt{100}, \texttt{"Male"}). The \texttt{score} variable is a fake exam, so give yourself whatever score you want!
-\end{enumerate}
+The names in this error message refers to the names of the columns (in this example, name, age, scores, and gender). Since our new\_row2 is missing a column name that is in my\_df, we cannot add this row to the column.
+
+But what if we don't have a score for Eric? Is there no way to add his result to our data frame? There is. All we need to do is add the column \texttt{score} in our \texttt{new\_row2}, but give it the value of \texttt{NA}. The term \texttt{NA} basically means Not Available - as in we don't know the value for this variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_row2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{name =} \StringTok{"Eric"}\NormalTok{, }\AttributeTok{age =} \DecValTok{34}\NormalTok{, }\AttributeTok{score =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{gender =} \StringTok{"Non{-}binary"}\NormalTok{)}
+
+\NormalTok{my\_df }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(my\_df, new\_row2)}
+
+\NormalTok{my\_df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      name age score     gender
+## 1   Alice  25 95.65     Female
+## 2     Bob  30 88.12       Male
+## 3 Charlie  22 75.33 Non-binary
+## 4    John  30 77.34       Male
+## 5    Eric  34    NA Non-binary
+\end{verbatim}
+
+NA values can be quite common in real life datasets - sometimes data goes missing! But we'll come back to the concept of NA later on in this course and we will learn a variety of ways to deal with them.
 
 \section{Summary}\label{summary-1}
 
@@ -2305,8 +2179,8 @@ Don't feel like you need to have mastered or even remembered all the material th
 This glossary defines key terms introduced in Chapter 3.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2917}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7083}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6667}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Term
@@ -2336,10 +2210,10 @@ Vector & A one-dimensional data structure in R that can hold multiple elements o
 \section{Variable Name Table}\label{variable-name-table}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2917}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2603}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Rule
