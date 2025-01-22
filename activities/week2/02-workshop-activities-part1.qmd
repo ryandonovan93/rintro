@@ -76,11 +76,11 @@ For each of the following exercises, make sure to type out the following exercis
 
     -   Add 45 and 32.
 
-    -   Divide 120 by 8.
+    -   Divide 120 by 8 (use **`/`** key to divide).
 
-    -   Multiply 7 by 15.
+    -   Multiply 7 by 15 (use **`*`** to multiple).
 
-    -   Multiply 21 by 4, then divide by 2.
+    -   Multiply 21 by 4, and then divide by 2.
 
 2.  **Calculate the Mean**\
     Imagine you want to calculate the average (mean) of these five numbers: 15, 22, 18, 30, and 3. Use the R console to find the correct result.
@@ -90,7 +90,7 @@ If your answer seems unusually high, remember that R follows the **BEDMAS** (Bra
 :::
 
 4.  **Fixing the `+` Operator Error**\
-    Run the following code in the console. If you encounter the `+` operator, how can you fix it? Test your answer in the console.
+    Run the first line of code in the console. When you encounter the `+` operator, how can you fix it? Test your answer in the console.
 
 ```{r eval = F}
 
@@ -123,7 +123,7 @@ Look at the 20 = 30, and remember that R takes what we say literally. What would
 7.  **Exploring Console Navigation**\
     Press the **Up** arrow key a few times in the console. What happens? Now press the **Down** arrow key. How does it behave? Try experimenting with this feature.
 
-![Use the up and down directional keys to bring up previous code in the console](images/03-activity1-old-code.gif){fig-align="center"}
+![Use the up and down directional keys to bring up previous code in the console](images/02-activity1-old-code.gif){fig-align="center"}
 
 ## Activity 3: Set up your R Script
 
@@ -145,15 +145,23 @@ Follow these steps to create a new R script:
 ::: {.callout-note collapse="true" title="Faster Way to Create an R Script"}
 ### Keyboard Shortcut Tip
 
-There’s a faster way to do this using your keyboard:
+There’s a faster way to do this in RStudio on your laptop using your keyboard.
 
--   **Create a new script**:
+-   **Create a new script (local version of RStudio)**:
 
     -   Windows: Press `Control + Shift + N`
 
     -   Mac: Press `Command + Shift + N`
 
--   **Save your script**:
+If you are using PositCloud, then the keyboard commands to create a new script are slightly different
+
+-   **Create a new script (Posit Cloud)**:
+
+    -   Windows: Press `Control + Alt + Shift + N`
+
+    -   Mac: Press `⌘ + Shift + Option + N`
+
+-   **Save your script (works on both local version or Posit Cloud)**:
 
     -   Windows: Press `Control + S`
 
@@ -170,7 +178,7 @@ To make your script organised and easy to understand, use comments (`#`) to incl
 # Date: [Today's Date]
 ```
 
-![How to create an R script, save it, and add appropriate starting comments to it.](images/03-activity3-script-set-up-new.gif){fig-align="center"}
+![How to create an R script, save it, and add appropriate starting comments to it.](images/02-activity3-script-set-up-new.gif){fig-align="center"}
 
 For the rest of the activities, make sure to write your code in the R script. Keep your code neat by using spacing between lines of code and commenting. I recommend to make a comment to highlight each new activity.
 
@@ -240,7 +248,7 @@ To run a piece of code from your script, you can:
 
 Feel free to use whichever method is most comfortable for you!
 
-![Make sure to highlight the code before clicking Run](images/03-activity4-running-code.gif){fig-align="center"}
+![Make sure to highlight the code before clicking Run](images/02-activity4-running-code.gif){fig-align="center"}
 :::
 
 **Data Type Exercises**
@@ -265,7 +273,7 @@ Feel free to use whichever method is most comfortable for you!
 
     -   Convert `"42.34"` from **character** to **numeric**.
 
-    -   Convert `"FALSE"` from **logical** to **character**.
+    -   Convert `"FALSE"` from **character** to **logical**.
 
     -   Convert `2024` from **numeric** to **character**.
 
@@ -306,7 +314,7 @@ print(year)
 
 If we look in the environment pane and tab, we can see R storing and updated the information as we run our code.
 
-![Look at what happens in the environment pane (top right hand) corner when we assign and reassign our variable](images/03-activity4-variable-example.gif){fig-align="center"}
+![Look at what happens in the environment pane (top right hand) corner when we assign and reassign our variable](images/02-activity4-variable-example.gif){fig-align="center"}
 :::
 
 ::: {.callout-tip title="Why are variables useful?" collapse="true"}
@@ -366,10 +374,17 @@ On **Mac**, press the following two keys at the same time: `Option` `-`
     -   Create two variables called `num1` and `num2`. Assign them any two numbers.
 
     -   Add `num1` and `num2` together and save the result in a new variable called `sum_result`.
+    
+::: {.callout-warning collapse="true" title="Error: object num1/num2 not found"}
+
+If you are receiving this error, it is because you have not run the code that defines the variable. Make sure to highlight that code and press run, before adding `num1` and `num2` together. 
+
+:::
+
 
     -   Use `print()` to show the value of `sum_result`.
 
-3.  **Convert Height**
+1.  **Convert Height**
 
     -   Make a variable called `height_cm` and set it to your height in centimetres (e.g., `175`).
 
@@ -468,7 +483,7 @@ summary(rintro_satisfied) # Summarise logical values
 
 Vectors use an **index** to keep track of the position of each element. The index is determined by the order in which the data was entered.
 
-![](images/03-index-logical.png)
+![](images/02-index-logical.png)
 
 Use square brackets `[]` to extract specific elements:
 
@@ -503,7 +518,7 @@ rintro_names[c(1:4)] # Extract elements 1 through 4
     -   Use the `class()` function to check the data type of each vector.
 
 2.  **Index Specific Elements**\
-    Extract the 2nd, 4th, and 6th elements from each of the following vectors. Copy and paste the code
+    Extract the 2nd, 4th, and 6th elements from each of the following vectors. Copy, paste, and run the code before attempting this.
 
 ```{r}
 
@@ -511,15 +526,20 @@ vect1 <- c("No, not this element", "Yes, this element", "No, not this element", 
 
 vect2 <- c(0, 1, 0, 1, 0, 1)
 
-vect3 <- c("FALSE", "TRUE", "FALSE", "TRUE", "FALSE")
+vect3 <- c("FALSE", "TRUE", "FALSE", "TRUE", "FALSE", "TRUE")
 
 ```
 
 3.  **Extract and Save the Bottom 3 Marks**
-    -   How would you extract and save the **lowest 3 marks** from the `rintro_marks` vector? Try it. Make sure to create the variable in your script first.\
-        **Hint**: Use the `sort()` function as shown in the examples.
+    -   How would you extract and save the **lowest 3 marks** from the `rintro_marks` vector? Try it. Make sure to create the variable in your script first.
 
-    -   **Bonus**: Calculate the mean of the bottom 3 marks.
+        ```{r}
+        rintro_marks <- c(69, 65, 80, 77, 86, 88, 92, 71)
+        ```
+
+    -   **Hint**: Use the `sort()` function as shown in the examples.
+
+    -   **Bonus**: Calculate the mean of the bottom 3 marks (use `mean()` function).
 
 ## Activity 7: Dataframes
 
@@ -700,9 +720,9 @@ print(my_df2)
 
         -   `age`: Ages of the students (as integers).
 
-        -   `grade`: Their grades (as numeric values).
+        -   `mark`: Their grades (as numeric values).
 
-    -   Display the `student_data` data frame.
+    -   Print the `student_data` data frame.
 
 2.  **Extracting Data**
 
@@ -710,29 +730,29 @@ print(my_df2)
 
         -   Extract the `name` column using `$` notation.
 
-        -   Extract the `grade` column using `[]` notation.
+        -   Extract the `mark` column using `[]` notation.
 
-        -   Extract the names and grades of the first two students using `[]` notation and save this data frame as `partial_student_data`.
+        -   Extract the names and marks of the first two students using `[]` notation and save this data frame as `partial_student_data`.
 
         -   Extract the first row of the `partial_student_data` data frame.
 
 3.  **Adding a Column**
 
-    -   Add a new column called `attendance` to `student_data`, with the values `TRUE`, `FALSE`, and `TRUE` to indicate whether each student attended a recent class.
+    -   Add a new column called `attendance` to `student_data`, with the values `TRUE`, `FALSE`, and `TRUE` to indicate whether each student attended the most recent class.
 
-    -   Display the updated data frame.
+    -   Print the updated `student_data` data frame.
 
 4.  **Adding a Row**
 
-    -   Create a new row with the following details:
+    -   Create a new row (call it `new_student`) with the following details:
 
         -   `name`: "Judith"
 
         -   `age`: 31L
 
-        -   `grade`: 89.5
+        -   `mark`: 89.5
 
-        -   `attendance`: `TRUE`
+        -   `attendance`: `FALSE`
 
     -   Add this row to the `student_data` data frame using `rbind()`.
 
