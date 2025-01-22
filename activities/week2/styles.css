@@ -1,0 +1,13 @@
+/* General callout font size */
+.callout {
+    font-size: 14px !important;
+}
+
+/* Specific callout types */
+.callout-note {
+    font-size: 14px !important;
+}
+
+.callout-tip {
+    font-size: 25px !important;
+}

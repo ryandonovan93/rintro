@@ -1,17 +1,16 @@
 ---
-title: "Week 2 - Activities (Part 1)"
+title: "Week 2 - Activities"
 format: 
-    html:
-      toc: true
-      toc-depth: 4
-      code-overflow: wrap
-      code-annotations: hover
-    docx:
-      toc: true
-      highlight-style: github
+  html:
+    toc: true
+    toc-depth: 4
+    code-overflow: wrap
+    code-annotations: hover
+  docx:
+    toc: true
+    highlight-style: github
 editor: visual
 ---
-
 
 ## Programming Fundamentals in R (Part 1) Workshop
 
@@ -38,9 +37,7 @@ If you don’t set the working directory, R might not be able to locate the file
 
 4.  Select the `week2` folder and click **Open**.
 
-
-
-![](images/set_up_working_directory.gif){fig-align="center"}
+![How to set your working directory](images/set_up_working_directory.gif){fig-align="center"}
 
 ### Verify Your Working Directory
 
@@ -87,13 +84,10 @@ For each of the following exercises, make sure to type out the following exercis
 
 2.  **Calculate the Mean**\
     Imagine you want to calculate the average (mean) of these five numbers: 15, 22, 18, 30, and 3. Use the R console to find the correct result.
-    
-    
+
 ::: {.callout-tip collapse="true"}
 If your answer seems unusually high, remember that R follows the **BEDMAS** (Brackets, Exponents, Division/Multiplication, Addition/Subtraction) order of operations.
 :::
-
-    
 
 4.  **Fixing the `+` Operator Error**\
     Run the following code in the console. If you encounter the `+` operator, how can you fix it? Test your answer in the console.
@@ -110,8 +104,6 @@ If your answer seems unusually high, remember that R follows the **BEDMAS** (Bra
 The + operator in R indicates that the command is incomplete. Finish the command and press Enter again
 :::
 
-
-
 5.  **Identifying and Fixing Errors**\
     Run the following code exactly as it appears. Take note of the error message. What went wrong? What do you think the correct code should be?
 
@@ -120,10 +112,10 @@ The + operator in R indicates that the command is incomplete. Finish the command
 (20 = 30) / 34 - 21 
 
 ```
+
 ::: {.callout-tip collapse="true"}
 Look at the 20 = 30, and remember that R takes what we say literally. What would be wrong with this statement if we meant it literally?
 :::
-
 
 6.  **Using the Up Arrow to Edit Code**\
     After running the code in **Exercise 4**, click anywhere in the console and press the **Up** arrow key on your keyboard to retrieve the last command. Fix the error in the code and run it again.
@@ -131,7 +123,7 @@ Look at the 20 = 30, and remember that R takes what we say literally. What would
 7.  **Exploring Console Navigation**\
     Press the **Up** arrow key a few times in the console. What happens? Now press the **Down** arrow key. How does it behave? Try experimenting with this feature.
 
-![](images/03-activity1-old-code.gif){fig-align="center"}
+![Use the up and down directional keys to bring up previous code in the console](images/03-activity1-old-code.gif){fig-align="center"}
 
 ## Activity 3: Set up your R Script
 
@@ -149,7 +141,7 @@ Follow these steps to create a new R script:
     **File → Save As**, then enter the name:\
     `02-basic-programming-activities`\
     Click **Save**.
-    
+
 ::: {.callout-note collapse="true" title="Faster Way to Create an R Script"}
 ### Keyboard Shortcut Tip
 
@@ -166,9 +158,7 @@ There’s a faster way to do this using your keyboard:
     -   Windows: Press `Control + S`
 
     -   Mac: Press `Command + S`
-:::    
-
-
+:::
 
 ### Add Comments to Your Script
 
@@ -180,7 +170,7 @@ To make your script organised and easy to understand, use comments (`#`) to incl
 # Date: [Today's Date]
 ```
 
-![](images/03-activity3-script-set-up-new.gif){fig-align="center"}
+![How to create an R script, save it, and add appropriate starting comments to it.](images/03-activity3-script-set-up-new.gif){fig-align="center"}
 
 For the rest of the activities, make sure to write your code in the R script. Keep your code neat by using spacing between lines of code and commenting. I recommend to make a comment to highlight each new activity.
 
@@ -205,10 +195,8 @@ R categorises information into **data types**. There are four main data types yo
 
 4.  **Logical**:\
     A value that is either `TRUE` or `FALSE`. This is **case-sensitive**, so only the following examples will work: `TRUE`, `FALSE`, `T`, `F`.
-    
-    
-It’s essential to understand data types because certain operations are valid only for specific data types. For instance, mathematical operations can only be performed on **Numeric** or **Integer** data types.    
 
+It’s essential to understand data types because certain operations are valid only for specific data types. For instance, mathematical operations can only be performed on **Numeric** or **Integer** data types.
 :::
 
 ::: {.callout-tip title="How can we check and transform data types?" collapse="true"}
@@ -234,31 +222,26 @@ as.logical()    # Converts to logical
 ```
 :::
 
-
-
 ### Exercises
 
-In the R script you created, complete the following exercises. 
-
-
+In the R script you created, complete the following exercises.
 
 ::: {.callout-note collapse="true" title="Running code from an R Script"}
 To run a piece of code from your script, you can:
 
-1. **Using the Run Button**  
-   Highlight the code you want to run and click the **Run** button in the top-right corner of the script editor.
+1.  **Using the Run Button**\
+    Highlight the code you want to run and click the **Run** button in the top-right corner of the script editor.
 
-2. **Using Keyboard Shortcuts**  
-   Place your cursor on the line of code you want to run (or highlight multiple lines), then press the following keys simultaneously:  
-   - **Windows**: `Ctrl Enter`  
-   - **Mac**: `Command Enter`
+2.  **Using Keyboard Shortcuts**\
+    Place your cursor on the line of code you want to run (or highlight multiple lines), then press the following keys simultaneously:
+
+    -   **Windows**: `Ctrl Enter`\
+    -   **Mac**: `Command Enter`
 
 Feel free to use whichever method is most comfortable for you!
 
-![](images/03-activity4-running-code.gif){fig-align="center"}
+![Make sure to highlight the code before clicking Run](images/03-activity4-running-code.gif){fig-align="center"}
 :::
-
-
 
 **Data Type Exercises**
 
@@ -293,9 +276,8 @@ Feel free to use whichever method is most comfortable for you!
 
 ### Information on Variables
 
-
-::: {.callout-caution title="What are variables?" collapse="true"}
-Variables are labels for pieces of information we want to save and use later. To create a variable, we first specify the variable's name, use the assignment operator (\<-),  specify the information that will be stored in that variable, and then run that line of code. 
+::: {.callout-caution title="What are variables?" collapse="true" style="font-size: 48px;"}
+Variables are labels for pieces of information we want to save and use later. To create a variable, we first specify the variable's name, use the assignment operator (\<-), specify the information that will be stored in that variable, and then run that line of code.
 
 ```{r}
 
@@ -324,12 +306,10 @@ print(year)
 
 If we look in the environment pane and tab, we can see R storing and updated the information as we run our code.
 
-![](images/03-activity4-variable-example.gif){fig-align="center"}
+![Look at what happens in the environment pane (top right hand) corner when we assign and reassign our variable](images/03-activity4-variable-example.gif){fig-align="center"}
 :::
 
-
 ::: {.callout-tip title="Why are variables useful?" collapse="true"}
-
 Variables are really useful when we want perform operations across multiple pieces of information. For example, like calculating the total and mean of someones scores on Extraversion.
 
 ```{r}
@@ -347,11 +327,7 @@ mean_extra <-  total_extra/5
 print(total_extra)
 print(mean_extra)
 ```
-
 :::
-
-
-
 
 ::: {.callout-note collapse="true" title="Rules for Naming Variables"}
 ### Rules for Naming Variables
@@ -369,19 +345,15 @@ There are strict and recommended rules for naming variables. Here is a summary o
 4.  Avoid using **reserved words** in R, such as `if`, `else`, `TRUE`, or `FALSE`.
 :::
 
-
-
 ### Exercises
 
 ::: {.callout-tip collapse="true" title="**Keyboard Shortcut for the Assignment Operator `<-`**"}
-
 There is a keyboard shortcut for writing the assignment operator (\<-).
 
 On **Windows**, press these two keys at the same time: `Alt` `-`
 
 On **Mac**, press the following two keys at the same time: `Option` `-`
 :::
-
 
 1.  **Create a Character Variable**
 
@@ -409,12 +381,10 @@ On **Mac**, press the following two keys at the same time: `Option` `-`
 
 ### Information on Vectors
 
-
 ::: {.callout-caution collapse="true" title="What are vectors? How do we create a vector?"}
-
 In data analysis, we rarely work with individual variables or data types. Instead, we usually work with collections of data organised in data structures.
 
-The most basic and important data structure in R is the **vector**. Vectors are like a column or row of data. 
+The most basic and important data structure in R is the **vector**. Vectors are like a column or row of data.
 
 ### Creating a Vector
 
@@ -425,12 +395,9 @@ To create a vector, assign it a variable name, use the assignment operator (`<-`
 rintro_instructors <- c("Ryan", "Ciara", "Aoife")
 
 ```
-
 :::
 
-
 ::: {.callout-note collapse="true" title="Key points about vectors"}
-
 ### Key Points about Vectors
 
 The textbook provides more details on vectors, but for today’s session, here are the key points to remember:
@@ -494,12 +461,9 @@ sort(rintro_marks, decreasing = TRUE) # Sort from highest to lowest
 summary(rintro_satisfied) # Summarise logical values
 
 ```
-
-
 :::
 
 ::: {.callout-tip collapse="true" title="How do we index a vector?"}
-
 **Vector Indexing**
 
 Vectors use an **index** to keep track of the position of each element. The index is determined by the order in which the data was entered.
@@ -524,8 +488,6 @@ rintro_names[c(1:4)] # Extract elements 1 through 4
 ```
 :::
 
-
-
 ### Exercises
 
 1.  **Create Vectors of Different Data Types**
@@ -541,7 +503,7 @@ rintro_names[c(1:4)] # Extract elements 1 through 4
     -   Use the `class()` function to check the data type of each vector.
 
 2.  **Index Specific Elements**\
-    Extract the 2nd, 4th, and 6th elements from each of the following vectors. Copy and paste the code 
+    Extract the 2nd, 4th, and 6th elements from each of the following vectors. Copy and paste the code
 
 ```{r}
 
@@ -564,7 +526,6 @@ vect3 <- c("FALSE", "TRUE", "FALSE", "TRUE", "FALSE")
 ### Information on DataFrames
 
 ::: {.callout-caution collapse="true" title="What are data frames? How do we create a data frame?"}
-
 A **data frame** is a rectangular data structure made up of rows and columns, similar to a spreadsheet in Excel or a table in a Word document. In R, each column of a data frame is a vector, and all vectors must have the same length.
 
 To create a data frame, we use the `data.frame()` function:
@@ -580,20 +541,15 @@ my_df <- data.frame(
 my_df
 
 ```
-
-
 :::
 
 ::: {.callout-important collapse="true" title="Hold up. Why do use `=` instead of `<-` to create our column vectors?"}
+The main reason is that we are creating these vectors inside of a function. Inside functions like `data.frame`, we need to use the `=` operator to create vectors instead of `<-`.
 
-The main reason is that we are creating these vectors inside of a function. Inside functions like `data.frame`, we need to use the `=` operator to create vectors instead of `<-`. 
-
-It's hard to drill too deeply into this when we have not even covered functions yet. But just put it down to as a weird quirk of the R language! 
+It's hard to drill too deeply into this when we have not even covered functions yet. But just put it down to as a weird quirk of the R language!
 :::
 
 ::: {.callout-note collapse="true" title="How do we extract/index information from Data Frames?"}
-
-
 ### Extracting Information from Data Frames
 
 You can extract or subset data from a data frame in several ways:
@@ -668,8 +624,6 @@ my_df[c(1,3), c("age", "score")]
 :::
 
 ::: {.callout-tip collapse="true" title="How do we add columns or rows to a data frame"}
-
-
 #### Adding Columns to a Data Frame
 
 You can add a new column to an existing data frame by assigning values to it:
@@ -706,12 +660,10 @@ my_df
 ```
 :::
 
-
 ::: {.callout-important collapse="true" title="Indexing does not change a data frame without variable assignment"}
-
 #### Important Note
 
-Indexing does **not** modify the original data frame. 
+Indexing does **not** modify the original data frame.
 
 ```{r}
 
@@ -725,7 +677,6 @@ print(my_df)
 
 To save changes, assign the result to a new variable:
 
-
 ```{r}
 
 
@@ -737,11 +688,7 @@ print(my_df2)
 
 
 ```
-
-
 :::
-
-
 
 ### Exercises
 
@@ -765,9 +712,9 @@ print(my_df2)
 
         -   Extract the `grade` column using `[]` notation.
 
-        -   Extract the names and grades of the first two students using `[]` notation.
+        -   Extract the names and grades of the first two students using `[]` notation and save this data frame as `partial_student_data`.
 
-        -   Extract the last row of the data frame.
+        -   Extract the first row of the `partial_student_data` data frame.
 
 3.  **Adding a Column**
 
@@ -779,9 +726,9 @@ print(my_df2)
 
     -   Create a new row with the following details:
 
-        -   `name`: "Sophia"
+        -   `name`: "Judith"
 
-        -   `age`: 23L
+        -   `age`: 31L
 
         -   `grade`: 89.5
 
@@ -790,18 +737,15 @@ print(my_df2)
     -   Add this row to the `student_data` data frame using `rbind()`.
 
     -   Display the updated data frame.
-    
-    
-    
+
 ## Keyboard Shortcuts in RStudio
 
-Here are some useful keyboard shortcuts in RStudio. 
+Here are some useful keyboard shortcuts in RStudio.
 
-
-| **Action**                     | **Windows**            | **Mac**                  |
-|--------------------------------|------------------------|--------------------------|
-| Create a new script            | `Ctrl + Shift + N`     | `Cmd + Shift + N`        |
-| Save the current script        | `Ctrl + S`             | `Cmd + S`                |
-| Run the current line or code   | `Ctrl + Enter`         | `Cmd + Enter`            |
-| Insert assignment operator `<-`| `Alt + -`              | `Option + -`             |
-| Comment/Uncomment lines        | `Ctrl + Shift + C`     | `Cmd + Shift + C`        |
+| **Action**                      | **Windows**        | **Mac**           |
+|---------------------------------|--------------------|-------------------|
+| Create a new script             | `Ctrl + Shift + N` | `Cmd + Shift + N` |
+| Save the current script         | `Ctrl + S`         | `Cmd + S`         |
+| Run the current line or code    | `Ctrl + Enter`     | `Cmd + Enter`     |
+| Insert assignment operator `<-` | `Alt + -`          | `Option + -`      |
+| Comment/Uncomment lines         | `Ctrl + Shift + C` | `Cmd + Shift + C` |
