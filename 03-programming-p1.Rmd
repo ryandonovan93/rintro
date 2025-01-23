@@ -53,7 +53,7 @@ We can type commands in the console to get R to perform calculations. Just a not
 
 ```
 
-R follows the BEMDAS convention when performing calculations ([BEDMAS - Bracets, Exponents, Division, Multiplication, Addition, and Subtraction?](https://www.tes.com/en-ie/teaching-resource/bidmas-bodmas-bedmas-bimdas-pemdas-permdas-11154272#:~:text=%E2%80%A2%20BIMDAS%20%2D%20Brackets%2C%20Indices%2C,Multiplication%2C%20Division%2C%20Addition%2C%20Subtraction)). So if you are using R for this purpose, just be mindful of this if the result looks different from what you expected.
+R follows the BEMDAS convention when performing calculations ([BEDMAS - Bracets, Exponents, Division, Multiplication, Addition, and Subtraction](https://www.tes.com/en-ie/teaching-resource/bidmas-bodmas-bedmas-bimdas-pemdas-permdas-11154272#:~:text=%E2%80%A2%20BIMDAS%20%2D%20Brackets%2C%20Indices%2C,Multiplication%2C%20Division%2C%20Addition%2C%20Subtraction)). So if you are using R for this purpose, just be mindful of this if the result looks different from what you expected.
 
 ```{r eval = FALSE}
 
@@ -138,11 +138,26 @@ For example, if R thinks you haven't finished a command it will print out `+` to
 
 > (20 + 10
  
++ 
+
+```
+
+
+In this case, you just need to type finish the `)` next to the `+` symbol.
+
+```{r eval = FALSE}
+
+
+```{r eval = FALSE}
+
+> (20 + 10
+ 
 + )
 
 [1] 30
 
 ```
+
 
 So when you see "+" in the console, this is R telling you that something is missing. R won't let you enter a new command until you have finished with it.
 
@@ -150,11 +165,13 @@ So when you see "+" in the console, this is R telling you that something is miss
 
 (20 + 10
 
-+ #if I press enter, it will keep appearing until I finish the code
++ #if I press enter, it will keep appearing until I finish the code or press Esc
 +
 +
 +
-+
++ )
+
+[1] 30
 
 ```
 
