@@ -89,7 +89,7 @@ For each of the following exercises, make sure to type out the following exercis
 If your answer seems unusually high, remember that R follows the **BEDMAS** (Brackets, Exponents, Division/Multiplication, Addition/Subtraction) order of operations.
 :::
 
-4.  **Fixing the `+` Operator Error**\
+3.  **Fixing the `+` Operator Error**\
     Run the first line of code in the console. When you encounter the `+` operator, how can you fix it? Test your answer in the console.
 
 ```{r eval = F}
@@ -104,7 +104,7 @@ If your answer seems unusually high, remember that R follows the **BEDMAS** (Bra
 The + operator in R indicates that the command is incomplete. Finish the command and press Enter again
 :::
 
-5.  **Identifying and Fixing Errors**\
+4.  **Identifying and Fixing Errors**\
     Run the following code exactly as it appears. Take note of the error message. What went wrong? What do you think the correct code should be?
 
 ```{r error = T}
@@ -117,10 +117,10 @@ The + operator in R indicates that the command is incomplete. Finish the command
 Look at the 20 = 30, and remember that R takes what we say literally. What would be wrong with this statement if we meant it literally?
 :::
 
-6.  **Using the Up Arrow to Edit Code**\
+5.  **Using the Up Arrow to Edit Code**\
     After running the code in **Exercise 4**, click anywhere in the console and press the **Up** arrow key on your keyboard to retrieve the last command. Fix the error in the code and run it again.
 
-7.  **Exploring Console Navigation**\
+6.  **Exploring Console Navigation**\
     Press the **Up** arrow key a few times in the console. What happens? Now press the **Down** arrow key. How does it behave? Try experimenting with this feature.
 
 ![Use the up and down directional keys to bring up previous code in the console](images/02-activity1-old-code.gif){fig-align="center"}
@@ -374,15 +374,14 @@ On **Mac**, press the following two keys at the same time: `Option` `-`
     -   Create two variables called `num1` and `num2`. Assign them any two numbers.
 
     -   Add `num1` and `num2` together and save the result in a new variable called `sum_result`.
-    
+
 ::: {.callout-warning collapse="true" title="Error: object num1/num2 not found"}
-
-If you are receiving this error, it is because you have not run the code that defines the variable. Make sure to highlight that code and press run, before adding `num1` and `num2` together. 
-
+If you are receiving this error, it is because you have not run the code that defines the variable. Make sure to highlight that code and press run, before adding `num1` and `num2` together.
 :::
 
-
-    -   Use `print()` to show the value of `sum_result`.
+```         
+-   Use `print()` to show the value of `sum_result`.
+```
 
 1.  **Convert Height**
 
@@ -483,7 +482,7 @@ summary(rintro_satisfied) # Summarise logical values
 
 Vectors use an **index** to keep track of the position of each element. The index is determined by the order in which the data was entered.
 
-![](images/02-index-logical.png)
+![](images/03-index-logical.png)
 
 Use square brackets `[]` to extract specific elements:
 
