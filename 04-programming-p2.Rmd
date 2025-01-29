@@ -10,10 +10,19 @@ By the end of this session, you should be capable of the following:
 
 -   Importing and exporting datasets using R.
 
-
 ```{r echo=FALSE, warning=FALSE}
 
 library(webexercises)
+
+
+
+```
+
+```{r echo = F}
+
+psycho_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/psycho.csv")
+
+burnout_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/burnout.csv")
 
 ```
 
@@ -25,33 +34,35 @@ If you are reading this chapter. I recommend that you type out every piece of co
 
 There are several activities associated with this chapter. [You can find them by clicking this link.](https://ryandonovan.quarto.pub/week-3---activities-fb08/)
 
-```{r echo=FALSE, warning=FALSE}
+## Functions
 
-library(webexercises)
+In the previous sessions, we used several functions, like `print()`, `head()`, `View()`, `mean()`, `sd()`, `summary()`, `aggregate()`, `plot()`, `pdf()`, `class()`, and `c()`. Each of these functions performs a specific task: they take input (e.g., data or a variable), process it, and return an output. In a way, you can think of functions as action words—like verbs—that tell R to do something.
+
+But what exactly *are* functions? Where do they come from?
+
+Functions are basically a set of pre-written instructions that perform a specific task. Every function we’ll use in this course has been written by someone else (or a group of people) and shared within the R community.
+
+You might think getting good at R means memorising loads of functions and knowing exactly what each one does. Sure, that helps. But the real secret to improving at programming is understanding *how* functions work and how to create your own. Once you get that, you won’t just use existing functions more effectively—you’ll also be able to write your own custom functions when you need them.
+
+Let’s learn how to create our own function to get a better feel for how they work.
+
+### **The Syntax for Creating a Function**
+
+Creating a function is a bit like creating a variable.
+
+When we make a variable, we give it a name (e.g., `my_name`) and assign (`<-`) some information to it (e.g., `"Ryan"`). Then, we can use that variable wherever we need it, like this:
+
+```{r}
+
+my_name <- "Ryan"
+
+print(my_name)
 
 ```
 
-## Functions
+When we create a function, we give it a name (e.g., `my_function`) and assign a set of instructions to it. Once we’ve done that, we can call the function whenever we need to, instead of writing out the same code over and over again.
 
-In the previous sessions, we used several functions, like **`print()`**, **`head()`**, **`View()`**, **`mean()`**, **`sd()`**, **`summary()`**, **`aggregate()`**, **`plot()`**, **`pdf()`**, **`class()`**, and **`c()`**. Each of these functions has a job: they take some input (e.g., data or a variable), do something with it, and give you an output. In this sense, you could imagine functions as action words – like verbs – that tell R to do something.
-
-But what *are* functions? Where do they come from?
-
-Functions are actually a set of pre-written instructions to perform a specific task. Every function that we will use in this course has been written by someone else (or a group of people) and shared within the R community.
-
-You might think that becoming good at R means memorising lots of functions and knowing exactly what each one does. While that helps, the real secret to getting better at programming is understanding how functions work and how to create your own. Once you get the hang of that, you’ll not only use existing functions more effectively but also make your own custom functions when you need them.
-
-Let’s learn how to create our own function to better help us understand how functions work.
-
-### The Syntax for Creating a Function
-
-The process of creating a function is similar to creating a variable.
-
--   When we make a variable, we give it a name (e.g., **`my_name`**) and assign (\<-) some information to it (e.g., **`"Ryan"`**). Then, we can use that variable wherever we need it, like **`print(my_name)`**.
-
--   When we create a function, we give it a name (e.g., **`my_function`**) and assign a set of instructions to it. Every time we want to run those instructions, we can just use the function’s name instead of writing the same code repeatedly.
-
-Here’s what the syntax for creating a function looks like:
+Here’s the syntax for creating a function:
 
 ```{r eval = FALSE}
 
@@ -62,32 +73,29 @@ my_function <- function(input) {
   instruction3
   return(output) # Return the result
 }
-
 ```
 
-Now let’s break this down step by step:
+Let’s break this down:
 
-1.  **Naming the Function:**\
-    We give our function a name (e.g., **`my_function`**) and use **`<-`** to assign something to it. Just like with variables, this tells R that the name will now store something.
+-   **Naming the Function** – We give our function a name (e.g., `my_function`) and use `<-` to assign something to it. Just like with variables, this tells R that the name will now store something.
 
-2.  **Telling R It’s a Function:**\
-    To let R know we’re creating a function (and not just storing data), we write **`function()`**. Inside the parentheses **`()`**, we can include input information (called an *argument*). This input helps the function do its job.
+-   **Telling R It’s a Function** – We write `function()` to let R know we’re creating a function, not just storing data. Inside the parentheses `()`, we can include input information (also called an *argument*). Arguments are just placeholders for values that the function will use later.
 
-3.  **Writing the Instructions:**\
-    Inside the curly brackets **`{}`**, we write the code that makes the function work. These are the steps (or instructions) the function will follow when we run it. A function could have just one step, or it could have many steps, depending on what it needs to do.
+-   **Writing the Instructions** – Inside the curly brackets `{}`, we write the actual steps the function should follow. Some functions only need one step, while others might have multiple.
 
-4.  **Returning the Output:**\
-    To make the function give us a result, we use the **`return()`** function. Whatever we include inside **`return()`** will be the final output of the function, which R will show on the screen.
+-   **Returning the Output** – To make the function give us a result, we use `return()`. Whatever we include inside `return()` will be the final output that R displays.
 
-This is still a bit abstract, so let's work through a concrete example to show you what I mean.
+This might still seem a bit abstract, so let’s go through a concrete example.
 
 ### Creating a Simple Function (1-Argument)
 
-#### Defining the Function
+#### **Defining the Function**
 
-It may come as a shock to you to learn that I am not much of a chef. One big reason is that recipes confuse me with measurements like “1 cup,” “10 ounces,” or preheating an oven to “1000 degrees Fahrenheit.” Wouldn’t it be great if we could automate these conversions? That’s where functions come in handy!
+You may be surprised to hear that I’m not much of a chef. One big reason is that recipes confuse me with measurements like “1 cup,” “10 ounces,” or preheating an oven to “1000 degrees Fahrenheit.” Wouldn’t it be great if we could automate these conversions?
 
-Let’s create a simple function that converts cups to grams. We’ll call it **`cups_to_grams`**. When naming functions, try to pick a name that describes what the function does. This makes it easier to remember and understand.
+That’s where functions come in handy!
+
+Let’s create a simple function that converts cups to grams. We’ll call it `cups_to_grams`. When naming functions, it’s best to pick a name that clearly describes what the function does—it makes your code much easier to read and understand later.
 
 Here’s how we start:
 
@@ -103,11 +111,11 @@ cups_to_grams <- function(cups) {
 
 -   Inside **`function()`**, we’ve written **`cups`**, which is the input or *argument*. Think of it as a placeholder for the value we want to use later.
 
--   Right now, the function doesn’t do anything because we haven’t told R what to do with **`cups`**. Don’t worry! We’ll write the instructions next.
+-   Right now, our function doesn’t do anything because we haven’t given it any instructions yet. Let’s fix that.
 
 #### Writing the Instructions
 
-To convert cups to grams, I googled and found this: **1 cup = 250 grams** (based on the metric system). So, our function needs to multiply the number of cups by 250.
+According to the metric system, 1 cup is approximately 250 grams. So, our function needs to multiply the number of cups by 250.
 
 Let’s add this instruction:
 
@@ -119,13 +127,11 @@ cups_to_grams <- function(cups) {
 
 ```
 
-Here’s what’s happening:
+We’ve created a variable called `grams` inside the function. It stores the result of `cups * 250`.
 
--   We’re creating a new variable called **`grams`** inside the function. It stores the result of **`cups * 250`**.
+But there’s still one problem—if we run this function, nothing will actually be displayed on the screen. That’s because we haven’t told R to return the result yet.
 
--   Still, we’re not done. If we want R to show us the result, we need to use **`return()`**.
-
-#### Returning the Output
+#### **Returning the Output**
 
 Here’s the final version of our function:
 
@@ -139,9 +145,13 @@ cups_to_grams <- function(cups) {
 
 ```
 
-The `return()` function tells us to keep the value of `grams` and print it out on our console.
+The `return()` function tells R to keep the value of `grams` and print it out in the console.
 
-There we have it, we have created our first function! Now let's see if it works. In programming lingo, we say that we **`call`** a function when we use it. To call **`cups_to_grams`** it is the same process as the other functions we have used, we type out the name and then we insert our input inside the parentheses.
+Now, let’s see if it works!
+
+### **Calling the Function**
+
+Calling a function is just like using any of the built-in functions we’ve used before. We type the function’s name and provide an input inside the parentheses.
 
 ```{r}
 
@@ -164,9 +174,9 @@ cups_to_grams(cups = 5L)   # 5 cups = 1250 grams
 
 ```
 
-#### Defining the Argument Outside the Function
+#### **Defining the Argument Outside the Function**
 
-You can also define the value of **`cups`** separately and then use it in the function:
+Instead of passing the value directly inside the function, you can also define it separately and then use it:
 
 ```{r}
 
@@ -203,7 +213,7 @@ my_function <- function(input1, input2, input...3) {
 
 ```
 
-Again, this is abstract, so let's create our own multi-argument function. More specifically, let's create a function called `average_score` that will will calculate the **average score** on a psychological test, once we have specified the **total score** and the **number of items** on the test.
+Let’s create a function called `average_score()` that calculates the average score on a psychological test when given the total score and the number of test items.
 
 ```{r}
 
@@ -234,7 +244,7 @@ The function carries out the same set instructions regardless of what values we 
 
 #### What Happens if I Don’t Name the Inputs?
 
-When calling the function, you don’t always need to type out the names of the input variables, as long as you provide the values in the correct order. For example:
+You don’t always need to name the arguments when calling the function *as long as* you provide them in the correct order. For example:
 
 ```{r}
 
@@ -255,7 +265,7 @@ average_score(5, 65)
 
 The function still runs, but the result is wrong. Why? Because R doesn’t have common sense — it doesn’t know you meant to input the `total_score` as `65` and the `num_items` as `5`. It blindly follows the order you gave.
 
-To avoid this kind of mistake, it’s a good idea to **always specify the names of your input variables** when calling a function. This way, you make your code clearer and less prone to errors. It’s also great practice when sharing your code with others — naming the inputs makes your code more readable, especially if someone hasn’t seen the function before.
+To avoid this kind of mistake, it’s a good idea to **specify the names of your input variables** when calling a function. This way, you make your code clearer and less prone to errors. It’s also great practice when sharing your code with others — naming the inputs makes your code more readable, especially if someone hasn’t seen the function before.
 
 ### Some Important Features about Functions
 
@@ -519,14 +529,13 @@ R packages are created by people in the R community and shared for free. They’
 
 One of the most important things to know about R packages is that you first need to install them on your computer. Once installed, you will not need to install them again[^04-programming-p2-1].
 
-[^04-programming-p2-1]: There are a couple of important exceptions to this rule. 
+[^04-programming-p2-1]: There are a couple of important exceptions to this rule.
 
-    Firslty, If you are creating R projects on your own personal computers using the `renv` option (which we did), this basically partitions your R project into its own little self-contained space on your computer where it will operate. So when you download and install R packages in that project, they will only exist in that location on your computer (i.e. your project). You won't need to install packages on that project more than once. However, if you set up a new project, and you need the same packages, then you will need to install those packages on that new project. 
-
+    Firslty, If you are creating R projects on your own personal computers using the `renv` option (which we did), this basically partitions your R project into its own little self-contained space on your computer where it will operate. So when you download and install R packages in that project, they will only exist in that location on your computer (i.e. your project). You won't need to install packages on that project more than once. However, if you set up a new project, and you need the same packages, then you will need to install those packages on that new project.
 
     This is equivalent to having separate user accounts on your desktop. If I install something on my account, that doesn't mean it will be installed on your account.
-    
-    Secondly, the same holds true for Posit Cloud. In Posit Cloud, every new R project you make will be self-contained, so any packages you install in one project will not transfer over to other projects. 
+
+    Secondly, the same holds true for Posit Cloud. In Posit Cloud, every new R project you make will be self-contained, so any packages you install in one project will not transfer over to other projects.
 
 However, if you want to use a package, then you will need to load it while you are in RStudio. Every time you open RStudio after closing it, you will need to load that package again if you want to use it.
 
@@ -633,7 +642,7 @@ package ‘praise’ was built under R version 4.3.2
 
 #### Loading using the R Console Command
 
-We can use the same syntax from that R console output to load in packages there. To load in the `pwr` and `jmv` packages, you can type each of these into your script and run each one. 
+We can use the same syntax from that R console output to load in packages there. To load in the `pwr` and `jmv` packages, you can type each of these into your script and run each one.
 
 ```{r warning=F}
 
@@ -722,9 +731,9 @@ The following objects are masked from ‘package:stats’:
 ***Here’s what this means:***
 
 R is informing you that the functions filter and lag from the stats package (which comes with base R) are now "masked" by the versions from the dplyr package.
-    
+
 This simply means that if you call filter() or lag() without specifying the package, R will use the version from dplyr because it was loaded most recently.
-    
+
 ***How to Handle This:***
 
 If you see this message, it’s not an error — it’s just a warning that there’s a conflict. To explicitly use a function from a specific package, you can use the :: operator
@@ -760,7 +769,7 @@ There you have it. You have successfully installed and loaded your first package
 
 While creating data frames and lists in R is valuable, the majority of the data you'll work with in R will likely come from external sources. Therefore, it's essential to know how to import data into R. Similarly, once you've processed and analysed your data in R, you'll often need to export it for further use or sharing.
 
-First, you'll need to download two files: `psycho.csv`. Both files are available on Canvas. 
+First, you'll need to download two files: `psycho.csv`. Both files are available on Canvas.
 
 ### Importing CSV files.
 
@@ -834,17 +843,15 @@ In your working directory (check the Files pane), you should see the file `psych
 
 Congratulations, you've made it through Programming Part I and II! We've covered a lot of useful (but let's be honest, not exactly riveting) concepts in programming with R. Throughout these sections, we've learned how R categories data, stores it in data structures, converts data types, and creates variables and functions. Additionally, we've explored how to install and load packages to enhance R's capabilities, and how to import and export data.
 
-For the next few weeks, we will focus on using R to run descriptive and inferential statistical analysis. 
-
+For the next few weeks, we will focus on using R to run descriptive and inferential statistical analysis.
 
 ## Glossary
 
 | **Term** | **Definition** |
-|----------------------|--------------------------------------------------|
+|----------------------|-------------------------------------------------|
 | CSV | Comma-Separated Values: a common file format for storing tabular data, where each value is separated by a comma. |
 | SPSS | Statistical Package for the Social Sciences: software commonly used for statistical analysis, often associated with .sav files. |
 | Dataframe | A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types. |
 | Importing | The process of bringing data from external sources into R for analysis or manipulation. |
 | Exporting | The process of saving data from R to external files or formats for use in other applications. |
 | write.csv() | A function in R used to export a dataset to a CSV file. |
-

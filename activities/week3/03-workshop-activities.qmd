@@ -20,6 +20,14 @@ Each activity includes a summary of the key points to help you understand the co
 
 Don’t hesitate to collaborate! Feel free to chat with your neighbours and help each other out. Myself, Ciara, and Aoife will also be around to provide support, so don’t hesitate to ask us for help.
 
+```{r echo = F}
+
+psycho_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/psycho.csv")
+
+burnout_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/burnout.csv")
+
+```
+
 ## Activity 1: Set up your Working Directory
 
 One of the first steps in each of these workshops is setting up your **working directory**. If you remember from the last two weeks, a directory is simply another word for a folder. The working directory is the default folder where R will look to import files or save any files you export.
@@ -170,9 +178,9 @@ R packages are created by people in the R community and shared for free. They’
 
 ### What you need to do before you can access R packages
 
-Before installing some packages, Windows users need to install **RTools**, and Mac users need **XCode Command Line Tools**. These are necessary to install certain packages that require compiling code.
+Before installing some packages, Windows users need to install **RTools**. These are necessary to install certain packages that require compiling code.
 
-***Note: If you are using Posit Cloud, you do not need to complete this step. Feel free to move onto the next section/exercises***
+***Note: If you are using a Mac or using Posit Cloud, you do not need to complete this step. Feel free to move onto the next section***
 
 ::: {.callout-note collapse="true" title="Instructions for Window Users"}
 #### Windows Users - Install RTools
@@ -184,8 +192,13 @@ Before installing some packages, Windows users need to install **RTools**, and M
 1.  **Download RTools**
 
     -   Click the following link: [CRAN RTools](https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html)
+
     -   Click the hyperlink called `Rtools44 installer`
-    -   ![The link you need to click on the Rtools page](images/03-Rtools.PNG)
+
+    -   
+
+        ![The link you need to click on the Rtools page](images/03-Rtools.PNG)
+
     -   The installer should start downloading and will take a few seconds to complete.
 
 2.  **Install RTools**
@@ -199,32 +212,6 @@ Before installing some packages, Windows users need to install **RTools**, and M
         ![Installation process. I cut out some images from this, it was not that quick!](images/03-Rtools.gif)
 
 Once that process is finished you should be able to download R packages. If you run into any errors, please let us know.
-:::
-
-::: {.callout-note collapse="true" title="Instructions for Mac Users"}
-#### Mac Users - Install XCode Command Line Tools
-
-**Xcode Command Line Tools** is a collection of software tools for **macOS** that allows R users to compile packages from source. Some R packages include C, C++, or Fortran code that must be compiled before they can be installed. Since Windows does not come with built-in tools for compiling code, **Xcode Command Line Tools** provides the necessary compilers and libraries.
-
-**How to Install Xcode Command Line Tools**
-
-1.  Click the Search bar in the top right hand corner of your screen.
-
-2.  Search for Terminal.
-
-3.  Open the Terminal app.
-
-4.  The following window should appear. Type in the following command exactly as it appears, and press Enter.
-
-5.  A pop-up window will appear. Click Install and wait for it to finish.
-
-```{r eval = F}
-
-xcode-select --install
-
-```
-
-Once finished, you should now be able to install R packages. Now you can move on to the exercises.
 :::
 
 ### Installing and Loading R packages
@@ -279,30 +266,25 @@ library(package3)
 
 Depending on the device or application (e.g. Posit Cloud) you are installing it on, you might get a different message when you install the package. There are a couple of things to watch out for:
 
-- If you are asked on the console ***"Do you want to proceed? \[Y/n\]:"***, make sure to type `y` or `Y` to initiate the installation.
+-   If you are asked on the console ***"Do you want to proceed? \[Y/n\]:"***, make sure to type `y` or `Y` to initiate the installation.
 
-- Sometimes a pop up window might appear recommending that you restart R. You can usually say no to this.
+-   Sometimes a pop up window might appear recommending that you restart R. You can usually say no to this.
 
 ::: {.callout-note collapse="true" title="Installing an R package on my computer (example)"}
-
 ### Here is an example of me installing an R package on my computer.
 
 ![](images/03-install-praise-package.gif)
-
 :::
 
 ::: {.callout-note collapse="true" title="Installing an R package on PositCloud (example)"}
-
 ### Here is an example of me installing the R package on PositCloud.
 
 ![The output looks nastier, but it still works.](images/03-install-praise-package-more-complex.gif){fig-align="center"}
-
 :::
-
 
 ### Exercises
 
-1.  Install the package `jmv` in the R console using the following command
+1.  Install the package `jmv` in the R console using the following command. (Note - you will see a lot of red text, that's okay).
 
 ```{r eval = F}
 
@@ -323,7 +305,13 @@ library(jmv)
 
 4.  Load the package `pwr` in your R script.
 
-5.  Install and load the `praise` package. If you get stuck, follow the example just before the exercises
+5.  Install and load the `praise` package. If you get stuck, follow the example just before the exercises.
+
+6.  Try the `praise()` function out by typing `praise()` in the console and press enter.
+
+```{r eval = F}
+praise()
+```
 
 ::: {.callout-caution collapse="true" title="Troubleshooting Common Issues when Installing and Loading packages"}
 ### Troubleshooting Common Issues
@@ -375,7 +363,7 @@ R is capable of downloading lots of different file types. For the time being, we
 However, by the end of the semester the textbook will include an Appendix that will show you how to import and export other common file types.
 :::
 
-### Let's import the `psycho.csv` datasets
+### Syntax for Importing Data
 
 We always import datasets using the script. The syntax for importing csv files is the following:
 
@@ -389,6 +377,8 @@ It is always important to give your imported dataset a name. This way you can ac
 
 We use the function `read.csv` to read (i.e. import) the dataframe. In the quotation marks, we give the name of the file. An important note, we must always include the extension (.csv) as well.
 
+### Let's Import the `psycho.csv` data frame
+
 Let's use this syntax to import the `psycho.csv` dataset. We will call it `psycho_df`. Make sure to follow along with the code that I am writing here
 
 ```{r eval = F}
@@ -401,7 +391,7 @@ If you come across an error, make sure you have typed out the function `read.csv
 
 The first thing we always should do when we import a dataset is to check it and make sure it looks okay. The best way to do that is to use the `head()` function, which will print out the first 5 rows of the data frame.
 
-```{r eval = F}
+```{r}
 
 head(psycho_df)
 
@@ -415,7 +405,7 @@ If your output is the same as mine, then you have imported it correctly.
 
 2.  Use the `head()` function to check whether you have imported the data frame correctly. Your output should look like mine
 
-```{r eval = F, echo = F}
+```{r echo = F}
 
 head(burnout_df)
 
@@ -423,7 +413,7 @@ head(burnout_df)
 
 ## Activity 6: Dataframes
 
-Just a note, this is the same set of activities that were in last week's sheet. But since we did not have time in the last session to go through data frames, I have pasted the exercises here. If you completed last week's activity on data frames and feel like you understood the content, then feel free to skip this section.
+Just a note, this is the same set of activities that were in last week's activity sheet. But since we did not have time in the last session to go through data frames, I have pasted the exercises here. If you already completed last week's activity on data frames and feel like you understood the content in the slides, then feel free to skip this section.
 
 ### Information on DataFrames
 
@@ -673,7 +663,9 @@ write.csv(example_df, file = "2025_exam_results.csv")
 
 Once you have run that code, you should see it appear in your working directory.If you go to your file explorer on your computer, and navigate to the file and open it, an excel spreadsheet (if you have excel) should open up.
 
-If you are using posit cloud, you will first need to download the file onto your computer before you can open it. To do that, go to Files pane, make sure you have the week3 folder opened. There you should be a tick box right next to the file `2025_exam_results.csv`. Tick that box. Then above where it says "Cloud \> project \> week3", you should see a toolbar with the button "More", click that button, click Export, and then click Download.
+If you are using Posit Cloud, you will first need to download the file onto your computer before you can open it.
+
+To do that, go to Files pane, make sure you have the week3 folder opened. There you should be a tick box right next to the file `2025_exam_results.csv`. Tick that box. Then above where it says "Cloud \> project \> week3", you should see a toolbar with the button "More", click that button, click Export, and then click Download.
 
 ![Exporting Data on Posit Cloud](images/03-data-export.gif){fig-align="center"}
 
@@ -788,9 +780,11 @@ In this example:
 
 ### Exercises
 
-1.  Create Simple Functions (Write this code for yourself)
+1.  Create Simple Functions
 
 Example: Write a function called double_number() that takes a single number as input and returns double its value.
+
+Example Answer:
 
 ```{r}
 
@@ -807,7 +801,11 @@ double_number(10) # Should return 20
 
 2.  Write a function called `triple_number()` that takes in a single number as input and returns triple its value. Test your function.
 
-3.  Write a function called `kg_to_lbs` that takes in a single kg measurement as input and returns its conversion into pounds (lbs). Note: 1kg is equal to 2.20 pounds.
+::: {.callout-tip collapse="true"}
+Use the `double_number()` function as a guide. The main difference is that you need to multiple the input number by 3 instead of 2!
+:::
+
+3.  Write a function called `kg_to_lbs` that takes in a single kg measurement as input converts it in pounds (lbs). Test your function!
 
 ```{r echo = F}
 
@@ -837,4 +835,7 @@ head(your_df, n = 6) #default setting that needs to be changed
 
 ```
 
-5.  Let's try write a multi-argument (i.e multi-input function). Write a function called `average_score()` that takes in two test scores (``` score1``, ```score2`) as arguments and returns their average (`avg\`). Test your function.
+5.  Write a multi-argument (i.e multi-input) function called `total_score()` that takes in two test scores (`score1`, `score2`) as arguments, adds them together, and returns their total (`total`). Test your function.
+
+
+

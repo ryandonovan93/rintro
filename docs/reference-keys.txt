@@ -153,3 +153,4 @@ what-are-r-packages
 testing-a-package
 troubleshooting-common-issues
 best-practices-for-installing-and-loading-packages
+calling-the-function
