@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 3 - Activities</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="03-workshop-activities_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03-workshop-activities_files/libs/quarto-html/quarto.js"></script>
+<script src="03-workshop-activities_files/libs/quarto-html/popper.min.js"></script>
+<script src="03-workshop-activities_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03-workshop-activities_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03-workshop-activities_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03-workshop-activities_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03-workshop-activities_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03-workshop-activities_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#programming-fundamentals-in-r-part-2-workshop" id="toc-programming-fundamentals-in-r-part-2-workshop" class="nav-link active" data-scroll-target="#programming-fundamentals-in-r-part-2-workshop">Programming Fundamentals in R (Part 2) Workshop</a></li>
+  <li><a href="#activity-1-set-up-your-working-directory" id="toc-activity-1-set-up-your-working-directory" class="nav-link" data-scroll-target="#activity-1-set-up-your-working-directory">Activity 1: Set up your Working Directory</a>
+  <ul>
+  <li><a href="#steps-to-set-up-your-working-directory" id="toc-steps-to-set-up-your-working-directory" class="nav-link" data-scroll-target="#steps-to-set-up-your-working-directory">Steps to Set Up Your Working Directory</a></li>
+  <li><a href="#verify-your-working-directory" id="toc-verify-your-working-directory" class="nav-link" data-scroll-target="#verify-your-working-directory">Verify Your Working Directory</a></li>
+  </ul></li>
+  <li><a href="#activity-2-download-the-psycho.csv-and-burnout.csv-datasets-and-move-them-to-your-working-directory" id="toc-activity-2-download-the-psycho.csv-and-burnout.csv-datasets-and-move-them-to-your-working-directory" class="nav-link" data-scroll-target="#activity-2-download-the-psycho.csv-and-burnout.csv-datasets-and-move-them-to-your-working-directory">Activity 2: Download the <code>psycho.csv</code> and <code>burnout.csv</code> datasets and move them to your working directory</a></li>
+  <li><a href="#activity-3-set-up-your-r-script" id="toc-activity-3-set-up-your-r-script" class="nav-link" data-scroll-target="#activity-3-set-up-your-r-script">Activity 3: Set up your R Script</a>
+  <ul>
+  <li><a href="#creating-an-r-script-in-rstudio" id="toc-creating-an-r-script-in-rstudio" class="nav-link" data-scroll-target="#creating-an-r-script-in-rstudio">Creating an R Script in RStudio</a></li>
+  <li><a href="#add-comments-to-your-script" id="toc-add-comments-to-your-script" class="nav-link" data-scroll-target="#add-comments-to-your-script">Add Comments to Your Script</a></li>
+  </ul></li>
+  <li><a href="#activity-4-install-and-load-r-packages" id="toc-activity-4-install-and-load-r-packages" class="nav-link" data-scroll-target="#activity-4-install-and-load-r-packages">Activity 4: Install and Load R Packages</a>
+  <ul>
+  <li><a href="#what-are-r-packages" id="toc-what-are-r-packages" class="nav-link" data-scroll-target="#what-are-r-packages">What are R packages?</a></li>
+  <li><a href="#what-you-need-to-do-before-you-can-access-r-packages" id="toc-what-you-need-to-do-before-you-can-access-r-packages" class="nav-link" data-scroll-target="#what-you-need-to-do-before-you-can-access-r-packages">What you need to do before you can access R packages</a></li>
+  <li><a href="#installing-and-loading-r-packages" id="toc-installing-and-loading-r-packages" class="nav-link" data-scroll-target="#installing-and-loading-r-packages">Installing and Loading R packages</a>
+  <ul class="collapse">
+  <li><a href="#how-do-you-install-r-packages" id="toc-how-do-you-install-r-packages" class="nav-link" data-scroll-target="#how-do-you-install-r-packages">How do you install R packages?</a></li>
+  <li><a href="#how-do-you-load-r-packages" id="toc-how-do-you-load-r-packages" class="nav-link" data-scroll-target="#how-do-you-load-r-packages">How do you load R packages?</a></li>
+  <li><a href="#installing-and-loading-the-praise-package" id="toc-installing-and-loading-the-praise-package" class="nav-link" data-scroll-target="#installing-and-loading-the-praise-package">Installing and Loading the <code>praise</code> package</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  </ul></li>
+  <li><a href="#activity-5-import-data" id="toc-activity-5-import-data" class="nav-link" data-scroll-target="#activity-5-import-data">Activity 5: Import Data</a>
+  <ul>
+  <li><a href="#lets-import-the-psycho.csv-datasets" id="toc-lets-import-the-psycho.csv-datasets" class="nav-link" data-scroll-target="#lets-import-the-psycho.csv-datasets">Let’s import the <code>psycho.csv</code> datasets</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
+  </ul></li>
+  <li><a href="#activity-6-dataframes" id="toc-activity-6-dataframes" class="nav-link" data-scroll-target="#activity-6-dataframes">Activity 6: Dataframes</a>
+  <ul>
+  <li><a href="#information-on-dataframes" id="toc-information-on-dataframes" class="nav-link" data-scroll-target="#information-on-dataframes">Information on DataFrames</a></li>
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2">Exercises</a></li>
+  </ul></li>
+  <li><a href="#activity-7-export-data" id="toc-activity-7-export-data" class="nav-link" data-scroll-target="#activity-7-export-data">Activity 7: Export Data</a></li>
+  <li><a href="#activity-8-creating-and-using-functions" id="toc-activity-8-creating-and-using-functions" class="nav-link" data-scroll-target="#activity-8-creating-and-using-functions">Activity 8: Creating and Using Functions</a>
+  <ul>
+  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3">Exercises</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="03-workshop-activities.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 3 - Activities</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="programming-fundamentals-in-r-part-2-workshop" class="level2">
+<h2 class="anchored" data-anchor-id="programming-fundamentals-in-r-part-2-workshop">Programming Fundamentals in R (Part 2) Workshop</h2>
+<p>In this week’s workshop, we are going to learn how to install and load R packages, import and export data, work with data frames, and create functions. Again there is a lot here, so do not worry if you don’t get everything done in the session, or if takes a while for certain concepts to click.</p>
+<p>Each activity includes a summary of the key points to help you understand the concepts and techniques. If you get stuck on an exercise, take a moment to review the key points in the activity—it might give you the clarity you need to move forward.</p>
+<p>Don’t hesitate to collaborate! Feel free to chat with your neighbours and help each other out. Myself, Ciara, and Aoife will also be around to provide support, so don’t hesitate to ask us for help.</p>
+</section>
+<section id="activity-1-set-up-your-working-directory" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1-set-up-your-working-directory">Activity 1: Set up your Working Directory</h2>
+<p>One of the first steps in each of these workshops is setting up your <strong>working directory</strong>. If you remember from the last two weeks, a directory is simply another word for a folder. The working directory is the default folder where R will look to import files or save any files you export.</p>
+<p>If you don’t set the working directory, R might not be able to locate the files you need (e.g., when importing a dataset) or you might not know where your exported files have been saved. Setting the working directory beforehand ensures that everything is in the right place and avoids that issue.</p>
+<section id="steps-to-set-up-your-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="steps-to-set-up-your-working-directory">Steps to Set Up Your Working Directory</h3>
+<ol type="1">
+<li><p>Click:<br>
+<strong>Session → Set Working Directory → Choose Directory</strong></p></li>
+<li><p>Navigate to the folder you created for this course (this should be the same folder where you created <code>week1</code> and <code>week2</code>).</p></li>
+<li><p>Create a new folder called <code>week3</code> inside this directory.</p></li>
+<li><p>Select the <code>week3</code> folder and click <strong>Open</strong>.</p></li>
+</ol>
+<p>You should now see a message in the console confirming the change.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/0131045s/Desktop/PS6183/rintro/week3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-set-up-working-directory.gif" class="img-fluid figure-img"></p>
+<figcaption>How to set up your working directory</figcaption>
+</figure>
+</div>
+</section>
+<section id="verify-your-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="verify-your-working-directory">Verify Your Working Directory</h3>
+<p>You can always check your current working directory by typing in the following command in the console</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the working directory is set correctly</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If the output does not match the expected directory path, repeat the steps above.</p>
+</section>
+</section>
+<section id="activity-2-download-the-psycho.csv-and-burnout.csv-datasets-and-move-them-to-your-working-directory" class="level2">
+<h2 class="anchored" data-anchor-id="activity-2-download-the-psycho.csv-and-burnout.csv-datasets-and-move-them-to-your-working-directory">Activity 2: Download the <code>psycho.csv</code> and <code>burnout.csv</code> datasets and move them to your working directory</h2>
+<p>We will importing two datasets - <code>psycho.csv</code> and <code>burnout.csv</code> - later on in the activities. Whenever you are importing datasets, make sure they are in your working directory, so that R will be able to find them easily.</p>
+<p>To do this follow these steps.</p>
+<ol type="1">
+<li><p>Go to Canvas Course Page -&gt; Go to Modules -&gt; Download <code>psycho.csv</code> and <code>burnout.csv</code> to your computer.</p></li>
+<li><p>If you are using your own laptop, move the two files to your <code>week3</code> folder you just created.</p></li>
+<li><p>If you are using Posit Cloud, you will need to upload the files to your <code>week3</code> folder. To do that, go to the Files pane in the bottom right corner of PositCloud, double click the <code>week3</code> folder, and then click the <code>Upload</code> button. Upload both <code>psycho.csv</code> and <code>burnout.csv</code></p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-import-datasets-posit.gif" class="img-fluid figure-img"></p>
+<figcaption>How to import a dataset in Posit Cloud. Make sure to repeat the process for burnout.csv too.</figcaption>
+</figure>
+</div>
+<p>You should be able to see both files now in your working directory. To check if the files are in the correct location, you can write out the following code in the console, which will list out all the files that are currently in your working directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the files are in the correct location</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If the file names <code>psycho.csv</code> and <code>burnout.csv</code> do not appear in the output, check your working directory setup and try again.</p>
+</section>
+<section id="activity-3-set-up-your-r-script" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-set-up-your-r-script">Activity 3: Set up your R Script</h2>
+<p>Create the R script where you will be writing most of your code today.</p>
+<section id="creating-an-r-script-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="creating-an-r-script-in-rstudio">Creating an R Script in RStudio</h3>
+<p>Follow these steps to create a new R script:</p>
+<ol type="1">
+<li><p>Go to the menu bar and select:<br>
+<strong>File → New File → R Script</strong><br>
+This will open an untitled R script.</p></li>
+<li><p>To save and name your script, select:<br>
+<strong>File → Save As</strong>, then enter the name:<br>
+<code>03-basic-programming-activities</code><br>
+Click <strong>Save</strong>.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Faster Way to Create an R Script">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Faster Way to Create an R Script
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<section id="keyboard-shortcut-tip" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="keyboard-shortcut-tip">Keyboard Shortcut Tip</h3>
+<p>There’s a faster way to do this in RStudio on your laptop using your keyboard.</p>
+<ul>
+<li><p><strong>Create a new script (local version of RStudio)</strong>:</p>
+<ul>
+<li><p>Windows: Press <code>Control + Shift + N</code></p></li>
+<li><p>Mac: Press <code>Command + Shift + N</code></p></li>
+</ul></li>
+</ul>
+<p>If you are using PositCloud, then the keyboard commands to create a new script are slightly different</p>
+<ul>
+<li><p><strong>Create a new script (Posit Cloud)</strong>:</p>
+<ul>
+<li><p>Windows: Press <code>Control + Alt + Shift + N</code></p></li>
+<li><p>Mac: Press <code>⌘ + Shift + Option + N</code></p></li>
+</ul></li>
+<li><p><strong>Save your script (works on both local version or Posit Cloud)</strong>:</p>
+<ul>
+<li><p>Windows: Press <code>Control + S</code></p></li>
+<li><p>Mac: Press <code>Command + S</code></p></li>
+</ul></li>
+</ul>
+</section>
+</div>
+</div>
+</section>
+<section id="add-comments-to-your-script" class="level3">
+<h3 class="anchored" data-anchor-id="add-comments-to-your-script">Add Comments to Your Script</h3>
+<p>To make your script organised and easy to understand, use comments (<code>#</code>) to include a title and author information at the top of your file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Title: Basic Programming Activities (Part 2)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: [Your Name]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: [Today's Date]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-new-script.gif" class="img-fluid figure-img"></p>
+<figcaption>How to create an R script, save it, and add appropriate starting comments to it.</figcaption>
+</figure>
+</div>
+<p>For the rest of the activities, make sure to write your code in the R script <strong><em>unless told otherwise</em></strong>. Keep your code neat by using spacing between lines of code and commenting. I recommend to make a comment to highlight each new activity. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Activity 6: Dataframes </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#E1 </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#[replace this comment with your code]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#E2</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#[replace this comment with your code]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="activity-4-install-and-load-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="activity-4-install-and-load-r-packages">Activity 4: Install and Load R Packages</h2>
+<section id="what-are-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-r-packages">What are R packages?</h3>
+<p>R packages are <strong>add-ons</strong> that extend the functionality of R. They often contain:</p>
+<ul>
+<li><p><strong>Functions</strong>: Special tools to make tasks easier (e.g., functions to visualise data or run statistical tests).</p></li>
+<li><p><strong>Datasets</strong>: Pre-loaded data that you can use for practice.</p></li>
+<li><p><strong>Documentation</strong>: Guides on how to use the package.</p></li>
+</ul>
+<p>R packages are created by people in the R community and shared for free. They’re often designed to solve specific problems, such as making a statistical test easier to run or creating beautiful graphs. By using R packages, you benefit from the hard work and expertise of others — in a sense, you’re standing on the shoulders of R giants.</p>
+</section>
+<section id="what-you-need-to-do-before-you-can-access-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-need-to-do-before-you-can-access-r-packages">What you need to do before you can access R packages</h3>
+<p>Before installing some packages, Windows users need to install <strong>RTools</strong>, and Mac users need <strong>XCode Command Line Tools</strong>. These are necessary to install certain packages that require compiling code.</p>
+<p><strong><em>Note: If you are using Posit Cloud, you do not need to complete this step. Feel free to move onto the next section/exercises</em></strong></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Instructions for Window Users">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instructions for Window Users
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<section id="windows-users---install-rtools" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="windows-users---install-rtools">Windows Users - Install RTools</h4>
+<p><strong>RTools</strong> is a collection of software tools for <strong>Windows</strong> that allows R users to compile packages from source. Some R packages include C, C++, or Fortran code that must be compiled before they can be installed. Since Windows does not come with built-in tools for compiling code, <strong>RTools</strong> provides the necessary compilers and libraries.</p>
+<p><strong>How to Install RTools on Windows</strong></p>
+<ol type="1">
+<li><p><strong>Download RTools</strong></p>
+<ul>
+<li>Click the following link: <a href="https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html">CRAN RTools</a></li>
+<li>Click the hyperlink called <code>Rtools44 installer</code></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-Rtools.PNG" class="img-fluid figure-img"></p>
+<figcaption>The link you need to click on the Rtools page</figcaption>
+</figure>
+</div></li>
+<li>The installer should start downloading and will take a few seconds to complete.</li>
+</ul></li>
+<li><p><strong>Install RTools</strong></p>
+<ul>
+<li><p>Run the installer and follow the setup instructions.</p></li>
+<li><p>Keep the default options ticked</p></li>
+<li><p>Leave it run, it may need 3-4 minutes to complete</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-Rtools.gif" class="img-fluid figure-img"></p>
+<figcaption>Installation process. I cut out some images from this, it was not that quick!</figcaption>
+</figure>
+</div></li>
+</ul></li>
+</ol>
+<p>Once that process is finished you should be able to download R packages. If you run into any errors, please let us know.</p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Instructions for Mac Users">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instructions for Mac Users
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<section id="mac-users---install-xcode-command-line-tools" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="mac-users---install-xcode-command-line-tools">Mac Users - Install XCode Command Line Tools</h4>
+<p><strong>Xcode Command Line Tools</strong> is a collection of software tools for <strong>macOS</strong> that allows R users to compile packages from source. Some R packages include C, C++, or Fortran code that must be compiled before they can be installed. Since Windows does not come with built-in tools for compiling code, <strong>Xcode Command Line Tools</strong> provides the necessary compilers and libraries.</p>
+<p><strong>How to Install Xcode Command Line Tools</strong></p>
+<ol type="1">
+<li><p>Click the Search bar in the top right hand corner of your screen.</p></li>
+<li><p>Search for Terminal.</p></li>
+<li><p>Open the Terminal app.</p></li>
+<li><p>The following window should appear. Type in the following command exactly as it appears, and press Enter.</p></li>
+<li><p>A pop-up window will appear. Click Install and wait for it to finish.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xcode<span class="sc">-</span>select <span class="sc">--</span>install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once finished, you should now be able to install R packages. Now you can move on to the exercises.</p>
+</section>
+</div>
+</div>
+</section>
+<section id="installing-and-loading-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installing-and-loading-r-packages">Installing and Loading R packages</h3>
+<section id="how-do-you-install-r-packages" class="level4">
+<h4 class="anchored" data-anchor-id="how-do-you-install-r-packages">How do you install R packages?</h4>
+<p>We always install packages in the console rather than the script. To install packages, we follow this syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Make sure that whenever you install packages, you put the name of the package in quotation marks. Otherwise, R will not install the package.</p>
+<p>You can also install multiple packages at once:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"package1"</span>, <span class="st">"package2"</span>, <span class="st">"package3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you have installed a package within a project, you will not need to install it again for that project.</p>
+</section>
+<section id="how-do-you-load-r-packages" class="level4">
+<h4 class="anchored" data-anchor-id="how-do-you-load-r-packages">How do you load R packages?</h4>
+<p>Every time you close and then reopen an RStudio or Posit Cloud project, you will need to load R packages before you can use them. This is similarly to how every time you want to use an application on your phone, you need to open it up first.</p>
+<p>We load our packages in our R script. And we can only load a package once it has been installed. To load a package, we follow this code syntax. Note you do not need to put the package name in quotation marks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Unfortunately, we cannot load more than one package at a time. So we need a new line of code for each package we load.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(package1)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(package2)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(package3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="installing-and-loading-the-praise-package" class="level4">
+<h4 class="anchored">Installing and Loading the <code>praise</code> package</h4>
+<p>Depending on the device or application (e.g.&nbsp;Posit Cloud) you are installing it on, you might get a different message when you install the package. There are a couple of things to watch out for:</p>
+<ul>
+<li><p>If you are asked on the console <strong><em>“Do you want to proceed? [Y/n]:”</em></strong>, make sure to type <code>y</code> or <code>Y</code> to initiate the installation.</p></li>
+<li><p>Sometimes a pop up window might appear recommending that you restart R. You can usually say no to this.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Installing an R package on my computer (example)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Installing an R package on my computer (example)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<section id="here-is-an-example-of-me-installing-an-r-package-on-my-computer." class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="here-is-an-example-of-me-installing-an-r-package-on-my-computer.">Here is an example of me installing an R package on my computer.</h3>
+<p><img src="images/03-install-praise-package.gif" class="img-fluid"></p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Installing an R package on PositCloud (example)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Installing an R package on PositCloud (example)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<section id="here-is-an-example-of-me-installing-the-r-package-on-positcloud." class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="here-is-an-example-of-me-installing-the-r-package-on-positcloud.">Here is an example of me installing the R package on PositCloud.</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-install-praise-package-more-complex.gif" class="img-fluid figure-img"></p>
+<figcaption>The output looks nastier, but it still works.</figcaption>
+</figure>
+</div>
+</section>
+</div>
+</div>
+</section>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<ol type="1">
+<li>Install the package <code>jmv</code> in the R console using the following command</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this in the console, not in your script</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"jmv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li><p>Install the package <code>pwr</code> in the R console.</p></li>
+<li><p>Load the package <code>jmv</code> in your R script using the following commmand.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li><p>Load the package <code>pwr</code> in your R script.</p></li>
+<li><p>Install and load the <code>praise</code> package. If you get stuck, follow the example just before the exercises</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Troubleshooting Common Issues when Installing and Loading packages">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Troubleshooting Common Issues when Installing and Loading packages
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<section id="troubleshooting-common-issues" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<p>The following errors might appear when you try to install and load a package. If you are unable to resolve the issue, please ask for help.</p>
+<ol type="1">
+<li><strong>Error: “There is no package called…”</strong></li>
+</ol>
+<p>This means the package hasn’t been installed. Make sure to use <code>install.packages("package_name")</code> to install it. Make sure that the package name is spelled correctly and that you have used quotation marks when you installed.</p>
+<ol start="2" type="1">
+<li><strong>Error: “Package was built under a different version of R”</strong></li>
+</ol>
+<p>This is a warning that your version of R might be out of data. Usually it can be ignored, but if you are unable to use the package, then you will need to download the latest version of R (using the same steps we used to download it in Chapter 2!).</p>
+<ol start="3" type="1">
+<li><strong>Dependencies Missing</strong>:</li>
+</ol>
+<p>If you see a message about missing dependencies, install the package again in the console with the following line of code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>) <span class="co">#make sure to replace package name with the name of the package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</div>
+</div>
+</section>
+</section>
+<section id="activity-5-import-data" class="level2">
+<h2 class="anchored" data-anchor-id="activity-5-import-data">Activity 5: Import Data</h2>
+<p>The majority of the data you’ll work with in R will come from external sources. Therefore, it’s essential to know how to import data into R. Luckily, the process is straightforward.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Make sure to complete Activity 2 first">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Make sure to complete Activity 2 first
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<section id="prerequisites" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<p>Make sure that you have completed activity 2 before doing this activity, as you will download the files <code>psycho.csv</code> and <code>burnout.csv</code> onto your computer and moved the files to your working directory (<code>week3 folder</code>) for the following code to work.</p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="What are CSV files? Why are we using them?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are CSV files? Why are we using them?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<section id="what-are-csv-files-why-are-we-using-them" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="what-are-csv-files-why-are-we-using-them">What are CSV files? Why are we using them?</h3>
+<p>Comma-Separated Values (CSV) files are a prevalent format for storing tabular data. Similar to Excel files, data in CSV files is organized into rows and columns, with each row representing a single record and each column representing a different attribute or variable.</p>
+<p>CSV files are plain text files, making them easy to create, edit, and view using a simple text editor. This simplicity and universality make CSV files a popular choice for data exchange across various applications and platforms.</p>
+<p>In a CSV file, each value in the table is separated by a comma (,), hence the name “comma-separated values.” However, depending on locale settings, other delimiters such as semicolons (;) or tabs (\t) may be used instead.</p>
+<p>One of the key advantages of CSV files is their compatibility with a wide range of software and programming languages, including R, Excel, SPSS, Python, Strata.</p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="What if I need to import different types of files?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What if I need to import different types of files?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>R is capable of downloading lots of different file types. For the time being, we will focus on <code>csv</code> files, because it is becoming increasingly common for people in the field to save their files in this format.</p>
+<p>However, by the end of the semester the textbook will include an Appendix that will show you how to import and export other common file types.</p>
+</div>
+</div>
+</div>
+<section id="lets-import-the-psycho.csv-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="lets-import-the-psycho.csv-datasets">Let’s import the <code>psycho.csv</code> datasets</h3>
+<p>We always import datasets using the script. The syntax for importing csv files is the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>variable_name_for_your_imported_dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"name_of_file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is always important to give your imported dataset a name. This way you can access it later on and run operations on it.</p>
+<p>We use the function <code>read.csv</code> to read (i.e.&nbsp;import) the dataframe. In the quotation marks, we give the name of the file. An important note, we must always include the extension (.csv) as well.</p>
+<p>Let’s use this syntax to import the <code>psycho.csv</code> dataset. We will call it <code>psycho_df</code>. Make sure to follow along with the code that I am writing here</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>psycho_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"psycho.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you come across an error, make sure you have typed out the function <code>read.csv</code> and the name of the file <code>psycho.df</code> correctly, that your working directory is set to <code>week3</code>, and that the file <code>psycho.csv</code> is in the week3 folder.</p>
+<p>The first thing we always should do when we import a dataset is to check it and make sure it looks okay. The best way to do that is to use the <code>head()</code> function, which will print out the first 5 rows of the data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(psycho_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If your output is the same as mine, then you have imported it correctly.</p>
+</section>
+<section id="exercises-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
+<ol type="1">
+<li><p>Import the <code>burnout.csv</code> dataset. Save the dataset to the variable <code>burnout_df</code></p></li>
+<li><p>Use the <code>head()</code> function to check whether you have imported the data frame correctly. Your output should look like mine</p></li>
+</ol>
+</section>
+</section>
+<section id="activity-6-dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="activity-6-dataframes">Activity 6: Dataframes</h2>
+<p>Just a note, this is the same set of activities that were in last week’s sheet. But since we did not have time in the last session to go through data frames, I have pasted the exercises here. If you completed last week’s activity on data frames and feel like you understood the content, then feel free to skip this section.</p>
+<section id="information-on-dataframes" class="level3">
+<h3 class="anchored" data-anchor-id="information-on-dataframes">Information on DataFrames</h3>
+<div class="callout callout-style-default callout-caution callout-titled" title="What are data frames? How do we create a data frame?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are data frames? How do we create a data frame?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A <strong>data frame</strong> is a rectangular data structure made up of rows and columns, similar to a spreadsheet in Excel or a table in a Word document. In R, each column of a data frame is a vector, and all vectors must have the same length.</p>
+<p>To create a data frame, we use the <code>data.frame()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>), <span class="co">#a character vector</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>L, <span class="dv">30</span>L, <span class="dv">22</span>L), <span class="co">#an integer vector</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="fl">95.65</span>, <span class="fl">88.12</span>, <span class="fl">75.33</span>) <span class="co">#a numeric vector</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name age score
+1   Alice  25 95.65
+2     Bob  30 88.12
+3 Charlie  22 75.33</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Hold up. Why do use `=` instead of `<-` to create our column vectors?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hold up. Why do use <code>=</code> instead of <code>&lt;-</code> to create our column vectors?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The main reason is that we are creating these vectors inside of a function. Inside functions like <code>data.frame</code>, we need to use the <code>=</code> operator to create vectors instead of <code>&lt;-</code>.</p>
+<p>It’s hard to drill too deeply into this when we have not even covered functions yet. But just put it down to as a weird quirk of the R language!</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="How do we extract/index information from Data Frames?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do we extract/index information from Data Frames?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<section id="extracting-information-from-data-frames" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="extracting-information-from-data-frames">Extracting Information from Data Frames</h3>
+<p>You can extract or subset data from a data frame in several ways:</p>
+<section id="selecting-columns" class="level4">
+<h4 class="anchored" data-anchor-id="selecting-columns">Selecting Columns</h4>
+<ol type="1">
+<li><strong>Using <code>$</code> notation</strong> to extract a single column:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_df<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Alice"   "Bob"     "Charlie"</code></pre>
+</div>
+</div>
+<p><strong>Using <code>[]</code> notation</strong> to extract one or more columns, the syntax being <strong><code>the dataframe[the rows we want, the columns we want]</code></strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>my_df[, <span class="st">"age"</span>] <span class="co">#This selects all the rows for the age column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25 30 22</code></pre>
+</div>
+</div>
+<p>To extract multiple columns, use the <code>c()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>my_df[, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"score"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age score
+1  25 95.65
+2  30 88.12
+3  22 75.33</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-rows" class="level4">
+<h4 class="anchored" data-anchor-id="selecting-rows">Selecting Rows</h4>
+<p>You can access rows using indexing, specifying the row number you want to retrieve, following the syntax: <strong><code>the dataframe[the rows we want, the columns we want]</code></strong>.</p>
+<p>To get the first row:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="dv">1</span>, ] <span class="co">#extracts the first row and the last column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   name age score
+1 Alice  25 95.65</code></pre>
+</div>
+</div>
+<p>To get specific rows, use the <code>c()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name age score
+1   Alice  25 95.65
+3 Charlie  22 75.33</code></pre>
+</div>
+</div>
+<p>To select a range of rows, use the <code>:</code> operator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      name age score
+2      Bob  30 88.12
+3  Charlie  22 75.33
+NA    &lt;NA&gt;  NA    NA</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-rows-and-columns-together" class="level4">
+<h4 class="anchored" data-anchor-id="selecting-rows-and-columns-together">Selecting Rows and Columns Together</h4>
+<p>You can select specific rows and columns simultaneously using the syntax:&nbsp;<strong><code>the dataframe[the rows we want, the columns we want]</code></strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"score"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age score
+1  25 95.65
+3  22 75.33</code></pre>
+</div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="How do we add columns or rows to a data frame">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do we add columns or rows to a data frame
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="adding-columns-to-a-data-frame" class="level4">
+<h4 class="anchored" data-anchor-id="adding-columns-to-a-data-frame">Adding Columns to a Data Frame</h4>
+<p>You can add a new column to an existing data frame by assigning values to it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#existing_df$NewColumn &lt;- c(Value1, Value2, Value3) #syntax</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>my_df<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Non-binary"</span>, <span class="st">"Male"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name age score     gender
+1   Alice  25 95.65     Female
+2     Bob  30 88.12 Non-binary
+3 Charlie  22 75.33       Male</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-rows-to-a-data-frame" class="level4">
+<h4 class="anchored" data-anchor-id="adding-rows-to-a-data-frame">Adding Rows to a Data Frame</h4>
+<p>To add a new row, you first need to create a new data frame with the same columns as the original:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="st">"John"</span>, <span class="at">age =</span> <span class="dv">30</span>, <span class="at">score =</span> <span class="fl">77.34</span>, <span class="at">gender =</span> <span class="st">"Male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, use the <code>rbind()</code> function to combine the two data frames:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(my_df, new_row)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name age score     gender
+1   Alice  25 95.65     Female
+2     Bob  30 88.12 Non-binary
+3 Charlie  22 75.33       Male
+4    John  30 77.34       Male</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Indexing does not change a data frame without variable assignment">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Indexing does not change a data frame without variable assignment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<section id="important-note" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="important-note">Important Note</h4>
+<p>Indexing does <strong>not</strong> modify the original data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"score"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age score
+1  25 95.65
+3  22 75.33</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name age score     gender
+1   Alice  25 95.65     Female
+2     Bob  30 88.12 Non-binary
+3 Charlie  22 75.33       Male
+4    John  30 77.34       Male</code></pre>
+</div>
+</div>
+<p>To save changes, assign the result to a new variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>my_df2 <span class="ot">&lt;-</span> my_df[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"score"</span>)]</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age score
+1  25 95.65
+3  22 75.33</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+</section>
+<section id="exercises-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercises-2">Exercises</h3>
+<ol type="1">
+<li><p><strong>Create a Data Frame:</strong></p>
+<ul>
+<li><p>Create a new data frame named <code>student_data</code> that includes the following columns:</p>
+<ul>
+<li><p><code>name</code>: Names of three students (character values).</p></li>
+<li><p><code>age</code>: Their respective ages (integers).</p></li>
+<li><p><code>mark</code>: Their grades (numeric values).</p></li>
+</ul></li>
+<li><p>Display the <code>student_data</code> data frame using the <code>print()</code> function.</p></li>
+</ul></li>
+<li><p><strong>Extract Information from Data Frames:</strong></p>
+<ul>
+<li><p>Retrieve the <code>name</code> column using the <code>$</code> operator.</p></li>
+<li><p>Retrieve the <code>mark</code> column using square brackets (<code>[]</code>).</p></li>
+<li><p>Select and save only the first two students’ names and marks into a new data frame called <code>partial_student_data</code>.</p></li>
+<li><p>Extract and print the first row from <code>partial_student_data</code>.</p></li>
+</ul></li>
+<li><p><strong>Modify a Data Frame:</strong></p>
+<ul>
+<li><p>Add a new column named <code>attendance</code>, which contains <code>TRUE</code> or <code>FALSE</code> values for each student.</p></li>
+<li><p>Print the updated <code>student_data</code>.</p></li>
+</ul></li>
+<li><p><strong>Add a New Student Record:</strong></p>
+<ul>
+<li><p>Create a new row named <code>new_student</code> with the following values:</p>
+<ul>
+<li><p><code>name</code>: “Judith”</p></li>
+<li><p><code>age</code>: 31</p></li>
+<li><p><code>mark</code>: 89.5</p></li>
+<li><p><code>attendance</code>: <code>FALSE</code></p></li>
+</ul></li>
+<li><p>Add <code>new_student</code> to <code>student_data</code> using <code>rbind()</code>.</p></li>
+<li><p>Print the updated data frame.</p></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="activity-7-export-data" class="level2">
+<h2 class="anchored" data-anchor-id="activity-7-export-data">Activity 7: Export Data</h2>
+<p>Once we have finished analysing data in R, we will then to export and share it with others. The process for exporting datasets is also straightforward.</p>
+<p>Let’s run through an example using the following data frame. Make sure to copy, paste, and run this code in R before following this example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>example_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">participant_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nationality =</span> <span class="fu">c</span>(<span class="st">"Irish"</span>, <span class="st">"English"</span>, <span class="st">"American"</span>, <span class="st">"German"</span>, <span class="st">"Bolivian"</span>),</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">iq =</span> <span class="fu">c</span>(<span class="dv">113</span>, <span class="dv">115</span>, <span class="dv">105</span>, <span class="dv">120</span>, <span class="dv">125</span>),</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">exam_pass =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The syntax for exporting a file is the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(name_of_dataframe, <span class="at">file =</span> <span class="st">"name_of_file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The file = “name_of_file.csv” is what the file will be named as when you export it. In this case, let’s call it <code>2025_exam_results.csv</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(example_df, <span class="at">file =</span> <span class="st">"2025_exam_results.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you have run that code, you should see it appear in your working directory.If you go to your file explorer on your computer, and navigate to the file and open it, an excel spreadsheet (if you have excel) should open up.</p>
+<p>If you are using posit cloud, you will first need to download the file onto your computer before you can open it. To do that, go to Files pane, make sure you have the week3 folder opened. There you should be a tick box right next to the file <code>2025_exam_results.csv</code>. Tick that box. Then above where it says “Cloud &gt; project &gt; week3”, you should see a toolbar with the button “More”, click that button, click Export, and then click Download.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03-data-export.gif" class="img-fluid figure-img"></p>
+<figcaption>Exporting Data on Posit Cloud</figcaption>
+</figure>
+</div>
+</section>
+<section id="activity-8-creating-and-using-functions" class="level2">
+<h2 class="anchored" data-anchor-id="activity-8-creating-and-using-functions">Activity 8: Creating and Using Functions</h2>
+<p>Functions are a set of pre-written instructions to perform a specific task. Every function that we will use in this course has been written by someone else (or a group of people) and shared within the R community.</p>
+<p>For this activity, we are going to create our own function. This is the trickiest part of this week’s activities, so do not worry if you don’t get it straight away.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="The syntax for creating a function">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The syntax for creating a function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here’s what the syntax for creating a function looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  instruction1</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  instruction2</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  instruction3</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output) <span class="co"># Return the result</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s break this down step by step:</p>
+<ol type="1">
+<li><p><strong>Naming the Function:</strong><br>
+We give our function a name (e.g., <strong><code>my_function</code></strong>) and use <strong><code>&lt;-</code></strong> to assign something to it. Just like with variables, this tells R that the name will now store something.</p></li>
+<li><p><strong>Telling R It’s a Function:</strong><br>
+To let R know we’re creating a function (and not just storing data), we write <strong><code>function()</code></strong>. Inside the parentheses <strong><code>()</code></strong>, we can include input information (called an <em>argument</em>). This input helps the function do its job.</p></li>
+<li><p><strong>Writing the Instructions:</strong><br>
+Inside the curly brackets <strong><code>{}</code></strong>, we write the code that makes the function work. These are the steps (or instructions) the function will follow when we run it. A function could have just one step, or it could have many steps, depending on what it needs to do.</p></li>
+<li><p><strong>Returning the Output:</strong><br>
+To make the function give us a result, we use the <strong><code>return()</code></strong> function. Whatever we include inside <strong><code>return()</code></strong> will be the final output of the function, which R will show on the screen.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Example of a created function">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example of a created function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In the lecture, we created the <code>cups_to_grams</code> function, which will convert any cup measurement into metric grams. The code we used to generate that function is the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="dv">250</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once we have created a function, we can use it (otherwise known as <code>calling</code> a function):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">4</span>)    <span class="co"># 4 cups = 1000 grams</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">2</span>)    <span class="co"># 2 cups = 500 grams</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 500</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="fl">1.5</span>)  <span class="co"># 1.5 cups = 375 grams</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 375</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">5</span>L)   <span class="co"># 5 cups = 1250 grams</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1250</code></pre>
+</div>
+</div>
+<p>We can also define the number of cups outside the function first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>cups <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(cups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 750</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="What are arguments? What are default arguments?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are arguments? What are default arguments?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="arguments" class="level3">
+<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<p>Every function takes in some information, performs some job on it, and then returns a result (or output). The information that we put into a function is known as its input or argument. A function can have one or several arguments that must be inputted for it to work.</p>
+<p>For example, imagine you’re making pancakes. You need flour, sugar, baking powder, and butter to bake them. Each of these ingredients is like an argument — the recipe (function) needs all of them to do its job properly.</p>
+</section>
+<section id="default-arguments" class="level3">
+<h3 class="anchored" data-anchor-id="default-arguments">Default Arguments</h3>
+<p>Default arguments in R are like having a “backup plan” for your functions. You can assign a <strong>default value</strong> to an argument when you define the function. This means that if you don’t provide a specific value for that argument when you call the function, R will automatically use the default.</p>
+<p>Think of it like ordering coffee at a café. If you don’t specify the type of milk you want, they might use regular milk as the default. But if you do specify oat milk, they’ll make it with oat milk instead. Default arguments in R work the same way — you can stick with the default or override it with your own value.</p>
+<p>We’ve actually already seen a default argument in action! Remember the <code>sort()</code> function? By default, it sorts numbers in <strong>ascending order</strong> (from smallest to largest). But if you add the argument <code>decreasing = TRUE</code>, it sorts the numbers in <strong>descending order</strong> (from largest to smallest).</p>
+<p>Here’s how it works:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>rintro_marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">77</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">71</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the default (ascending order)</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(rintro_marks)  <span class="co"># Output: 65, 69, 71, 77, 80, 86, 88, 92</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 65 69 71 77 80 86 88 92</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overriding the default to sort in descending order</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(rintro_marks, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)  <span class="co"># Output: 92, 88, 86, 80, 77, 71, 69, 65</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 92 88 86 80 77 71 69 65</code></pre>
+</div>
+</div>
+<p>In this example:</p>
+<ul>
+<li><p>The default value of <code>decreasing</code> is <code>FALSE.</code> Unless we change it, it will sort from smallest to largest.</p></li>
+<li><p>By specifying <code>decreasing = TRUE</code>, we override the default and sort from largest to smallest.</p></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<section id="exercises-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercises-3">Exercises</h3>
+<ol type="1">
+<li>Create Simple Functions (Write this code for yourself)</li>
+</ol>
+<p>Example: Write a function called double_number() that takes a single number as input and returns double its value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>double_number <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> number <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your function</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">double_number</span>(<span class="dv">5</span>)  <span class="co"># Should return 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">double_number</span>(<span class="dv">10</span>) <span class="co"># Should return 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>Write a function called <code>triple_number()</code> that takes in a single number as input and returns triple its value. Test your function.</p></li>
+<li><p>Write a function called <code>kg_to_lbs</code> that takes in a single kg measurement as input and returns its conversion into pounds (lbs). Note: 1kg is equal to 2.20 pounds.</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="1kg is equal to 2.20 lbs">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1kg is equal to 2.20 lbs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>After you create and run your function, check your result via the following code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kg_to_lbs</span>(<span class="dv">10</span>) <span class="co">#this should return 22, because 10 x 2.20 = 22</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>The function <code>head()</code> prints out the first 6 rows of a dataframe by default. You can change the number of rows by setting <code>n</code> to a different number. Use <code>head()</code> to print out the first 10 rows (n = 10) of the <code>psycho_df</code> data frame.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(your_df, <span class="at">n =</span> <span class="dv">6</span>) <span class="co">#default setting that needs to be changed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li>Let’s try write a multi-argument (i.e multi-input function). Write a function called <code>average_score()</code> that takes in two test scores (<code>score1``,</code>score2<code>) as arguments and returns their average (</code>avg`). Test your function.</li>
+</ol>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

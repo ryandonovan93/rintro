@@ -14,7 +14,7 @@ editor: visual
 
 ## Programming Fundamentals in R (Part 1) Workshop
 
-In this week workshop we are going to practice some basic programming concepts in R through several activities and exercises. These should build you confident and skills in navigating R and RStudio. There is a lot here, so do not worry if you don't get everything done in the session, or if takes a while for certain concepts to click.
+In this week's workshop we are going to practice some basic programming concepts in R through several activities and exercises. These should build you confident and skills in navigating R and RStudio. There is a lot here, so do not worry if you don't get everything done in the session, or if takes a while for certain concepts to click.
 
 Each activity includes a summary of the key points to help you understand the concepts and techniques. If you get stuck on an exercise, take a moment to review the key points in the activity—it might give you the clarity you need to move forward.
 
@@ -44,15 +44,13 @@ If you don’t set the working directory, R might not be able to locate the file
 After setting the directory, check the output in the console to confirm that the file path inside the `setwd()` command is correct. It should look something like this:
 
 ```{r eval = F}
-> setwd("C:/Users/0131045s/Desktop/PS6183/rintro/week2")
+setwd("C:/Users/0131045s/Desktop/PS6183/rintro/week2")
 ```
 
 You can always check your current working directory by typing in the following command in the console
 
 ```{r eval = F}
-> getwd()
-
-[1] "C:/Users/0131045s/Desktop/PS6183/rintro/week2"
+getwd()
 ```
 
 ## Activity 2: Console Commands
