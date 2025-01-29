@@ -698,7 +698,7 @@ Figure 4.1: Loading Packages through RStudio Interface
 <h3><span class="header-section-number">4.4.4</span> Testing a Package<a href="programming2.html#testing-a-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s test the <code>praise</code> package, which generates random compliments (not groundbreaking, but fun to use!). After loading the package, run:</p>
 <pre><code>## Warning: package &#39;praise&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## [1] &quot;You are rad!&quot;</code></pre>
+<pre><code>## [1] &quot;You are smashing!&quot;</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="programming2.html#cb59-1" tabindex="-1"></a><span class="fu">praise</span>() <span class="co">#everytime you run this line of code it gives you a different line of praise</span></span>
 <span id="cb59-2"><a href="programming2.html#cb59-2" tabindex="-1"></a><span class="co">#so don&#39;t be worried if your result is different than mine</span></span></code></pre></div>
 <p>Every time you run <code>praise()</code>, you’ll get a different compliment. Try it out!</p>
@@ -809,8 +809,8 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 </div>
 <div id="summary-3" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Summary<a href="programming2.html#summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Congratulations, you’ve made it through Programming Part I and II! We’ve covered a lot of useful (but let’s be honest, not exactly riveting) concepts in programming with R. Throughout these sections, we’ve learned how R categorizes data, stores it in data structures, converts data types, and creates variables and functions. Additionally, we’ve explored how to install and load packages to enhance R’s capabilities, and how to import and export data.</p>
-<p>With this foundation, we’re now well-equipped to move on to the next phase: data processing. In the upcoming week, we’ll dive into methods for cleaning our data, setting the stage for more advanced analyses.</p>
+<p>Congratulations, you’ve made it through Programming Part I and II! We’ve covered a lot of useful (but let’s be honest, not exactly riveting) concepts in programming with R. Throughout these sections, we’ve learned how R categories data, stores it in data structures, converts data types, and creates variables and functions. Additionally, we’ve explored how to install and load packages to enhance R’s capabilities, and how to import and export data.</p>
+<p>For the next few weeks, we will focus on using R to run descriptive and inferential statistical analysis.</p>
 </div>
 <div id="glossary-2" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Glossary<a href="programming2.html#glossary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -863,12 +863,14 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 
 
 
+
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>There are some important exceptions. If you are creating R projects (like we did and which I would recommend going forward) ticking the renv option (see option 1), this basically partitions your R project into its own little self-contained space on your computer where it will operate. So when you download and install R packages in that project, they will only exist in that location on your computer (i.e. your project). Now once you are working in that project, then you won’t need to install them over and over again.</p>
+<li id="fn1"><p>There are a couple of important exceptions to this rule.</p>
+<p>Firslty, If you are creating R projects on your own personal computers using the <code>renv</code> option (which we did), this basically partitions your R project into its own little self-contained space on your computer where it will operate. So when you download and install R packages in that project, they will only exist in that location on your computer (i.e. your project). You won’t need to install packages on that project more than once. However, if you set up a new project, and you need the same packages, then you will need to install those packages on that new project.</p>
 <p>This is equivalent to having separate user accounts on your desktop. If I install something on my account, that doesn’t mean it will be installed on your account.</p>
-<p>Similarly, in posit cloud, every new R project you make will be self-contained, so you will need to install the packages again.<a href="programming2.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<p>Secondly, the same holds true for Posit Cloud. In Posit Cloud, every new R project you make will be self-contained, so any packages you install in one project will not transfer over to other projects.<a href="programming2.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
