@@ -1,0 +1,527 @@
+---
+title: "Week 4 Activities (T-tests in R)"
+format: 
+  html:
+    toc: true
+    toc-depth: 4
+    code-overflow: wrap
+    code-annotations: hover
+  docx:
+    toc: true
+    highlight-style: github
+editor: visual
+---
+
+```{r echo = F}
+
+
+wellbeing_df <- read.csv("wellbeing.csv")
+reading_df <- read.csv("reading.csv")
+```
+
+In this weeks workshop, we are going to learn how to perform descriptive statistics and conduct both independent and paired-samples t-tests (which you covered in today's lecture).
+
+![](images/05-T-tests.png){fig-alt="A graphical image illustrating the two main types of t-test. The first shows two groups of people with the header \"unpaired-t-test\" and a caption underneath reading \"Is there a difference between two groups\". The second shows the same group of people with a clock between them, the caption \"paired t-test\" and written underneath is \"Is there a difference in a group between two points in time\"." fig-align="center"}
+
+Additionally, we will learn how to check parametric assumptions in R. By the end of this session, you will be able to:
+
+\- Use the `jmv` package to run descriptive statistics and check parametric assumptions.
+
+\- Conduct an independent samples t-test in R.
+
+\- Conduct a paired-samples t-test in R.
+
+\- Conduct an apriori power analysis in R for t-tests.
+
+## Let's Get Set Up
+
+Let's begin by ensuring your working environment is ready for today's session. Open RStudio or Posit Cloud and complete the following tasks to set everything up.
+
+## Activity 1: Set Up Your Working Directory & R Script for this week
+
+One of the first steps in each of these workshops is setting up your \*working directory\*. The working directory is the default folder where R will look to import files or save any files you export.
+
+If you don't set the working directory, R might not be able to locate the files you need (e.g., when importing a dataset) or you might not know where your exported files have been saved. Setting the working directory beforehand ensures that everything is in the right place and avoids these issues.
+
+::: {.callout-tip collapse="true"}
+## Reminder on Steps to Set Up Your Working Directory
+
+1.  Click:\
+    **Session → Set Working Directory → Choose Directory**
+
+2.  Navigate to the folder you created for this course (this should be the same folder you used for previous workshops).
+
+3.  Create a new folder called `week4` inside this directory.
+
+4.  Select the `week4` folder and click **Open**.
+
+Don't forget to verify your working directory before we get started
+
+You can always check your current working directory by typing in the following command in the console:
+
+```{r}
+getwd()
+```
+:::
+
+As in previous weeks we will create an **R script** that we can use for today's activities. This week we can call our script `04-t-tests`
+
+::: {.callout-tip collapse="true"}
+## Reminder on creating an R script
+
+1.  Go to the menu bar and select:\
+    **File → New File → R Script**
+
+    This will open an untitled R script.
+
+2.  To save and name your script, select:
+
+    **File→ Save As**, then enter the name:
+
+    `04-t-tests`
+
+    Click **Save**
+:::
+
+## Activity 2: Installing / Loading R Packages
+
+We'll be using several **R packages** to make our analysis easier. The `jmv` package is particularly helpful for running descriptive statistics and t-tests, while `pwr` helps us calculate power for our tests. The `tidyverse` will assist with data cleaning, and `car` will allow us to check assumptions like homogeneity of variance.
+
+**REMEMBER**: If you encounter an error message like "`Error in library(package name): there is no packaged calledpackage name`", you'll need to install the package first by typing the following into your console:
+
+Here are the packages we will be using today:
+
+```{r }
+library(jmv) # this will help us run descriptive statistics 
+library(pwr) # this will enable us to conduct power analysis  
+library(car) # that runs the levenes test 
+```
+
+## Activity 3: Download and load in your datasets
+
+We are going to need the following files for today's session. You will find them on Canvas under the Module **Week 4 - T-tests**
+
+\- **wellbeing.csv** **→** which we will use for our independent samples t-test
+
+\- **reading.csv** **→** which we will use for our paired samples t-test
+
+### Download these files onto your computer and move each file to your `week4` folder.
+
+Once this is done, type the following code in your script to load the datasets into R:
+
+```{r }
+df_wellbeing <- read.csv("wellbeing.csv")  
+df_reading <- read.csv("reading.csv") 
+```
+
+## Between-Groups Comparisons
+
+For our between group comparisons we will be using the **wellbeing.csv** data, which we have just saved as `df_wellbeing`
+
+This data was collected from an experimental study investigating the effects of Caffeine (`Low Caffeine`, and `High Caffeine`) on various outcome variables, including experiences of pain, fatigue, depression, wellbeing, and self-reported general health. Additionally, participants' `age` and `gender` were recorded.
+
+After loading the datasets, it's always good practice to inspect it before doing any analyses. You can use the `head()` function to get an overview of the wellbeing dataset:
+
+```{r}
+head(df_wellbeing)  
+```
+
+From this, you'll see that our dataset contains 8 columns. We have two character columns (`gender` and `Condition`) and five integer columns (`id`, `age`, `pain`, `fatigue`, `depr`, and `wellb`).
+
+Now that our environment is set up and our dataset is loaded, we are ready to dive into descriptive statistics.
+
+## Activity 4: Using the `jmv` package to get descriptive statistics
+
+Lets try using the `descriptives` function to calculate statistics for the `wellb` and `depr` variables within the `df_wellbeing` dataset:
+
+```{r }
+descriptives(data = df_wellbeing,         # Here we have specified what dataset to use      
+             vars = c("wellb", "depr"))   # Here we specify our variables of interest 
+```
+
+By default, this function displays the sample size (N), number of missing values, mean, median, standard deviation, minimum, and maximum for each variable. If you want to include additional statistics, like the mode, standard error (`se`) or confidence intervals (`ci`), you can set those options to `TRUE`:
+
+```{r}
+descriptives(data = df_wellbeing,            
+             vars = c("wellb", "depr"),             
+             mode = TRUE,             
+             se = TRUE,            
+             ci = TRUE)
+```
+
+The `descriptives` function will by default assume you don't want to split the variables selected in by different groups. But we can easily achieve this by using the `splitBy` argument. In this example, let's split our descriptive statistics based on participants identified gender.
+
+```{r}
+descriptives(data = df_wellbeing,  
+             vars = c("wellb", "depr"),  
+             splitBy = c("gender"),      
+             mode = TRUE,         
+             se = TRUE,      
+             ci = TRUE) 
+```
+
+You can also split by multiple variables. For example, if you want to examine wellbeing and depression scores by both gender and caffeine conditions:
+
+```{r}
+descriptives(data = df_wellbeing,
+             vars = c("wellb", "depr"),   
+             splitBy = c("gender", "Condition"), 
+             mode = TRUE,   
+             se = TRUE,     
+             ci = TRUE)
+```
+
+Another great feature of the `descriptives` package is that we can also generate plots like box plots, bar charts, or histograms. Let's use `descriptives` to calculate descriptive statistics for the `wellb` variable based on `gender` and also generate each plot.
+
+```{r}
+descriptives(data = df_wellbeing,  
+             vars = c("wellb"),  
+             splitBy = c("gender"),  
+             box = TRUE,   
+             bar = TRUE,    
+             hist = TRUE)
+```
+
+As you can see the `descriptives` package is useful for giving us lots of information about our data, and we will come back to often for descriptive statistics to accompany all of our statistical tests.
+
+## Activity 5: Checking our parametric assumptions
+
+Let's imagine we're interested in investigating the effects of caffeine consumption on levels of self-reported **health**. Specifically, we want to determine whether people in the **high caffeine** condition scored significantly differently from those in the **low caffeine** condition.
+
+In this case:
+
+Our **independent variable** is caffeine consumption group (low caffeine vs high caffeine)
+
+Our **dependent variable** is health
+
+We could specify our hypothesis as such:
+
+**H1:** We predict there will be statistically significant difference in reported health levels between people in the high versus low caffeine conditions.
+
+**H0 (Null hypothesis):** There will not be a statistically significant difference in reported health levels between people in the high versus low caffeine conditions.
+
+Note that as we do not specify which group will have higher/lower health levels this is a **nondirectional hypothesis**
+
+As we have two independent groups we want to compare, this would be best addressed via an **independent samples t-test**. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the parametric assumptions required for an independent samples t-test.
+
+### Checking our parametric assumptions
+
+There are several key assumptions for conducting an independent samples t-test:
+
+a\. The dependent variable should be measured on a continuous scale.
+
+b\. The independent variable should consist of two categorical, independent groups.
+
+c\. The groups should be independent of each other.
+
+d\. There should be no significant outliers.
+
+e\. The dependent variable should be approximately normally distributed for each group.
+
+f\. The dependent variable should exhibit homogeneity of variance.
+
+We don't need R to check the first three assumptions (a-c). A quick visual inspection of the dataset will tell us whether these are met, and in this case, they are.
+
+We can now move on to checking our other assumptions.
+
+**d. There should be no significant outliers.**
+
+Earlier, we saw that the `descriptives` function is able to produce box plots. You may have noticed in the boxplot we produced earlier, it did identify several outliers. So we can use this tool again on our `df_wellbeing` data but focusing on our **dependent variable**: `health` and only splitting by our **independent variable**: `condition`.
+
+In addition to this we need some additional descriptive statistics for our write-up, specifically **mean**, **standard deviation**, and **confidence intervals**.
+
+```{r}
+descriptives(df_wellbeing, 
+             vars = "health", 
+             splitBy = "Condition", 
+             ci = TRUE, 
+             box = TRUE) 
+```
+
+From the box plot, we can see that no outliers present in the dataset, so we can now move on to check the next assumption.
+
+**e. The dependent variable should be approximately normally distributed for each group.**
+
+You may have spotted this in the exercises earlier, but there is a way to check for normality using the `descriptives` function. In this function, there is an argument labelled `sw` that will run a Shapiro-wilks test on the variables we select for running descriptive statistics. By default, it is set to `FALSE`, so all we need to do is set it to `TRUE`. Once again, I will turn off some of the other default options to reduce the amount of information printed, but feel free to go with the other defaults options - just make sure `sw` is set to `TRUE`.
+
+```{r}
+
+descriptives(df_wellbeing, 
+             vars = "health",
+             splitBy = "Condition",
+             median = FALSE,
+             missing = FALSE,
+             min = FALSE,
+             max = FALSE,
+             sw = TRUE
+             )
+
+```
+
+We can see two new values in our descriptive table, the test statistic `Shapiro-Wilk W` and its corresponding p-value `Shapiro-Wilk p`. We can see that for both the High Caffeine and Low Caffeine condition, we have met this assumption (as the p value is above 0.05). As such, we can continue on with our plan to run our parametric test.
+
+::: {.callout-tip collapse="true"}
+If we visualize our data using a histogram you should see it looks something like the example normal distribution from your lecture. It is vitally important to use a formal test (such as Shapiro-Wilk) to test your assumptions, but visualizing the data can be helpful for your own understanding.
+
+```{r}
+descriptives(df_wellbeing, 
+             vars = "health",
+             splitBy = "Condition",
+             median = FALSE,
+             missing = FALSE,
+             min = FALSE,
+             max = FALSE,
+             sw = TRUE,
+             hist = TRUE
+             )
+```
+:::
+
+**f. The dependent variable should exhibit homogeneity of variance.**
+
+Hopefully, you will also have spotted in the exercises earlier that `descriptives` does not compute a Levene's Test for measuring Homogeneity of Variance. To do that, we need to a function in the `car` package that is called `leveneTest`. The syntax for this function is as follows:
+
+```{r eval = F}
+
+leveneTest(DependentVariable ~ IndependentVariable, data = ourdataset)
+```
+
+Let's use this to assess whether `fatigue` exhibits homogeneity of variance across the two caffeine conditions.
+
+```{r}
+
+leveneTest(health ~ Condition, data = df_wellbeing)
+
+```
+
+Luckily, we can see that our data has met this parametric assumption (as the p value is above 0.05). So let's proceed on and run our t-test.
+
+## Activity 6: Running the Independent Samples T-test
+
+![](images/05-IndependentSamples t-test.png){fig-alt="The image shows two groups of people with the header \"unpaired-t-test\" and a caption underneath reading \"Is there a difference between two groups\"." fig-align="center"}
+
+We use the `t.test` function to perform the t-test. The syntax is:
+
+```{r eval = F}
+
+t.test(DV ~ IV, 
+       paired = FALSE,
+       alternative = c("two.sided", "less", "greater"),
+       data = ourdataset)
+
+```
+
+In this function:
+
+-   `DV ~ IV` specifies the dependent variable (DV) and independent variable (IV).
+
+-   `paired = FALSE` indicates that we are conducting an independent samples t-test. If we were comparing related groups (e.g., pre-test vs. post-test), we would set `paired = TRUE`.
+
+-   The `alternative` argument specifies the hypothesis test type:
+
+    -   `"two.sided"` tests for any difference between groups.
+
+    -   `"less"` tests whether the first group has a lower mean than the second.
+
+    -   `"greater"` tests whether the first group has a higher mean than the second.
+
+As we have a **nondirectional hypothesis** we will run a two-sided t-test. Let's run the two-sided test on our `df_wellbeing` dataset:
+
+```{r}
+
+t.test(health ~ Condition, 
+       alternative = "two.sided",
+       data = df_wellbeing)
+```
+
+The t-test results show no significant difference in health levels between the High Caffeine and Low Caffeine groups.
+
+Here's how we might write up the results in APA style:
+
+A Welch independent samples t-test was conducted to compare health levels between participants in the High Caffeine (*M*= 50.26, *SD*= 5.43) and Low Caffeine (*M*= 49.74, *SD*= 5.67) conditions. The test showed that there was no significant difference in the means of health between the two groups, *t*(197.66) = 0.66, *p* = 0.51. As such we fail to reject the null hypothesis.
+
+## Within-Subjects Comparisons
+
+For our within-subjects comparisons we will be using the **reading.csv** data, which we have saved as `df_reading`
+
+This data was collected from a reading intervention study investigating the effects of a literacy intervention, comparing the same participants before and after the intervention. As such we will be comparing participants reading at: `Baseline`, and `Time2`.
+
+After loading the datasets, it's always good practice to inspect it before doing any analyses. You can use the `head()` function to get an overview.
+
+::: {.callout-tip collapse="true"}
+This is the same procedure we used already today for Between-Groups comparisons
+:::
+
+A lot of the steps for conducting within-subjects comparisons are very similar to between-groups comparisons. So we can refer to the above sections for help if we get unsure.
+
+## Activity 7: Descriptive Statistics for Within-Subjects Comparisons
+
+Lets calculate our descriptive statistics for the reading data using the `descriptives` function. Lets now use this tool on our `df_reading` data focusing on our two time points (Baseline and Time2).
+
+In addition to this we need some additional descriptive statistics for our write-up, specifically **mean**, **standard deviation**, and **confidence intervals**.
+
+::: {.callout-tip collapse="true"}
+## Here's the code for the above (if you get stuck)
+
+```{r}
+descriptives(df_reading, 
+             vars = c("Baseline", "Time2"), 
+             ci = TRUE) 
+```
+:::
+
+## Activity 8: Checking our assumptions
+
+Let's imagine we're interested in investigating the effects of our intervention on levels of **reading ability**. Specifically, we want to determine whether children's reading ability was significantly better at **Time 2** (after intervention) compared to at **baseline** (before the intervention).
+
+In this case:
+
+Our **independent variable** is time (Baseline vs Time2)
+
+Our **dependent variable** is reading ability
+
+We could specify our hypothesis as such:
+
+**H1:** We predict there will be statistically higher reading ability in children at Time 2 (after intervention) than at Baseline.
+
+**H0 (Null hypothesis):** There will not be statistically significant higher reading ability in children at Time 2 (after intervention) than at Baseline.
+
+Note that as we do specify which condition will have higher reading ability this is a **directional hypothesis**
+
+As all participants take part in both conditions (e.g. are tested at two timepoints), this would be best addressed via a **paired samples t-test**. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the parametric assumptions required for a paired samples t-test.
+
+### Checking our parametric assumptions
+
+a\. Our dependent variable should be measured on a continuous scale
+
+b\. The observations are independent of one another
+
+c\. There should be no significant outliers
+
+d\. Our dependent variable should be normally distributed
+
+Again, it's only really the outliers and the normal distribution that needs to be evaluated using functions in R.
+
+You learned how to assess both of these earlier using the `descriptives` function. Use similar code here to assess:
+
+1.  Whether there are any outliers in our reading data?
+2.  Whether it is normally distributed?
+
+::: {.callout-tip collapse="true"}
+The eagle-eyed among you may have noticed there is a way to get your descriptive statistics for our write-up **and** check these assumptions all is one code chunk, see below:
+
+```{r}
+descriptives(df_reading, 
+             vars = c("Baseline", "Time2"), 
+             ci = TRUE,
+             box = TRUE,
+             sw = TRUE) 
+```
+
+If you find it easiest to keep these checks separate there's nothing wrong with that either.
+:::
+
+## Activity 9: Running the Paired-Samples T-test
+
+![](images/05-PairedT-Test.png){fig-alt="The image shows the same group of people with a clock between them, the caption \"paired t-test\" and written underneath is \"Is there a difference in a group between two points in time\"." fig-align="center"}
+
+We use the `t.test` function to perform the t-test. Here the syntax is:
+
+```{r eval = F}
+t.test(ourDataset$Condition1, ourDataset$Condition2,         
+       paired = TRUE,        
+       alternative = c("two.sided", "less", "greater")) 
+```
+
+You'll notice the syntax is similar to how we performed our between-groups comparison. A major difference is that now `paired = TRUE`.
+
+Another difference to our first analysis is that we now have a directional hypothesis:
+
+**H1:** We predict there will be statistically higher reading ability in children at Time 2 (after intervention) than at Baseline.
+
+As such, we need to change `alternative` to `"less"` as we are predicting that Baseline has **lower** reading ability than Time 2.
+
+Run the paired-samples t-test to test our hypothesis.
+
+::: {.callout-tip collapse="true"}
+## Our paired-samples t-test code
+
+```{r}
+t.test(df_reading$Baseline, df_reading$Time2, 
+       paired = TRUE, 
+       alternative = "less")
+```
+:::
+
+### How might you write up these results in APA style?
+
+Depending what you found above you could fill in the blanks on one of the below:
+
+**Option A:** A paired-samples t-test was conducted to test whether reading ability was lower in participants at baseline (*M*= , *SD*= ) as compared to after the intervention at Time 2 (*M*= , *SD*= ). In line with predictions the test showed that there was significantly higher reading ability at Time 2, *t*() = , *p* =. As such we reject the null hypothesis.
+
+**Option B:** A paired-samples t-test was conducted to test whether reading ability was lower in participants at baseline (*M*= , *SD*= ) as compared to after the intervention at Time 2 (*M*= , *SD*= ). Contrary to predictions the test did not show significantly higher reading ability at Time 2 , *t*() = , *p* =. As such we fail to reject the null hypothesis.
+
+## Activity 10: Power analyses!
+
+Now you may recall in your Week 3 lecture Ciara being very enthusiastic about power analyses, and the importance of conducting one **before** you collect any data (called an a priori or prospective power analysis). There are also power analyses you can conduct after data collection, but there are issues with them, and generally best practice is to do one beforehand ([A useful paper if you're interested in learning more](https://online.ucpress.edu/collabra/article/8/1/33267/120491/Sample-Size-Justification)).
+
+Here we are going to learn about how to conduct a power analysis for both an independent samples and paired-samples t-test.
+
+As you may recall there are some key pieces of information we need for a power analysis
+
+1.  Alpha level (typically 0.05 in Psychology and the social sciences)
+
+2.  The minimum effect size of interest
+
+3.  Our desired power
+
+4.  If our test is one or two-tailed (i.e. do we have a directional or nondirectional hypothesis)
+
+Reminder that this [interactive visualization](https://rpsychologist.com/d3/nhst/) can be helpful in understanding how these things interact.
+
+::: {.callout-tip collapse="true"}
+## How do I know what the minimum effect size of interest is?
+
+This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:
+
+-   Small Effect (d = \~ 0.2)
+
+-   Medium Effect (d = \~ 0.5)
+
+-   Large Effect (d = \~ 0.8)
+
+As we are aware it is easier to detect large effects. As such, if we really have no idea what effect size we should expect then we should power for small effects.
+
+If however we are conducting a replication, or a very similar study to one that has been already done, then we can power for the effect size they report.
+
+Again I refer to: [A useful paper if you're interested in learning more](https://online.ucpress.edu/collabra/article/8/1/33267/120491/Sample-Size-Justification)
+:::
+
+## Power analysis for an independent samples t-test
+
+The syntax for conducting an apriori statistical power analysis for an independent samples t-test is the following:
+
+```{r}
+# Conduct power analysis for an independent samples t-test
+pwr.t.test(d = 0.5,         # Your Expected effect size
+           sig.level = 0.05, # Significance level
+           power = 0.80,     # Desired power level
+           type = "two.sample",  # Indicates an independent t-test
+           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "one.sided"
+
+```
+
+## Power analysis for a paired-samples t-test
+
+If we want to run a paired samples-test, then we can change the type from "two.sample" to "one.sample":
+
+```{r}
+pwr.t.test(d = 0.5,         # Your Expected effect size
+           sig.level = 0.05, # Significance level
+           power = 0.80,     # Desired power level
+           type = "paired",  # Indicates an independent t-test
+           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "one.sided"
+
+```
+
+Try running the above power-analyses again but for a one sided (directional) test. What does this do to our required sample size?

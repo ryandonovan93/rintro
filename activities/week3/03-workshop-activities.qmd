@@ -836,6 +836,3 @@ head(your_df, n = 6) #default setting that needs to be changed
 ```
 
 5.  Write a multi-argument (i.e multi-input) function called `total_score()` that takes in two test scores (`score1`, `score2`) as arguments, adds them together, and returns their total (`total`). Test your function.
-
-
-

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Programming Fundamentals in R (Part II) | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Programming Fundamentals in R (Part II) | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="programming1.html"/>
-
+<link rel="next" href="descriptive-statistics-and-t-tests-in-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -246,6 +246,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.6" data-path="programming2.html"><a href="programming2.html#summary-3"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
 <li class="chapter" data-level="4.7" data-path="programming2.html"><a href="programming2.html#glossary-2"><i class="fa fa-check"></i><b>4.7</b> Glossary</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html"><i class="fa fa-check"></i><b>5</b> Descriptive Statistics and T-Tests in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#how-to-read-this-chapter-2"><i class="fa fa-check"></i><b>5.1</b> How to read this chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#activities-2"><i class="fa fa-check"></i><b>5.2</b> Activities</a></li>
+<li class="chapter" data-level="5.3" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#between-groups-comparisons"><i class="fa fa-check"></i><b>5.3</b> Between-Groups Comparisons</a></li>
+<li class="chapter" data-level="5.4" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#descriptive-statistics"><i class="fa fa-check"></i><b>5.4</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#writing-up-the-results-of-an-independent-samples-t-test"><i class="fa fa-check"></i><b>5.4.1</b> Writing up the results of an independent samples t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#statistically-comparing-between-2-groups-independent-samples-t-test-unpaired-t-test"><i class="fa fa-check"></i><b>5.5</b> Statistically comparing between 2 groups: Independent samples t-test (unpaired t-test)</a></li>
+<li class="chapter" data-level="5.6" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#effect-sizes"><i class="fa fa-check"></i><b>5.6</b> Effect sizes!</a></li>
+<li class="chapter" data-level="5.7" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#within-subjects-comparisons"><i class="fa fa-check"></i><b>5.7</b> Within-Subjects Comparisons</a></li>
+<li class="chapter" data-level="5.8" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#descriptive-statistics-for-a-paired-samples-t-test"><i class="fa fa-check"></i><b>5.8</b> Descriptive Statistics for a paired-samples t-test</a></li>
+<li class="chapter" data-level="5.9" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#power-analyses"><i class="fa fa-check"></i><b>5.9</b> Power analyses</a></li>
+<li class="chapter" data-level="5.10" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#power-analysis-for-an-independent-samples-t-test"><i class="fa fa-check"></i><b>5.10</b> Power analysis for an independent samples t-test</a></li>
+<li class="chapter" data-level="5.11" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#power-analysis-for-a-paired-samples-t-test"><i class="fa fa-check"></i><b>5.11</b> Power analysis for a paired-samples t-test</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -294,19 +311,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.3.1</span> <strong>The Syntax for Creating a Function</strong><a href="programming2.html#the-syntax-for-creating-a-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Creating a function is a bit like creating a variable.</p>
 <p>When we make a variable, we give it a name (e.g., <code>my_name</code>) and assign (<code>&lt;-</code>) some information to it (e.g., <code>"Ryan"</code>). Then, we can use that variable wherever we need it, like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="programming2.html#cb1-1" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Ryan&quot;</span></span>
-<span id="cb1-2"><a href="programming2.html#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="programming2.html#cb1-3" tabindex="-1"></a><span class="fu">print</span>(my_name)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="programming2.html#cb157-1" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Ryan&quot;</span></span>
+<span id="cb157-2"><a href="programming2.html#cb157-2" tabindex="-1"></a></span>
+<span id="cb157-3"><a href="programming2.html#cb157-3" tabindex="-1"></a><span class="fu">print</span>(my_name)</span></code></pre></div>
 <pre><code>## [1] &quot;Ryan&quot;</code></pre>
 <p>When we create a function, we give it a name (e.g., <code>my_function</code>) and assign a set of instructions to it. Once we’ve done that, we can call the function whenever we need to, instead of writing out the same code over and over again.</p>
 <p>Here’s the syntax for creating a function:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="programming2.html#cb3-1" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
-<span id="cb3-2"><a href="programming2.html#cb3-2" tabindex="-1"></a>  instruction1</span>
-<span id="cb3-3"><a href="programming2.html#cb3-3" tabindex="-1"></a>  instruction2</span>
-<span id="cb3-4"><a href="programming2.html#cb3-4" tabindex="-1"></a>  ...</span>
-<span id="cb3-5"><a href="programming2.html#cb3-5" tabindex="-1"></a>  instruction3</span>
-<span id="cb3-6"><a href="programming2.html#cb3-6" tabindex="-1"></a>  <span class="fu">return</span>(output) <span class="co"># Return the result</span></span>
-<span id="cb3-7"><a href="programming2.html#cb3-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="programming2.html#cb159-1" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb159-2"><a href="programming2.html#cb159-2" tabindex="-1"></a>  instruction1</span>
+<span id="cb159-3"><a href="programming2.html#cb159-3" tabindex="-1"></a>  instruction2</span>
+<span id="cb159-4"><a href="programming2.html#cb159-4" tabindex="-1"></a>  ...</span>
+<span id="cb159-5"><a href="programming2.html#cb159-5" tabindex="-1"></a>  instruction3</span>
+<span id="cb159-6"><a href="programming2.html#cb159-6" tabindex="-1"></a>  <span class="fu">return</span>(output) <span class="co"># Return the result</span></span>
+<span id="cb159-7"><a href="programming2.html#cb159-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s break this down:</p>
 <ul>
 <li><p><strong>Naming the Function</strong> – We give our function a name (e.g., <code>my_function</code>) and use <code>&lt;-</code> to assign something to it. Just like with variables, this tells R that the name will now store something.</p></li>
@@ -324,9 +341,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>That’s where functions come in handy!</p>
 <p>Let’s create a simple function that converts cups to grams. We’ll call it <code>cups_to_grams</code>. When naming functions, it’s best to pick a name that clearly describes what the function does—it makes your code much easier to read and understand later.</p>
 <p>Here’s how we start:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="programming2.html#cb4-1" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
-<span id="cb4-2"><a href="programming2.html#cb4-2" tabindex="-1"></a>  </span>
-<span id="cb4-3"><a href="programming2.html#cb4-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="programming2.html#cb160-1" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
+<span id="cb160-2"><a href="programming2.html#cb160-2" tabindex="-1"></a>  </span>
+<span id="cb160-3"><a href="programming2.html#cb160-3" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong><em>What’s Happening Here?</em></strong></p>
 <ul>
 <li><p>Inside <strong><code>function()</code></strong>, we’ve written <strong><code>cups</code></strong>, which is the input or <em>argument</em>. Think of it as a placeholder for the value we want to use later.</p></li>
@@ -337,19 +354,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">4.3.2.2</span> Writing the Instructions<a href="programming2.html#writing-the-instructions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>According to the metric system, 1 cup is approximately 250 grams. So, our function needs to multiply the number of cups by 250.</p>
 <p>Let’s add this instruction:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="programming2.html#cb5-1" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
-<span id="cb5-2"><a href="programming2.html#cb5-2" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="dv">250</span></span>
-<span id="cb5-3"><a href="programming2.html#cb5-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="programming2.html#cb161-1" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
+<span id="cb161-2"><a href="programming2.html#cb161-2" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="dv">250</span></span>
+<span id="cb161-3"><a href="programming2.html#cb161-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>We’ve created a variable called <code>grams</code> inside the function. It stores the result of <code>cups * 250</code>.</p>
 <p>But there’s still one problem—if we run this function, nothing will actually be displayed on the screen. That’s because we haven’t told R to return the result yet.</p>
 </div>
 <div id="returning-the-output" class="section level4 hasAnchor" number="4.3.2.3">
 <h4><span class="header-section-number">4.3.2.3</span> <strong>Returning the Output</strong><a href="programming2.html#returning-the-output" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Here’s the final version of our function:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="programming2.html#cb6-1" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
-<span id="cb6-2"><a href="programming2.html#cb6-2" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="dv">250</span></span>
-<span id="cb6-3"><a href="programming2.html#cb6-3" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
-<span id="cb6-4"><a href="programming2.html#cb6-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="programming2.html#cb162-1" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
+<span id="cb162-2"><a href="programming2.html#cb162-2" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="dv">250</span></span>
+<span id="cb162-3"><a href="programming2.html#cb162-3" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
+<span id="cb162-4"><a href="programming2.html#cb162-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>The <code>return()</code> function tells R to keep the value of <code>grams</code> and print it out in the console.</p>
 <p>Now, let’s see if it works!</p>
 </div>
@@ -357,26 +374,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="calling-the-function" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> <strong>Calling the Function</strong><a href="programming2.html#calling-the-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Calling a function is just like using any of the built-in functions we’ve used before. We type the function’s name and provide an input inside the parentheses.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programming2.html#cb7-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="programming2.html#cb163-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 250</code></pre>
 <p>This tells R: “Take <strong>1 cup</strong>, multiply it by 250, and give me the result.” The output should be <strong>250 grams</strong>.</p>
 <div id="using-the-function-with-different-inputs" class="section level4 hasAnchor" number="4.3.3.1">
 <h4><span class="header-section-number">4.3.3.1</span> Using the Function with Different Inputs<a href="programming2.html#using-the-function-with-different-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You can call the function multiple times with different values:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="programming2.html#cb9-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">4</span>)    <span class="co"># 4 cups = 1000 grams</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="programming2.html#cb165-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">4</span>)    <span class="co"># 4 cups = 1000 grams</span></span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="programming2.html#cb11-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">2</span>)    <span class="co"># 2 cups = 500 grams</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="programming2.html#cb167-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">2</span>)    <span class="co"># 2 cups = 500 grams</span></span></code></pre></div>
 <pre><code>## [1] 500</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="programming2.html#cb13-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="fl">1.5</span>)  <span class="co"># 1.5 cups = 375 grams</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="programming2.html#cb169-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="fl">1.5</span>)  <span class="co"># 1.5 cups = 375 grams</span></span></code></pre></div>
 <pre><code>## [1] 375</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="programming2.html#cb15-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">5</span><span class="dt">L</span>)   <span class="co"># 5 cups = 1250 grams</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="programming2.html#cb171-1" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="at">cups =</span> <span class="dv">5</span><span class="dt">L</span>)   <span class="co"># 5 cups = 1250 grams</span></span></code></pre></div>
 <pre><code>## [1] 1250</code></pre>
 </div>
 <div id="defining-the-argument-outside-the-function" class="section level4 hasAnchor" number="4.3.3.2">
 <h4><span class="header-section-number">4.3.3.2</span> <strong>Defining the Argument Outside the Function</strong><a href="programming2.html#defining-the-argument-outside-the-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Instead of passing the value directly inside the function, you can also define it separately and then use it:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="programming2.html#cb17-1" tabindex="-1"></a>cups <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb17-2"><a href="programming2.html#cb17-2" tabindex="-1"></a><span class="fu">cups_to_grams</span>(cups)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="programming2.html#cb173-1" tabindex="-1"></a>cups <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb173-2"><a href="programming2.html#cb173-2" tabindex="-1"></a><span class="fu">cups_to_grams</span>(cups)</span></code></pre></div>
 <pre><code>## [1] 500</code></pre>
 </div>
 <div id="key-takeaways" class="section level4 hasAnchor" number="4.3.3.3">
@@ -393,38 +410,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A <strong>multi-argument function</strong> is a function that takes <em>more than one input</em> to perform its task. These inputs are called <strong>arguments</strong>, and they allow the function to work with different pieces of information.</p>
 <p>For example, imagine you’re making pancakes. You need flour, sugar, baking powder, and butter to bake them. Each of these ingredients is like an argument — the recipe (function) needs all of them to do its job properly.</p>
 <p>The process for creating a one-argument function is practically identical to creating a multi-argument function. The only difference is that we need to enter into more than one input when we define the function.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="programming2.html#cb19-1" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(input1, input2, input...<span class="dv">3</span>) {</span>
-<span id="cb19-2"><a href="programming2.html#cb19-2" tabindex="-1"></a>  instruction1</span>
-<span id="cb19-3"><a href="programming2.html#cb19-3" tabindex="-1"></a>  instruction2</span>
-<span id="cb19-4"><a href="programming2.html#cb19-4" tabindex="-1"></a>  ...</span>
-<span id="cb19-5"><a href="programming2.html#cb19-5" tabindex="-1"></a>  instruction3</span>
-<span id="cb19-6"><a href="programming2.html#cb19-6" tabindex="-1"></a>  <span class="fu">return</span>(output) <span class="co"># Return the result</span></span>
-<span id="cb19-7"><a href="programming2.html#cb19-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="programming2.html#cb175-1" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(input1, input2, input...<span class="dv">3</span>) {</span>
+<span id="cb175-2"><a href="programming2.html#cb175-2" tabindex="-1"></a>  instruction1</span>
+<span id="cb175-3"><a href="programming2.html#cb175-3" tabindex="-1"></a>  instruction2</span>
+<span id="cb175-4"><a href="programming2.html#cb175-4" tabindex="-1"></a>  ...</span>
+<span id="cb175-5"><a href="programming2.html#cb175-5" tabindex="-1"></a>  instruction3</span>
+<span id="cb175-6"><a href="programming2.html#cb175-6" tabindex="-1"></a>  <span class="fu">return</span>(output) <span class="co"># Return the result</span></span>
+<span id="cb175-7"><a href="programming2.html#cb175-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s create a function called <code>average_score()</code> that calculates the average score on a psychological test when given the total score and the number of test items.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="programming2.html#cb20-1" tabindex="-1"></a>average_score <span class="ot">&lt;-</span> <span class="cf">function</span>(total_score, num_items) {</span>
-<span id="cb20-2"><a href="programming2.html#cb20-2" tabindex="-1"></a>  <span class="co"># Calculate the average</span></span>
-<span id="cb20-3"><a href="programming2.html#cb20-3" tabindex="-1"></a>  average <span class="ot">&lt;-</span> total_score <span class="sc">/</span> num_items</span>
-<span id="cb20-4"><a href="programming2.html#cb20-4" tabindex="-1"></a>  </span>
-<span id="cb20-5"><a href="programming2.html#cb20-5" tabindex="-1"></a>  <span class="co"># Return the average</span></span>
-<span id="cb20-6"><a href="programming2.html#cb20-6" tabindex="-1"></a>  <span class="fu">return</span>(average)</span>
-<span id="cb20-7"><a href="programming2.html#cb20-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="programming2.html#cb176-1" tabindex="-1"></a>average_score <span class="ot">&lt;-</span> <span class="cf">function</span>(total_score, num_items) {</span>
+<span id="cb176-2"><a href="programming2.html#cb176-2" tabindex="-1"></a>  <span class="co"># Calculate the average</span></span>
+<span id="cb176-3"><a href="programming2.html#cb176-3" tabindex="-1"></a>  average <span class="ot">&lt;-</span> total_score <span class="sc">/</span> num_items</span>
+<span id="cb176-4"><a href="programming2.html#cb176-4" tabindex="-1"></a>  </span>
+<span id="cb176-5"><a href="programming2.html#cb176-5" tabindex="-1"></a>  <span class="co"># Return the average</span></span>
+<span id="cb176-6"><a href="programming2.html#cb176-6" tabindex="-1"></a>  <span class="fu">return</span>(average)</span>
+<span id="cb176-7"><a href="programming2.html#cb176-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>You can see we have provided two inputs <code>total_score</code> and <code>num_items</code> inside <code>function()</code>. This tells R that it should expect multiple inputs when this function is called. Again, we have not defined what the values of <code>total_score</code> or <code>num_items</code> is ahead of time, because we want our function to be reusable and adaptable.</p>
 <p>Let’s give our function a test drive with multiple different possible input values.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="programming2.html#cb21-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="at">total_score =</span> <span class="dv">30</span>, <span class="at">num_items =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="programming2.html#cb177-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="at">total_score =</span> <span class="dv">30</span>, <span class="at">num_items =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="programming2.html#cb23-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="at">total_score =</span> <span class="dv">40</span>, <span class="at">num_items =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="programming2.html#cb179-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="at">total_score =</span> <span class="dv">40</span>, <span class="at">num_items =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="programming2.html#cb25-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="at">total_score =</span> <span class="dv">78</span>, <span class="at">num_items =</span> <span class="dv">17</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="programming2.html#cb181-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="at">total_score =</span> <span class="dv">78</span>, <span class="at">num_items =</span> <span class="dv">17</span>)</span></code></pre></div>
 <pre><code>## [1] 4.588235</code></pre>
 <p>The function carries out the same set instructions regardless of what values we insert for <code>total_score</code> and <code>num_items</code>.</p>
 <div id="what-happens-if-i-dont-name-the-inputs" class="section level4 hasAnchor" number="4.3.4.1">
 <h4><span class="header-section-number">4.3.4.1</span> What Happens if I Don’t Name the Inputs?<a href="programming2.html#what-happens-if-i-dont-name-the-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You don’t always need to name the arguments when calling the function <em>as long as</em> you provide them in the correct order. For example:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="programming2.html#cb27-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="dv">65</span>, <span class="dv">5</span>) <span class="co">#what happens if I do not write out the input variable names?</span></span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="programming2.html#cb183-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="dv">65</span>, <span class="dv">5</span>) <span class="co">#what happens if I do not write out the input variable names?</span></span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
 <p>This works because R remembers the order of the inputs (<code>total_score</code> first, then <code>num_items</code>).</p>
 <p>However, what if you mix up the order of the inputs?</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="programming2.html#cb29-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="dv">5</span>, <span class="dv">65</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="programming2.html#cb185-1" tabindex="-1"></a><span class="fu">average_score</span>(<span class="dv">5</span>, <span class="dv">65</span>)</span></code></pre></div>
 <pre><code>## [1] 0.07692308</code></pre>
 <p>The function still runs, but the result is wrong. Why? Because R doesn’t have common sense — it doesn’t know you meant to input the <code>total_score</code> as <code>65</code> and the <code>num_items</code> as <code>5</code>. It blindly follows the order you gave.</p>
 <p>To avoid this kind of mistake, it’s a good idea to <strong>specify the names of your input variables</strong> when calling a function. This way, you make your code clearer and less prone to errors. It’s also great practice when sharing your code with others — naming the inputs makes your code more readable, especially if someone hasn’t seen the function before.</p>
@@ -442,30 +459,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Again this is all abstract and boring, so let’s use an example.</p>
 <p>I’m going to create a simple function called <code>my_favourite_number_generator()</code>. This function will always tell you my favourite number (spoiler: it’s 7). It’s not the most useful function in the world, but it’ll help us understand local and global variables.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="programming2.html#cb31-1" tabindex="-1"></a>my_favourite_number_generator <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb31-2"><a href="programming2.html#cb31-2" tabindex="-1"></a>  my_favourite_number <span class="ot">&lt;-</span> <span class="dv">7</span>  <span class="co"># This is a local variable</span></span>
-<span id="cb31-3"><a href="programming2.html#cb31-3" tabindex="-1"></a>  <span class="fu">return</span>(my_favourite_number)  <span class="co"># The function returns 7</span></span>
-<span id="cb31-4"><a href="programming2.html#cb31-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="programming2.html#cb187-1" tabindex="-1"></a>my_favourite_number_generator <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb187-2"><a href="programming2.html#cb187-2" tabindex="-1"></a>  my_favourite_number <span class="ot">&lt;-</span> <span class="dv">7</span>  <span class="co"># This is a local variable</span></span>
+<span id="cb187-3"><a href="programming2.html#cb187-3" tabindex="-1"></a>  <span class="fu">return</span>(my_favourite_number)  <span class="co"># The function returns 7</span></span>
+<span id="cb187-4"><a href="programming2.html#cb187-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Here’s what’s happening:</p>
 <ul>
 <li><p>I define the variable <code>my_favourite_number</code> <em>inside</em> the function. This makes it a local variable — it only exists while the function is running.</p></li>
 <li><p>When I call the function, it will return the value of the local variable (<code>7</code>).</p></li>
 </ul>
 <p>Let’s try it out:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="programming2.html#cb32-1" tabindex="-1"></a><span class="fu">my_favourite_number_generator</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="programming2.html#cb188-1" tabindex="-1"></a><span class="fu">my_favourite_number_generator</span>()</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>It prints <code>7</code>, just as expected.</p>
 <p>Now, let’s see what happens when I define a global variable called <code>my_favourite_number</code> <em>outside</em> the function, and then call the function again:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="programming2.html#cb34-1" tabindex="-1"></a>my_favourite_number <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb34-2"><a href="programming2.html#cb34-2" tabindex="-1"></a><span class="fu">my_favourite_number_generator</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="programming2.html#cb190-1" tabindex="-1"></a>my_favourite_number <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb190-2"><a href="programming2.html#cb190-2" tabindex="-1"></a><span class="fu">my_favourite_number_generator</span>()</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>Even though we defined <code>my_favourite_number</code> globally as <code>10</code>, the function still returns <code>7</code>. Why? Because the function uses its <em>local</em> version of <code>my_favourite_number</code> — it doesn’t care about the global variable.</p>
 <p>Finally, let’s check what happens if we print the global variable after calling the function:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="programming2.html#cb36-1" tabindex="-1"></a>my_favourite_number <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co">#global variable</span></span>
-<span id="cb36-2"><a href="programming2.html#cb36-2" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="programming2.html#cb36-3" tabindex="-1"></a><span class="fu">my_favourite_number_generator</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="programming2.html#cb192-1" tabindex="-1"></a>my_favourite_number <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co">#global variable</span></span>
+<span id="cb192-2"><a href="programming2.html#cb192-2" tabindex="-1"></a></span>
+<span id="cb192-3"><a href="programming2.html#cb192-3" tabindex="-1"></a><span class="fu">my_favourite_number_generator</span>()</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="programming2.html#cb38-1" tabindex="-1"></a><span class="fu">print</span>(my_favourite_number)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="programming2.html#cb194-1" tabindex="-1"></a><span class="fu">print</span>(my_favourite_number)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>The function only works with its <em>local</em> variable (<code>7</code>), but the global variable (<code>10</code>) remains unchanged outside the function.</p>
 <p><strong>Key Takeaway</strong></p>
@@ -481,13 +498,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Think of it like ordering coffee at a café. If you don’t specify the type of milk you want, they might use regular milk as the default. But if you do specify oat milk, they’ll make it with oat milk instead. Default arguments in R work the same way — you can stick with the default or override it with your own value.</p>
 <p>We’ve actually already seen a default argument in action! Remember the <code>sort()</code> function? By default, it sorts numbers in <strong>ascending order</strong> (from smallest to largest). But if you add the argument <code>decreasing = TRUE</code>, it sorts the numbers in <strong>descending order</strong> (from largest to smallest).</p>
 <p>Here’s how it works:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="programming2.html#cb40-1" tabindex="-1"></a>rintro_marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">77</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">71</span>)</span>
-<span id="cb40-2"><a href="programming2.html#cb40-2" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="programming2.html#cb40-3" tabindex="-1"></a><span class="co"># Using the default (ascending order)</span></span>
-<span id="cb40-4"><a href="programming2.html#cb40-4" tabindex="-1"></a><span class="fu">sort</span>(rintro_marks)  <span class="co"># Output: 65, 69, 71, 77, 80, 86, 88, 92</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="programming2.html#cb196-1" tabindex="-1"></a>rintro_marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">77</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">71</span>)</span>
+<span id="cb196-2"><a href="programming2.html#cb196-2" tabindex="-1"></a></span>
+<span id="cb196-3"><a href="programming2.html#cb196-3" tabindex="-1"></a><span class="co"># Using the default (ascending order)</span></span>
+<span id="cb196-4"><a href="programming2.html#cb196-4" tabindex="-1"></a><span class="fu">sort</span>(rintro_marks)  <span class="co"># Output: 65, 69, 71, 77, 80, 86, 88, 92</span></span></code></pre></div>
 <pre><code>## [1] 65 69 71 77 80 86 88 92</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="programming2.html#cb42-1" tabindex="-1"></a><span class="co"># Overriding the default to sort in descending order</span></span>
-<span id="cb42-2"><a href="programming2.html#cb42-2" tabindex="-1"></a><span class="fu">sort</span>(rintro_marks, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)  <span class="co"># Output: 92, 88, 86, 80, 77, 71, 69, 65</span></span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="programming2.html#cb198-1" tabindex="-1"></a><span class="co"># Overriding the default to sort in descending order</span></span>
+<span id="cb198-2"><a href="programming2.html#cb198-2" tabindex="-1"></a><span class="fu">sort</span>(rintro_marks, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)  <span class="co"># Output: 92, 88, 86, 80, 77, 71, 69, 65</span></span></code></pre></div>
 <pre><code>## [1] 92 88 86 80 77 71 69 65</code></pre>
 <p>In this example:</p>
 <ul>
@@ -495,20 +512,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>By specifying <code>decreasing = TRUE</code>, we override the default and sort from largest to smallest.</p></li>
 </ul>
 <p>Now, let’s write our own function that uses a default argument. Imagine I want a function called <code>greet()</code> that says hello to someone. If I don’t specify who to greet, the function will say “Hello, World!” by default.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="programming2.html#cb44-1" tabindex="-1"></a><span class="co"># Function with a default argument</span></span>
-<span id="cb44-2"><a href="programming2.html#cb44-2" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">&quot;World&quot;</span>) {</span>
-<span id="cb44-3"><a href="programming2.html#cb44-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Hello,&quot;</span>, name))</span>
-<span id="cb44-4"><a href="programming2.html#cb44-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="programming2.html#cb200-1" tabindex="-1"></a><span class="co"># Function with a default argument</span></span>
+<span id="cb200-2"><a href="programming2.html#cb200-2" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">&quot;World&quot;</span>) {</span>
+<span id="cb200-3"><a href="programming2.html#cb200-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Hello,&quot;</span>, name))</span>
+<span id="cb200-4"><a href="programming2.html#cb200-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Here’s what happens when we call the function:</p>
 <p><strong>Using the default value:</strong></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="programming2.html#cb45-1" tabindex="-1"></a><span class="co"># Calling the function without providing arguments</span></span>
-<span id="cb45-2"><a href="programming2.html#cb45-2" tabindex="-1"></a><span class="fu">greet</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="programming2.html#cb201-1" tabindex="-1"></a><span class="co"># Calling the function without providing arguments</span></span>
+<span id="cb201-2"><a href="programming2.html#cb201-2" tabindex="-1"></a><span class="fu">greet</span>() </span></code></pre></div>
 <pre><code>## [1] &quot;Hello, World&quot;</code></pre>
 <ul>
 <li><p>Since we didn’t specify a name, the function used the default value of <code>"World"</code>.</p></li>
 <li><p><strong>Overriding the default value:</strong></p></li>
 </ul>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="programming2.html#cb47-1" tabindex="-1"></a><span class="fu">greet</span>(<span class="at">name =</span> <span class="st">&quot;Ryan&quot;</span>) <span class="co">#please feel free to type in your own name</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="programming2.html#cb203-1" tabindex="-1"></a><span class="fu">greet</span>(<span class="at">name =</span> <span class="st">&quot;Ryan&quot;</span>) <span class="co">#please feel free to type in your own name</span></span></code></pre></div>
 <pre><code>## [1] &quot;Hello, Ryan&quot;</code></pre>
 <p>By specifying <code>name = "Ryan"</code>, we told the function to use <code>"Ryan"</code> instead of the default <code>"World"</code>.</p>
 </div>
@@ -525,19 +542,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>A list of arguments the function takes.</p></li>
 <li><p>Examples of how to use the function.</p></li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="programming2.html#cb49-1" tabindex="-1"></a>?mean</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="programming2.html#cb205-1" tabindex="-1"></a>?mean</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Using <code>help()</code></strong></li>
 </ol>
 <p>Another way to access a function’s help page is by using the <code>help()</code> function. This works the same way as the <code>?</code> operator.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="programming2.html#cb50-1" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="programming2.html#cb206-1" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Searching for Keywords with <code>??</code></strong></li>
 </ol>
 <p>If you don’t know the exact name of a function but have a general idea of what you’re looking for, you can use <code>??</code> followed by a keyword. This searches through R’s documentation for functions or topics related to that keyword.</p>
 <p>Example:</p>
 <p>If you’re looking for functions related to “regression”:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="programming2.html#cb51-1" tabindex="-1"></a>??regression</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="programming2.html#cb207-1" tabindex="-1"></a>??regression</span></code></pre></div>
 <p>This will show you a list of related functions and packages.</p>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Using the Help Tab in RStudio</strong></li>
@@ -567,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>Include the function name and the word “R” in your search query.</p>
 <p>For example:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="programming2.html#cb52-1" tabindex="-1"></a><span class="st">&quot;mean function R example&quot;</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="programming2.html#cb208-1" tabindex="-1"></a><span class="st">&quot;mean function R example&quot;</span></span></code></pre></div></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>YouTube and Tutorials</strong></li>
@@ -605,7 +622,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="installing-and-loading-r-package" class="section level3 hasAnchor" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Installing and Loading R Package<a href="programming2.html#installing-and-loading-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>One of the most important things to know about R packages is that you first need to install them on your computer. Once installed, you will not need to install them again<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>One of the most important things to know about R packages is that you first need to install them on your computer. Once installed, you will not need to install them again<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
 <p>However, if you want to use a package, then you will need to load it while you are in RStudio. Every time you open RStudio after closing it, you will need to load that package again if you want to use it.</p>
 <p>We do something similar when we download apps on our phone. Once you download Spotify, you don’t need to install it again and again every time you want to use it. However, if you do want to use it, you will need to open (i.e. load) the application.</p>
 <div id="installation" class="section level4 hasAnchor" number="4.4.2.1">
@@ -619,37 +636,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>In the pop-up window, type the name of the package (e.g., <code>pwr</code>) and make sure “Install dependencies” is checked.</p></li>
 <li><p>Click “Install.” You’ll see messages in the console that indicate the installation process.</p></li>
 </ol>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="programming2.html#cb53-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="st">&quot;pwr&quot;</span>)</span>
-<span id="cb53-2"><a href="programming2.html#cb53-2" tabindex="-1"></a>trying URL <span class="st">&#39;https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/rio_1.0.1.tgz&#39;</span></span>
-<span id="cb53-3"><a href="programming2.html#cb53-3" tabindex="-1"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">591359</span> <span class="fu">bytes</span> (<span class="dv">577</span> KB)</span>
-<span id="cb53-4"><a href="programming2.html#cb53-4" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
-<span id="cb53-5"><a href="programming2.html#cb53-5" tabindex="-1"></a>downloaded <span class="dv">577</span> KB</span>
-<span id="cb53-6"><a href="programming2.html#cb53-6" tabindex="-1"></a></span>
-<span id="cb53-7"><a href="programming2.html#cb53-7" tabindex="-1"></a></span>
-<span id="cb53-8"><a href="programming2.html#cb53-8" tabindex="-1"></a>The downloaded binary packages are <span class="cf">in</span></span>
-<span id="cb53-9"><a href="programming2.html#cb53-9" tabindex="-1"></a>    <span class="sc">/</span>var<span class="sc">/</span>folders<span class="sc">/</span>h8<span class="sc">/</span><span class="dv">8</span>sb24v_x2lg51cg2z7q8fk3w0000gp<span class="sc">/</span>T<span class="sc">/</span><span class="er">/</span>RtmpvaY1Ue<span class="sc">/</span>downloaded_packages</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="programming2.html#cb209-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="st">&quot;pwr&quot;</span>)</span>
+<span id="cb209-2"><a href="programming2.html#cb209-2" tabindex="-1"></a>trying URL <span class="st">&#39;https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/rio_1.0.1.tgz&#39;</span></span>
+<span id="cb209-3"><a href="programming2.html#cb209-3" tabindex="-1"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">591359</span> <span class="fu">bytes</span> (<span class="dv">577</span> KB)</span>
+<span id="cb209-4"><a href="programming2.html#cb209-4" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
+<span id="cb209-5"><a href="programming2.html#cb209-5" tabindex="-1"></a>downloaded <span class="dv">577</span> KB</span>
+<span id="cb209-6"><a href="programming2.html#cb209-6" tabindex="-1"></a></span>
+<span id="cb209-7"><a href="programming2.html#cb209-7" tabindex="-1"></a></span>
+<span id="cb209-8"><a href="programming2.html#cb209-8" tabindex="-1"></a>The downloaded binary packages are <span class="cf">in</span></span>
+<span id="cb209-9"><a href="programming2.html#cb209-9" tabindex="-1"></a>    <span class="sc">/</span>var<span class="sc">/</span>folders<span class="sc">/</span>h8<span class="sc">/</span><span class="dv">8</span>sb24v_x2lg51cg2z7q8fk3w0000gp<span class="sc">/</span>T<span class="sc">/</span><span class="er">/</span>RtmpvaY1Ue<span class="sc">/</span>downloaded_packages</span></code></pre></div>
 <p>Don’t worry about the “scary” red text — it’s normal and means the package is being installed correctly.</p>
 <p><strong>Using R Commands:</strong></p>
 <p>You can also install packages directly by typing the <code>install.packages()</code> command in the console. For example:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="programming2.html#cb54-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="programming2.html#cb210-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package name&quot;</span>)</span></code></pre></div>
 <p>The important thing here is that whatever goes inside the parentheses is inside quotation marks.</p>
 <p>You can even install multiple packages at once:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="programming2.html#cb55-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;jmv&quot;</span>, <span class="st">&quot;praise&quot;</span>))</span>
-<span id="cb55-2"><a href="programming2.html#cb55-2" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="programming2.html#cb55-3" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="programming2.html#cb55-4" tabindex="-1"></a>trying URL <span class="st">&#39;https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/praise_1.0.0.tgz&#39;</span></span>
-<span id="cb55-5"><a href="programming2.html#cb55-5" tabindex="-1"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">16537</span> <span class="fu">bytes</span> (<span class="dv">16</span> KB)</span>
-<span id="cb55-6"><a href="programming2.html#cb55-6" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
-<span id="cb55-7"><a href="programming2.html#cb55-7" tabindex="-1"></a>downloaded <span class="dv">16</span> KB</span>
-<span id="cb55-8"><a href="programming2.html#cb55-8" tabindex="-1"></a></span>
-<span id="cb55-9"><a href="programming2.html#cb55-9" tabindex="-1"></a>trying URL <span class="st">&#39;https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/pwr_1.5-4.tgz&#39;</span></span>
-<span id="cb55-10"><a href="programming2.html#cb55-10" tabindex="-1"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">208808</span> <span class="fu">bytes</span> (<span class="dv">203</span> KB)</span>
-<span id="cb55-11"><a href="programming2.html#cb55-11" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
-<span id="cb55-12"><a href="programming2.html#cb55-12" tabindex="-1"></a>downloaded <span class="dv">203</span> KB</span>
-<span id="cb55-13"><a href="programming2.html#cb55-13" tabindex="-1"></a></span>
-<span id="cb55-14"><a href="programming2.html#cb55-14" tabindex="-1"></a></span>
-<span id="cb55-15"><a href="programming2.html#cb55-15" tabindex="-1"></a>The downloaded binary packages are <span class="cf">in</span></span>
-<span id="cb55-16"><a href="programming2.html#cb55-16" tabindex="-1"></a>    <span class="sc">/</span>var<span class="sc">/</span>folders<span class="sc">/</span>h8<span class="sc">/</span><span class="dv">8</span>sb24v_x2lg51cg2z7q8fk3w0000gp<span class="sc">/</span>T<span class="sc">/</span><span class="er">/</span>RtmpvaY1Ue<span class="sc">/</span>downloaded_packages</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="programming2.html#cb211-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;jmv&quot;</span>, <span class="st">&quot;praise&quot;</span>))</span>
+<span id="cb211-2"><a href="programming2.html#cb211-2" tabindex="-1"></a></span>
+<span id="cb211-3"><a href="programming2.html#cb211-3" tabindex="-1"></a></span>
+<span id="cb211-4"><a href="programming2.html#cb211-4" tabindex="-1"></a>trying URL <span class="st">&#39;https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/praise_1.0.0.tgz&#39;</span></span>
+<span id="cb211-5"><a href="programming2.html#cb211-5" tabindex="-1"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">16537</span> <span class="fu">bytes</span> (<span class="dv">16</span> KB)</span>
+<span id="cb211-6"><a href="programming2.html#cb211-6" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
+<span id="cb211-7"><a href="programming2.html#cb211-7" tabindex="-1"></a>downloaded <span class="dv">16</span> KB</span>
+<span id="cb211-8"><a href="programming2.html#cb211-8" tabindex="-1"></a></span>
+<span id="cb211-9"><a href="programming2.html#cb211-9" tabindex="-1"></a>trying URL <span class="st">&#39;https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/pwr_1.5-4.tgz&#39;</span></span>
+<span id="cb211-10"><a href="programming2.html#cb211-10" tabindex="-1"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">208808</span> <span class="fu">bytes</span> (<span class="dv">203</span> KB)</span>
+<span id="cb211-11"><a href="programming2.html#cb211-11" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
+<span id="cb211-12"><a href="programming2.html#cb211-12" tabindex="-1"></a>downloaded <span class="dv">203</span> KB</span>
+<span id="cb211-13"><a href="programming2.html#cb211-13" tabindex="-1"></a></span>
+<span id="cb211-14"><a href="programming2.html#cb211-14" tabindex="-1"></a></span>
+<span id="cb211-15"><a href="programming2.html#cb211-15" tabindex="-1"></a>The downloaded binary packages are <span class="cf">in</span></span>
+<span id="cb211-16"><a href="programming2.html#cb211-16" tabindex="-1"></a>    <span class="sc">/</span>var<span class="sc">/</span>folders<span class="sc">/</span>h8<span class="sc">/</span><span class="dv">8</span>sb24v_x2lg51cg2z7q8fk3w0000gp<span class="sc">/</span>T<span class="sc">/</span><span class="er">/</span>RtmpvaY1Ue<span class="sc">/</span>downloaded_packages</span></code></pre></div>
 <p>Again the output is rather scary but the sentences “package ‘praise’ successfully unpacked and MD5 sums checked” and “package ‘pwr’ successfully unpacked and MD5 sums checked” mean that they are successfully installed onto your computer.</p>
 </div>
 </div>
@@ -664,43 +681,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Go to the <strong>Packages</strong> tab.</p></li>
 <li><p>Scroll down to find the package you want (e.g., <code>praise</code>) and tick the checkbox next to its name. This loads the package.</p></li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-131"></span>
 <img src="img/04-praise-loaded.png" alt="Loading Packages through RStudio Interface"  />
 <p class="caption">
 Figure 4.1: Loading Packages through RStudio Interface
 </p>
 </div>
 <p>You should see something like the following in your R console (don’t worry if you get a warning message like mine, or if you don’t receive a warning message)</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="programming2.html#cb56-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(praise)</span>
-<span id="cb56-2"><a href="programming2.html#cb56-2" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
-<span id="cb56-3"><a href="programming2.html#cb56-3" tabindex="-1"></a>package ‘praise’ was built under R version <span class="dv">4</span>.<span class="fl">3.2</span> </span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="programming2.html#cb212-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(praise)</span>
+<span id="cb212-2"><a href="programming2.html#cb212-2" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
+<span id="cb212-3"><a href="programming2.html#cb212-3" tabindex="-1"></a>package ‘praise’ was built under R version <span class="dv">4</span>.<span class="fl">3.2</span> </span></code></pre></div>
 </div>
 <div id="loading-using-the-r-console-command" class="section level4 hasAnchor" number="4.4.3.2">
 <h4><span class="header-section-number">4.4.3.2</span> Loading using the R Console Command<a href="programming2.html#loading-using-the-r-console-command" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can use the same syntax from that R console output to load in packages there. To load in the <code>pwr</code> and <code>jmv</code> packages, you can type each of these into your script and run each one.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="programming2.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
-<span id="cb57-2"><a href="programming2.html#cb57-2" tabindex="-1"></a><span class="fu">library</span>(jmv)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="programming2.html#cb213-1" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
+<span id="cb213-2"><a href="programming2.html#cb213-2" tabindex="-1"></a><span class="fu">library</span>(jmv)</span></code></pre></div>
 <p>There is one significant difference between installing and loading packages through code. When you are installing packages, you can install multiple packages in one command. However, you can only load one package at a time</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="programming2.html#cb58-1" tabindex="-1"></a><span class="co">#This code will work</span></span>
-<span id="cb58-2"><a href="programming2.html#cb58-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;package1&quot;</span>, <span class="st">&quot;package2&quot;</span>, <span class="st">&quot;package3&quot;</span>)) </span>
-<span id="cb58-3"><a href="programming2.html#cb58-3" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="programming2.html#cb58-4" tabindex="-1"></a></span>
-<span id="cb58-5"><a href="programming2.html#cb58-5" tabindex="-1"></a><span class="co">#This code will work</span></span>
-<span id="cb58-6"><a href="programming2.html#cb58-6" tabindex="-1"></a><span class="fu">library</span>(package1)</span>
-<span id="cb58-7"><a href="programming2.html#cb58-7" tabindex="-1"></a><span class="fu">library</span>(package2)</span>
-<span id="cb58-8"><a href="programming2.html#cb58-8" tabindex="-1"></a><span class="fu">library</span>(package3)</span>
-<span id="cb58-9"><a href="programming2.html#cb58-9" tabindex="-1"></a></span>
-<span id="cb58-10"><a href="programming2.html#cb58-10" tabindex="-1"></a></span>
-<span id="cb58-11"><a href="programming2.html#cb58-11" tabindex="-1"></a><span class="co">#This code will not work</span></span>
-<span id="cb58-12"><a href="programming2.html#cb58-12" tabindex="-1"></a><span class="fu">library</span>(<span class="fu">c</span>(<span class="st">&quot;package1&quot;</span>, <span class="st">&quot;package2&quot;</span>, <span class="st">&quot;package3&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="programming2.html#cb214-1" tabindex="-1"></a><span class="co">#This code will work</span></span>
+<span id="cb214-2"><a href="programming2.html#cb214-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;package1&quot;</span>, <span class="st">&quot;package2&quot;</span>, <span class="st">&quot;package3&quot;</span>)) </span>
+<span id="cb214-3"><a href="programming2.html#cb214-3" tabindex="-1"></a></span>
+<span id="cb214-4"><a href="programming2.html#cb214-4" tabindex="-1"></a></span>
+<span id="cb214-5"><a href="programming2.html#cb214-5" tabindex="-1"></a><span class="co">#This code will work</span></span>
+<span id="cb214-6"><a href="programming2.html#cb214-6" tabindex="-1"></a><span class="fu">library</span>(package1)</span>
+<span id="cb214-7"><a href="programming2.html#cb214-7" tabindex="-1"></a><span class="fu">library</span>(package2)</span>
+<span id="cb214-8"><a href="programming2.html#cb214-8" tabindex="-1"></a><span class="fu">library</span>(package3)</span>
+<span id="cb214-9"><a href="programming2.html#cb214-9" tabindex="-1"></a></span>
+<span id="cb214-10"><a href="programming2.html#cb214-10" tabindex="-1"></a></span>
+<span id="cb214-11"><a href="programming2.html#cb214-11" tabindex="-1"></a><span class="co">#This code will not work</span></span>
+<span id="cb214-12"><a href="programming2.html#cb214-12" tabindex="-1"></a><span class="fu">library</span>(<span class="fu">c</span>(<span class="st">&quot;package1&quot;</span>, <span class="st">&quot;package2&quot;</span>, <span class="st">&quot;package3&quot;</span>)) </span></code></pre></div>
 </div>
 </div>
 <div id="testing-a-package" class="section level3 hasAnchor" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Testing a Package<a href="programming2.html#testing-a-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s test the <code>praise</code> package, which generates random compliments (not groundbreaking, but fun to use!). After loading the package, run:</p>
-<pre><code>## [1] &quot;You are dazzling!&quot;</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="programming2.html#cb60-1" tabindex="-1"></a><span class="fu">praise</span>() <span class="co">#everytime you run this line of code it gives you a different line of praise</span></span>
-<span id="cb60-2"><a href="programming2.html#cb60-2" tabindex="-1"></a><span class="co">#so don&#39;t be worried if your result is different than mine</span></span></code></pre></div>
+<pre><code>## Warning: package &#39;praise&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## [1] &quot;You are magnificent!&quot;</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="programming2.html#cb217-1" tabindex="-1"></a><span class="fu">praise</span>() <span class="co">#everytime you run this line of code it gives you a different line of praise</span></span>
+<span id="cb217-2"><a href="programming2.html#cb217-2" tabindex="-1"></a><span class="co">#so don&#39;t be worried if your result is different than mine</span></span></code></pre></div>
 <p>Every time you run <code>praise()</code>, you’ll get a different compliment. Try it out!</p>
 </div>
 <div id="troubleshooting-common-issues" class="section level3 hasAnchor" number="4.4.5">
@@ -717,23 +735,23 @@ Figure 4.1: Loading Packages through RStudio Interface
 <li><strong>Dependencies Missing</strong>:</li>
 </ol>
 <p>If you see a message about missing dependencies, reinstall the package with “Install dependencies” checked, or run:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="programming2.html#cb61-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="programming2.html#cb218-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Conflicting Function Names Between Packages</strong>:</li>
 </ol>
 <p>If two loaded packages have functions with the same name, R will use the version from the package loaded most recently. You will typically see a message that looks like this in your R console</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="programming2.html#cb62-1" tabindex="-1"></a>Attaching package<span class="sc">:</span> ‘dplyr’</span>
-<span id="cb62-2"><a href="programming2.html#cb62-2" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="programming2.html#cb62-3" tabindex="-1"></a>The following objects are masked from ‘package<span class="sc">:</span>stats’<span class="sc">:</span></span>
-<span id="cb62-4"><a href="programming2.html#cb62-4" tabindex="-1"></a></span>
-<span id="cb62-5"><a href="programming2.html#cb62-5" tabindex="-1"></a>    filter, lag</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="programming2.html#cb219-1" tabindex="-1"></a>Attaching package<span class="sc">:</span> ‘dplyr’</span>
+<span id="cb219-2"><a href="programming2.html#cb219-2" tabindex="-1"></a></span>
+<span id="cb219-3"><a href="programming2.html#cb219-3" tabindex="-1"></a>The following objects are masked from ‘package<span class="sc">:</span>stats’<span class="sc">:</span></span>
+<span id="cb219-4"><a href="programming2.html#cb219-4" tabindex="-1"></a></span>
+<span id="cb219-5"><a href="programming2.html#cb219-5" tabindex="-1"></a>    filter, lag</span></code></pre></div>
 <p><strong><em>Here’s what this means:</em></strong></p>
 <p>R is informing you that the functions filter and lag from the stats package (which comes with base R) are now “masked” by the versions from the dplyr package.</p>
 <p>This simply means that if you call filter() or lag() without specifying the package, R will use the version from dplyr because it was loaded most recently.</p>
 <p><strong><em>How to Handle This:</em></strong></p>
 <p>If you see this message, it’s not an error — it’s just a warning that there’s a conflict. To explicitly use a function from a specific package, you can use the :: operator</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="programming2.html#cb63-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from stats</span></span>
-<span id="cb63-2"><a href="programming2.html#cb63-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from dplyr</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="programming2.html#cb220-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from stats</span></span>
+<span id="cb220-2"><a href="programming2.html#cb220-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from dplyr</span></span></code></pre></div>
 </div>
 <div id="best-practices-for-installing-and-loading-packages" class="section level3 hasAnchor" number="4.4.6">
 <h3><span class="header-section-number">4.4.6</span> Best Practices for Installing and Loading Packages<a href="programming2.html#best-practices-for-installing-and-loading-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -743,7 +761,7 @@ Figure 4.1: Loading Packages through RStudio Interface
 <li><p><strong>Avoid Running <code>install.packages()</code> in a Script:</strong> Use <code>install.packages()</code> in the console, not in your script. If someone downloads your script and accidentally runs it, it will automatically install the packages on their computer. Generally it’s better for people to make a decision themselves on whether they want to install anything on their computer. By not writing the <code>install.packages()</code> command in our script, we give them the power.</p></li>
 <li><p><strong>Comment Out Install Commands:</strong> If you include <code>install.packages()</code> in your script for documentation purposes, make sure it’s commented out:</p></li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-140"></span>
 <img src="img/04-packages-convention.png" alt="Conventions for Installing and Loading Packages in R Script"  />
 <p class="caption">
 Figure 4.2: Conventions for Installing and Loading Packages in R Script
@@ -770,11 +788,13 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <li><p>Make sure you have download (or uploaded) the “psycho.csv” file to your <code>week3</code> folder</p></li>
 <li><p>In your script, write and run the following line of code:</p></li>
 </ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="programming2.html#cb64-1" tabindex="-1"></a>psycho_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;psycho.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="programming2.html#cb221-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro&quot;</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="programming2.html#cb223-1" tabindex="-1"></a>psycho_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/psycho.csv&quot;</span>)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Once you have run that line of code, you can have a look at the data frame by using the <code>head()</code> and <code>summary()</code> functions.</li>
 </ol>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="programming2.html#cb65-1" tabindex="-1"></a><span class="fu">head</span>(psycho) <span class="co">#this will print out the first six rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="programming2.html#cb224-1" tabindex="-1"></a><span class="fu">head</span>(psycho) <span class="co">#this will print out the first six rows</span></span></code></pre></div>
 <pre><code>##   Participant_ID Treatment Neuroticism
 ## 1              1   Placebo    39.39524
 ## 2              2   Placebo    42.69823
@@ -782,7 +802,7 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 ## 4              4   Placebo    45.70508
 ## 5              5   Placebo    46.29288
 ## 6              6   Placebo    62.15065</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="programming2.html#cb67-1" tabindex="-1"></a><span class="fu">summary</span>(psycho) <span class="co">#print out summary stats for each column</span></span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="programming2.html#cb226-1" tabindex="-1"></a><span class="fu">summary</span>(psycho) <span class="co">#print out summary stats for each column</span></span></code></pre></div>
 <pre><code>##  Participant_ID   Treatment          Neuroticism   
 ##  Min.   : 1.00   Length:60          Min.   :25.33  
 ##  1st Qu.:15.75   Class :character   1st Qu.:41.75  
@@ -798,11 +818,11 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <div id="exporting-to-csv-files" class="section level4 hasAnchor" number="4.5.2.1">
 <h4><span class="header-section-number">4.5.2.1</span> Exporting to CSV Files<a href="programming2.html#exporting-to-csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To export a dataset to a CSV file, we can use the <code>write.csv()</code> function:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="programming2.html#cb69-1" tabindex="-1"></a><span class="co"># Export dataset to a CSV file using the following syntax</span></span>
-<span id="cb69-2"><a href="programming2.html#cb69-2" tabindex="-1"></a><span class="fu">write.csv</span>(my_dataset, <span class="at">file =</span> <span class="st">&quot;output.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="programming2.html#cb228-1" tabindex="-1"></a><span class="co"># Export dataset to a CSV file using the following syntax</span></span>
+<span id="cb228-2"><a href="programming2.html#cb228-2" tabindex="-1"></a><span class="fu">write.csv</span>(my_dataset, <span class="at">file =</span> <span class="st">&quot;output.csv&quot;</span>)</span></code></pre></div>
 <p>The argument <code>file</code> will create the name of the file and enable you to change the location of the file. The way this is currently written, it will save your file to your working directory. If you need a reminder on how to set and check your working directory <a href="rstudio.html#set_wd">click here</a>. Make sure it is set to the location you want your file to go.</p>
 <p>Let’s export a copy of our psycho dataframe:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="programming2.html#cb70-1" tabindex="-1"></a><span class="fu">write.csv</span>(psycho, <span class="at">file =</span> <span class="st">&quot;psycho_copy.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="programming2.html#cb229-1" tabindex="-1"></a><span class="fu">write.csv</span>(psycho, <span class="at">file =</span> <span class="st">&quot;psycho_copy.csv&quot;</span>)</span></code></pre></div>
 <p>In your working directory (check the Files pane), you should see the file <code>psycho_copy.csv</code>. If you go to your file manager system on your computer or on Posit Cloud, find the file, and open it, the file should open in either a text or Excel file.</p>
 </div>
 </div>
@@ -820,33 +840,33 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <col width="69%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th><strong>Term</strong></th>
 <th><strong>Definition</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>CSV</td>
 <td>Comma-Separated Values: a common file format for storing tabular data, where each value is separated by a comma.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>SPSS</td>
 <td>Statistical Package for the Social Sciences: software commonly used for statistical analysis, often associated with .sav files.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Dataframe</td>
 <td>A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Importing</td>
 <td>The process of bringing data from external sources into R for analysis or manipulation.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Exporting</td>
 <td>The process of saving data from R to external files or formats for use in other applications.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>write.csv()</td>
 <td>A function in R used to export a dataset to a CSV file.</td>
 </tr>
@@ -855,22 +875,13 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>There are a couple of important exceptions to this rule.</p>
+<ol start="6">
+<li id="fn6"><p>There are a couple of important exceptions to this rule.</p>
 <p>Firslty, If you are creating R projects on your own personal computers using the <code>renv</code> option (which we did), this basically partitions your R project into its own little self-contained space on your computer where it will operate. So when you download and install R packages in that project, they will only exist in that location on your computer (i.e. your project). You won’t need to install packages on that project more than once. However, if you set up a new project, and you need the same packages, then you will need to install those packages on that new project.</p>
 <p>This is equivalent to having separate user accounts on your desktop. If I install something on my account, that doesn’t mean it will be installed on your account.</p>
-<p>Secondly, the same holds true for Posit Cloud. In Posit Cloud, every new R project you make will be self-contained, so any packages you install in one project will not transfer over to other projects.<a href="programming2.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<p>Secondly, the same holds true for Posit Cloud. In Posit Cloud, every new R project you make will be self-contained, so any packages you install in one project will not transfer over to other projects.<a href="programming2.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -878,8 +889,8 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
           </div>
         </div>
       </div>
-<a href="programming1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="programming1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="descriptive-statistics-and-t-tests-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,4 @@
+- source: Week4_Activities.qmd
+  quarto-pub:
+    - id: 701c42d0-1288-437a-91b8-4c47012191c2
+      url: 'https://ryandonovan.quarto.pub/week-4---activities'

@@ -20,9 +20,9 @@ library(webexercises)
 
 ```{r echo = F}
 
-psycho_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/psycho.csv")
+psycho_df <- read.csv("datasets/psycho.csv")
 
-burnout_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/burnout.csv")
+burnout_df <- read.csv("datasets/burnout.csv")
 
 ```
 
@@ -794,9 +794,15 @@ psycho <- read.csv("datasets/psycho.csv")
 
 ```
 
+
+```{r}
+getwd()
+```
+
+
 ```{r eval =F}
 
-psycho_df <- read.csv("psycho.csv")
+psycho_df <- read.csv("datasets/psycho.csv")
 
 ```
 
