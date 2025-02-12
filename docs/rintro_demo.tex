@@ -88,17 +88,15 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
@@ -113,6 +111,9 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 \usepackage{bookmark}
@@ -216,7 +217,7 @@ We will talk more in class about the advantages of using R over existing proprie
 The sessions will take place in \textbf{AMB-G035} (Psychology PC Suite).
 The schedule for the sessions is as follows:
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-schedule.PNG}}
+\includegraphics{img/01-schedule.PNG}
 
 \section{Do I need to bring a laptop to the class?}\label{do-i-need-to-bring-a-laptop-to-the-class}
 
@@ -241,9 +242,9 @@ We all win.
 So pretty please, do not be a silent martyr and let me know if you are struggling with any of the R-based material in this course.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1041}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1479}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.7452}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1041}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1479}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.7452}}@{}}
 \toprule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -278,7 +279,7 @@ In contrast, R is a free, open-source statistical programming language that enab
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-bbc.png}}
+\includegraphics{img/01-bbc.png}
 \caption{\label{fig:unnamed-chunk-1}BBC graphs created in R.}
 \end{figure}
 
@@ -307,12 +308,12 @@ To create a Posit Cloud account, please follow the following instructions:
 \item
   \href{https://login.posit.cloud/register?redirect=\%2Foauth\%2Fauthorize\%3Fredirect_uri\%3Dhttps\%253A\%252F\%252Fposit.cloud\%252Flogin\%26client_id\%3Dposit-cloud\%26response_type\%3Dcode\%26show_auth\%3D0}{Go to their sign up page website} and enter your details to create an account or Sign up with Google.
 
-  \pandocbounded{\includegraphics[keepaspectratio]{img/01-posit-sign-up.png}}
+  \includegraphics{img/01-posit-sign-up.png}
 \item
   Once you have created an account and are in Posit Cloud, click ``New Project'' From the drop-down menu click ``New RStudio Project''. This should take a few seconds to set up (or ``deploy'')
 \end{enumerate}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-posit-newproject.png}}
+\includegraphics{img/01-posit-newproject.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -322,7 +323,7 @@ To create a Posit Cloud account, please follow the following instructions:
   Once it is deployed, name your project at the top as \textbf{\emph{rintro}}
 \end{enumerate}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-posit-rintro.png}}
+\includegraphics{img/01-posit-rintro.png}
 
 Don't worry about what anything on the screen means for now. We'll come back to that in the section \textbf{Creating an RProject (2.5).}
 
@@ -343,7 +344,7 @@ If you are using your own personal laptop or desktop (if at home), then please f
   Under the heading \emph{Download and Install R,} click \emph{Download R for Windows}
 \end{enumerate}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-cran.png}}
+\includegraphics{img/01-cran.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -356,7 +357,7 @@ If you are using your own personal laptop or desktop (if at home), then please f
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-base.png}}
+\includegraphics{img/01-base.png}
 \caption{\label{fig:unnamed-chunk-6}The R programming language is occasionally updated, so the specific version of R that you see might be different than mine. But that's okay!}
 \end{figure}
 
@@ -381,7 +382,7 @@ The instructions are largely the same for Mac.
   Click Download R for (Mac) OS X.
 \end{itemize}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-rstudiodownload-mac.png}}
+\includegraphics{img/01-rstudiodownload-mac.png}
 
 \begin{itemize}
 \tightlist
@@ -389,7 +390,7 @@ The instructions are largely the same for Mac.
   Check the \textbf{Latest release} section for the appropriate version and follow the directions for download. If you are unsure, please ask me.
 \end{itemize}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-rversion-mac.png}}
+\includegraphics{img/01-rversion-mac.png}
 
 \begin{itemize}
 \tightlist
@@ -399,7 +400,7 @@ The instructions are largely the same for Mac.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-mac_installer.png}}
+\includegraphics{img/01-mac_installer.png}
 \caption{\label{fig:unnamed-chunk-9}Depending on your version of Mac OS, this might look slightly different. But you should still be able to install it.}
 \end{figure}
 
@@ -409,7 +410,7 @@ The instructions are largely the same for Mac.
   Once the R installer has finished, click \textbf{Close.}
 \end{itemize}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-install_finish_mac.png}}
+\includegraphics{img/01-install_finish_mac.png}
 
 \section{Install and Open RStudio}\label{install-and-open-rstudio}
 
@@ -427,7 +428,7 @@ RStudio is a user-friendly front-end program for R, enhancing your R coding expe
   The website should automatically detect your operating system. Click the \textbf{\emph{Download RStudio Desktop}} button.
 \end{enumerate}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-rstudiodownload.png}}
+\includegraphics{img/01-rstudiodownload.png}
 
 Once the file is downloaded, open it and allow it to make changes to your device. Follow the instructions to install the program. I recommend using all the default options during installation.
 
@@ -435,7 +436,7 @@ After downloading both R and RStudio, open RStudio on your computer. You do not 
 
 When you first open RStudio, you will see three panes or ``windows'' in RStudio: \textbf{Console} (left), \textbf{Environment} (top right), and \textbf{Files} (bottom right).
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/rstudio_first.png}}
+\includegraphics{img/rstudio_first.png}
 
 \section{Creating an R Project}\label{creating-an-r-project}
 
@@ -499,7 +500,7 @@ You can see my example below. Once you're happy with your input for each option,
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-newproject-ma.png}}
+\includegraphics{img/01-newproject-ma.png}
 \caption{\label{fig:unnamed-chunk-13}New Project Set Up}
 \end{figure}
 
@@ -517,7 +518,7 @@ There are a variety of ways to open the Source pane:
   \textbf{Button approach}: Click the ``File'' tab in the top-left corner → Click ``New File'' → Select ``R Script.''
 \end{itemize}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/rstudio_create_file.png}}
+\includegraphics{img/rstudio_create_file.png}
 
 \begin{itemize}
 \item
@@ -528,7 +529,7 @@ There are a variety of ways to open the Source pane:
 
 Now you should see your four panes: \textbf{Source}, \textbf{Console}, \textbf{Environment}, and \textbf{Files}.
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-four-panes.png}}
+\includegraphics{img/01-four-panes.png}
 
 \subsubsection{The RStudio Workspace}\label{the-rstudio-workspace}
 
@@ -562,7 +563,7 @@ To check the working directory, type the following into the console pane:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro"
+## [1] "/Users/ryandonovan 1/Desktop/rintro"
 \end{verbatim}
 
 This will display the current working directory where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (\textbf{Option 2}).
@@ -577,7 +578,7 @@ In our R Project, we are going to create a folder for Week 1 of the workshop. An
   Click ``Session'' in the RStudio toolbar → Select ``Set Working Directory'' → Click ``Choose Directory.''
 \end{itemize}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-wd.png}}
+\includegraphics{img/01-wd.png}
 
 \begin{itemize}
 \tightlist
@@ -592,7 +593,7 @@ In our R Project, we are going to create a folder for Week 1 of the workshop. An
   Click ``week1'' and then click ``Open.''
 \end{itemize}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-new_wd.png}}
+\includegraphics{img/01-new_wd.png}
 
 You should see something like the following in your console
 
@@ -614,7 +615,7 @@ Like most applications, RStudio comes with default settings, some of which can b
   Under the \textbf{General} tab, look for the ``Save workspace to .RData on exit'' option. Change it to ``Never.'' Untick the box as well.
 \end{enumerate}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/01-workspace-setting.PNG}}
+\includegraphics{img/01-workspace-setting.PNG}
 
 \section{Writing our first R Code}\label{writing-our-first-r-code}
 
@@ -784,7 +785,7 @@ It's always a good step to create visualisations with your data to get a better 
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-24-1.pdf}}
+\includegraphics{rintro_demo_files/figure-latex/unnamed-chunk-24-1.pdf}
 
 The \textbf{\texttt{plot()}} function automatically determines the most appropriate plot---in this case, a boxplot. While this plot is functional, we can make it more informative by adding a title and labels for the axes:
 
@@ -804,7 +805,7 @@ The \textbf{\texttt{plot()}} function automatically determines the most appropri
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-25-1.pdf}}
+\includegraphics{rintro_demo_files/figure-latex/unnamed-chunk-25-1.pdf}
 \caption{\label{fig:unnamed-chunk-25}Generic Boxplot with appropriate labelling}
 \end{figure}
 
@@ -842,7 +843,7 @@ Comments serve a variety of purposes:
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-comments.png}}
+\includegraphics{img/03-comments.png}
 \caption{\label{fig:unnamed-chunk-27}Four Examples of Comments Use}
 \end{figure}
 
@@ -890,8 +891,8 @@ In the next two sessions, we will learn basic programming concepts that will hel
 This glossary defines key terms introduced in Chapter 2.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3056}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6944}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3056}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6944}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Term
@@ -1694,19 +1695,19 @@ A vector in R is like a list of items. To be more specific, vectors in R are act
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-index_numeric.png}}
+\includegraphics{img/03-index_numeric.png}
 \caption{\label{fig:unnamed-chunk-67}Indexing for Numeric Vector}
 \end{figure}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-index-character.png}}
+\includegraphics{img/03-index-character.png}
 \caption{\label{fig:unnamed-chunk-68}Indexing for Character Vector}
 \end{figure}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-index-logical.png}}
+\includegraphics{img/03-index-logical.png}
 \caption{\label{fig:unnamed-chunk-69}Indexing for Logical Vector}
 \end{figure}
 
@@ -1842,7 +1843,7 @@ What helped me understand vectors was realising that a vector is simply a ``line
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-column-vector.png}}
+\includegraphics{img/03-column-vector.png}
 
 Similarly, rows are lines of data going horizontally. Imagine, I collect data from another participant (p11). I could represent the data from that individual participant like this in R:
 
@@ -1856,7 +1857,7 @@ So whenever you think of a vector, just remember that it refers to a line of dat
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-vectors-summarised.png}}
+\includegraphics{img/03-vectors-summarised.png}
 \caption{\label{fig:unnamed-chunk-82}Vectors can visually conceptualised as a column or row of data.}
 \end{figure}
 
@@ -1868,7 +1869,7 @@ A data frame is a rectangular data structure that is composed of rows and column
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/03-dataframes_vectors.png}}
+\includegraphics{img/03-dataframes_vectors.png}
 \caption{\label{fig:unnamed-chunk-83}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
 \end{figure}
 
@@ -2191,8 +2192,8 @@ Don't feel like you need to have mastered or even remembered all the material th
 This glossary defines key terms introduced in Chapter 3.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6667}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6667}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Term
@@ -2222,10 +2223,10 @@ Vector & A one-dimensional data structure in R that can hold multiple elements o
 \section{Variable Name Table}\label{variable-name-table}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2603}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2603}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Rule
@@ -3070,7 +3071,7 @@ Once a package is installed, you need to \textbf{load it} into your R session us
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/04-praise-loaded.png}}
+\includegraphics{img/04-praise-loaded.png}
 \caption{\label{fig:unnamed-chunk-131}Loading Packages through RStudio Interface}
 \end{figure}
 
@@ -3119,11 +3120,7 @@ There is one significant difference between installing and loading packages thro
 Let's test the \texttt{praise} package, which generates random compliments (not groundbreaking, but fun to use!). After loading the package, run:
 
 \begin{verbatim}
-## Warning: package 'praise' was built under R version 4.3.3
-\end{verbatim}
-
-\begin{verbatim}
-## [1] "You are extraordinary!"
+## [1] "You are neat!"
 \end{verbatim}
 
 \begin{Shaded}
@@ -3225,7 +3222,7 @@ There are important rules to follow when writing code to install and load packag
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/04-packages-convention.png}}
+\includegraphics{img/04-packages-convention.png}
 \caption{\label{fig:unnamed-chunk-140}Conventions for Installing and Loading Packages in R Script}
 \end{figure}
 
@@ -3266,7 +3263,7 @@ To import the ``psycho.csv'' file, please follow these steps:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro"
+## [1] "/Users/ryandonovan 1/Desktop/rintro"
 \end{verbatim}
 
 \begin{Shaded}
@@ -3353,8 +3350,8 @@ For the next few weeks, we will focus on using R to run descriptive and inferent
 \section{Glossary}\label{glossary-2}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3099}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6901}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3099}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6901}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Term}
@@ -3379,7 +3376,7 @@ In this weeks workshop, we are going to learn how to perform descriptive statist
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/05-T-tests.png}}
+\includegraphics{img/05-T-tests.png}
 \caption{A graphical image illustrating the two main types of t-test. The first shows two groups of people with the header ``unpaired-t-test'' and a caption underneath reading ``Is there a difference between two groups''. The second shows the same group of people with a clock between them, the caption ``paired t-test'' and written underneath is ``Is there a difference in a group between two points in time''.}
 \end{figure}
 
@@ -3446,7 +3443,7 @@ As we have two independent groups we want to compare, this would be best address
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/05-IndependentSamples t-test.png}}
+\includegraphics{img/05-IndependentSamples t-test.png}
 \caption{A graphical image which shows two groups of people with the header ``unpaired-t-test'' and a caption underneath reading ``Is there a difference between two groups''.}
 \end{figure}
 
@@ -3532,7 +3529,7 @@ If your value is \textbf{greater than} or equal to 0.05 (aka p \textgreater{} 0.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/05-EffectSizes.jpg}}
+\includegraphics{img/05-EffectSizes.jpg}
 \caption{A picture that says I love effect sizes.}
 \end{figure}
 
@@ -3595,7 +3592,7 @@ As all participants take part in both conditions (e.g.~are tested at two timepoi
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{img/05-PairedT-Test.png}}
+\includegraphics{img/05-PairedT-Test.png}
 \caption{A graphical image which shows the same group of people with a clock between them, the caption ``paired t-test'' and written underneath is ``Is there a difference in a group between two points in time''.}
 \end{figure}
 
@@ -3686,6 +3683,295 @@ If we want to run a paired samples-test, then we can change the type from ``two.
            \AttributeTok{power =} \FloatTok{0.80}\NormalTok{,     }\CommentTok{\# Desired power level}
            \AttributeTok{type =} \StringTok{"paired"}\NormalTok{,  }\CommentTok{\# Indicates an independent t{-}test}
            \AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)  }\CommentTok{\# Indicates a two{-}tailed test, \#can be changed to "one.sided"}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{Correlation in R}\label{correlation-in-r}
+
+In this weeks workshop, we are going to learn how to perform correlation analyses along with the relevant descriptive statistics and assumption checks.
+
+\includegraphics{img/Corrs.png} By the end of this session, you will be able to:
+
+\begin{itemize}
+\item
+  Use the jmv package to run descriptive statistics and check assumptions.
+\item
+  Conduct a simple correlation in R.
+\item
+  Conduct a multiple correlation R.
+\item
+  Learn how to make pretty correlation graphs.
+\item
+  Conduct an apriori power analysis in R for correlations.
+\end{itemize}
+
+\section{How to read this chapter}\label{how-to-read-this-chapter-3}
+
+This chapter aims to supplement your in-lecture learning about correlations, to recap when and why you might use them, and to build on this knowledge to show how to conduct correlations in R.
+
+\section{Activities}\label{activities-3}
+
+As in previous sessions there are several activities associated with this chapter. \href{https://ryandonovan.quarto.pub/week5---activities/}{You can find them here} or on Canvas under the \textbf{Week 5 module}.
+
+\section{Correlations}\label{correlations}
+
+Todays data was collected from a cross-sectional study examining the relationship between sleep difficulty, anxiety, and depression.
+
+After loading the datasets, it's always good practice to inspect it before doing any analyses. You can use the head() function to get an overview of the sleep quality dataset:
+
+Now that our environment is set up and our dataset is loaded, we are ready to dive into descriptive statistics \& check our assumptions.
+
+Last week we learned how to use descriptives function to do both of these things.
+
+Let's imagine we're interested in investigating the relationship between depression and anxiety. Specifically we predict that higher levels of depression (as shown by higher scores) will be associated with higher anxiety levels (as shown by higher scores).
+
+\textbf{In this case:}
+
+Our variables are 1) depression and 2) anxiety
+
+We could specify our hypothesis as such:
+
+\textbf{H1:} We predict that higher depression will be positively correlated with higher anxiety scores.
+
+\textbf{H0 (Null hypothesis):} There will not be a significant correlation between depression scores and anxiety scores
+
+Note that as we do specify the direction of the association / correlation that this is a directional hypothesis.
+
+As we are interested in the relationship between two continuous variables, this would be best addressed via a simple correlation. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the assumptions required for a correlation.
+
+Remember that for correlations the two main outcomes of interest are \textbf{direction} and \textbf{strength}
+
+\begin{itemize}
+\item
+  \textbf{Direction}: In a positive correlation one variable goes up as the other does. In a negative correlation as one variable goes up the other goes down.
+\item
+  \textbf{Strength}: Measured via Pearsons r usually, spans form 0-0.2 (negligible), to 0.9-1 (very strong).
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{img/StrenDir.png}
+\caption{Correlation Strength \& Direction}
+\end{figure}
+
+\textbf{Checking our assumptions}
+
+There are two main types of correlation you might use: Pearsons and Spearmans.
+
+\textbf{Pearsons Correlation:} This type of correlation assumes a linear relationship between variables.
+
+\textbf{Spearmans Correlation:} This type of correlation relies on ranks and is more robust against outliers, but is less efficient for large datasets.
+
+For the purposes of this workshop, you would typically use Pearsons correlation, unless the below assumptions are not met.
+
+\textbf{There are several key assumptions for conducting Pearsons simple correlation:}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  The data are continuous, and are either interval or ratio.
+\end{enumerate}
+
+\textbf{Interval data:} Data that is measured on a numeric scale with equal distance between adjacent values, that does not have a true zero. This is a very common data type in research (e.g.~Test scores, IQ etc).
+
+\textbf{Ratio data:} Data that is measured on a numeric scale with equal distance between adjacent values, that has a true zero (e.g.~Height, Weight etc).
+
+For the purposes of this workshop we know our two variables are outcomes on a wellbeing test, as such they are interval data and this assumption has been met
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  There is a data point for each participant for both variables.
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  To check this assumption we can simply check if there is any missing data, conveniently descriptives automatically tells us this.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The data are normally distributed for your two variables. Reminder that we can use Shapiro Wilks test to test for this: A \textbf{significant p-value (p \textless{} 0.05)} means that the \emph{assumption has been violated}, and you cannot run Pearsons correlation. A \textbf{not significant p-value (p \textgreater{} 0.05)} means that the \emph{assumption has been met}, and you can proceed.
+\end{enumerate}
+
+For linear models we also use our qqplot to test for this for now. If the dots follow the line for the residuals then this assumption has been met.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(df\_sleep, }\CommentTok{\# our data}
+             \AttributeTok{vars =} \FunctionTok{c}\NormalTok{(}\StringTok{"Depression"}\NormalTok{, }\StringTok{"Anxiety"}\NormalTok{), }\CommentTok{\# our two variables}
+             \AttributeTok{hist =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# this generates a histogram}
+             \AttributeTok{sw =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# this runs shapiro{-}wilks test}
+             \AttributeTok{qq=}\ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# this generates a qq plot }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  The relationship between the two variables is linear. We can check this assumption via a scatterplot to visualise the 2 variables. The syntax is below:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x=}\NormalTok{DataframeName}\SpecialCharTok{$}\NormalTok{Variable1,}\AttributeTok{y=}\NormalTok{DataframeName}\SpecialCharTok{$}\NormalTok{Variable1)}
+\end{Highlighting}
+\end{Shaded}
+
+If there is a straight line in the dots then we can assume this assumption has been met.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  The assumption of homoscedasticity. For this assumption we could check this visually by to creating a plot of the residuals to test for this. For now however we will use a Breusch-Pagan test (1979). For this test: A \textbf{significant p-value (p \textless{} 0.05)} means that the \emph{assumption has been violated}, and you cannot run Pearsons correlation. A \textbf{not significant p-value (p \textgreater{} 0.05)} means that the \emph{assumption has been met}, and you can proceed.
+\end{enumerate}
+
+This test will come up again next week for regressions (As will plotting residuals) but for now to do this we will create a linear model, and then use the function check\_heteroscasticity from the performance package.
+
+If we get a non-significant p-value then the data is homoscedastic and our assumption has been met. The syntax for this is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nameForModel }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(DV }\SpecialCharTok{\textasciitilde{}}\NormalTok{ IV, }\AttributeTok{data =}\NormalTok{ ourDataFrame) }\CommentTok{\# here we are creating an object "nameForModel" which contatins a linear model of our DV \textasciitilde{} IV }
+\FunctionTok{check\_heteroscedasticity}\NormalTok{(nameForModel) }\CommentTok{\# this function performs a Breusch{-}Pagan test for our model}
+\end{Highlighting}
+\end{Shaded}
+
+As we can see our assumptions have been met we can use a Pearson correlation to test our hypotheses.
+
+\textbf{Running the Simple Correlation}
+
+We use the correlation function to perform the correlation. The syntax is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remember you need to edit the specific names/variables below to make it work for our data and needs}
+
+\FunctionTok{cor.test}\NormalTok{(DataframeName}\SpecialCharTok{$}\NormalTok{Variable1, DataframeName}\SpecialCharTok{$}\NormalTok{Variable2, }\AttributeTok{method =} \StringTok{"pearson"}\NormalTok{ OR }\StringTok{"spearman"}\NormalTok{, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{ or }\StringTok{"less"}\NormalTok{ or }\StringTok{"greater"}\NormalTok{)}
+
+\CommentTok{\# alternative specifies whether it\textquotesingle{}s a one or two{-}sided test, or one{-}sided. "greater" corresponds to positive association, "less" to negative association}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Here's how we might write up the results in APA style:}
+
+A Pearsons correlation was conducted to assess the relationship between depression (M= \textbf{Depression Mean}, SD= \textbf{Depression Standard Deviation}) and anxiety scores (M= \textbf{Anxiety Mean}, SD= \textbf{Anxiety Standard Deviation}). The test showed that there was a significant positive correlation between the two variables r(\textbf{degrees of freedom}) = \textbf{Pearsons r}, p = \textbf{p value}. As such we reject the null hypothesis.
+
+\textbf{Multiple Correlations}
+
+Sometimes we're interested in the associations between multiple variables. In todays dataset we have sleep difficulty, optimism, depression, and anxiety. As such we might be interested in the relationship between all four variables.
+
+In addition to our earlier prediction regarding depression and anxiety we could also predict:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  that greater sleep difficulty (as shown by higher values) will be associated with higher anxiety and depression levels (as shown by higher scores).
+\item
+  that greater optimism (as shown by higher values) will be associated with lower anxiety and depression levels (as shown by lower scores).
+\end{enumerate}
+
+In this case:
+
+Our variables are 1) depression, 2) anxiety, 3) sleep difficulty, and 4) optimism.
+
+As we are interested in the relationship between four continuous variables, this would be best addressed via a multiple correlation. Before we can do this, there are a couple of preliminary steps we need to take.
+
+A lot of the steps are very similar to a simple correlation. So we can refer to the above sections for help if we get unsure.
+
+\emph{Assumptions} The assumptions for a multiple correlation are the same as for a simple correlation, we just need to check for all our variables. The pairs.panels function can be helpful to get the relevant visualisations to check our assumptions for all variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pairs.panels}\NormalTok{(DataFrameName)}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that pairs.panel gives us the relevant outputs for all variables (including paritipant number.. which we can see is not normally distributed)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pairs.panels}\NormalTok{(df\_sleep)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Running the multiple correlation} We need a slightly different syntax for multiple correlations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{correlation}\NormalTok{(DataframeName, }\CommentTok{\# our data}
+            \AttributeTok{select =} \FunctionTok{c}\NormalTok{(}\StringTok{"Variable1"}\NormalTok{, }\StringTok{"Variable2"}\NormalTok{, }\StringTok{"Variable3"}\NormalTok{, }\StringTok{"Variable4"}\NormalTok{), }\CommentTok{\# our variables}
+             \AttributeTok{method =} \StringTok{"pearson"}\NormalTok{ OR }\StringTok{"spearman"}\NormalTok{,}
+            \AttributeTok{p\_adjust =} \StringTok{"bonferroni"}\NormalTok{) }\CommentTok{\# our bonferroni adjustment for multiple comparisons}
+
+\CommentTok{\# Note that we do not specify the direction of our predicted correlation here as some may be positive and others may be negative}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Multiple Comparisons} You may recall from your lectures that conducting multiple statistical tests can be problematic in regards to our alpha level.
+
+When we set our alpha at 0.05 that is setting our Type 1 (False Positive) rate at 5\%. If we then run multiple tests however that rate goes up, with the rate increasing with every test you run. One way to avoid this problem is to use adjusted p-values. The one we're using here is the bonferroni adjustment, which multiplies the p value by the number of comparisons.
+
+\begin{figure}
+\centering
+\includegraphics{img/Bonferroni.png}
+\caption{Bonferroni Adjustment}
+\end{figure}
+
+\textbf{Correlation Matrices} We need to visualize our data not only to check our assumptions but also to include in our write-up / results / dissertations. As you may see above the write-up for a multiple correlation can be lengthy/confusing, and a good graphic can help your reader (and you) understand the results more easily.
+
+Today we'll be using the ggcorrplot function. We will learn a lot more about making visualizations in week 9, but for today we will learn how to clearly visualize our correlation results.
+
+If you type in ?ggcorrplot to your console you can see there are many optional arguments you can use to customize your graph.
+
+\textbf{NB} to use ggcorrplot you need to have saved the results of your correlation using the following syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{OutputName }\OtherTok{\textless{}{-}} \FunctionTok{correlation}\NormalTok{(DataframeName, }\CommentTok{\# our data}
+            \AttributeTok{select =} \FunctionTok{c}\NormalTok{(}\StringTok{"Variable1"}\NormalTok{, }\StringTok{"Variable2"}\NormalTok{, }\StringTok{"Variable3"}\NormalTok{, }\StringTok{"Variable4"}\NormalTok{), }\CommentTok{\# our variables}
+             \AttributeTok{method =} \StringTok{"pearson"}\NormalTok{ OR }\StringTok{"spearman"}\NormalTok{,}
+            \AttributeTok{p\_adjust =} \StringTok{"bonferroni"}\NormalTok{) }\CommentTok{\# our bonferroni adjustment for multiple comparisons}
+
+\CommentTok{\# Note that we do not specify the direction of our predicted correlation here as some may be positive and others may be negative}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Power Analyses} Here we are going to learn about how to conduct a power analysis for a correlation.
+
+As you may recall there are some key pieces of information we need for a power analysis, and some specifics that we need for a correlation:
+
+\begin{itemize}
+\item
+  Alpha level (typically 0.05 in Psychology and the social sciences)
+\item
+  The minimum correlation size of interest
+\item
+  Our desired power
+\item
+  If our test is one or two-tailed (i.e.~do we have a directional or nondirectional hypothesis)
+\end{itemize}
+
+The syntax for conducting an apriori statistical power analysis for a simple correlation is the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conduct power analysis for a simple correlation}
+\FunctionTok{pwr.r.test}\NormalTok{(}\AttributeTok{r =} \FloatTok{0.2}\NormalTok{, }\CommentTok{\# your expected correlation value}
+           \AttributeTok{sig.level =} \FloatTok{0.05}\NormalTok{, }\CommentTok{\# Significance level}
+           \AttributeTok{power =} \FloatTok{0.80}\NormalTok{, }\CommentTok{\# Desired power level}
+\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{) }\CommentTok{\# Indicates a two{-}tailed test, \#can be changed to less or greater}
 \end{Highlighting}
 \end{Shaded}
 

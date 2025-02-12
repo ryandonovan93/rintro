@@ -298,7 +298,7 @@ Luckily, we can see that our data has met this parametric assumption (as the p v
 
 ## Activity 6: Running the Independent Samples T-test
 
-![](images/05-IndependentSamples t-test.png){fig-alt="The image shows two groups of people with the header \"unpaired-t-test\" and a caption underneath reading \"Is there a difference between two groups\"." fig-align="center"}
+![](images/05-IndependentSamples%20t-test.png){fig-alt="The image shows two groups of people with the header \"unpaired-t-test\" and a caption underneath reading \"Is there a difference between two groups\"." fig-align="center"}
 
 We use the `t.test` function to perform the t-test. The syntax is:
 

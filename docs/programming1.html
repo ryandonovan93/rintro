@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Programming Fundamentals in R (Part I) | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Programming Fundamentals in R (Part I) | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -262,6 +262,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#power-analyses"><i class="fa fa-check"></i><b>5.9</b> Power analyses</a></li>
 <li class="chapter" data-level="5.10" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#power-analysis-for-an-independent-samples-t-test"><i class="fa fa-check"></i><b>5.10</b> Power analysis for an independent samples t-test</a></li>
 <li class="chapter" data-level="5.11" data-path="descriptive-statistics-and-t-tests-in-r.html"><a href="descriptive-statistics-and-t-tests-in-r.html#power-analysis-for-a-paired-samples-t-test"><i class="fa fa-check"></i><b>5.11</b> Power analysis for a paired-samples t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="correlation-in-r.html"><a href="correlation-in-r.html"><i class="fa fa-check"></i><b>6</b> Correlation in R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="correlation-in-r.html"><a href="correlation-in-r.html#how-to-read-this-chapter-3"><i class="fa fa-check"></i><b>6.1</b> How to read this chapter</a></li>
+<li class="chapter" data-level="6.2" data-path="correlation-in-r.html"><a href="correlation-in-r.html#activities-3"><i class="fa fa-check"></i><b>6.2</b> Activities</a></li>
+<li class="chapter" data-level="6.3" data-path="correlation-in-r.html"><a href="correlation-in-r.html#correlations"><i class="fa fa-check"></i><b>6.3</b> Correlations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -690,7 +696,7 @@ Figure 3.3: Indexing for Logical Vector
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="programming1.html#cb122-1" tabindex="-1"></a>p11 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">175</span>)</span></code></pre></div>
 <p>So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
-<img src="img/03-vectors-summarised.png" alt="Vectors can visually conceptualised as a column or row of data."  />
+<img src="img/03-vectors-summarised.PNG" alt="Vectors can visually conceptualised as a column or row of data."  />
 <p class="caption">
 Figure 3.4: Vectors can visually conceptualised as a column or row of data.
 </p>
@@ -869,65 +875,65 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <col width="66%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Term</th>
 <th>Definition</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Assignment</td>
 <td>The process of assigning a value to a variable using the assignment operator (<code>&lt;-</code> or <code>=</code>).</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Character</td>
 <td>A data type representing text or strings of characters.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Data Frame</td>
 <td>A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Data Type</td>
 <td>The classification of data values into categories, such as numeric, logical, integer, or character.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Element</td>
 <td>An individual item or value within a data structure, such as a character in a vector.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Index</td>
 <td>A numerical position or identifier used to access elements within a vector or other data structures.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Indexing</td>
 <td>The process of selecting specific elements from a data structure using their index values.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Integer</td>
 <td>A data type representing whole numbers without decimals.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Logical</td>
 <td>A data type representing binary values (TRUE or FALSE), often used for conditions and logical operations.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Numeric</td>
 <td>A data type representing numeric values, including real numbers and decimals.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Object</td>
 <td>A fundamental data structure in R that can store data or values. Objects can include vectors, data frames, and more.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Subsetting</td>
 <td>The technique of selecting a subset of elements from a data structure, such as a vector or data frame, based on specific criteria.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Variable</td>
 <td>A named storage location in R that holds data or values. It can represent different types of information.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Vector</td>
 <td>A one-dimensional data structure in R that can hold multiple elements of the same data type.</td>
 </tr>
@@ -944,7 +950,7 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <col width="24%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Rule</th>
 <th>Type</th>
 <th>Incorrect Example</th>
@@ -952,61 +958,61 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Variable names can only contain uppercase alphabetic characters A-Z, lowercase a-z, numeric characters 0-9, periods ., and underscores _.</td>
 <td>Strict</td>
 <td>1st_name</td>
 <td>first_name</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Variable names must begin with a letter or a period.</td>
 <td>Strict</td>
 <td>_1stname</td>
 <td>.firstname</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Avoid using spaces in variable names.</td>
 <td>Strict</td>
 <td>my name</td>
 <td>my_name</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Variable names are case-sensitive.</td>
 <td>Strict</td>
 <td>my_name == my_Name</td>
 <td>my_Name == my_Name</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Variable names cannot include special words reserved by R.</td>
 <td>Strict</td>
 <td>print</td>
 <td>to_print</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Choose informative variable names that clearly describe the information they represent.</td>
 <td>Recommended</td>
 <td>money</td>
 <td>income</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Opt for short variable names when possible.</td>
 <td>Recommended</td>
 <td>date_of_birth</td>
 <td>dob</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Prioritize clarity over brevity.</td>
 <td>Recommended</td>
 <td>tem</td>
 <td>total_exam_marks</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Avoid starting variable names with a capital letter.</td>
 <td>Recommended</td>
 <td>FirstName</td>
 <td>firstName</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Choose a consistent naming style and stick to it.</td>
 <td>Recommended</td>
 <td>myName, last_Name</td>
