@@ -1,0 +1,212 @@
+# **Regression in R**
+
+In this weeks workshop, we are going to learn how to perform regression analyses along with the relevant descriptive statistics and assumption checks.
+
+By the end of this session, you will be able to:
+
+-   Conduct a linear regression in R & check your assumptions.
+
+-   Conduct a multiple regression R & check your assumptions.
+
+-   Create graphs to visualize your results
+
+## How to read this chapter
+
+This chapter aims to supplement your in-lecture learning about regression, to recap when and why you might use them, and to build on this knowledge to show how to conduct regression analyses in R.
+
+## Activities
+
+As in previous sessions there are several activities associated with this chapter. [You can find them here](https://ryandonovan.quarto.pub/week7---activities/) or on Canvas under the **Week 7 module**.
+
+## Linear Regression
+
+Today's data was extracted and amended from The Movie Database, and contains various data on movies such as it's budget, revenue earned, genre, popularity rating, and vote rating.
+
+Let's imagine we're interested in investigating the relationship between a films budget (how much was spent on it) and the revenue it generated at box office. Specifically we predict that higher initial budgets will be predict with higher revenue. This is similar to the last chapter on correlation, except for now we are talking about predictions or causal relationships, as opposed to associations.
+
+**In this case:**
+
+Our **predictor** variable is: budget
+
+Our **outcome measure (DV)** is: revenue
+
+We could specify our hypothesis as such:
+
+**H1:** We hypothesis that budget will significantly predict revenue.
+
+**H0 (Null hypothesis):** Budget will not significantly predict revenue.
+
+As we are interested in the whether a variable predicts a continuous variable, this would be best addressed via a linear regression.
+
+Due to a quirk in how R works we have to run the regression before we can check our assumptions.
+
+## Running the Linear Regression
+
+The syntax for a regression is:
+
+```{r eval=FALSE}
+# Remember you need to edit the specific names/variables below to make it work for our data and needs
+
+LR <- lm(DV ~ IV, data = OurData) # here we are creating an object "LR" which contatins a linear model of our DV ~ IV 
+```
+
+To review the results of our linear regression we use the summary function on the object LR we just created. We are going to save this as an object "LR_summary" which will enable us to:
+
+Check the results by typing that in to our console
+
+Use this object later on when we calculate our effect size
+
+```{r eval=FALSE}
+LR_summary <- summary(LR)
+```
+
+## Checking our assumptions for a Linear Regression
+
+*a. The outcome / DV is continuous, and is either interval or ratio.*
+
+**Interval data:** Data that is measured on a numeric scale with equal distance between adjacent values, that does not have a true zero. This is a very common data type in research (e.g. Test scores, IQ etc).
+
+**Ratio data:** Data that is measured on a numeric scale with equal distance between adjacent values, that has a true zero (e.g. Height, Weight etc).
+
+For the purposes of this workshop we know our outcome is revenue (measured as money) and as such does have a true zero. As such it is ratio data and this assumption has been met
+
+*b. The predictor variable is interval or ratio or categorical (with two levels).*
+
+*c. All values of the outcome variable are independent (i.e., each score should come from a different observation - participants, or in this case movie)*
+
+*d. The predictors have non-zero variance* This assumption means that there is spread / variance in the dataset. In short there would be no real point in running a regression if every observation (movie) had the same value. We can best assess this via visualisation, in this case a scatterplot between budget and revenue. We learned how to make a simple scatterplot last week.
+
+```{r eval=FALSE}
+plot(x=OurData$predictor,y=OurData$outcome)
+```
+
+*e. The relationship between outcome and predictor is linear*
+
+*f. The residuals should be normally distributed*
+
+*g. The assumption of homoscedasticity.*
+
+**Assumptions e-g:**
+
+These assumptions may all be checked visually for a regression, and conveniently using the function check_model.
+
+```{r eval=FALSE}
+check_model(LR) # our model name (which we saved earlier) goes into the function here
+```
+
+## Linear Regression effect size and write-up
+
+The effect size which is used for regressions is f2. This is interpreted using the following rule of thumb: - Small = \~ 0.02
+
+-   Medium = \~0.15
+
+-   Large = \~0.35
+
+There is currently no function to calculate this, so we use the below syntax:
+
+```{r eval=FALSE}
+f2 <- LR_summary$adj.r.squared/(1 - LR_summary$adj.r.squared)
+# in this function "LR_summary" is the object we made earlier which was summary(OurModel/LR)
+```
+
+We get our descriptive statistics as we have previously, using the descriptives function.
+
+**Here's how we might write up the results in APA style:**
+
+A simple linear regression was performed with **Variable A** (M= **Variable A Mean**, SD= **Variable A Standard Deviation**) as the outcome variable and **Variable B** (M= **Variable B Mean**, SD= **Variable B Standard Deviation**) as the predictor variable. The results of the regression indicated that the model significantly predicted **Variable A** (F(**degrees of freedom**) = **F statistic**,**p value**, Adjusted R2 = **Adjusted R2**, f2 = **f2**), accounting for **R2 by 100**% of the variance. **Variable B** was a significant predictor ($\beta$ = **estimate**, p \*\*p value\*). As such we reject the null hypothesis.
+
+## Multiple Regression
+
+Sometimes we're interested in the impact on multiple predictors on an outcome variable.
+
+In addition to our earlier prediction regarding budget and revenue we could also predict:
+
+1)  that a movies genre will predict its revenue.
+
+**In this case:**
+
+Our **predictor** variables are: budget, and genres
+
+Our **outcome measure** (DV) is: revenue
+
+As we are interested in the impact of two predictor variables on a continuous outcome variable this would be best addressed via a multiple regression.
+
+A lot of the steps are very similar to a simple linear regression. So we can refer to the above sections for help if we get unsure. Again due to a quirk in how R works we have to run the regression before we can check our assumptions.
+
+The syntax for a regression is:
+
+```{r eval=FALSE}
+# Remember you need to edit the specific names/variables below to make it work for our data and needs
+
+MR <- lm(DV ~ IV1*IV2*IV3, data = OurData) # here we are creating an object "LR" which contatins a linear model of our DV ~ IV 
+# Each predictor goes in place of "IV"
+```
+
+To review the results of our linear regression we use the summary function on the object MR we just created. We are going to save this as an object "LR_summary" which will enable us to:
+
+Check the results by typing that in to our console
+
+Use this object later on when we calculate our effect size
+
+```{r eval=FALSE}
+MR_summary <- summary(MR)
+```
+
+## Checking our assumptions for a Multiple Regression
+
+*a. The outcome / DV is continuous, and is either interval or ratio.*
+
+**Interval data:** Data that is measured on a numeric scale with equal distance between adjacent values, that does not have a true zero. This is a very common data type in research (e.g. Test scores, IQ etc).
+
+**Ratio data:** Data that is measured on a numeric scale with equal distance between adjacent values, that has a true zero (e.g. Height, Weight etc).
+
+For the purposes of this workshop we know our outcome is revenue (measured as money) and as such does have a true zero. As such it is ratio data and this assumption has been met
+
+*b. The predictor variable is interval or ratio or categorical (with two levels).*
+
+*c. All values of the outcome variable are independent (i.e., each score should come from a different observation - participants, or in this case movie)*
+
+*d. The predictors have non-zero variance* This assumption means that there is spread / variance in the dataset. In short there would be no real point in running a regression if every observation (movie) had the same value. We can best assess this via visualisation, in this case a scatterplot between budget and revenue. We learned how to make a simple scatterplot last week.
+
+```{r eval=FALSE}
+plot(x=OurData$predictor,y=OurData$outcome)
+```
+
+*e. The relationship between outcome and predictor is linear*
+
+*f. The residuals should be normally distributed*
+
+*g. The assumption of homoscedasticity.*
+
+*h. The assumption of multicolinearity.*
+
+The assumptions for a multiple regression are the same as for a linear regression but with one extra Multicolinearity. Simply put this assumption means that none of our predictors can be too correlated with each other. Multicolinearity is commonly assessed via Variance Inflation Factor (VIF).This will automatcially be calculated via the check_model function.
+
+**Assumptions e-h:**
+
+These assumptions may all be checked visually for a regression, and conveniently using the function check_model.
+
+```{r eval=FALSE}
+check_model(MR) # our model name (which we saved earlier) goes into the function here
+```
+
+## Multiple Regression effect size and write-up
+
+As with above, the effect size which is used for regressions is f2. This is interpreted using the following rule of thumb: - Small = \~ 0.02
+
+-   Medium = \~0.15
+
+-   Large = \~0.35
+
+There is currently no function to calculate this, so we use the below syntax:
+
+```{r eval=FALSE}
+Mf2 <- MR_summary$adj.r.squared/(1 - MR_summary$adj.r.squared)
+# in this function "LR_summary" is the object we made earlier which was summary(OurModel/LR)
+```
+
+We get our descriptive statistics as we have previously, using the descriptives function.
+
+**Here's how we might write up the results in APA style:**
+
+A multiple regression was performed with **Variable A** (M= **Variable A Mean**, SD= **Variable A Standard Deviation**) as the outcome variable and **Variable B** (M= **Variable B Mean**, SD= **Variable B Standard Deviation**), and **Variable C** (M= **Variable C Mean**, SD= **Variable C Standard Deviation**) as the predictor variables.The results of the regression indicated that the model significantly predicted **Variable A** (F(**degrees of freedom**) = **F statistic**,**p value**, Adjusted R2 = **Adjusted R2**, f2 = **f2**), accounting for **R2 by 100**% of the variance.**Variable B** was a significant predictor ($\beta$ = **estimate**, p **p value**), but **Variable C** was not a significant predictor ($\beta$ = **estimate**, p **p value**). There **was / was not** a significant interaction between Variable B and C ($\beta$ = **estimate**, p **p value**.

@@ -4,7 +4,8 @@ rmd_files: ["index.Rmd",
             "03-programming-p1.Rmd",
             "04-programming-p2.Rmd",
             "05-t-tests.Rmd",
-            "06-correlational.Rmd"]
+            "06-correlational.Rmd",
+            "07-regression.Rmd"]
 output_dir: "docs"
 language:
   ui:

@@ -1,4 +1,4 @@
-# Descriptive Statistics and T-Tests in R
+# **Descriptive Statistics and T-Tests in R**
 
 In this weeks workshop, we are going to learn how to perform descriptive statistics and conduct both independent and paired-samples t-tests (which you covered in today's lecture).
 
@@ -62,7 +62,7 @@ Note that as we do not specify which group will have higher/lower health levels 
 
 As we have two independent groups we want to compare, this would be best addressed via an **independent samples t-test**. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the parametric assumptions required for an independent samples t-test.
 
-![A graphical image which shows two groups of people with the header "unpaired-t-test" and a caption underneath reading "Is there a difference between two groups".](img/05-IndependentSamples t-test.png)
+![A graphical image which shows two groups of people with the header "unpaired-t-test" and a caption underneath reading "Is there a difference between two groups".](img/05-IndependentSamples%20t-test.png)
 
 **Checking our parametric assumptions**
 

@@ -1,0 +1,6 @@
+- source: 07-workshop-activities.qmd
+  quarto-pub:
+    - id: e5c7008b-1fa7-4ba4-bd3c-015ff2cf77f1
+      url: 'https://ryandonovan.quarto.pub/week7---activities-(regression'
+    - id: dbc208f5-6194-485b-8694-dc1cffeac7e8
+      url: 'https://ryandonovan.quarto.pub/week7---activities'
