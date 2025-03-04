@@ -1,0 +1,858 @@
+---
+title: "Week 8 Activities (Anova in R)"
+format: 
+  html:
+    toc: true
+    toc-depth: 4
+    code-overflow: wrap
+    code-annotations: hover
+  docx:
+    toc: true
+    highlight-style: github
+editor: visual
+---
+
+In this week's workshop, we will learn how to run a **one-way between-subjects ANOVA** and a **factorial ANOVA** in R.
+
+# Setting Up R
+
+Before we begin, let's ensure your working environment is ready for today's session. Open **RStudio** or **Posit Cloud**, and follow the steps below.
+
+## Activity 1: Set Up Your Working Directory & R Script
+
+Each time we work in R, it's important to set up our **working directory**. This is the folder where R looks for files when importing data and where it saves any files you export.
+
+If you don’t set the working directory, R may not be able to locate your dataset, or you might not know where your exported files have been saved. Setting the working directory beforehand helps keep everything organised and prevents these issues.
+
+::: {.callout-tip collapse="true"}
+## Reminder on Steps to Set Up Your Working Directory
+
+1.  Click:\
+    **Session → Set Working Directory → Choose Directory**
+
+2.  Navigate to the folder you created for this course (this should be the same folder you used for previous workshops).
+
+3.  Create a new folder called `week8` inside this directory.
+
+4.  Select the `week8` folder and click **Open**.
+
+Don't forget to verify your working directory before we get started
+
+You can always check your current working directory by typing in the following command in the console:
+
+```{r}
+getwd()
+```
+:::
+
+As in previous weeks we will create an **R script** that we can use for today's activities. This week we'll name the script as `08-anova`
+
+::: {.callout-tip collapse="true"}
+## Reminder on creating an R script
+
+1.  Go to the menu bar and select:\
+    **File → New File → R Script**
+
+    This will open an untitled R script.
+
+2.  To save and name your script, select:
+
+    **File→ Save As**, then enter the name:
+
+    `08-anova`
+
+    Click **Save**
+:::
+
+At the top of your R script type in and run the following code (this turns off scientific notation from your output):
+
+```{r}
+options(scipen = 999)
+```
+
+## Activity 2: Installing / Loading R Packages
+
+We will use several R packages to simplify our analysis. Ensure you have them installed and loaded.
+
+**REMEMBER**: If you encounter an error message like "`Error in library(package name): there is no packaged calledpackage name`", you'll need to install the package first by editing the following for your console:
+
+```{r eval=FALSE}
+install.packages("package name") #replace "package name" with the actual package name
+```
+
+Here are the packages we will be using today. Make sure that you have loaded in each of these packages by running the following lines of code.
+
+```{r eval=F}
+
+
+library(patchwork) #helps build useful plots
+library(car) #for checking assumptions
+library(afex) #For running our ANOVA models
+library(tidyverse) #Data manipulation
+library(pwr) #power analysis
+library(lsr) #effect size calculations
+library(emmeans) #Computes post-hoc tests
+library(performance) #Assesses models performances and assumptions
+library(jmv) #Descriptive statistics
+
+```
+
+```{r echo = F, warning = F, output = F}
+
+library(patchwork) 
+library(car) 
+library(afex)
+library(tidyverse)
+library(pwr) 
+library(lsr)
+library(emmeans)
+library(performance)
+library(jmv)
+
+```
+
+## Activity 3: Load Your Datasets
+
+This week, we will work with **four separate datasets**. You can find these datasets on **Canvas**.
+
+-   **`psycho.csv`** → Dataset for the **One-Way ANOVA Example**\
+-   **`caffeine_mood.csv`** → Dataset for the **One-Way ANOVA Exercise**\
+-   **`anxiety_treatment.csv`** → Dataset for the **Factorial ANOVA Example**\
+-   **`diet_exercise.csv`** → Dataset for the **Factorial ANOVA Exercise**
+
+***Download these files onto your computer and move them to your `week8` folder.***
+
+# One Way ANOVA - Example & Exercise
+
+## Activity 4: One-Way Between Subjects ANOVA Example
+
+In recent years, there has been a growing interest in exploring the therapeutic potential of psychoactive treatments for mental health. This dataset examines the effects of Psilocybin and DMT on Neuroticism, a personality trait associated with various psychological disorders. The researchers investigated whether the administration of Psilocybin and DMT had a significant effect on participants' Neuroticism levels.
+
+***ResearchQuestion***: Is there an effect of psychoactive treatment on Neuroticism?
+
+**Hypotheses**:
+
+*H₀ (Null Hypothesis)***:** There is no effect of psychoactive treatment on Neuroticism.
+
+*H₁ (Alternative Hypothesis):* There is an effect of psychoactive treatment on Neuroticism.
+
+***Method***: 60 participants were recruited and randomly assigned to one of three groups: Psilocybin, DMT, or Placebo. One-day after taking the substance, participants completed a Neuroticism Measure.
+
+***Our task***: Run a One-Way ANOVA to see if there is an effect of Psychoactive treatment on Neuroticism.
+
+### Step 1: Load in and check your Dataset
+
+First, we need to load the dataset into R using the `read.csv()` function:
+
+```{r}
+
+df_psycho <- read.csv("psycho.csv")
+
+```
+
+Once a dataset is loaded, it’s important to always verify that:
+
+1.  It has been loaded correctly.
+
+2.  It contains the expected data.
+
+We can use the `head()` function to quickly check this by displaying the first 6 rows of the dataset.
+
+```{r}
+
+head(df_psycho)
+
+```
+
+Another way you can quickly sanity check your dataset is by checking the last few rows with the `tail()` function. The `tail()` function works like the `head()` function, the only difference being it prints the last 6 rows of the dataset.
+
+```{r}
+
+tail(df_psycho)
+```
+
+::: {.callout-tip title="What if I want to view the entire dataset?" collapse="true"}
+![You can click on the dataset in the Environment page to view it](images/08-view-entire-dataset.gif){fig-align="center"}
+:::
+
+Either way, everything looks in order, so let's get cracking with the analysis.
+
+### Step 2: Conduct Descriptive Statistical Analysis
+
+Now, let's run some descriptive statistics using the `descriptives()` function. This will help us understand the distribution of **Neuroticism** scores across the different treatment groups.
+
+We will first calculate the mean, standard deviation, and other key statistics for Neuroticism, grouped by Treatment:
+
+```{r}
+
+descriptives(data = df_psycho, 
+             vars = "Neuroticism",
+             splitBy = "Treatment"
+)
+
+```
+
+This gives us a first look at the data, but we can refine it further.
+
+If you remember from week 4, we can adjust the `descriptives()` function to remove unnecessary details and add visualizations.
+
+Below, we will:
+
+-   Remove the minimum (`min = FALSE`) and maximum (`max = FALSE`) values. I am removing both just to remove some clutter from our Descriptives output table.
+
+-   Generate visualisations:
+
+    -   A histogram (`hist = TRUE`) with a density overlay (`dens = TRUE`).
+
+    -   A bar plot (`bar = TRUE`).
+
+    -   A boxplot (`box = TRUE`) to examine distribution and possible outliers.
+
+```{r}
+
+descriptives(data = df_psycho, 
+             vars = "Neuroticism",
+             splitBy = "Treatment",
+             min = FALSE,
+             max = FALSE,
+             hist = TRUE, 
+             dens = TRUE,
+             bar = TRUE,
+             box = TRUE
+)
+
+```
+
+From the results, we can observe the following:
+
+-   Participants in the *Psilocybin* group tend to score higher on Neuroticism than those in the *DMT* or *Placebo* groups.
+
+-   The *DMT* and *Placebo* groups have similar Neuroticism scores.
+
+Now let's investigate whether there is a significant effect of Treatment on Neuroticism.
+
+### Step 3: Run our One-Way ANOVA
+
+To run a **one-way ANOVA**, we use the `aov_ez()` function. Below is the general syntax (you will need to replace certain placeholders with the appropriate column names from your dataset):
+
+```{r eval = F}
+
+anova_example_syntax <- aov_ez(id = "The name of the Participant ID column", 
+                    dv = "The name of the dependent variable", 
+                    between = "The name of the independent variable", 
+                    es = "pes", 
+                    type = 3, 
+                    include_aov = TRUE,
+                    data = yourdataset) 
+
+anova(anova_example_syntax) 
+
+
+```
+
+::: {.callout-tip title="Code Explanation" collapse="true"}
+#### Code Explanation
+
+Let's unpack what is going on here code wise:
+
+1.  **`anova_example_syntax <- aov_ez(...)`**: This line of code is creating a new R variable called **`anova_example_syntax`**. This variable will store the results of the one-way ANOVA analysis.
+
+2.  **`id = "the name of your participant ID column"`**: This part specifies the column in your dataset that contains the participant IDs. It helps identify which data points belong to each participant.
+
+3.  **`dv = "the name of your your dependent variable column"`**: Here, you specify the dependent variable
+
+4.  **`between = "the name of your your independent variable column"`**: Here, you specify the independent variable
+
+5.  **`es = "pes"`**: This argument specifies that you want to compute the effect size in terms of partial eta-squared (`pes`).
+
+6.  **`type = 3`**: The **`type`** argument specifies the type of sum of squares used in the ANOVA. Type 3 is often used for balanced designs.
+
+7.  **`include_aov = TRUE`**: This indicates that you want to include the standard ANOVA table as part of the output. It provides additional information about the analysis.
+
+8.  **`data = yourdataset`**: Finally, you specify the dataset on which you want to perform the ANOVA analysis.
+
+#### **Understanding the Output**
+
+-   Running **`anova_example_syntax`** will display the ANOVA results, including the *F-statistic*, *degrees of freedom*, and *p-value*.
+
+-   Running **`anova(anova_example_syntax)`** provides a more detailed table with additional information such as *sum of squares* and *mean squares*.
+
+-   The p-value will help us determine whether the treatment groups significantly differ in Neuroticism scores.
+:::
+
+#### Running Our One-Way ANOVA
+
+Now, let's apply the syntax to our actual dataset, `df_psycho`:
+
+```{r echo=T}
+
+anova_one <- aov_ez(id = "Participant_ID", 
+                    dv = "Neuroticism", 
+                    between = "Treatment", 
+                    es = "pes", 
+                    type = 3, 
+                    include_aov = TRUE,
+                    data = df_psycho) 
+
+anova(anova_one)
+
+
+```
+
+We can see that the main effect of `Treatment` on `Neuroticism` scores was statistically significant (F(2, 57) = 9.05, p \< 0.001). This indicates that there are significant differences in Neuroticism scores among the treatment groups. The effect size (partial eta-squared - under the `ges` column) is 0.241, which suggests that approximately 24.1% of the variance in Neuroticism scores can be attributed to the differences in treatment groups.
+
+::: {.callout-note title="Why does it say `Converting to factor: Treatment'?" collapse="true"}
+Factors are a special data type in R. They enable R to identify categorical variables like:
+
+-   Nationality (levels: Irish, English, Indian, American, French, German, Brazilian)
+
+-   Handiness (e.g. right-handed, left-handed, ambi-dextrous)
+
+-   Experimental Group (e.g. intervention, control)
+
+-   Education Status (e.g. first-year, second-year, third-year, fourth-year, masters, PhD).
+
+In this case, the `aov_ez` function is just converting our Treatment variable into a factor/categorical variable, which is what we want!
+
+Factors are really useful when it comes to data manipulation or data wrangling. But we'll get to that in the last week of the semester.
+:::
+
+### Step 4: Check Parametric Assumptions
+
+Before interpreting our ANOVA results, we need to check whether the test's assumptions are met. Since these assumptions relate to how well the ANOVA models the data, we *evaluate them after running the test* rather than before.
+
+**Assumptions of a One-Way Between-Subjects ANOVA**
+
+1.  The dependent variable (DV) is measured on an *interval* or *ratio* scale.\
+2.  Observations are *independent* (i.e., no repeated measures).\
+3.  The *residuals* should be **normally distributed**.\
+4.  There should be *homogeneity of variance* between groups.
+
+We have already confirmed **Assumption 1** (Neuroticism is ratio data) and **Assumption 2** (each participant is in only one group, ensuring independence).
+
+Now, let's check the remaining assumptions.
+
+**Checking Normality of Residuals**
+
+To verify normality, we will:\
+- **Visualize** residuals with a Q-Q plot.\
+- **Run the Shapiro-Wilk test** (`p > .05` indicates normality).
+
+```{r One-Way ANOVA assumptions, echo=TRUE}
+
+
+qqPlot(residuals(anova_one))
+shapiro.test(residuals(anova_one))
+
+```
+
+#### **Interpreting the Results**
+
+-   In the **Q-Q plot**, the dots should closely follow the diagonal line.
+
+-   In the **Shapiro-Wilk test**, a *p-value greater than .05* suggests that residuals are **normally distributed**.
+
+Since our p-value is **greater than .05 (p \> .05)**, normality is **not violated**.
+
+We test whether all groups have similar variance using **Levene's Test**:
+
+```{r}
+
+test_levene(anova_one)
+
+
+```
+
+#### **Interpreting the Results**
+
+-   If the *p-value is greater than .05*, it means **variance is equal across groups**, satisfying the assumption.
+
+-   We have met this assumption!
+
+### Step 5: Running post-hoc tests
+
+An ANOVA tells us **whether** there is a significant difference between three or more groups, but it does not tell us **where** those differences lie.
+
+If we find a significant result, the next step is to run a *post-hoc test*, which compares each group to every other group to identify the specific differences.
+
+#### **Post-Hoc Test Syntax**
+
+To perform pairwise comparisons, we use the `emmeans()` function:
+
+```{r eval = FALSE}
+
+emmeans(our_anova_model, 
+        pairwise ~ IV, 
+        adjust = "bonferroni")
+
+
+```
+
+**Breaking Down the Code**
+
+1.  **`emmeans(...)`**: Computes pairwise comparisons between groups.
+
+2.  **`our_anova_model`** The variable containing the results of the one-way ANOVA.
+
+3.  **`pairwise ~ IV`** Specifies that we want to compare the levels/groups of the independent variable.
+
+4.  **`adjust = "bonferroni"`** Applies the Bonferroni correction to adjust p-values for multiple comparisons.
+
+**Why Use the Bonferroni Correction?**
+
+When conducting multiple comparisons, the risk of making a Type I error (false positive) increases. The Bonferroni correction reduces this risk by adjusting p-values to be more conservative. There are other types of corrections we can apply, but for this class we will stick with Bonferroni.
+
+#### Running the Post-Hoc Test on Our Data
+
+We now apply this test to our dataset:
+
+```{r}
+
+AOV1_pairwise <-emmeans(anova_one, pairwise ~ Treatment, adjust = "bonferroni")
+
+AOV1_pairwise
+```
+
+**Interpreting the Results**
+
+The output shows the **p-values** for pairwise comparisons between treatment groups:
+
+-   **DMT vs. Psilocybin:** *p \< .001* (significant difference)
+
+-   **Placebo vs. Psilocybin:** *p = .005* (significant difference)
+
+-   **DMT vs. Placebo:** *p = 1.000* (no significant difference)
+
+This means that *participants who took Psilocybin had significantly higher Neuroticism scores* than those in the **Placebo** or **DMT** groups. However, there was *no significant difference* between the **DMT and Placebo** groups.
+
+### Step 6: Writing our results in APA style
+
+A one-way between-subjects ANOVA was conducted to examine the effect of treatment condition (Placebo, Psilocybin, DMT) on Neuroticism scores. This test was selected as the dependent variable was continuous, there was independence of observations, there was homogeneity of variance, and normality of residuals was displayed.
+
+The analysis revealed a significant effect of treatment on Neuroticism, F(2, 57) = 9.05, p \< .001, η²p = .241. This suggests that approximately 24.1% of the variance in Neuroticism scores can be attributed to differences between treatment groups.
+
+Post-hoc pairwise comparisons, using the Bonferroni correction, revealed that:
+
+The Psilocybin group had significantly higher Neuroticism scores than the DMT group (t = -3.97, p = .0006).
+
+The Psilocybin group also had significantly higher Neuroticism scores than the Placebo group (t = -3.31, p = .0049).
+
+No significant difference was found between the DMT and Placebo groups (t = -0.66, p = 1.000).
+
+These results suggest that Psilocybin led to significantly higher Neuroticism scores compared to DMT and Placebo, while DMT and Placebo did not differ significantly.
+
+### Step 7: Power Analysis
+
+A **power analysis** helps determine whether our sample size is sufficient to detect an effect. There are **two types of power analysis**:
+
+1.  **A priori power analysis** – Performed *before* data collection to determine the required sample size.\
+2.  **Post-hoc power analysis** – Performed *after* an analysis to check how much power the study had given the sample size used.
+
+#### **A Priori Power Analysis**
+
+This test helps us determine the **minimum sample size** needed to achieve **80% power** (*power = 0.8*), assuming a **moderate effect size** (*f = 0.25*).
+
+```{r}
+
+pwr.anova.test(k = 3,  # Number of groups 
+               f = .25, # Expected effect size
+               sig.level = .05, 
+               power = .8)
+
+```
+
+This function calculates the required sample size per group to detect an effect. If the calculated sample size is larger than what we collected, it suggests that our study may be underpowered.
+
+#### Post-Hoc Power Analysis
+
+This test calculates how much power we had given our actual sample size (n = 20 per group).
+
+```{r}
+
+pwr.anova.test(k = 3, #number of groups 
+               n = 20,
+               f = .25, #expected effect size
+               sig.level = .05)
+
+
+```
+
+If the resulting power is above 0.8, the study had sufficient power to detect the expected effect. If it is below 0.8, there is a higher risk of a Type II error (failing to detect a real effect).
+
+We can see that our power is 0.37 (37%), which suggests it is substantially underpowered. We need to be extra cautious when interpreting these results.
+
+### Step 8: Create a Nice Visualsation (Violin Plot)
+
+Next week we will go into more detail on how to create nice visualisations in R. But here is code that you can use in the meantime to create a violin plot.
+
+```{r}
+
+
+ggplot(df_psycho, aes(x = Treatment, y = Neuroticism, fill = Treatment))+
+  geom_violin(trim = FALSE)+
+  geom_boxplot(width = .2) + 
+  theme_classic()
+```
+
+The main thing, is that when you are adaptive this code is to replace Treatment with your Independent Variable, and Neuroticism with your Dependent Variable. Similarly, this particular code will only work for a One-Way Between Subjects ANOVA!
+
+## Activity 5: One Way ANOVA Exercise
+
+Researchers investigated the effects of caffeine consumption on mood.
+
+**Research Question**: Is there an effect of Caffeine on Mood?
+
+**Hypotheses**:
+
+H0: There is no effect of Caffeine on Mood?
+
+H1: There is an effect of Caffeine on Mood.
+
+**Method**: 200 participants were randomly assigned to one of four groups for one week: No Caffeine (Control), 100mg of Caffeine (Low Caffeine), 250mg of Caffeine (High Caffeine), or 400mg of Caffeine (High Caffeine). Their mood was collected each day and an average of their mood scores for the week was computed.
+
+***Our task***: Run a One-Way ANOVA to see if there is an effect of Caffeine on Mood.
+
+Follow the same **seven steps** from the worked example to analyse this dataset.
+
+1.  **Load and Inspect the Dataset**
+
+    -   Load the dataset (`caffeine_mood.csv`) into R.
+
+    -   Check the first few rows using `head()`.
+
+2.  **Explore the Data**
+
+    -   Calculate descriptive statistics for `mood`grouped by `group`.
+
+    -   Create visualisations: histograms with density plots, and boxplots.
+
+3.  **Run the One-Way ANOVA**
+
+    -   Use `aov_ez()` to perform the ANOVA.
+
+4.  **Check ANOVA Assumptions**
+
+    -   Test normality of residuals with a **Q-Q plot** and **Shapiro-Wilk test**.
+
+    -   Check homogeneity of variance using **Levene’s test**.
+
+5.  **Conduct Post-Hoc Comparisons**
+
+    -   Use `emmeans()` with Bonferroni correction to determine which specifc groups are significant different.
+
+6.  **Report Results in APA Format**
+
+    -   Write a short APA-style interpretation of the results.
+
+7.  **Conduct a Power Analysis**
+
+    -   Use `pwr.anova.test()` to check statistical power (post-hoc).
+
+# Factorial ANOVA
+
+## Activity 6: Factorial ANOVA Example
+
+One-Way ANOVAS are a good test when you have one independent variable with three or more levels. However, most of the time you will probably have more than one IV. In those situations, Factorial ANOVAS can be excellent statistical tests to use. Let's go through a Factorial ANOVA now.
+
+### Research Introduction
+
+In recent years, psychological interventions such as Cognitive Behavioral Therapy (CBT), Dialectical Behavioural Therapy (DBT) and Mindfulness-Based Therapy have gained widespread recognition for their effectiveness in treating anxiety. While both therapies have been shown to reduce anxiety, their relative effectiveness and their effectiveness over different durations of interventions are still of interest. This study aimed to investigate the effect of therapy type (CBT, Mindfulness, or no intervention) on anxiety reduction over different durations of time.
+
+**Research Question:** Is there an effect of therapy type and duration of treatment on anxiety?
+
+**Hypotheses:**
+
+-   **Null Hypothesis (H₀):** Therapy type and treatment duration have no effect on anxiety levels after the intervention.
+
+-   **Alternative Hypothesis (H₁):** Therapy type and treatment duration influence anxiety levels, with CBT and DBT leading to lower anxiety scores compared to Mindfulness, and longer durations (12 weeks) resulting in greater anxiety reduction than shorter durations (6 weeks).
+
+**Method**: A total of 180 participants were randomly assigned to one of three therapy groups: CBT (n = 60), DBT (n = 60), or Mindfulness (n = 60). They were also randomly assigned to receive therapy for either 6 weeks or 12 weeks. After completing the assigned intervention, their anxiety levels were measured.
+
+**Analysis Plan:** A **3×2 Factorial ANOVA** will be conducted to examine:
+
+1.  The **main effect of therapy type** (whether different therapies lead to different anxiety levels).
+
+2.  The **main effect of duration** (whether 6-week vs. 12-week treatment impacts anxiety levels differently).
+
+3.  The **interaction effect** between therapy type and duration (whether the effectiveness of a therapy depends on the length of treatment).
+
+This approach allows us to understand both the individual and combined effects of therapy type and duration on anxiety reduction.
+
+::: {.callout-tip title="Why is it a 3X2 Factorial ANOVA?" collapse="true"}
+I used to often get confused about the numbers for a factorial design. For example, why is this called a 3x2 Factorial ANOVA?
+
+Well the reason is that this examines the effects of two independent variables, each with multiple levels:
+
+1.  **Therapy Type** (Independent Variable 1) – This variable has **three levels**:
+
+    -   Cognitive Behavioral Therapy (CBT)
+
+    -   Mindfulness-Based Therapy
+
+    -   Dialectical Behavioural Therapy
+
+2.  **Duration** (Independent Variable 2) – This variable has **two levels**:
+
+    -   6 weeks of treatment
+
+    -   12 weeks of treatment
+
+Since the first independent variable (**Therapy Type**) has **3 levels** and the second independent variable (**Duration**) has **2 levels**, the appropriate notation for this design is **3×2**.
+:::
+
+### Step 1: Load in and Check Your Data
+
+First, we need to load the dataset into R using the `read.csv()` function. Let's call it `df_anxiety`. We can then check the first six rows using the `head()` function.
+
+```{r}
+
+df_anxiety <- read.csv("anxiety_treatment.csv")
+
+head(df_anxiety)
+```
+
+### Step 2: Conduct Descriptive Statistical Analysis
+
+Now, let’s run some descriptive statistics using the `descriptives()` function. This will help us understand the distribution of **Anxiety** scores across the different treatment groups.
+
+We will first calculate the mean, standard deviation, and other key statistics for Anxiety , grouped by Treatment. We will also generate
+
+-   A histogram (`hist = TRUE`) with a density overlay (`dens = TRUE`).
+
+-   A bar plot (`bar = TRUE`).
+
+-   A boxplot (`box = TRUE`) to examine distribution and possible outliers.
+
+```{r}
+
+descriptives(data = df_anxiety,
+             vars = Anxiety,
+             splitBy = c("Therapy", "Duration"),
+             min = F,
+             max = F,
+             box = T,
+             hist = T,
+             bar = T,
+             dens = T)
+
+```
+
+From the results, we can observe the following:
+
+-   Participants who completed CBT and DBT therapy had lower Anxiety scores than participants who completed Mindfulness therapy.
+
+-   Participants who completed 12-weeks of therapy had lower Anxiety scores than participants who completed six-weeks of therapy.
+
+-   There does not seem to much difference between participants who completed DBT and CBT, although it seems like participants who completed DBT had slightly smaller Anxiety scores.
+
+-   The bar plot identifies one outlier in the Mindfulness - Six Weeks group. The ANOVA is generally robust to single outliers, so we can ignore this for now.
+
+Now let’s investigate whether there is a significant effect of Therapy on Anxiety over Length. .
+
+### Step 3: Run Your Factorial ANOVA
+
+#### The Syntax
+
+To run a **factorial ANOVA**, we also use the `aov_ez()` function. The syntax is nearly identical to the One-Way ANOVA.
+
+Below is the general syntax (you will need to replace certain placeholders with the appropriate column names from your dataset):
+
+```{r eval = F}
+
+anova_example_syntax <- aov_ez(id = "The name of the Participant ID column",
+                    dv = "The name of the dependent variable", 
+                    between = "The name(s) of the between-subjects independent variable", 
+                    es = "pes", 
+                    type = 3, 
+                    include_aov = TRUE,
+                    data = yourdataset) 
+
+anova(anova_example_syntax) 
+
+
+```
+
+#### Running it on our Dataset
+
+For our dataset, we have two between subjects independent variables: "Therapy" and "Duration", so our code will be the following:
+
+```{r}
+
+fact_anova <- aov_ez(id = "ID",
+               between = c("Therapy", "Duration"), 
+               dv = "Anxiety", 
+               type = 3,
+               es = "pes",
+               include_aov = TRUE,
+               data = df_anxiety) 
+
+fact_output <- summary(fact_anova)
+
+fact_output
+
+```
+
+We can see that the main effect of Therapy type on Anxiety scores was statistically significant, F(2, 174) = 143.76, p \< 0.001. This indicates that different therapy types led to significantly different anxiety levels after the intervention. The effect size (generalized eta squared) is 0.623, suggesting that approximately 62.3% of the variance in anxiety scores can be attributed to differences in therapy type.
+
+The main effect of Duration was also statistically significant, F(1, 174) = 64.92, p \< 0.001, indicating that treatment length (6 weeks vs. 12 weeks) had a significant impact on anxiety levels. The effect size is 0.272, meaning that 27.2% of the variance in anxiety scores is explained by treatment duration.
+
+Additionally, there was a significant interaction effect between Therapy type and Duration, F(2, 174) = 3.50, p = 0.032. The effect size is 0.039, indicating that the interaction accounts for 3.9% of the variance in anxiety scores. This suggests that the effectiveness of therapy types may depend on the duration of treatment.
+
+### Step 4: Check Your Parametric Assumptions
+
+Before interpreting our ANOVA results, we need to check whether the test’s assumptions are met. Since these assumptions relate to how well the ANOVA models the data, we evaluate them after running the test rather than before.
+
+**Assumptions of a Factorial ANOVA**
+
+The assumptions are the same as one the one-way ANOVA, namely:
+
+1.  The dependent variable (DV) is measured on an *interval* or *ratio* scale.
+
+2.  Observations are *independent* (i.e., no repeated measures).
+
+3.  The *residuals* should be **normally distributed**.
+
+4.  There should be *homogeneity of variance* between groups.
+
+A basic glance at the data already confirms **Assumption 1** (Anxiety is interval data) and **Assumption 2** (each participant is in only one group, ensuring independence).
+
+We can use the same method as before to check normality of residuals and homogeneity of variance.
+
+```{r}
+
+# Check Normality Assumption
+qqPlot(residuals(fact_anova))  # Q-Q Plot of residuals
+shapiro.test(residuals(fact_anova))  # Shapiro-Wilk test for normality
+
+# Check Homogeneity of Variance
+leveneTest(Anxiety ~ Therapy * Duration, data = df_anxiety)  # Levene’s test for equal variances
+
+
+```
+
+We can see that the dots are mostly on the line. The Shapiro-Wilk's value is greater than .05, as is the Levene's Test p-value. Based on these results, we can say we have met our assumptions.
+
+Now let's determine where the differences lie!
+
+### Step 5: Run Your Post-Hoc Comparisons
+
+Like the One-Way ANOVA, a factorial ANOVA tells us whether there is a significant difference between three or more groups, but it does not tell us where those differences lie.
+
+If we find a significant result, the next step is to run a post-hoc test, which compares each group to every other group to identify the specific differences.
+
+The syntax is slightly different for the Factorial ANOVA. The reason for this is that we are comparing differences in groups across more than one independent variables. So we will need post-hoc tests across both Therapy Type and Duration of Therapy.
+
+Luckily, it is easy to do this in R using the `|` symbol.
+
+```{r}
+
+posthoc_factorial <- emmeans(fact_anova, 
+                             pairwise ~ Therapy | Duration, 
+                             adjust = "bonferroni")
+
+posthoc_factorial
+
+```
+
+***Interpreting the Results***
+
+The estimated marginal means (emmeans) indicate the average post-intervention anxiety scores for each therapy type at both treatment durations. Lower anxiety scores indicate greater effectiveness in reducing anxiety.
+
+#### **Main Findings**
+
+1.  **12-Week Duration**:
+
+    -   CBT (M = 40.6) and DBT (M = 38.5) resulted in lower anxiety scores than Mindfulness (M = 59.7).
+
+    -   The difference between **CBT and DBT** was small and not statistically significant (**p = 0.671**).
+
+    -   **Mindfulness had significantly higher anxiety scores compared to both CBT (p \< .0001) and DBT (p \< .0001)**, suggesting that CBT and DBT were more effective in reducing anxiety over 12 weeks.
+
+2.  **6-Week Duration**:
+
+    -   CBT (M = 50.7) and DBT (M = 47.8) again showed lower anxiety scores than Mindfulness (M = 63.9).
+
+    -   The difference between **CBT and DBT was not significant (p = 0.2428)**.
+
+    -   **Mindfulness resulted in significantly higher anxiety scores compared to CBT (p \< .0001) and DBT (p \< .0001)**, indicating that it was the least effective therapy type over 6 weeks.
+
+#### **Summary**
+
+-   CBT and DBT both significantly reduced anxiety compared to Mindfulness at both **6-week** and **12-week** durations.
+
+-   There was **no significant difference between CBT and DBT** in reducing anxiety.
+
+-   The **12-week duration was more effective than 6 weeks**, as anxiety scores were lower across all therapy types after 12 weeks.
+
+-   The interaction effect suggests that **Mindfulness was particularly ineffective over shorter durations**, as its scores were much higher than CBT and DBT, especially at 6 weeks.
+
+Overall, the findings indicate that **CBT and DBT are both effective therapies for reducing anxiety, especially over 12 weeks, whereas Mindfulness is less effective in comparison.**
+
+### Step 6: Visualise your Model
+
+
+
+```{r}
+
+afex_plot(fact_anova, 
+          x = "Duration", 
+          trace = "Therapy", 
+          error = "between",
+          mapping = c("color", "linetype")) +  # Automatically maps color & line type to Therapy
+  theme_classic()  # Clean and simple theme
+
+
+```
+
+
+### Step 7: Write up your results APA style
+
+A 3 × 2 factorial ANOVA was conducted to examine the effects of therapy type (CBT, DBT, Mindfulness) and treatment duration (6 weeks vs. 12 weeks) on post-treatment anxiety scores.
+
+There was a significant main effect of therapy type, F(2, 174) = 143.76, p < .001, η²ₚ = 0.623, indicating that anxiety scores differed significantly across therapy conditions. Post-hoc comparisons with Bonferroni correction showed that CBT (M = 50.7, SE = 1.19) and DBT (M = 47.8, SE = 1.19) were significantly more effective than Mindfulness (M = 63.9, SE = 1.19) at reducing anxiety after 6 weeks (p < .0001). Similarly, after 12 weeks, CBT (M = 40.6, SE = 1.19) and DBT (M = 38.5, SE = 1.19) remained significantly more effective than Mindfulness (M = 59.7, SE = 1.19) (p < .0001). However, there was no significant difference between CBT and DBT at either time point (p = 0.671 for 12 weeks; p = 0.243 for 6 weeks).
+
+There was also a significant main effect of treatment duration, F(1, 174) = 64.92, p < .001, η²ₚ = 0.272, suggesting that participants who received 12 weeks of treatment (M = 46.3, SE = 1.19) had significantly lower anxiety scores than those who received 6 weeks of treatment (M = 54.1, SE = 1.19).
+
+The therapy type by treatment duration interaction was statistically significant, F(2, 174) = 3.50, p = .032, η²ₚ = 0.039, indicating that the effectiveness of therapy type depended on treatment duration.
+
+Post-hoc comparisons showed that CBT and DBT showed a larger reduction in anxiety from 6 to 12 weeks compared to Mindfulness. Specifically, CBT improved by 10.1 points and DBT by 9.3 points, whereas Mindfulness showed only a small reduction of 4.2 points between the two time points. This suggests that longer treatment durations were particularly beneficial for CBT and DBT, whereas Mindfulness did not benefit as much from an extended duration.
+
+## Activity 7: Factorial ANOVA Exercise
+
+### **Research Introduction**
+
+Obesity is a growing health concern, and many people try different exercise and diet strategies to lose weight. However, it is unclear how different types of exercise and diets affect weight loss. This study aims to investigate the impact of **exercise type** (*None, Cardio, Strength Training*) and **diet type** (*Standard, High-Protein*) on weight loss.
+
+### **Research Question**
+
+Is there an effect of exercise type and diet method on weight loss?
+
+### **Hypotheses**
+
+-   **Null Hypothesis (H₀):** There is no effect of exercise and diet method on weight loss.
+
+-   **Alternative Hypothesis (H₁):** There is an effect of exercise and diet method on weight loss.
+
+### **Method**
+
+A total of **180 participants** were randomly assigned to one of **six groups** in a **3 × 2 design**:
+
+1.  **Exercise Type:**
+
+    -   None
+
+    -   Cardio
+
+    -   Strength Training
+
+2.  **Diet Type:**
+
+    -   Standard Diet
+
+    -   High-Protein Diet
+
+Each group had **30 participants**. The study lasted **12 weeks**, with participants in the **exercise groups attending three supervised sessions per week**. Participants followed dietary guidelines based on their assigned diet type. **Weight loss (kg) was recorded at the end of the study.**
+
+### **Our Task**
+
+Conduct a **factorial ANOVA** to test whether exercise type and diet type affect weight loss and if there is an interaction between them.

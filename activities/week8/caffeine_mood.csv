@@ -1,0 +1,201 @@
+"participant_id","group","mood"
+1,"Control",9.64
+2,"Control",4.01
+3,"Control",3.02
+4,"Control",1.71
+5,"Control",7.82
+6,"Control",3.54
+7,"Control",2.84
+8,"Control",2.55
+9,"Control",7.62
+10,"Control",5.26
+11,"Control",4.62
+12,"Control",3.77
+13,"Control",3.33
+14,"Control",5.21
+15,"Control",6.71
+16,"Control",0.82
+17,"Control",5.26
+18,"Control",6.7
+19,"Control",1.8
+20,"Control",4.17
+21,"Control",3.66
+22,"Control",2.24
+23,"Control",4.03
+24,"Control",3.67
+25,"Control",4.76
+26,"Control",3.24
+27,"Control",3.64
+28,"Control",2.88
+29,"Control",5.3
+30,"Control",5.63
+31,"Control",1.87
+32,"Control",5.99
+33,"Control",5.91
+34,"Control",4.45
+35,"Control",3.75
+36,"Control",0.19
+37,"Control",4.04
+38,"Control",4.36
+39,"Control",1.94
+40,"Control",6.1
+41,"Control",3.99
+42,"Control",3.25
+43,"Control",4.36
+44,"Control",6.21
+45,"Control",5.43
+46,"Control",3.27
+47,"Control",6.41
+48,"Control",1.83
+49,"Control",3.23
+50,"Control",1.95
+51,"Low Caffeine",6
+52,"Low Caffeine",2.76
+53,"Low Caffeine",4.33
+54,"Low Caffeine",4.13
+55,"Low Caffeine",1.86
+56,"Low Caffeine",3.44
+57,"Low Caffeine",3.69
+58,"Low Caffeine",3.3
+59,"Low Caffeine",5
+60,"Low Caffeine",5.49
+61,"Low Caffeine",4.48
+62,"Low Caffeine",2.19
+63,"Low Caffeine",4.65
+64,"Low Caffeine",3
+65,"Low Caffeine",4.41
+66,"Low Caffeine",0.57
+67,"Low Caffeine",5.61
+68,"Low Caffeine",1.66
+69,"Low Caffeine",4.18
+70,"Low Caffeine",7.42
+71,"Low Caffeine",3.19
+72,"Low Caffeine",2.93
+73,"Low Caffeine",4.71
+74,"Low Caffeine",4.43
+75,"Low Caffeine",4.65
+76,"Low Caffeine",0.39
+77,"Low Caffeine",5.99
+78,"Low Caffeine",4.78
+79,"Low Caffeine",6.78
+80,"Low Caffeine",3.11
+81,"Low Caffeine",5.63
+82,"Low Caffeine",4.07
+83,"Low Caffeine",6.65
+84,"Low Caffeine",3.05
+85,"Low Caffeine",1.32
+86,"Low Caffeine",5.17
+87,"Low Caffeine",2.5
+88,"Low Caffeine",6.19
+89,"Low Caffeine",4.39
+90,"Low Caffeine",1.5
+91,"Low Caffeine",2.52
+92,"Low Caffeine",4.54
+93,"Low Caffeine",2.52
+94,"Low Caffeine",5.35
+95,"Low Caffeine",2.19
+96,"Low Caffeine",2.29
+97,"Low Caffeine",5.45
+98,"Low Caffeine",2.63
+99,"Low Caffeine",4.84
+100,"Low Caffeine",5.18
+101,"Moderate Caffeine",4.44
+102,"Moderate Caffeine",3.28
+103,"Moderate Caffeine",4.14
+104,"Moderate Caffeine",4.99
+105,"Moderate Caffeine",4.69
+106,"Moderate Caffeine",3.48
+107,"Moderate Caffeine",3.43
+108,"Moderate Caffeine",7.05
+109,"Moderate Caffeine",5.68
+110,"Moderate Caffeine",2.19
+111,"Moderate Caffeine",2.77
+112,"Moderate Caffeine",2.85
+113,"Moderate Caffeine",6.49
+114,"Moderate Caffeine",4.34
+115,"Moderate Caffeine",4.74
+116,"Moderate Caffeine",3.52
+117,"Moderate Caffeine",2.06
+118,"Moderate Caffeine",3.23
+119,"Moderate Caffeine",2.92
+120,"Moderate Caffeine",4.65
+121,"Moderate Caffeine",1.06
+122,"Moderate Caffeine",6.11
+123,"Moderate Caffeine",3.96
+124,"Moderate Caffeine",2.09
+125,"Moderate Caffeine",4.36
+126,"Moderate Caffeine",3.82
+127,"Moderate Caffeine",7.37
+128,"Moderate Caffeine",4.5
+129,"Moderate Caffeine",2.09
+130,"Moderate Caffeine",6.28
+131,"Moderate Caffeine",3.3
+132,"Moderate Caffeine",2.09
+133,"Moderate Caffeine",4.73
+134,"Moderate Caffeine",5.37
+135,"Moderate Caffeine",6.08
+136,"Moderate Caffeine",2.8
+137,"Moderate Caffeine",5.3
+138,"Moderate Caffeine",4.23
+139,"Moderate Caffeine",4.81
+140,"Moderate Caffeine",4.41
+141,"Moderate Caffeine",3.89
+142,"Moderate Caffeine",8.45
+143,"Moderate Caffeine",5.42
+144,"Moderate Caffeine",4.15
+145,"Moderate Caffeine",5.53
+146,"Moderate Caffeine",2.47
+147,"Moderate Caffeine",2.54
+148,"Moderate Caffeine",7.97
+149,"Moderate Caffeine",3.83
+150,"Moderate Caffeine",4.95
+151,"High Caffeine",0.14
+152,"High Caffeine",7.63
+153,"High Caffeine",4.2
+154,"High Caffeine",3.1
+155,"High Caffeine",2.71
+156,"High Caffeine",5.85
+157,"High Caffeine",4.2
+158,"High Caffeine",3.11
+159,"High Caffeine",5.57
+160,"High Caffeine",5.13
+161,"High Caffeine",2.9
+162,"High Caffeine",4.58
+163,"High Caffeine",3.77
+164,"High Caffeine",3.54
+165,"High Caffeine",3.65
+166,"High Caffeine",6.23
+167,"High Caffeine",6.61
+168,"High Caffeine",4.36
+169,"High Caffeine",3.94
+170,"High Caffeine",3.67
+171,"High Caffeine",2.43
+172,"High Caffeine",0.03
+173,"High Caffeine",5.51
+174,"High Caffeine",1.84
+175,"High Caffeine",2.65
+176,"High Caffeine",4.47
+177,"High Caffeine",2.4
+178,"High Caffeine",3.71
+179,"High Caffeine",2.77
+180,"High Caffeine",7.17
+181,"High Caffeine",12.03
+182,"High Caffeine",6.03
+183,"High Caffeine",2.53
+184,"High Caffeine",6.45
+185,"High Caffeine",4.52
+186,"High Caffeine",6.98
+187,"High Caffeine",3.39
+188,"High Caffeine",4.3
+189,"High Caffeine",5.58
+190,"High Caffeine",4.39
+191,"High Caffeine",5.94
+192,"High Caffeine",6.75
+193,"High Caffeine",4.71
+194,"High Caffeine",5.78
+195,"High Caffeine",4.84
+196,"High Caffeine",3.97
+197,"High Caffeine",6.01
+198,"High Caffeine",3.77
+199,"High Caffeine",3.37
+200,"High Caffeine",4.25

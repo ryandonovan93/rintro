@@ -1,0 +1,221 @@
+---
+title: "One-way ANOVA Exercise"
+author: "Put Your Name Here"
+date: "2024-02-01"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+## Research Topic
+
+Memory of a traumatic event becomes consolidated within hours. Intrusive
+memories can then flash back repeatedly into the mind's eye and cause
+distress. We investigated whether reconsolidation - the process during
+which memories become malleable when recalled - can be blocked using a
+cognitive task and whether such an approach can reduce these unbidden
+intrusions. We predicted that reconsolidation of a reactivated visual
+memory of experimental trauma could be disrupted by engaging in a
+visuospatial task that would compete for visual working memory
+resources. We showed that intrusive memories were virtually abolished by
+playing the computer game Tetris following a memory-reactivation task 24
+hr after initial exposure to experimental trauma. Furthermore, both
+memory reactivation and playing Tetris were required to reduce
+subsequent intrusions (Experiment 2), consistent with
+reconsolidation-update mechanisms. A simple, non-invasive cognitive-task
+procedure administered after emotional memory has already consolidated
+(i.e., \> 24 hours after exposure to experimental trauma) may prevent
+the recurrence of intrusive memories of those emotional events.
+
+**Research Question**: Is there of effect of cognitive games on the
+experience of intrusive memories?
+
+**Paper data is based on**:
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4526368/>
+
+***Our task***: Run a One-Way ANOVA to investigate this RQ.
+
+```{r setup, echo=TRUE, message = FALSE}
+
+
+library(patchwork)
+library(car)
+library(broom)
+library(afex)
+library(tidyverse)
+library(pwr) 
+library(lsr)
+library(emmeans)
+library(performance)
+
+
+```
+
+## Create your folder and set your working directory
+
+Create a folder called `anova` in your folders for this class. Set it as
+your working directory.
+
+**Click Session -\> Set Working Directory -\> Choose Directory**
+
+## Call in our Data
+
+Download the **`James Holmes_Expt 2_DATA.csv`** dataset from Canvas, and
+then call it into R, assigning it to the variable **`dat1`**. Use the
+**`head()`** and **`summary()`** functions to inspect the data.
+
+```{r}
+
+dat1 <- read.csv("James Holmes_Expt 2_DATA.csv")
+
+#use head()
+
+#use summary()
+
+```
+
+## Run the following code to clean it
+
+You do not need to worry about data wrangling this week. This code will
+do it for use.
+
+```{r}
+
+dat2 <- dat1 %>% 
+  mutate(subject = row_number()) %>% 
+  select(subject, Condition, Days_One_to_Seven_Image_Based_Intrusions_in_Intrusion_Diary) %>% 
+  rename("intrusions" = "Days_One_to_Seven_Image_Based_Intrusions_in_Intrusion_Diary")
+
+```
+
+## Identify your IV and your DV
+
+Before we explore our data, we need to tell `R` which what are our
+independent variable and dependent variables. Doing this will make sure
+it can run the ANOVA correctly.
+
+Convert your IV to a factor and your DV to a numeric in the code chunk
+below using the `mutate()` function.
+
+```{r convert IV and DV}
+
+
+
+```
+
+## Explore our data (summary and visualisation)
+
+First, calculate some descriptive statistics to understand the data
+better.
+
+In the code chunk below, create a variable called `sum_dat`.
+
+This `sum_data` will take `dat2` and then (remember the pipe operator?):
+
+-   Use `GroupBy()` to group scores by our independent variable.
+-   Use `summarise()` to calculate `mean`, `sd`, and `se` scores.
+
+```{r create sum_data}
+
+
+```
+
+Once you have down that, visualize the data by uncommenting the code
+below (remove all \`#\` and run it.
+
+```{r visualise differences}
+
+#ggplot(sum_dat, aes(x = Condition, y = mean, fill = Condition))+
+#  stat_summary(fun = "mean", geom = "bar", show.legend = FALSE)+
+#  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.25)+
+#  scale_y_continuous(limits = c(0,7), 
+#                     breaks = c(0,1,2,3,4,5,6,7), 
+#                     name = "Intrusive-Memory Frequency (Mean for the Week")+
+#  scale_x_discrete(labels = c("No-task control", "Reactivation plus Tetris", "Tetris #only",
+#                                "Reactivation only"))
+
+```
+
+Looking at your descriptive statistics and visualization, what does your
+data tell you so far about the research question?
+
+## One-Way Anova
+
+Run the one-way ANOVA using the `aov_ez` function. Save it to the
+variable `ANOVA1`.
+
+`aov_ez()` will likely produce some messages that look like errors, do
+not worry about these, they are just letting you know what it's done.
+
+```{r one-way aov, echo=FALSE}
+
+
+
+```
+
+We can use the `tidy()` function to make the output easier to work with.
+Uncomment the code below and run it to transform the output. Don't worry
+about the warning message, it is just telling you it doesn't know how to
+automatically rename the columns so it will keep the original names.
+
+```{r}
+
+#ANOVA1 <- (ANOVA1$anova_table) %>% tidy()
+
+```
+
+Based on the output, answer the followning questions in this markdown
+file (just create a new line under each question).
+
+-   Is there the overall effect of Condition significant?
+
+-   What is the F-statistics to 2 decimal places?
+
+-   According to the rules of thumb, is the effect size is small,
+    medium, or large?
+
+## Check Parametric Assumptions
+
+**Normality**
+
+In the code chunk below, run a \`qqPlot\` and Shapiro-Wilk test to
+assess if our residuals are normally distributed.
+
+```{r normality, echo=TRUE}
+
+```
+
+*Is our data normally distributed?*
+
+**Homogeneity of Variance**
+
+In the code chunk below, run a Levene's test to assess whether there is
+homogeneity of variance between the groups.
+
+```{r homogeneity}
+
+```
+
+*Does the data display homogeneity of variance?*
+
+## Running post-hoc tests
+
+We are going to use the same approach as the lecture and the example, by
+using the `emeans()` function.
+
+In the code chunk below, use the `emmeans()` to run the comparisons.
+Save the comparisons to the variable name `AOV1_pairwise.`
+
+Then use the `tidy()`function to make it `AOV1_pairwise` easier to work
+with. Use \`mutate()\` to convert the p-value to 3 decimal places. Save
+it to the variable name `ANOV1_contrasts`
+
+```{r post-hoc}
+
+```
+
+### **Write-up**
+
+Based on your results, write up a conclusion of the paper in relation to
+the research question below.

@@ -1,0 +1,321 @@
+---
+title: "Anova Workshop Example"
+author: "Ryan Donovan"
+date: "2024-01-31"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Research Topic
+
+In recent years, there has been a growing interest in exploring the
+therapeutic potential of psychoactive treatments on mental health. This
+study focuses on the effects of psychoactive substances like Psilocybin
+and DMT on personality traits and emotional well-being, with a
+particular emphasis on Neuroticism, which is associated with various
+psychological disorders. We aimed to investigate whether the
+administration of Psilocybin and DMT had observable impacts on
+participants' Neuroticism levels. To do so, we recruited 60 participants
+and randomly assigned them to three groups: Psilocybin, DMT, or Placebo.
+
+Our goal was to determine if these substances influenced Neuroticism,
+potentially offering insights into their therapeutic potential for
+addressing emotional well-being and related mental health concerns.
+
+**Research Question**: Is there an effect of psychoactive treatment on
+Neuroticism?
+
+***Our task***: Run a One-Way ANOVA to see if there is an effect of
+Psychoactive treatment on Neuroticism.
+
+## Steps to running an One-Way ANOVA
+
+To conduct one-way ANOVA you should follow this general procedure:
+
+1.  Prepare your analysis: Call in your data and any packages you need.
+    Identify your IV and DV and convert them as appropriate.
+
+2.  Explore your data: compute descriptive statistics and visualisations
+    to assess whether there seems to be any difference between groups.
+
+3.  Run the One-Way Anova.
+
+4.  Check to see whether your data meets parametric assumptions.
+
+5.  Compute contrasts or post hoc tests: having conducted the main
+    ANOVA, you can follow it up with either contrasts or post hoc tests.
+    For these sessions, it will be post hoc.
+
+We will work through these steps in turn.
+
+## Prepare your analysis
+
+### Call Packages we need
+
+```{r set-up, message = FALSE}
+
+#remember to use install.packages("package name here") for any packages that do not load. 
+
+library(patchwork)
+library(car)
+library(broom)
+library(afex)
+library(tidyverse)
+library(pwr) 
+library(lsr)
+library(emmeans)
+library(performance)
+
+```
+
+### Call in our Data
+
+Download the **`psycho.csv`** dataset from Canvas, and then call it into
+R, assigning it to the variable **`mydat`**. Use the **`head()`** and
+**`summary()`** functions to inspect the data.
+
+```{r}
+
+mydat <- read.csv("psycho.csv")
+
+head(mydat) #this will print out data for the first five participants. The head() function is really useful for quickly checking whether you have loaded in the data correctly. 
+
+summary(mydat) #this will compute some quick descriptive statistics for us
+
+```
+
+There is not much information we are actually trying to ascertain from
+`head()` or `summary()`, they give us a quick birds eye view of the
+data - this can be really helpful to make sure you have loaded the
+correct data set!
+
+### Identify your IV and DV
+
+Before we explore our data, we need to tell `R` which what are our
+independent variable and dependent variables. Doing this will make sure
+it can run the ANOVA correctly.
+
+In this study, **`Treatment`** is the IV, and **`Neuroticism`** is the
+DV. We need to convert **`Treatment`** to a factor and **`Neuroticism`**
+to numeric data.
+
+We can do this using the `mutate()` function. Remember that mutate()
+takes an existing column within a dataset and performs an operation on
+it. In this case, we are taking the `Treatment` and `Neuroticism`
+columns in `mydat`, and converting them to a `factor` and `numeric` data
+type.
+
+```{r}
+mydat <- mydat %>%
+  mutate(Treatment = as.factor(Treatment)) %>%   #For the ANOVA to run properly our grouping (IV) needs to be set as a factor...
+  mutate(Neuroticism = as.numeric(Neuroticism))  #... and our DV needs to be numeric
+
+
+str(mydat) #we can check whether it was successful
+```
+
+Now we are ready to explore our data.
+
+## Explore your data
+
+First, calculate some descriptive statistics to understand the data
+better.
+
+```{r}
+
+summary_stats <-mydat%>% #create a new variable called summary_stats. To create this variable, take the mydat dataset AND THEN (i.e., %>%)...
+  group_by(Treatment)%>% #group scores based on whether they receive dmt, psilocybin, or a placebo AND THEN...
+  summarise(mean = mean(Neuroticism), #calculate the mean score per group on Neuroticism
+            sd = sd(Neuroticism), #calculate the sd score per group on Neuroticism 
+            se = sd/sqrt(length(Neuroticism))) #calculate the standard error score per group on Neuroticism
+
+
+summary_stats #print out the new variable
+
+```
+
+We can also visualise the differences
+
+```{r Visualisation}
+ggplot(mydat, aes(x = Treatment, y = Neuroticism))+
+  geom_violin(trim = FALSE)+
+  geom_boxplot(width = .2)
+```
+
+Okay, so we can see that `Psilocybin` scores higher than `Placebo`,
+which scores higher than `DMT`. Maybe our participants had a
+particularly hard trip.
+
+Let's check whether to see if these differences are significantly
+different.
+
+## One-Way Anova
+
+The following code will compute our one way ANOVA.
+
+```{r one-way aov, echo=FALSE}
+ANOVA1 <- aov_ez(id = "Participant_ID", 
+              dv = "Neuroticism", 
+              between = "Treatment", #what our IV is
+              es = "pes", 
+              type = 3, 
+              include_aov = TRUE,
+              data = mydat) 
+
+
+anova(ANOVA1) 
+
+ANOVA1_output <- (ANOVA1$anova_table) %>% tidy() 
+```
+
+### Code Explanation
+
+Let's unpack what is going on here code wise:
+
+1.  **`ANOVA1 <- aov_ez(...)`**: This line of code is creating a new R
+    object named **`ANOVA1`**. This object will store the results of the
+    one-way ANOVA analysis.
+
+2.  **`id = "Participant_ID"`**: This part specifies the column in your
+    dataset that contains the participant IDs. It helps identify which
+    data points belong to each participant.
+
+3.  **`dv = "Neuroticism"`**: Here, you specify the dependent variable
+
+    (DV) of your analysis, which is `Neuroticism` in this case. This is
+         the variable you want to analyze to see if it differs
+         significantly between the treatment groups.
+
+4.  **`between = "Treatment"`**: This indicates the independent variable
+
+    (IV) you are testing, which is "Treatment" in your dataset. The
+         one-way ANOVA will assess whether there are significant
+         differences in Neuroticism scores between the different
+         treatment groups.
+
+5.  **`es = "pes"`**: This argument specifies that you want to compute
+    the effect size in terms of partial eta-squared (pes). Effect size
+    measures the strength of the relationship between variables, and
+    eta-squared is commonly used in ANOVA to quantify this effect.
+
+6.  **`type = 3`**: The **`type`** argument specifies the type of sum of
+    squares used in the ANOVA. Type 3 is often used for balanced
+    designs.
+
+7.  **`include_aov = TRUE`**: This indicates that you want to include
+    the standard ANOVA table as part of the output. It provides
+    additional information about the analysis.
+
+8.  **`data = mydat`**: Finally, you specify the dataset (**`mydat`**)
+    on which you want to perform the ANOVA analysis.
+
+The next line, **`ANOVA1`**, simply prints out the results of the ANOVA
+analysis stored in the **`ANOVA1`** object. It will display information
+about the main ANOVA, including the F-statistic, degrees of freedom, and
+p-value.
+
+Following that, **`anova(ANOVA1)`** performs a more detailed ANOVA
+analysis and displays the ANOVA table, which includes information about
+the sum of squares, mean squares, F-statistic, and p-value. This table
+helps you determine if there are significant differences in
+`Neuroticism` scores among the treatment groups.
+
+Finally, **ANOVA1_output <- (ANOVA1$anova_table) %>% tidy()**
+
+Just cleans it up so it's easier to work with. 
+
+
+### Data Explanation
+
+-   The main effect of "Treatment" on Neuroticism scores was
+    statistically significant (F(2, 57) = 9.05, p \< 0.001). This
+    indicates that there are significant differences in Neuroticism
+    scores among the treatment groups.
+
+-   The effect size (partial eta-squared, ges) is 0.241, which suggests
+    that approximately 24.1% of the variance in Neuroticism scores can
+    be attributed to the differences in treatment groups.
+
+## Check Parametric Assumptions
+
+```{r One-Way ANOVA assumptions, echo=TRUE}
+qqPlot(ANOVA1$aov$residuals)
+shapiro.test(ANOVA1$aov$residuals)
+test_levene(ANOVA1)
+```
+
+Okay, so we can see that our data has met parametric assumptions and
+there is a significant effect of psychoactive treatment on
+`Neuroticism`. But where does it lie?
+
+## Running post-hoc tests
+
+```{r One-way ANOVA post-hoc}
+AOV1_pairwise <-emmeans(ANOVA1, pairwise ~ Treatment, adjust = "bonferroni")
+
+```
+
+1.  **`AOV1_pairwise <- emmeans(...)`**: This part of the code enables
+    us to calculate and stores pairwise comparisons of group means using
+    the **`emmeans`** function.
+
+2.  **`ANOVA1`** is the previously defined object containing the results
+    of the one-way ANOVA.
+
+3.  **`pairwise ~ Treatment`** specifies that you want to compare the
+    treatment groups
+
+4.  **`adjust = "bonferroni"`** indicates that you want to apply the
+    Bonferroni correction to control for familywise error rate in
+    multiple comparisons.
+
+This step is necessary because after finding a significant result in the
+ANOVA, you often want to determine which specific groups differ
+significantly from each other. The Bonferroni correction adjusts the
+p-values to account for the increased risk of Type I errors when
+conducting multiple comparisons.
+
+```{r}
+
+AOV1_contrasts <- AOV1_pairwise$contrasts %>% tidy() %>% # tidy the output
+  mutate(adj.p.value = round(adj.p.value, digits = 3)) # changes the p value to be in 3 digits (aka what we are used to)
+AOV1_contrasts
+
+```
+
+In these pairwise comparisons between treatment groups for Neuroticism
+scores:
+
+-   The DMT group did not show a statistically significant difference
+    compared to the Placebo group (p = 1.000), indicating similar
+    Neuroticism scores.
+
+-   However, the DMT group exhibited a statistically significant
+    difference compared to the Psilocybin group (p ≤ 0.001), suggesting
+    that their Neuroticism scores differed significantly.
+
+-   Likewise, the Placebo group showed a statistically significant
+    difference compared to the Psilocybin group (p = 0.005), indicating
+    that their Neuroticism scores were significantly different.
+
+## Write Up
+
+A One-Way ANOVA test was conducted to investigate if there was a
+significant effect of psychoactive treatment on Neuroticism This test
+was selected as the data was scale data, there were equal numbers
+between groups, the residuals were normally distributed, and there was
+homogeneity of variance. The results of the One-Way ANOVA demonstrated
+that there was a significant effect of psychoactive treatment on
+Neuroticism scores, F(57) = 9.048, p ≤ .001, ƞ² = .24. Post-hoc
+comparisons revealed that participants administered with Psilocybin
+experienced a significant increase in Neuroticism than participants
+administered with DMT (p ≤ .001) or a placebo (p = .005).

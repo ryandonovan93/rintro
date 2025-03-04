@@ -1,0 +1,175 @@
+---
+title: "ANOVA"
+author: "CiaraEgan"
+date: "2023-01-27"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Call Packages we need
+
+```{r set up}
+library(patchwork)
+library(car)
+library(broom)
+library(afex)
+library(tidyverse)
+library(pwr) 
+library(lsr)
+library(emmeans)
+library(performance)
+
+
+```
+
+## Call in data
+
+Todays examples will come from the TMDB movie database 
+
+```{r data, echo=TRUE}
+mydat <- read_csv("clinicaltrials.csv") #Reads the csv file into R and saves it as an object called "mydat"
+head(mydat)
+summary(mydat)
+```
+```{r data format}
+mydat <- mydat %>%
+  mutate(drug = as.factor(drug)) %>%   #For the ANOVA to run properly our grouping (IV) needs to be set as a factor...
+  mutate(mood.gain = as.numeric(mood.gain))  #... and our DV needs to be numeric
+
+```
+
+```{r descriptive statistics}
+summary_stats <-mydat%>%
+  group_by(drug)%>%
+  summarise(mean = mean(mood.gain),
+            sd = sd(mood.gain),
+            se = sd/sqrt(length(mood.gain)))
+summary_stats
+```
+
+## One-way ANOVA
+Now we are going to run a One-way ANOVA to see if there is a difference in mood gain between the two drugs & placebo
+```{r one-way aov, echo=FALSE}
+ANOVA1 <- aov_ez(id = "ID", # the column containing the participants IDs
+              dv = "mood.gain", # the DV 
+              between = "drug", # the between-subject variable
+              es = "pes", # sets effect size to partial eta-squared
+              type = 3, # this affects how the sum of squares is calculated, set this to 3
+              include_aov = TRUE,
+              data = mydat) # We are creating an object called "ANOVA1" which is the results of a one-way ANOVA looking at the difference in revenue between film genres.
+anova(ANOVA1)
+ANOVA1_output <- (ANOVA1$anova_table) %>% tidy() 
+```
+
+## Checking our assumptions
+1. The DV is interval or ratio data
+2. The observations should be independent
+3. The residuals should be normally distributed
+4. There should be homogeneity of variance between the groups
+
+```{r One-Way ANOVA assumptions, echo=TRUE}
+qqPlot(ANOVA1$aov$residuals)
+shapiro.test(ANOVA1$aov$residuals)
+test_levene(ANOVA1)
+```
+
+
+## Running post-hoc tests
+So now we want to see where the differences lie?
+
+```{r One-way ANOVA post-hoc}
+AOV1_pairwise <-emmeans(ANOVA1, pairwise ~ drug, adjust = "bonferroni")
+AOV1_contrasts <- AOV1_pairwise$contrasts %>% tidy() %>% # tidy the output
+  mutate(adj.p.value = round(adj.p.value, digits = 3)) # changes the p value to be in 3 digits (aka what we are used to)
+AOV1_contrasts
+```
+```{r Visualisation}
+ggplot(mydat, aes(x = drug, y = mood.gain))+
+  geom_violin(trim = FALSE)+
+  geom_boxplot(width = .2)
+```
+
+
+
+## Factorial ANOVA 
+Scenario:
+Now we want to compare the efficacy of both drugs and therapy (no therapy vs CBT) on participants mood, and compare across the three drug types also.
+
+```{r data set up for factorial ANOVA, echo=TRUE}
+mydat <- mydat %>%
+  mutate(therapy = as.factor(therapy)) 
+summary(mydat)
+```
+```{r factorial ANOVA summary stats}
+summary_stats2 <-mydat%>%
+  group_by(drug, therapy)%>%
+  summarise(mean = mean(mood.gain),
+            sd = sd(mood.gain),
+            se = sd/sqrt(length(mood.gain)))
+summary_stats2
+```
+
+
+## Factorial ANOVA
+Now we are going to run a Factorial ANOVA. 
+```{r factorial aov, echo=FALSE}
+
+ANOVA2 <- aov_ez(id = "ID", # the column containing the film IDs
+              dv = "mood.gain", # the DV 
+              between = c("drug", "therapy"), # the between-subject variables
+              es = "pes", # sets effect size to partial eta-squared
+              type = 3, # this affects how the sum of squares is calculated, set this to 3
+              include_aov = TRUE,
+              data = mydat) # We are creating an object called "ANOVA1" which is the results of a one-way ANOVA looking at the difference in revenue between film genres.
+anova(ANOVA2)
+ANOVA2_output <- (ANOVA2$anova_table) %>% tidy()
+```
+
+
+## Factorial ANOVA Assumptions
+Now we are going to check our assumptions (Same as above).
+
+1.The DV is interval or ratio data
+2.The observations should be independent
+3.The residuals should be normally distributed
+4.There should be homogeneity of variance between the groups
+
+```{r Factorial ANOVA assumptions, echo=TRUE}
+qqPlot(ANOVA2$aov$residuals)
+shapiro.test(ANOVA2$aov$residuals)
+test_levene(ANOVA2)
+```
+
+
+```{r Violin plots}
+ggplot(mydat, 
+       aes(x = drug , y = mood.gain, fill = therapy))+
+  geom_violin(trim = FALSE, 
+              alpha = .4)+
+  geom_boxplot(position = position_dodge(.9), 
+               width = .2, 
+               alpha = .6)+
+  scale_fill_viridis_d(option = "E")+
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(width = 0.9)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(width = 0.9)) +
+  theme_minimal()
+```
+
+
+
+
+
+```{r interaction plots}
+ggplot(summary_stats2, aes(x = therapy, y = mean, group = drug, shape = drug)) +
+  geom_point(size = 3) +
+  geom_line(aes(linetype = drug))+
+  theme_classic()
+```
+
