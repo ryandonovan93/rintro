@@ -1,0 +1,4 @@
+- source: 08-workshop-activities.qmd
+  quarto-pub:
+    - id: b9f690c9-51f7-4291-b41b-2291b81ca20e
+      url: 'https://ryandonovan.quarto.pub/wee8---activities'

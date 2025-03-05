@@ -70,32 +70,34 @@ summary(example_data)
 # Print first few rows to verify structure
 head(example_data)
 
-# Define function to detect outliers using IQR method
-remove_outliers <- function(df, column) {
-  Q1 <- quantile(df[[column]], 0.25)
-  Q3 <- quantile(df[[column]], 0.75)
+# Define function to replace outliers using the IQR method
+replace_outliers <- function(df, column) {
+  Q1 <- quantile(df[[column]], 0.25, na.rm = TRUE)
+  Q3 <- quantile(df[[column]], 0.75, na.rm = TRUE)
   IQR <- Q3 - Q1
 
   # Define bounds
   lower_bound <- Q1 - 1.5 * IQR
   upper_bound <- Q3 + 1.5 * IQR
 
-  # Filter out outliers
-  df <- df[df[[column]] >= lower_bound & df[[column]] <= upper_bound, ]
+  # Replace outliers with the closest boundary value
+  df[[column]] <- ifelse(df[[column]] < lower_bound, lower_bound,
+                         ifelse(df[[column]] > upper_bound, upper_bound, df[[column]]))
   return(df)
 }
 
+
 # Remove outliers from Mood scores
-example_data <- remove_outliers(example_data, "Mood")
+example_data <- replace_outliers(example_data, "Mood")
 
 # View new summary
 summary(example_data)
 
-descriptives(data = example_data_changed, vars = "Mood", splitBy = "Group",
+descriptives(data = example_data, vars = "Mood", splitBy = "Group",
              box = TRUE, hist = TRUE, dens = TRUE)
 
 
-example_data_changed <- example_data %>%
+example_data <- example_data %>%
   mutate(Group = case_when(Group == "Moderate Caffeine" ~ "High Caffeine",
                            Group == "High Caffeine" ~ "Moderate Caffeine",
                            TRUE ~ Group)) %>%
@@ -106,7 +108,7 @@ example_data_changed <- example_data %>%
 
 
 # Save dataset
-write.csv(example_data_changed, "mood_caffeine_anova.csv", row.names = FALSE)
+write.csv(example_data, "activities/week8/caffeine_mood.csv", row.names = FALSE)
 
 
 
@@ -346,9 +348,7 @@ df$Weight_Loss[df$Exercise == "None"] <- none_weight_loss
 df$Weight_Loss[df$Exercise == "Cardio"] <- cardio_weight_loss
 df$Weight_Loss[df$Exercise == "Strength"] <- strength_weight_loss
 
-# Convert IVs to factors
-df$Exercise <- factor(df$Exercise, levels = c("None", "Cardio", "Strength"))
-df$Diet <- factor(df$Diet, levels = c("Standard", "High-Protein"))
+
 
 # Conduct Factorial ANOVA
 anova_model <- aov_ez(id = "ID",
@@ -372,7 +372,7 @@ afex_plot(anova_model,
           mapping = c("color", "linetype")) +
   theme_classic()
 
-write.csv(df, "diet_exercise.csv", row.names = F)
+write.csv(df, "activities/week8/diet_exercise.csv", row.names = F)
 
 
 

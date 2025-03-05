@@ -140,7 +140,7 @@ In recent years, there has been a growing interest in exploring the therapeutic 
 
 ***Our task***: Run a One-Way ANOVA to see if there is an effect of Psychoactive treatment on Neuroticism.
 
-### Step 1: Load in and check your Dataset
+### Step 1: Load in and Check your Dataset
 
 First, we need to load the dataset into R using the `read.csv()` function:
 
@@ -194,7 +194,7 @@ descriptives(data = df_psycho,
 
 This gives us a first look at the data, but we can refine it further.
 
-If you remember from week 4, we can adjust the `descriptives()` function to remove unnecessary details and add visualizations.
+If you remember from week 4, we can adjust the `descriptives()` function to remove unnecessary details and add visualisations.
 
 In the code below, we will:
 
@@ -343,7 +343,7 @@ Now, let's check the remaining assumptions.
 **Checking Normality of Residuals**
 
 To verify normality, we will:\
-- **Visualize** residuals with a Q-Q plot.\
+- **Visualise** residuals with a Q-Q plot.\
 - **Run the Shapiro-Wilk test** (`p > .05` indicates normality).
 
 ```{r One-Way ANOVA assumptions, echo=TRUE}
@@ -483,7 +483,7 @@ This test calculates how much power we had given our actual sample size (n = 20 
 
 pwr.anova.test(k = 3, #number of groups 
                n = 20,
-               f = .25, #expected effect size
+               f = .25, #observed effect size
                sig.level = .05)
 
 
@@ -491,7 +491,7 @@ pwr.anova.test(k = 3, #number of groups
 
 If the resulting power is above 0.8, the study had sufficient power to detect the expected effect. If it is below 0.8, there is a higher risk of a Type II error (failing to detect a real effect).
 
-We can see that our power is 0.37 (37%), which suggests it is substantially underpowered (we want it to be 80% or higher). Therefore we need to be extra cautious when interpreting these results.
+We can see that our power is 0.35 (35%), which suggests it is substantially underpowered (we want it to be 80% or higher). Therefore we need to be extra cautious when interpreting these results.
 
 ### Step 8: Create a Nice Visualisation (Violin Plot)
 
@@ -504,11 +504,13 @@ ggplot(df_psycho, aes(x = Treatment,
                       y = Neuroticism, 
                       fill = Treatment))+ 
   geom_violin(trim = FALSE) +
-  geom_boxplot(width = .2) + 
-  theme_classic()
+  geom_boxplot(width = .2, colour = "black") + 
+  labs(title = "Effect of Psychoactive Treatment on Neuroticism") +
+  theme_classic() +
+  theme(legend.position = "none")
 ```
 
-The main thing, is that when you are adapting this code for your own work (e.g. in the exercise later), make sure to replace wherever you see `Treatment` with your Independent Variable, and where ever you see `Neuroticism` with your Dependent Variable.
+The main thing, is that when you are adapting this code for your own work (e.g. in the exercise later), make sure to replace wherever you see `Treatment` with your Independent Variable, and where ever you see `Neuroticism` with your Dependent Variable. Don't forgot to change the title as well! E
 
 We will visualise the results of a Factorial ANOVA in a different way, but more on that later.
 
@@ -520,9 +522,9 @@ Researchers investigated the effects of caffeine consumption on mood.
 
 **Hypotheses**:
 
-H0: There is no effect of Caffeine on Mood?
+*H₀ (Null Hypothesis):* There is no effect of Caffeine on Mood?
 
-H1: There is an effect of Caffeine on Mood.
+*H₁ (Alternative Hypothesis)*: There is an effect of Caffeine on Mood.
 
 **Method**: 200 participants were randomly assigned to one of four groups for one week: No Caffeine (Control), 100mg of Caffeine (Low Caffeine), 250mg of Caffeine (High Caffeine), or 400mg of Caffeine (High Caffeine). Their mood was collected each day and an average of their mood scores for the week was computed.
 
@@ -582,9 +584,9 @@ In recent years, psychological interventions such as Cognitive Behavioral Therap
 
 **Hypotheses:**
 
--   **Null Hypothesis (H₀):** Therapy type and treatment duration have no effect on anxiety levels after the intervention.
+*Null Hypothesis (H₀)***:** Therapy type and treatment duration have no effect on anxiety levels after the intervention.
 
--   **Alternative Hypothesis (H₁):** Therapy type and treatment duration influence anxiety levels, with CBT and DBT leading to lower anxiety scores compared to Mindfulness, and longer durations (12 weeks) resulting in greater anxiety reduction than shorter durations (6 weeks).
+*Alternative Hypothesis (H₁)***:** Therapy type and treatment duration influence anxiety levels, with CBT and DBT leading to lower anxiety scores compared to Mindfulness, and longer durations (12 weeks) resulting in greater anxiety reduction than shorter durations (6 weeks).
 
 **Method**: A total of 180 participants were randomly assigned to one of three therapy groups: CBT (n = 60), DBT (n = 60), or Mindfulness (n = 60). They were also randomly assigned to receive therapy for either 6 weeks (n = 90) or 12 weeks (n = 90). After completing the assigned intervention, their anxiety levels were measured.
 
@@ -631,6 +633,8 @@ df_anxiety <- read.csv("anxiety_treatment.csv")
 head(df_anxiety)
 ```
 
+One step we are going to do extra here is turn the
+
 ### Step 2: Conduct Descriptive Statistical Analysis
 
 Now, let’s run some descriptive statistics using the `descriptives()` function. This will help us understand the distribution of **Anxiety** scores across the different Treatment and Duration groups.
@@ -643,7 +647,12 @@ We will first calculate the mean, standard deviation, and other key statistics f
 
 -   A boxplot (`box = TRUE`) to examine distribution and possible outliers.
 
+We are also going to convert the **Duration** variable into a factor. You do not need to include this code in the exercise, as we have not covered factors yet. However, I am doing it here to ensure that any plots display 6 weeks first and then 12 weeks afterwards.
+
 ```{r}
+
+df_anxiety$Duration <- factor(df_anxiety$Duration, 
+                              levels = c("6 Weeks", "12 Weeks"))
 
 descriptives(data = df_anxiety,
              vars = Anxiety,
@@ -667,7 +676,7 @@ From the results, we can observe the following:
 
 -   The bar plot identifies one outlier in the Mindfulness - Six Weeks group. The ANOVA is generally robust to single outliers, so we can ignore this for now.
 
-Now let’s investigate whether there is a significant effect of Therapy on Anxiety over Length. .
+Now let’s investigate whether there is a significant effect of Therapy on Anxiety over Length.
 
 ### Step 3: Run Your Factorial ANOVA
 
@@ -712,7 +721,7 @@ fact_output
 
 ```
 
-We can see that the main effect of Therapy type on Anxiety scores was statistically significant, F(2, 174) = 143.76, p \< 0.001. This indicates that different therapy types led to significantly different anxiety levels after the intervention. The effect size (generalized eta squared) is 0.623, suggesting that approximately 62.3% of the variance in anxiety scores can be attributed to differences in therapy type.
+We can see that the main effect of Therapy type on Anxiety scores was statistically significant, F(2, 174) = 143.76, p \< 0.001. This indicates that different therapy types led to significantly different anxiety levels after the intervention. The effect size (generalised eta squared) is 0.623, suggesting that approximately 62.3% of the variance in anxiety scores can be attributed to differences in therapy type.
 
 The main effect of Duration was also statistically significant, F(1, 174) = 64.92, p \< 0.001, indicating that treatment length (6 weeks vs. 12 weeks) had a significant impact on anxiety levels. The effect size is 0.272, meaning that 27.2% of the variance in anxiety scores is explained by treatment duration.
 
@@ -745,7 +754,7 @@ qqPlot(residuals(fact_anova))  # Q-Q Plot of residuals
 shapiro.test(residuals(fact_anova))  # Shapiro-Wilk test for normality
 
 # Check Homogeneity of Variance
-leveneTest(Anxiety ~ Therapy * Duration, data = df_anxiety)  # Levene’s test for equal variances
+test_levene(fact_anova)
 
 
 ```
@@ -776,35 +785,33 @@ posthoc_factorial
 
 ***Interpreting the Results***
 
-The estimated marginal means (emmeans) indicate the average post-intervention anxiety scores for each therapy type at both treatment durations. Lower anxiety scores indicate greater effectiveness in reducing anxiety.
-
 #### **Main Findings**
 
 1.  **12-Week Duration**:
 
     -   CBT (M = 40.6) and DBT (M = 38.5) resulted in lower anxiety scores than Mindfulness (M = 59.7).
 
-    -   The difference between **CBT and DBT** was small and not statistically significant (**p = 0.671**).
+    -   The difference between CBT and DBT was small and not statistically significant (p = 0.671).
 
-    -   **Mindfulness had significantly higher anxiety scores compared to both CBT (p \< .0001) and DBT (p \< .0001)**, suggesting that CBT and DBT were more effective in reducing anxiety over 12 weeks.
+    -   Mindfulness had significantly higher anxiety scores compared to both CBT (p \< .0001) and DBT (p \< .0001), suggesting that CBT and DBT were more effective in reducing anxiety over 12 weeks.
 
 2.  **6-Week Duration**:
 
     -   CBT (M = 50.7) and DBT (M = 47.8) again showed lower anxiety scores than Mindfulness (M = 63.9).
 
-    -   The difference between **CBT and DBT was not significant (p = 0.2428)**.
+    -   The difference between CBT and DBT was not significant (p = 0.2428).
 
-    -   **Mindfulness resulted in significantly higher anxiety scores compared to CBT (p \< .0001) and DBT (p \< .0001)**, indicating that it was the least effective therapy type over 6 weeks.
+    -   Mindfulness resulted in significantly higher anxiety scores compared to CBT (p \< .0001) and DBT (p \< .0001), indicating that it was the least effective therapy type over 6 weeks.
 
 #### **Summary**
 
--   CBT and DBT both significantly reduced anxiety compared to Mindfulness at both **6-week** and **12-week** durations.
+-   CBT and DBT both significantly reduced anxiety compared to Mindfulness at both 6-week and 12-week durations.
 
--   There was **no significant difference between CBT and DBT** in reducing anxiety.
+-   There was no significant difference between CBT and DBT in reducing anxiety.
 
--   The **12-week duration was more effective than 6 weeks**, as anxiety scores were lower across all therapy types after 12 weeks.
+-   The 12-week duration was more effective than 6 weeks, as anxiety scores were lower across all therapy types after 12 weeks.
 
--   The interaction effect suggests that **Mindfulness was particularly ineffective over shorter durations**, as its scores were much higher than CBT and DBT, especially at 6 weeks.
+-   The interaction effect suggests that Mindfulness was particularly ineffective over shorter durations, as its scores were much higher than CBT and DBT, especially at 6 weeks.
 
 Overall, the findings indicate that CBT and DBT are both effective therapies for reducing anxiety, especially over 12 weeks, whereas Mindfulness is less effective in comparison.
 
@@ -830,52 +837,52 @@ In terms of deciding what goes on the x-axis, it does not really matter too much
 
 ### Step 7: Write up your results in APA style
 
-A 3 × 2 factorial ANOVA was conducted to examine the effects of therapy type (CBT, DBT, Mindfulness) and treatment duration (6 weeks vs. 12 weeks) on post-treatment anxiety scores.
+A 3 × 2 factorial ANOVA was conducted to examine the effects of therapy type (*CBT*, *DBT*, *Mindfulness*) and treatment duration (6 weeks vs. 12 weeks) on post-treatment anxiety scores.
 
-There was a significant main effect of therapy type, F(2, 174) = 143.76, p \< .001, η²ₚ = 0.623, indicating that anxiety scores differed significantly across therapy conditions. Post-hoc comparisons with Tukey correction showed that CBT (M = 50.7, SE = 1.19) and DBT (M = 47.8, SE = 1.19) were significantly more effective than Mindfulness (M = 63.9, SE = 1.19) at reducing anxiety after 6 weeks (p \< .0001). Similarly, after 12 weeks, CBT (M = 40.6, SE = 1.19) and DBT (M = 38.5, SE = 1.19) remained significantly more effective than Mindfulness (M = 59.7, SE = 1.19) (p \< .0001). However, there was no significant difference between CBT and DBT at either time point (p = 0.671 for 12 weeks; p = 0.243 for 6 weeks).
+There was a significant main effect of therapy type, *F*(2, 174) = 143.76, *p* \< .001, *η²ₚ* = 0.623, indicating that anxiety scores differed significantly across therapy conditions.
 
-There was also a significant main effect of treatment duration, F(1, 174) = 64.92, p \< .001, η²ₚ = 0.272, suggesting that participants who received 12 weeks of treatment (M = 46.3, SE = 1.19) had significantly lower anxiety scores than those who received 6 weeks of treatment (M = 54.1, SE = 1.19).
+There was also a significant main effect of treatment duration, *F*(1, 174) = 64.92, *p* \< .001, *η²ₚ* = 0.272, suggesting that participants who received 12 weeks of treatment (*M* = 46.3, *SE* = 1.19) had significantly lower anxiety scores than those who received 6 weeks of treatment (*M* = 54.1, *SE* = 1.19).
 
-The therapy type by treatment duration interaction was statistically significant, F(2, 174) = 3.50, p = .032, η²ₚ = 0.039, indicating that the effectiveness of therapy type depended on treatment duration.
+The therapy type by treatment duration interaction was also statistically significant, *F*(2, 174) = 3.50, *p* = .032, *η²ₚ* = 0.039, indicating that the effectiveness of therapy type depended on treatment duration.
 
-Post-hoc comparisons showed that CBT and DBT showed a larger reduction in anxiety from 6 to 12 weeks compared to Mindfulness. Specifically, CBT improved by 10.1 points and DBT by 9.3 points, whereas Mindfulness showed only a small reduction of 4.2 points between the two time points. This suggests that longer treatment durations were particularly beneficial for CBT and DBT, whereas Mindfulness did not benefit as much from an extended duration.
+Post-hoc comparisons with Tukey correction showed that *CBT* (*M* = 50.7, *SE* = 1.19) and *DBT* (*M* = 47.8, *SE* = 1.19) were significantly more effective than *Mindfulness* (*M* = 63.9, *SE* = 1.19) at reducing anxiety after 6 weeks (*p* \< .0001). Similarly, after 12 weeks, *CBT* (*M* = 40.6, *SE* = 1.19) and *DBT* (*M* = 38.5, *SE* = 1.19) remained significantly more effective than *Mindfulness* (*M* = 59.7, *SE* = 1.19) (*p* \< .0001). However, there was no significant difference between *CBT* and *DBT* at either time point (*p* = .671 for 12 weeks; *p* = .243 for 6 weeks).
 
 ## Activity 7: Factorial ANOVA Exercise
 
 ### **Research Introduction**
 
-Obesity is a growing health concern, and many people try different exercise and diet strategies to lose weight. However, it is unclear how different types of exercise and diets affect weight loss. This study aims to investigate the impact of **exercise type** (*None, Cardio, Strength Training*) and **diet type** (*Standard, High-Protein*) on weight loss.
+Obesity is a growing health concern, and many people try different exercise and diet strategies to lose weight. However, it is unclear how different types of exercise and diets affect weight loss. This study aims to investigate the impact of **exercise type** (Three Levels: *None, Cardio, Strength Training*) and **diet type** (Two Levels: *Standard, High-Protein*) on weight loss.
 
 ### **Research Question**
 
-Is there an effect of exercise type and diet method on weight loss?
+Is there an effect of exercise type and diet type on weight loss?
 
 ### **Hypotheses**
 
--   **Null Hypothesis (H₀):** There is no effect of exercise and diet method on weight loss.
+*H₀ (Null Hypothesis):* There is no effect of exercise and diet type on weight loss.
 
--   **Alternative Hypothesis (H₁):** There is an effect of exercise and diet method on weight loss.
+*H₁ (Alternative Hypothesis):* There is an effect of exercise and diet type on weight loss.
 
 ### **Method**
 
-A total of **180 participants** were randomly assigned to one of **six groups** in a **3 × 2 design**:
+A total of **180 participants** were randomly assigned to one exercise type and one diet type in a **3 × 2 design**:
 
 1.  **Exercise Type:**
 
-    -   None
+    -   None (n = 60)
 
-    -   Cardio
+    -   Cardio (n = 60\_
 
-    -   Strength Training
+    -   Strength Training (n = 60)
 
 2.  **Diet Type:**
 
-    -   Standard Diet
+    -   Standard Diet (n = 90)
 
-    -   High-Protein Diet
+    -   High-Protein Diet (n = 90)
 
-Each group had **30 participants**. The study lasted **12 weeks**, with participants in the **exercise groups attending three supervised sessions per week**. Participants followed dietary guidelines based on their assigned diet type. **Weight loss (kg) was recorded at the end of the study.**
+The study lasted 12 weeks, with participants in the exercise groups attending three supervised sessions per week. Participants followed dietary guidelines based on their assigned diet type. Weight loss (kg) was recorded at the end of the study.
 
 ### **Our Task**
 
-Conduct a **factorial ANOVA** to test whether exercise type and diet type affect weight loss and if there is an interaction between them.
+Conduct a **factorial ANOVA** to test whether exercise type and diet type effect weight loss and if there is an interaction between them. Use the `diet_exercise`.csv dataset. Run through the same exact steps as the example.
