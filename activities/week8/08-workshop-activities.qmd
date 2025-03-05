@@ -12,7 +12,7 @@ format:
 editor: visual
 ---
 
-In this week's workshop, we will learn how to run a **one-way between-subjects ANOVA** and a **factorial ANOVA** in R.
+In this week's workshop, we will learn how to run a between-subjects **one-way ANOVA** and a between-subjects **factorial ANOVA** in R.
 
 # Setting Up R
 
@@ -196,7 +196,7 @@ This gives us a first look at the data, but we can refine it further.
 
 If you remember from week 4, we can adjust the `descriptives()` function to remove unnecessary details and add visualizations.
 
-Below, we will:
+In the code below, we will:
 
 -   Remove the minimum (`min = FALSE`) and maximum (`max = FALSE`) values. I am removing both just to remove some clutter from our Descriptives output table.
 
@@ -282,7 +282,7 @@ Let's unpack what is going on here code wise:
 
 #### Running Our One-Way ANOVA
 
-Now, let's apply the syntax to our actual dataset, `df_psycho`:
+Now, let's apply the syntax to our actual dataset, `df_psycho`. We will store the results into the variable `anova_one`:
 
 ```{r echo=T}
 
@@ -315,6 +315,14 @@ Factors are a special data type in R. They enable R to identify categorical vari
 In this case, the `aov_ez` function is just converting our Treatment variable into a factor/categorical variable, which is what we want!
 
 Factors are really useful when it comes to data manipulation or data wrangling. But we'll get to that in the last week of the semester.
+:::
+
+::: {.callout-tip title="Effect size cut-off points" collapse="true"}
+η² = 0.01 represents a small effect
+
+η² = 0.06 represents a medium effect
+
+η² = 0.14 represents a large effect (Richardson, 2011)
 :::
 
 ### Step 4: Check Parametric Assumptions
@@ -354,6 +362,8 @@ shapiro.test(residuals(anova_one))
 
 Since our p-value is **greater than .05 (p \> .05)**, normality is **not violated**.
 
+**Checking Homoegeneity of Variance**
+
 We test whether all groups have similar variance using **Levene's Test**:
 
 ```{r}
@@ -383,7 +393,7 @@ To perform pairwise comparisons, we use the `emmeans()` function:
 
 emmeans(our_anova_model, 
         pairwise ~ IV, 
-        adjust = "bonferroni")
+        adjust = "Tukey")
 
 
 ```
@@ -396,11 +406,11 @@ emmeans(our_anova_model,
 
 3.  **`pairwise ~ IV`** Specifies that we want to compare the levels/groups of the independent variable.
 
-4.  **`adjust = "bonferroni"`** Applies the Bonferroni correction to adjust p-values for multiple comparisons.
+4.  **`adjust = "Tukey"`** Applies the Tukey correction to adjust p-values for multiple comparisons.
 
-**Why Use the Bonferroni Correction?**
+**Why Use the Tukey Correction?**
 
-When conducting multiple comparisons, the risk of making a Type I error (false positive) increases. The Bonferroni correction reduces this risk by adjusting p-values to be more conservative. There are other types of corrections we can apply, but for this class we will stick with Bonferroni.
+When conducting multiple comparisons, the risk of making a Type I error (false positive) increases. The Tukey correction reduces this risk by adjusting p-values to be more conservative. There are other types of corrections we can apply, but for this class we will stick with Tukey.
 
 #### Running the Post-Hoc Test on Our Data
 
@@ -408,7 +418,9 @@ We now apply this test to our dataset:
 
 ```{r}
 
-AOV1_pairwise <-emmeans(anova_one, pairwise ~ Treatment, adjust = "bonferroni")
+AOV1_pairwise <-emmeans(anova_one, 
+                        pairwise ~ Treatment, 
+                        adjust = "Tukey")
 
 AOV1_pairwise
 ```
@@ -421,34 +433,34 @@ The output shows the **p-values** for pairwise comparisons between treatment gro
 
 -   **Placebo vs. Psilocybin:** *p = .005* (significant difference)
 
--   **DMT vs. Placebo:** *p = 1.000* (no significant difference)
+-   **DMT vs. Placebo:** *p = .787* (no significant difference)
 
 This means that *participants who took Psilocybin had significantly higher Neuroticism scores* than those in the **Placebo** or **DMT** groups. However, there was *no significant difference* between the **DMT and Placebo** groups.
 
 ### Step 6: Writing our results in APA style
 
-A one-way between-subjects ANOVA was conducted to examine the effect of treatment condition (Placebo, Psilocybin, DMT) on Neuroticism scores. This test was selected as the dependent variable was continuous, there was independence of observations, there was homogeneity of variance, and normality of residuals was displayed.
+A one-way between-subjects ANOVA was conducted to examine the effect of treatment condition (*Placebo*, *Psilocybin*, *DMT*) on Neuroticism scores. This test was selected as the dependent variable was continuous, there was independence of observations, there was homogeneity of variance, and normality of residuals was displayed.
 
-The analysis revealed a significant effect of treatment on Neuroticism, F(2, 57) = 9.05, p \< .001, η²p = .241. This suggests that approximately 24.1% of the variance in Neuroticism scores can be attributed to differences between treatment groups.
+The analysis revealed a significant effect of treatment on Neuroticism, *F*(2, 57) = 9.05, *p* \< .001, *η²* = .241. This suggests that approximately 24.1% of the variance in Neuroticism scores can be attributed to differences between treatment groups. Based on this result, one can reject the null hypothesis.
 
-Post-hoc pairwise comparisons, using the Bonferroni correction, revealed that:
+Post-hoc pairwise comparisons, using the Tukey correction, revealed that:
 
-The Psilocybin group had significantly higher Neuroticism scores than the DMT group (t = -3.97, p = .0006).
+The *Psilocybin* group had significantly higher Neuroticism scores than the *DMT* group (*t* = -3.97, *p* = .0006).
 
-The Psilocybin group also had significantly higher Neuroticism scores than the Placebo group (t = -3.31, p = .0049).
+The *Psilocybin* group also had significantly higher Neuroticism scores than the *Placebo* group (*t* = -3.31, *p* = .0046).
 
-No significant difference was found between the DMT and Placebo groups (t = -0.66, p = 1.000).
+No significant difference was found between the *DMT* and *Placebo* groups (*t* = -0.66, *p* = .787).
 
-These results suggest that Psilocybin led to significantly higher Neuroticism scores compared to DMT and Placebo, while DMT and Placebo did not differ significantly.
+These results suggest that *Psilocybin* led to significantly higher Neuroticism scores compared to *DMT* and *Placebo*, while *DMT* and *Placebo* did not differ significantly.
 
 ### Step 7: Power Analysis
 
 A **power analysis** helps determine whether our sample size is sufficient to detect an effect. There are **two types of power analysis**:
 
-1.  **A priori power analysis** – Performed *before* data collection to determine the required sample size.\
+1.  **Apriori power analysis** – Performed *before* data collection to determine the required sample size.\
 2.  **Post-hoc power analysis** – Performed *after* an analysis to check how much power the study had given the sample size used.
 
-#### **A Priori Power Analysis**
+#### **Apriori Power Analysis**
 
 This test helps us determine the **minimum sample size** needed to achieve **80% power** (*power = 0.8*), assuming a **moderate effect size** (*f = 0.25*).
 
@@ -479,24 +491,28 @@ pwr.anova.test(k = 3, #number of groups
 
 If the resulting power is above 0.8, the study had sufficient power to detect the expected effect. If it is below 0.8, there is a higher risk of a Type II error (failing to detect a real effect).
 
-We can see that our power is 0.37 (37%), which suggests it is substantially underpowered. We need to be extra cautious when interpreting these results.
+We can see that our power is 0.37 (37%), which suggests it is substantially underpowered (we want it to be 80% or higher). Therefore we need to be extra cautious when interpreting these results.
 
-### Step 8: Create a Nice Visualsation (Violin Plot)
+### Step 8: Create a Nice Visualisation (Violin Plot)
 
 Next week we will go into more detail on how to create nice visualisations in R. But here is code that you can use in the meantime to create a violin plot.
 
 ```{r}
 
 
-ggplot(df_psycho, aes(x = Treatment, y = Neuroticism, fill = Treatment))+
-  geom_violin(trim = FALSE)+
+ggplot(df_psycho, aes(x = Treatment, 
+                      y = Neuroticism, 
+                      fill = Treatment))+ 
+  geom_violin(trim = FALSE) +
   geom_boxplot(width = .2) + 
   theme_classic()
 ```
 
-The main thing, is that when you are adaptive this code is to replace Treatment with your Independent Variable, and Neuroticism with your Dependent Variable. Similarly, this particular code will only work for a One-Way Between Subjects ANOVA!
+The main thing, is that when you are adapting this code for your own work (e.g. in the exercise later), make sure to replace wherever you see `Treatment` with your Independent Variable, and where ever you see `Neuroticism` with your Dependent Variable.
 
-## Activity 5: One Way ANOVA Exercise
+We will visualise the results of a Factorial ANOVA in a different way, but more on that later.
+
+## Activity 5: One-Way ANOVA Exercise
 
 Researchers investigated the effects of caffeine consumption on mood.
 
@@ -522,9 +538,9 @@ Follow the same **seven steps** from the worked example to analyse this dataset.
 
 2.  **Explore the Data**
 
-    -   Calculate descriptive statistics for `mood`grouped by `group`.
+    -   Calculate descriptive statistics for `mood` split by by `group`.
 
-    -   Create visualisations: histograms with density plots, and boxplots.
+    -   Create visualisations: histograms with density plots, barplots, and a boxplot.
 
 3.  **Run the One-Way ANOVA**
 
@@ -536,9 +552,11 @@ Follow the same **seven steps** from the worked example to analyse this dataset.
 
     -   Check homogeneity of variance using **Levene’s test**.
 
+    -   If there are violations, just make a note of them.
+
 5.  **Conduct Post-Hoc Comparisons**
 
-    -   Use `emmeans()` with Bonferroni correction to determine which specifc groups are significant different.
+    -   Use `emmeans()` with Tukey correction to determine which specifc groups are significantly different.
 
 6.  **Report Results in APA Format**
 
@@ -546,13 +564,15 @@ Follow the same **seven steps** from the worked example to analyse this dataset.
 
 7.  **Conduct a Power Analysis**
 
-    -   Use `pwr.anova.test()` to check statistical power (post-hoc).
+    -   Use `pwr.anova.test()` to check ***post-hoc*** statistical power.
 
 # Factorial ANOVA
 
 ## Activity 6: Factorial ANOVA Example
 
-One-Way ANOVAS are a good test when you have one independent variable with three or more levels. However, most of the time you will probably have more than one IV. In those situations, Factorial ANOVAS can be excellent statistical tests to use. Let's go through a Factorial ANOVA now.
+One-Way ANOVAS are a good test when you are investigating the effect of one independent variable with three or more levels on some dependent variable. However, you will often want to investigate the effect of more than one independent variable on a dependent variable. In those situations, Factorial ANOVAS can be an excellent statistical test to use.
+
+In this example, we will walk through the steps involved in conducting a Factorial ANOVA.
 
 ### Research Introduction
 
@@ -566,9 +586,9 @@ In recent years, psychological interventions such as Cognitive Behavioral Therap
 
 -   **Alternative Hypothesis (H₁):** Therapy type and treatment duration influence anxiety levels, with CBT and DBT leading to lower anxiety scores compared to Mindfulness, and longer durations (12 weeks) resulting in greater anxiety reduction than shorter durations (6 weeks).
 
-**Method**: A total of 180 participants were randomly assigned to one of three therapy groups: CBT (n = 60), DBT (n = 60), or Mindfulness (n = 60). They were also randomly assigned to receive therapy for either 6 weeks or 12 weeks. After completing the assigned intervention, their anxiety levels were measured.
+**Method**: A total of 180 participants were randomly assigned to one of three therapy groups: CBT (n = 60), DBT (n = 60), or Mindfulness (n = 60). They were also randomly assigned to receive therapy for either 6 weeks (n = 90) or 12 weeks (n = 90). After completing the assigned intervention, their anxiety levels were measured.
 
-**Analysis Plan:** A **3×2 Factorial ANOVA** will be conducted to examine:
+**Analysis Plan:** A *3×2 Factorial ANOVA* will be conducted to examine:
 
 1.  The **main effect of therapy type** (whether different therapies lead to different anxiety levels).
 
@@ -589,7 +609,7 @@ Well the reason is that this examines the effects of two independent variables, 
 
     -   Mindfulness-Based Therapy
 
-    -   Dialectical Behavioural Therapy
+    -   Dialectical Behavioural Therapy (DBT)
 
 2.  **Duration** (Independent Variable 2) – This variable has **two levels**:
 
@@ -613,7 +633,7 @@ head(df_anxiety)
 
 ### Step 2: Conduct Descriptive Statistical Analysis
 
-Now, let’s run some descriptive statistics using the `descriptives()` function. This will help us understand the distribution of **Anxiety** scores across the different treatment groups.
+Now, let’s run some descriptive statistics using the `descriptives()` function. This will help us understand the distribution of **Anxiety** scores across the different Treatment and Duration groups.
 
 We will first calculate the mean, standard deviation, and other key statistics for Anxiety , grouped by Treatment. We will also generate
 
@@ -655,7 +675,7 @@ Now let’s investigate whether there is a significant effect of Therapy on Anxi
 
 To run a **factorial ANOVA**, we also use the `aov_ez()` function. The syntax is nearly identical to the One-Way ANOVA.
 
-Below is the general syntax (you will need to replace certain placeholders with the appropriate column names from your dataset):
+Below is the general syntax (remember you will need to replace certain placeholders with the appropriate column names from your dataset):
 
 ```{r eval = F}
 
@@ -674,7 +694,7 @@ anova(anova_example_syntax)
 
 #### Running it on our Dataset
 
-For our dataset, we have two between subjects independent variables: "Therapy" and "Duration", so our code will be the following:
+For our dataset, we have two between subjects independent variables: `Therapy` and `Duration`, so our code will be the following:
 
 ```{r}
 
@@ -748,7 +768,7 @@ Luckily, it is easy to do this in R using the `|` symbol.
 
 posthoc_factorial <- emmeans(fact_anova, 
                              pairwise ~ Therapy | Duration, 
-                             adjust = "bonferroni")
+                             adjust = "Tukey")
 
 posthoc_factorial
 
@@ -786,17 +806,17 @@ The estimated marginal means (emmeans) indicate the average post-intervention an
 
 -   The interaction effect suggests that **Mindfulness was particularly ineffective over shorter durations**, as its scores were much higher than CBT and DBT, especially at 6 weeks.
 
-Overall, the findings indicate that **CBT and DBT are both effective therapies for reducing anxiety, especially over 12 weeks, whereas Mindfulness is less effective in comparison.**
+Overall, the findings indicate that CBT and DBT are both effective therapies for reducing anxiety, especially over 12 weeks, whereas Mindfulness is less effective in comparison.
 
 ### Step 6: Visualise your Model
 
-
+The following code will enable us to plot the interaction between Duration and Therapy.
 
 ```{r}
 
 afex_plot(fact_anova, 
-          x = "Duration", 
-          trace = "Therapy", 
+          x = "Duration", #what goes on the x-axis
+          trace = "Therapy", #to make sure it tracks the other independent variable as well
           error = "between",
           mapping = c("color", "linetype")) +  # Automatically maps color & line type to Therapy
   theme_classic()  # Clean and simple theme
@@ -804,14 +824,17 @@ afex_plot(fact_anova,
 
 ```
 
+When adapting this code to your own work, make sure to replace `Duration` and `Therapy` with your own Independent Variables.
 
-### Step 7: Write up your results APA style
+In terms of deciding what goes on the x-axis, it does not really matter too much. You could swap Duration and Therapy in the above code, and it will still produce a plot (feel free to try). Usually, the final decision is what plot looks more informative about the results.
+
+### Step 7: Write up your results in APA style
 
 A 3 × 2 factorial ANOVA was conducted to examine the effects of therapy type (CBT, DBT, Mindfulness) and treatment duration (6 weeks vs. 12 weeks) on post-treatment anxiety scores.
 
-There was a significant main effect of therapy type, F(2, 174) = 143.76, p < .001, η²ₚ = 0.623, indicating that anxiety scores differed significantly across therapy conditions. Post-hoc comparisons with Bonferroni correction showed that CBT (M = 50.7, SE = 1.19) and DBT (M = 47.8, SE = 1.19) were significantly more effective than Mindfulness (M = 63.9, SE = 1.19) at reducing anxiety after 6 weeks (p < .0001). Similarly, after 12 weeks, CBT (M = 40.6, SE = 1.19) and DBT (M = 38.5, SE = 1.19) remained significantly more effective than Mindfulness (M = 59.7, SE = 1.19) (p < .0001). However, there was no significant difference between CBT and DBT at either time point (p = 0.671 for 12 weeks; p = 0.243 for 6 weeks).
+There was a significant main effect of therapy type, F(2, 174) = 143.76, p \< .001, η²ₚ = 0.623, indicating that anxiety scores differed significantly across therapy conditions. Post-hoc comparisons with Tukey correction showed that CBT (M = 50.7, SE = 1.19) and DBT (M = 47.8, SE = 1.19) were significantly more effective than Mindfulness (M = 63.9, SE = 1.19) at reducing anxiety after 6 weeks (p \< .0001). Similarly, after 12 weeks, CBT (M = 40.6, SE = 1.19) and DBT (M = 38.5, SE = 1.19) remained significantly more effective than Mindfulness (M = 59.7, SE = 1.19) (p \< .0001). However, there was no significant difference between CBT and DBT at either time point (p = 0.671 for 12 weeks; p = 0.243 for 6 weeks).
 
-There was also a significant main effect of treatment duration, F(1, 174) = 64.92, p < .001, η²ₚ = 0.272, suggesting that participants who received 12 weeks of treatment (M = 46.3, SE = 1.19) had significantly lower anxiety scores than those who received 6 weeks of treatment (M = 54.1, SE = 1.19).
+There was also a significant main effect of treatment duration, F(1, 174) = 64.92, p \< .001, η²ₚ = 0.272, suggesting that participants who received 12 weeks of treatment (M = 46.3, SE = 1.19) had significantly lower anxiety scores than those who received 6 weeks of treatment (M = 54.1, SE = 1.19).
 
 The therapy type by treatment duration interaction was statistically significant, F(2, 174) = 3.50, p = .032, η²ₚ = 0.039, indicating that the effectiveness of therapy type depended on treatment duration.
 
