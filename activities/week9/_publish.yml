@@ -1,0 +1,4 @@
+- source: 09-workshop-activities.qmd
+  quarto-pub:
+    - id: ff76f9df-9aa3-44a6-9b3e-7ebd9bdabb81
+      url: 'https://ryandonovan.quarto.pub/week9---activities'

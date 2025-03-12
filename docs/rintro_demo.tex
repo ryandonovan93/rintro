@@ -3123,7 +3123,7 @@ Let's test the \texttt{praise} package, which generates random compliments (not 
 \end{verbatim}
 
 \begin{verbatim}
-## [1] "You are stylish!"
+## [1] "You are finest!"
 \end{verbatim}
 
 \begin{Shaded}
@@ -3999,7 +3999,7 @@ This chapter aims to supplement your in-lecture learning about regression, to re
 
 \section{Activities}\label{activities-4}
 
-As in previous sessions there are several activities associated with this chapter. You can find them on Canvas under the \textbf{Week 7 module}.
+As in previous sessions there are several activities associated with this chapter. \href{https://ryandonovan.quarto.pub/week7---activities/}{You can find them here} or on Canvas under the \textbf{Week 7 module}.
 
 \section{Linear Regression}\label{linear-regression}
 
@@ -4225,7 +4225,1139 @@ We get our descriptive statistics as we have previously, using the descriptives 
 
 A multiple regression was performed with \textbf{Variable A} (M= \textbf{Variable A Mean}, SD= \textbf{Variable A Standard Deviation}) as the outcome variable and \textbf{Variable B} (M= \textbf{Variable B Mean}, SD= \textbf{Variable B Standard Deviation}), and \textbf{Variable C} (M= \textbf{Variable C Mean}, SD= \textbf{Variable C Standard Deviation}) as the predictor variables.The results of the regression indicated that the model significantly predicted \textbf{Variable A} (F(\textbf{degrees of freedom}) = \textbf{F statistic},\textbf{p value}, Adjusted R2 = \textbf{Adjusted R2}, f2 = \textbf{f2}), accounting for \textbf{R2 by 100}\% of the variance.\textbf{Variable B} was a significant predictor (\(\beta\) = \textbf{estimate}, p \textbf{p value}), but \textbf{Variable C} was not a significant predictor (\(\beta\) = \textbf{estimate}, p \textbf{p value}). There \textbf{was / was not} a significant interaction between Variable B and C (\(\beta\) = \textbf{estimate}, p \textbf{p value}.
 
-\section{}\label{section}
+\chapter{Data Visualisation in R}\label{data-vis}
+
+In this session, we are going to learn how to generate APA style plots in R. In particular, we are going to learn about the \texttt{ggplot2} package and it's associated function \texttt{ggplot()}. This package has been used to create plots for publications like the BBC and the Economist. By the end of this session you should be capable of:
+
+\begin{itemize}
+\tightlist
+\item
+  Understanding the logic of the ggplot method for drawing plots.
+\item
+  Generating and customising elegant Box Plots, Violin Plots, Bar Charts, Scatterplots, Histograms, and Line Charts.
+\item
+  Making your plots APA ready.
+\item
+  Arranging and faceting (grouping together) your plots.
+\item
+  Export your plots to PDFs.
+\end{itemize}
+
+\section{How to read this chapter}\label{how-to-read-this-chapter-5}
+
+This chapter aims to supplement your in-lecture learning about data visualization, and to build on this knowledge to show how to create visualisations in R. You'll notice this chapter contains more R code than previous weeks. This is because a lot of our learning is about understanding the ggplot package and its usage. This chapter will be a helpful reference for your future use of this package, but at first go we recommend focusing on the activities to help you go through creating graphs step by step.
+
+\section{Activities}\label{activities-5}
+
+As in previous sessions there are several activities associated with this chapter. You can find them on Canvas under the \textbf{Week 9 module}.
+
+\section{\texorpdfstring{Introduction to \texttt{ggplot2}}{Introduction to ggplot2}}\label{introduction-to-ggplot2}
+
+In our first session, we analysed the \texttt{sleep} data frame. This involved creating and exporting a plot using the \texttt{base\ R} \texttt{plot()} function. The code looked like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(sleep}\SpecialCharTok{$}\NormalTok{group, sleep}\SpecialCharTok{$}\NormalTok{extra, }
+     \AttributeTok{xlab =} \StringTok{"Treatment Group"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Effect of Treament on Sleep Duration"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-174-1.pdf}}
+
+This is a perfectly fine plot. But R is capable of making plots that are significantly nicer and elegant. This ability represents a significant advantage of using R over other programmning languages or statistical softwaere. This is thanks to the \texttt{ggplot2} package and the \texttt{ggplot()} function.
+
+\textbf{What does the gg in ggplot stand for?}
+
+The \texttt{gg} stands for the \emph{G}rammar of \emph{G}raphics. This is because ggplot is built upon a logical system of how to draw a plot. This system involves incrementally adding layers to your plot. If you can grasp the \texttt{ggplot} system, you will be able to create high-quality plots quickly. Luckily, this structure is relatively straightforward to understand.
+
+\section{How to Draw a Plot (Box Plot)}\label{how-to-draw-a-plot-box-plot}
+
+Let's recreate the plot we made in the first session using \texttt{ggplot} this time. Once we have done that, I will show you how we can make the plot even better using this function. We will be using the \texttt{sleep} data frame again, but I am going to call it \texttt{df} for short.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ sleep }
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{First we set up the Canvas}\label{first-we-set-up-the-canvas}
+
+The first thing we do when we want to create a plot is call the \texttt{ggplot()} function and tell it what data frame we are using In this case, we are using the \texttt{sleep} data frame, that is stored in the variable \texttt{df}. Let's call the \texttt{ggplot()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-176-1.pdf}}
+
+This creates a grey canvas where we can draw our plot on. The default R canvas is grey, but we can change its appearance later.
+
+Now that our canvas is set up, we will want to specify some aesthetic properties to our plot, like the y-axis and x-axis.
+
+Now we will want to add properties to our canvas, like the x and y-axis. This properties are known as \texttt{aesthetic} properties in ggplot. To create them, we need tell R to \texttt{map} the \textbf{x-axis} and \textbf{y-axis} to variables in our data frame (e.g.~df). In ggplot, there is an argument called \texttt{mapping\ =\ aes()} that enables this mapping. The part \texttt{aes} is short for aesthetics. Let's map the \texttt{group} variable to the x-axis and the \texttt{extra} variable to the y-axis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-177-1.pdf}}
+
+Now we can see that our x-axis is mapped to the two values in our \texttt{group} variable(1 and 2), whereas the y-axis is mapped to the range of values in the \texttt{extra} variable.
+
+\subsection{Creating our Box Plot}\label{creating-our-box-plot}
+
+This sets up the structure of our canvas, the next thing we need to do is specify what \textbf{type} of plot we want to create. In ggplot, this means draw a \texttt{geom} (i.e., geometrical shape) onto our plot. There are dozens of geoms (see table at end of the chapter) that we can draw to our plot. We can even draw multiple at the same time (more on that later).
+
+For now, we will add a single geom. Since we are creating a boxplot, we'll add \texttt{geom\_boxplot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-178-1.pdf}}
+
+We can see that R has now drawn box plots for each of our groups. You'll notice that we used the \texttt{+} operator to add these parts together. This is because we are literally adding this boxplot shape to the canvas we created earlier. Whenever you add a separate element to your graph in ggplot, we always need to use the \texttt{+} operator.
+
+In terms of syntax, it should always come at the end of line of code, not at the start of a new line. If it comes at the start of a new line, R will only use the code above that line. The `+`` is there to tell R ``hey hold on, I am adding more things to my graph''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-179-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{() }\CommentTok{\#will not work, notice the error code}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error:
+## ! Cannot use `+` with a single argument.
+## i Did you accidentally put `+` on a new line?
+\end{verbatim}
+
+This plot is different from the plot we made in session 1. The default style in \texttt{ggplot()} is not to add the whiskey horizontal lines (e.g., the T) at the top and end of each boxplot. Generally, I am happy with the default option, but since we are recreating our first boxplot, let's add these whisker lines.
+
+To do this, we need to tell R to create a shape based on statistical properties of our data. In particular, we need to create a statistical \texttt{error\ bar} for a box plot. We can do this through adding the following line of code in our plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-180-1.pdf}}
+
+Now we have our whisker lines. The error bar lines are slightly too large for me. We can change their \texttt{width} within the \texttt{stat\_boxplot()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-181-1.pdf}}
+
+\subsection{Changing the Name of Our X-Axis and Y-Axis}\label{changing-the-name-of-our-x-axis-and-y-axis}
+
+Okay, our plot is looking better. The next thing we will want to do is add informative labels to our x and y-axis. We can do this by using the ggplot functions \texttt{scale\_x\_discrete} and \texttt{scale\_y\_continous} to draw our labels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-182-1.pdf}}
+
+There now we have our x and y-labels. The reason why the x-axis is \texttt{discrete} and the y-axis is \texttt{continuous} is because of the nature of the data. If we flipped the axes, then it would be scale\_x\_continuous and scale\_y\_discrete.
+
+One thing that is bothering me is that our treatment group is labelled as \texttt{1} and \texttt{2}. The sleep data frame does not provide us with any meaningful information about what these values mean. So I am going to take artistic liberties and say that \texttt{1} means \texttt{Xanax} and \texttt{2} means \texttt{Ambien}.
+
+One approach to amend this would be to add labels to the x-axis, in \texttt{scale\_x\_discrete()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-183-1.pdf}}
+
+\subsection{Changing the Look (Theme) of Our Canvas}\label{changing-the-look-theme-of-our-canvas}
+
+One of the nice features of ggplot() is can change the \texttt{theme} of our canvas. There are several themes that we can use (see theme table at the end of the chapter). The current theme we are using is \texttt{theme\_gray}, which is the default theme.
+
+Since we are psychologists, we will mostly need plots in \texttt{APA} style. The package \texttt{ggplot2} does not actually come with a pre-installed \texttt{APA} style. However, this is where the \texttt{jtools} package we installed and loaded comes in. It has an \texttt{apa\_theme()}. Make sure that is loaded before running the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"grey"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\#this will fill the inside of the boxplots with grey}
+   \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-184-1.pdf}}
+
+\section{9.5 The Real Power of the ggplot package - Customisation}\label{the-real-power-of-the-ggplot-package---customisation}
+
+You might be wondering right now how useful is \texttt{ggplot} really. If you compare our two code chunks from base R and ggplot, you'll notice that the base R approach is significantly shorter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#base R approach}
+
+\FunctionTok{plot}\NormalTok{(sleep}\SpecialCharTok{$}\NormalTok{group, sleep}\SpecialCharTok{$}\NormalTok{extra, }
+     \AttributeTok{xlab =} \StringTok{"Treatment Group"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Effect of Treament on Sleep Duration"}\NormalTok{)}
+
+\CommentTok{\#ggplot approach}
+
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"grey"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\#this will fill the inside of the boxplots with grey}
+   \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+If we are making a base plot in R, then base R is fine for the job. However, the real power of ggplot is the ability to customize our graphs to make them more striking and informative. We have seen glimpses of this already with the ability to add labels, colour, and themes to our plots. Now I am going to show you more ways we can customise our plot.
+
+\subsection{Mapping Aesthetic Properties (like Colour and Fill) to Our Variables}\label{mapping-aesthetic-properties-like-colour-and-fill-to-our-variables}
+
+In the last section, we used the argument \texttt{fill\ =\ grey} to specify the colour of boxplots. If I wanted to specify different colours for each boxplot, I can use the \texttt{c()} function and specify each separate colour.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \FunctionTok{c}\NormalTok{(}\StringTok{"pink"}\NormalTok{, }\StringTok{"orange"}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\#this will colour the first box pink and the second box orange}
+ \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-186-1.pdf}}
+This approach is okay if are only specifying a limited number of colours, but if there are several colours we need to specify, it is cumbersome.
+
+It is okay to manually specify the colours, particularly if you have a small number of box plots. However, one of the advantages of using R is getting it to do the work for you. In particular, we can ask R to map the colour of the boxplots to specific values in our data frame.
+
+We can do this through a similar approach used in \texttt{ggplot()} where we add the argument \texttt{mapping\ =\ aes()} to our \texttt{geom\_boxplot()} function. This time inside the \texttt{aes()} argument, we specify that we want the \texttt{fill} (the colour inside our boxplots) to map to the variable \texttt{group}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group)) }\SpecialCharTok{+} \CommentTok{\#R will automatically assign a new colour to each different value in group}
+ \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-187-1.pdf}}
+
+Luckily, R will choose colours that are visually distinct from each other. ANB you may notice that the legend labels (1, 2) are not the most informative. This is because when we relabel them on the x axis this just relabels them there. Next week we are going to learn a neater way to change the labels in the data itself.
+
+For now, if you want to remove the legend, add show.legend = FALSE to the geom\_boxplot() function.
+
+\subsection{Changing the Value of Our Y-Axis}\label{changing-the-value-of-our-y-axis}
+
+I can tell R to specify the number of breaks on the y-axis. At the moment, it is only showing breaks in increments of two. R will try find a straightforward solution to the number of points on the y-axis. We can override this by using the \texttt{breaks()} argument in \texttt{scale\_y\_continous}, which will add a break between each number specified.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\#R will automatically assign a new colour to each different value in group}
+ \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-188-1.pdf}}
+\#\#\# Changing the Orientation
+
+We can also change the orientation of our graph in \texttt{ggplot()}. All we need to do is change the \texttt{x} and \texttt{y} values in the \texttt{ggplot()} call. And then we just need to change \texttt{scale\_y\_continuous} to \texttt{scale\_y\_discrete}, and \texttt{scale\_x\_discrete} to \texttt{scale\_x\_continuous}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ extra, }\AttributeTok{y =}\NormalTok{ group)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_y\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-189-1.pdf}}
+
+This option is really handy if you have lots of different categorical groups and your struggling to fit your graph onto the page. Let me demonstrate with the \texttt{mpg} data set that is already installed when you download R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This first plot if really squished together on the x{-}axis}
+
+\FunctionTok{ggplot}\NormalTok{(mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ manufacturer, }\AttributeTok{y =}\NormalTok{ cty)) }\SpecialCharTok{+} \CommentTok{\#cty = number of cylinders }
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ manufacturer))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-190-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#but if we pivot it, then it looks much nicer}
+
+\FunctionTok{ggplot}\NormalTok{(mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cty, }\AttributeTok{y =}\NormalTok{ manufacturer)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ manufacturer))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-190-2.pdf}}
+
+\subsection{Plotting our Data Points in the Graph}\label{plotting-our-data-points-in-the-graph}
+
+What if I wanted to add individual data points to our graph? To provide more information on the scatter of scores? There are two options I can use. The first option is to the use the \texttt{geom\_point()}, which will each participant's data point to the graph. Since there are only two possible observations in the \texttt{x-axis}, all data points will be printed in a straight line for each observation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\CommentTok{\#will add individual scores onto to the graph}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-191-1.pdf}}
+
+This is a perfectly legitimate approach to take. There is not a lot of data, so we can make our each individual point, even if there is some overlap. However, we can use another approach called \texttt{geom\_jitter()}. This will plot each individual point just like \texttt{geom\_point()} does, but it will add some random movement (i.e.~a jitter) to each point. This can prevent overplotting of individual points.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{() }\CommentTok{\#will add individual scores onto to the graph and give them space away from each other}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-192-1.pdf}}
+
+The added space left or right for each data point is randomly generated. But we can reduce the upper and lower bounds of that random generation. Let's do that for our current plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{20}\NormalTok{) }\CommentTok{\#will add individual scores onto to the graph and give them space away from each other}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-193-1.pdf}}
+
+\subsection{Adding Statistical Information to Our Plot}\label{adding-statistical-information-to-our-plot}
+
+We can also add statistical summary information to our plot. Right now our boxplot tells us about individual scores, the median score, and the range of values. What if we wanted it to visualise the mean score treatment group?
+
+No problem. To do this, we need to tell R to draw a \texttt{geom} shape in the position of the mean score. The easiest \texttt{geom} to do this with is \texttt{geom\_point()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{stat =} \StringTok{"summary"}\NormalTok{, }\AttributeTok{fun =} \StringTok{"mean"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-194-1.pdf}}
+
+This draws a dot exactly where the mean value falls for both the \texttt{Xanax} and \texttt{Ambien} treatment groups fall. I changed the size of the point to make it more visible salient than the other data points.
+
+\subsection{Adding Text to Our Plot}\label{adding-text-to-our-plot}
+
+We can also add the results of our t-test we ran in the first session to the plot. We do this by using the \texttt{annotate()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{stat =} \StringTok{"summary"}\NormalTok{, }\AttributeTok{fun =} \StringTok{"mean"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{,}
+           \AttributeTok{label =} \StringTok{"t(9) = 4.061, p = .002**."}\NormalTok{,}
+           \AttributeTok{x =} \StringTok{"Ambien"}\NormalTok{, }
+           \AttributeTok{y =} \FloatTok{5.5}\NormalTok{, }
+           \AttributeTok{hjust =} \FloatTok{2.2}\NormalTok{, }
+           \AttributeTok{vjust =} \DecValTok{1}\NormalTok{, }
+           \AttributeTok{size =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-195-1.pdf}}
+
+\subsection{Exporting our Plot}\label{exporting-our-plot}
+
+We can export our plot easily using the \texttt{ggsave()} function. Inside the function, you specify the file name. It will save the file into your working directory.
+
+By default, this function will export the last plot that you displayed. That is why it always best this function directly underneath the plot you made in your code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{stat =} \StringTok{"summary"}\NormalTok{, }\AttributeTok{fun =} \StringTok{"mean"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{,}
+           \AttributeTok{label =} \StringTok{"t(9) = 4.061, p = .002**."}\NormalTok{,}
+           \AttributeTok{x =} \DecValTok{2}\NormalTok{,}
+           \AttributeTok{y =} \FloatTok{5.5}\NormalTok{, }
+           \AttributeTok{hjust =} \FloatTok{2.2}\NormalTok{, }
+           \AttributeTok{vjust =} \DecValTok{1}\NormalTok{, }
+           \AttributeTok{size =} \DecValTok{4}\NormalTok{)}
+
+
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"sleep\_boxplot.pdf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+You should find the file \texttt{sleep\_boxplot.pdf} in your working directory now. Open it up and have a look.
+
+\section{9.6 Drawing a Scatter Plot}\label{drawing-a-scatter-plot}
+
+Okay, so we talked a lot step by step how to create a box plot. Let's talk in somewhat less detail about how to create a scatter plot. After we have covered those two charts, the rest of this chapter will serve as a reference guide for creating other charts you might be interested in making (e.g., bar charts, line charts, histograms, violin plots).
+
+\subsection{Context}\label{context}
+
+In this study (by one Dr Ryan Donovan), they investigated the relationships between basic emotional states (Anger, Disgust, Fear, Joy, Sadness, and Surprise) and the Big Five personality traits and their sub-traits. They were interested in knowing whether personality traits make one more or less likely to a) experience certain emotions and b) be more sensitive to those emotions. To achieve this, they collected data on the personality traits along with participant's daily experience of basic emotional states (baseline) and their reactive emotional experience after watching a series of emotionally provocative video clips (post-stimulus)
+
+One of the hypotheses was that Extraverts are more sensitive to experiencing Joy than Introverts. Many researchers claim that one of the driving differences between Extraverts and Introverts is that Extraverts are more sensitive to experiencing positive emotion, making them more excitable and sociable. If this is true, then I would expect there to be a positive relationship between my Extraversion and Joy\_reaction variables.
+
+\subsection{Drawing our Plot}\label{drawing-our-plot}
+
+Let's visualize this relationship by creating a scatterplot in R. There are several steps we need to take to do this.
+
+First, let's call the ggplot() function, mapping Extraversion to the x-axis and Joy\_reaction to the y-axis with the \texttt{mapping\ =\ aes()} call.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-197-1.pdf}}
+
+Now let's add our geometrical shape. For scatter plots, this is our old friend \texttt{geom\_point()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-198-1.pdf}}
+
+I am happy with the x-axis, but I would like the make the y-axis look more professional. So let's use \texttt{scale\_y\_continous()} to change its label.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Joy (Reaction)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-199-1.pdf}}
+Let's make our plot prettier by adding the APA theme.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Joy (Reaction)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-200-1.pdf}}
+It's good to provide some information on the relationship between two variables on a scatter plot. We can do this by adding a regression line that best fits their relationship. To do this in R, we add a \texttt{geom} called \texttt{geom\_smooth}, where we specify the model (method) we want to fit onto our data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-201-1.pdf}}
+The function \texttt{geom\_smooth} fits a model onto our data. When you specify \texttt{method\ =\ lm}, this mean that you are fitting a linear regression onto your data. I also set \texttt{show.legend} = \texttt{FALSE} because it create an annoying figure that we don't need.
+
+Based on what we know from our previous sessions (e.g.~Week 7) we compute a simple linear regression through the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{joy\_ext }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Joy\_reaction }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Extraversion, }\AttributeTok{data =}\NormalTok{ df\_personality)}
+
+\FunctionTok{summary}\NormalTok{(joy\_ext)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Joy_reaction ~ Extraversion, data = df_personality)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.18570 -0.39361 -0.01269  0.39017  1.45525 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   1.46794    0.22633   6.486 6.77e-10 ***
+## Extraversion  0.15775    0.06702   2.354   0.0195 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.5595 on 200 degrees of freedom
+## Multiple R-squared:  0.02696,    Adjusted R-squared:  0.02209 
+## F-statistic: 5.541 on 1 and 200 DF,  p-value: 0.01955
+\end{verbatim}
+
+Based on our plot and our linear regression model, we can see there is a small positive relationship between Extraversion and Joy (reaction) that is statistically significant. Let's add this information to our plot using the \texttt{annote()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{3.6}\NormalTok{,}
+           \AttributeTok{label =} \StringTok{"F(1, 201) = 5.48, p = .02, R\^{}2 = 0.02"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-203-1.pdf}}
+While this gets the message across, it is annoying that \texttt{F}, \texttt{p}, and \texttt{R} are not italicised. Additionally, how can we superscript the \texttt{2} in \texttt{R\^{}2}? We can use the \texttt{expression()} function inside \texttt{label}. The syntax is a bit clunky, but it will get the job done.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{3.6}\NormalTok{,}
+           \AttributeTok{label =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{italic}\NormalTok{(}\StringTok{"F"}\NormalTok{)(}\DecValTok{1}\NormalTok{, }\DecValTok{201}\NormalTok{) }\SpecialCharTok{==} \FloatTok{5.48}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"p"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ .}\DecValTok{02}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"R"}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{==} \FloatTok{0.02}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-204-1.pdf}}
+
+That looks nice and our scatter plot is ready to be exported.
+
+\subsection{Customising our Scatterplot based on Gender}\label{customising-our-scatterplot-based-on-gender}
+
+But before we move on, I want to show you a few other things we can do when we create scatter plots. For example, what if we were interested in checking whether the relationship between Joy (Reaction) and Extraversion was similar for both males and females? How could we visualize this?
+
+We can map the \texttt{colour} of the points and their \texttt{shape} to the variable \texttt{Gender}. There are two ways we can do this, through the \texttt{ggplot()} function or in the \texttt{geom\_point()}. The way you do will have ramifications for how the data visualisation will appear. It's easier to show this than to explain. So let's first change the colour and shape in the \texttt{ggplot()} function by mapping these properties to \texttt{Gender}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction, }\AttributeTok{colour =}\NormalTok{ Gender, }\AttributeTok{shape =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{3.6}\NormalTok{,}
+           \AttributeTok{label =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{italic}\NormalTok{(}\StringTok{"F"}\NormalTok{)(}\DecValTok{1}\NormalTok{, }\DecValTok{201}\NormalTok{) }\SpecialCharTok{==} \FloatTok{5.48}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"p"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ .}\DecValTok{02}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"R"}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{==} \FloatTok{0.02}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-205-1.pdf}}
+This changes the colour and shape of the data points depending on whether the participant was male or female. It also adds a regression line for the male participants scores and the female participants scores. So we can see that male participants experienced more Joy than female participants during the study, but the nature of the relationship is very similar for both males and females (e.g.~small positive relationship).
+
+If we wanted to go with this approach, we could also map the appearance of the linear regression lines to \texttt{Gender}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }
+                                     \AttributeTok{y =}\NormalTok{ Joy\_reaction, }
+                                     \AttributeTok{colour =}\NormalTok{ Gender, }
+                                     \AttributeTok{shape =}\NormalTok{ Gender,}
+                                     \AttributeTok{linetype =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{3.6}\NormalTok{,}
+           \AttributeTok{label =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{italic}\NormalTok{(}\StringTok{"F"}\NormalTok{)(}\DecValTok{1}\NormalTok{, }\DecValTok{201}\NormalTok{) }\SpecialCharTok{==} \FloatTok{5.48}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"p"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ .}\DecValTok{02}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"R"}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{==} \FloatTok{0.02}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-206-1.pdf}}
+
+The second way we can map the \texttt{shape} and \texttt{colour} aesthetics is within the \texttt{geom\_point()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ Gender, }\AttributeTok{shape =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \FloatTok{2.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{3.6}\NormalTok{,}
+           \AttributeTok{label =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{italic}\NormalTok{(}\StringTok{"F"}\NormalTok{)(}\DecValTok{1}\NormalTok{, }\DecValTok{201}\NormalTok{) }\SpecialCharTok{==} \FloatTok{5.48}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"p"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ .}\DecValTok{02}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"R"}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{==} \FloatTok{0.02}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-207-1.pdf}}
+
+If you compare this plot to the previous approach, you'll notice that the colours and shape chosen are the same. The only difference is that there is one linear regression line now for the entire data set, rather than two for male and female participants.
+
+This difference happens because of the structure of the ggplot() package. Basically, any aesthetic properties you map in the ggplot() function will be taken into account with everything you add to the plot. So when we map shape, colour, and linetype in ggplot() to Gender, the geom\_smooth() function recognizes that we want separate visualizations for male and female participants and adds seperate lines accordingly.
+
+However, when we map aesthetic properties outside of ggplot() and in a separate geom(), this will be restricted to that geom.
+
+To sum it up. If we map our variables to aesthetics in ggplot(), these are global changes. If we map variables to aesthetics outside of ggplot(), this will only make local changes. This ability to choose local or global changes means that the ggplot package system provides a high level of control in creating the plot we want.
+
+\section{9.7 Faceting}\label{faceting}
+
+What if I wanted to create two plots. A plot for only male scores, and a plot for only female scores? Well we can use the \texttt{facet\_wrap()} function which will make a seperate graph based on different values on a specified variable.
+
+The syntax for \texttt{facet\_wrap()} is: \texttt{facet\_wrap(\textasciitilde{}variable\ you\ are\ splitting\ the\ graph\ on)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ Gender, }\AttributeTok{shape =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-208-1.pdf}}
+This can be a really useful tool in data exploration when you want to see differences in relationships or effects between different categories or scores. For the purposes of brevity, I will not go into details here about how to add individual annotations to each chart, \href{https://stackoverflow.com/questions/11889625/annotating-text-on-individual-facet-in-ggplot2}{but please check out the answer given by Pedro Aphalo and Kamil Slowikowski here if you are interested in doing this}.
+
+\section{9.8 Combining Charts}\label{combining-charts}
+
+Another hypotheses I wanted to test was if there is a positive relationship between Conscientiousness and Disgust sensitivity. Previous research and some high-profile scholars have made the claim that people who are high in Conscientiousness are more likely to feel disgust, which motivates their tendency to be structured, diligent, and orderly. If this is true, then I would expect there to be a positive relationship between \texttt{Conscientiousness} and \texttt{Disgust\_reaction} variable
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Conscientiousness, }\AttributeTok{y =}\NormalTok{ Disgust\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ Gender, }\AttributeTok{shape =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Mean Experience of Reaction Disgust"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \FloatTok{2.75}\NormalTok{, }\AttributeTok{y =} \DecValTok{4}\NormalTok{,}
+           \AttributeTok{label =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{italic}\NormalTok{(}\StringTok{"F"}\NormalTok{)(}\DecValTok{1}\NormalTok{, }\DecValTok{201}\NormalTok{) }\SpecialCharTok{==} \FloatTok{0.05}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"p"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ .}\DecValTok{81}\SpecialCharTok{\textasciitilde{}}\StringTok{","}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"R"}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{==} \FloatTok{0.004}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-209-1.pdf}}
+Well that's as a definite ``NO!'' that you're going to see in a scatterplot.
+
+If you wanted to display and export these three plots together (for the sake of it, I am going to add the box plot in here as well), you can use the \texttt{patchwork} package. Once it is installed, all you need to do is assign your plots to variable names, and then use the \texttt{+}, \texttt{\textbar{}} and \texttt{/} operators together. For more information on how to use \texttt{patchwork}, \href{https://gotellilab.github.io/GotelliLabMeetingHacks/NickGotelli/ggplotPatchwork.html}{then see this web page}.
+
+One thing to note is that you may need to change the appearance of each graph to make it easier to to combine them together. For the following graphs, I removed the legends from the scatter plots (by putting \texttt{show.legend} = FALSE in \texttt{geom\_smooth} for both \texttt{p1} and \texttt{p2} and in \texttt{geom\_boxplot} in \texttt{p3}) and changed the labels on the y-axis. Then I toyed around with their layout to find the layout that was the most informative (feel free to play around with diferent configurations)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Extraversion, }\AttributeTok{y =}\NormalTok{ Joy\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ Gender, }\AttributeTok{shape =}\NormalTok{ Gender), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Reaction Joy"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F)}
+
+
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df\_personality, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Conscientiousness, }\AttributeTok{y =}\NormalTok{ Disgust\_reaction)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ Gender, }\AttributeTok{shape =}\NormalTok{ Gender),  }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Reaction Disgust"}\NormalTok{, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{show.legend =}\NormalTok{ F)}
+
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ group, }\AttributeTok{y =}\NormalTok{ extra)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =}\StringTok{\textquotesingle{}errorbar\textquotesingle{}}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ group), }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"Treatment Group"}\NormalTok{,}
+                   \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}  \OtherTok{=} \StringTok{"Xanax"}\NormalTok{, }\CommentTok{\#this changes the 1 in the x{-}axis to Xanax}
+                              \StringTok{"2"} \OtherTok{=} \StringTok{"Ambien"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{name =} \StringTok{"Number of Extra Hours of Sleep"}\NormalTok{, }
+                     \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\#this will add a break for each value between {-}2 and +6}
+\NormalTok{                     ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{stat =} \StringTok{"summary"}\NormalTok{, }\AttributeTok{fun =} \StringTok{"mean"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{)}
+
+
+\NormalTok{p1 }\SpecialCharTok{+}\NormalTok{ p2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(p1 }\SpecialCharTok{|}\NormalTok{ p2) }\SpecialCharTok{/}\NormalTok{ p3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(p1 }\SpecialCharTok{/}\NormalTok{ p2) }\SpecialCharTok{|}\NormalTok{ p3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-3.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"combined.plots.pdf"}\NormalTok{) }\CommentTok{\#saving this configuration to my working directory}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Saving 6.5 x 4.5 in image
+## `geom_smooth()` using formula = 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\section{9.9 Violin Charts}\label{violin-charts}
+
+A violin plot is a method to depict the distribution of numeric data across different categories. It combines the features of a box plot and a kernel density plot, offering a more comprehensive view of the data's distribution. To create a violin plot we use the \texttt{geom\_violin()} function. Here is the basic syntax for creating a violin plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_violin }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{category =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{), }\AttributeTok{each =} \DecValTok{100}\NormalTok{),}
+  \AttributeTok{value =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{), }\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\AttributeTok{mean =} \FloatTok{1.5}\NormalTok{), }\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\AttributeTok{mean =} \DecValTok{2}\NormalTok{))}
+\NormalTok{)}
+
+\CommentTok{\# Create a violin plot}
+\FunctionTok{ggplot}\NormalTok{(df\_violin, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ category, }\AttributeTok{y =}\NormalTok{ value, }\AttributeTok{fill =}\NormalTok{ category)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{trim =} \ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.3}\NormalTok{, }
+               \AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{,}
+               \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Category"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Value"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Violin Plot: Distribution of Values by Category"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-211-1.pdf}}
+Inside the \texttt{geom\_violin} function, we specified three arguments: trim, show.legend, and alpha. If the \texttt{trim} argument is \texttt{TRUE}, then the tails of the violin plot are trimmed to match the exact range of the data. If the \texttt{trim} argument is \texttt{FALSE}, it will extend slightly past the range.
+
+\textbf{Trim} - If the \texttt{trim} argument is \texttt{TRUE} (this is the default option), then the tails of the violin plot are trimmed to match the exact range of the data. If the \texttt{trim} argument is \texttt{FALSE}, it will extend slightly past the range.
+
+\textbf{Show.legend} - If set to \texttt{TRUE} (this is the default option, then a legend will appear with the graph)
+
+\textbf{Alpha} - This determines the strength of the colour, higher scores mean the violin plot will appear darker in colour.
+
+These arguments are all stylistic choice that you can play around with when creating your own plots.
+
+Let's do this with the \texttt{df\_personality} data frame. We will put \texttt{Gender} on the x-axis and \texttt{Agreeableness} on the \texttt{y-axis}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender, }\AttributeTok{y =}\NormalTok{ Agreeableness, }\AttributeTok{fill =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{trim =} \ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.2}\NormalTok{, }
+               \AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{,}
+               \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Gender"}\NormalTok{, }
+    \AttributeTok{y =} \StringTok{"Agreeableness"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Violin Plot: Distribution of Agreeableness by Gender"} 
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-212-1.pdf}}
+
+\section{Bar Chart}\label{bar-chart}
+
+A bar chart is great for displaying categorical data. It consists of rectangular bars with lengths proportional to the values they represent. Bar charts are effective for comparing the frequency, count, or proportion of different categories.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_bar }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{category =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{, }\StringTok{"E"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Create a bar chart}
+\FunctionTok{ggplot}\NormalTok{(df\_bar, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ category, }\AttributeTok{fill =}\NormalTok{ category)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} \CommentTok{\#}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Category"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Count"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Bar Chart: Distribution of Counts by Category"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-213-1.pdf}}
+
+In \texttt{df\_personality}, there is a variable called \texttt{Publication}. This variable captures whether participants were okay with having their recorded video and audio data potentially published in publications (for context, the participants facial expressions were recorded while they watched each video clip. After each video clip, they were asked to speak about their experiences and this was also recorded).
+
+Let's use a \texttt{geom\_bar} to visualise the count for each variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Publication, }\AttributeTok{fill =}\NormalTok{ Publication)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\#}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Education Level"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Count"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Bar Chart: Distribution of Counts by Education Level"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-214-1.pdf}}
+
+\section{Histograms}\label{histograms}
+
+Histograms are a type of bar plot that displays the distribution of a continuous variable. They partition the data into bins or intervals along the x-axis and then use the height of the bars to represent the frequency or density of observations within each bin.
+
+Creating a histogram in ggplot2 is straightforward. We use the geom\_histogram() function and map a continuous variable to the x-axis. Here's an example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a histogram of a continuous variable}
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-215-1.pdf}}
+We can change the bin width by specify it in the \texttt{geom\_histogram()} function. Often you might need to play around with this to get the value you want.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(df\_personality}\SpecialCharTok{$}\NormalTok{Age)}
+\NormalTok{age\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(df\_personality}\SpecialCharTok{$}\NormalTok{Age)}
+
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{2}\NormalTok{,}
+                 \AttributeTok{colour =} \StringTok{"white"}\NormalTok{)}\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Age"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Count"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-216-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun =}\NormalTok{ dnorm, }
+                \AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(df\_personality}\SpecialCharTok{$}\NormalTok{Age), }
+                            \AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(df\_personality}\SpecialCharTok{$}\NormalTok{Age)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## geom_function: na.rm = FALSE
+## stat_function: fun = function (x, mean = 0, sd = 1, log = FALSE) 
+## .Call(C_dnorm, x, mean, sd, log), n = 101, args = list(mean = 34.3316831683168, sd = 12.2776294622599), na.rm = FALSE, xlim = NULL
+## position_identity
+\end{verbatim}
+
+\section{Line Chart}\label{line-chart}
+
+Line charts are commonly used to visualize trends over time or any continuous variable. They are particularly useful for showing how a variable changes in relation to another variable, such as time.
+
+Creating a line chart in ggplot2 involves mapping a continuous variable to the x-axis and a dependent variable to the y-axis. Here's an example with a dataset that comes with R called \texttt{economics} (type \texttt{?economics} into the console to get more information about it)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a line chart of a continuous variable over time}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ economics, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ unemploy)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Unemployment Rate Over Time"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Unemployment Rate"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-217-1.pdf}}
+\#\# Making our Plots more Inclusive
+
+We can also specify options to make sure our plots are colour-blind friendly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_personality, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender, }\AttributeTok{y =}\NormalTok{ Agreeableness, }\AttributeTok{fill =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{trim =} \ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.2}\NormalTok{, }
+               \AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{,}
+               \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\CommentTok{\#this is another approach to naming x and y{-}axis, only use if you do not need to change anything about the values on each axis}
+    \AttributeTok{x =} \StringTok{"Gender"}\NormalTok{, }
+    \AttributeTok{y =} \StringTok{"Agreeableness"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Violin Plot: Distribution of Agreeableness by Gender"} \CommentTok{\#depending on APA style, you may want to remove this}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_apa}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_viridis\_d}\NormalTok{(}\AttributeTok{option =} \StringTok{"C"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-218-1.pdf}}
+
+The \texttt{scale\_fill\_viridis\_d()} function uses colour palettes that are distinctive enough to those who suffer from colour-blind issues. There are several options in this function (A to E), feel free to change it and see which ones you like.
+
+\section{Summary}\label{summary-4}
+
+That wraps up our data visualisation session. Hopefully you can see the value of using R for data visualisation. There is a lot we did not cover today, as data visualisation in R could be an entire workshop series in-of-itself. There are so many cool things you can do in R, like interactive graphs, annotating/highlighting individual points, combining data sets into one visualization.
+
+Do not feel overwhelmed by the amount we have not covered. The main challenge in ggplot is getting used to concept of drawing layers of geoms, statistical summaries, and themes to the plot. Once you do, even if you have not used a particular geom before, it will be very quick and easy to create an excellent plot quickly.
+
+\section{Geoms}\label{geoms}
+
+Below are a set of geometrical shapes that you can to your plots in \texttt{ggplot2}.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1124}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6746}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2130}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Geom}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Description}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Similar Plot}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{geom\_point()}} & Adds points to the plot. Useful for scatter plots to visualize the relationship between two continuous variables. & Scatter Plot \\
+\textbf{\texttt{geom\_line()}} & Connects points with lines. Often used to represent trends or changes over time in continuous data. & Line Plot \\
+\textbf{\texttt{geom\_bar()}} & Displays bars representing counts or frequencies of categorical data. Useful for comparing categories. & Bar Chart \\
+\textbf{\texttt{geom\_histogram()}} & Similar to geom\_bar(), but used for continuous data. Creates bins of data and displays bars showing frequency distribution. & Histogram \\
+\textbf{\texttt{geom\_boxplot()}} & Represents the distribution of a continuous variable through quartiles, median, and outliers. Useful for identifying outliers and comparing distributions. & Box Plot \\
+\textbf{\texttt{geom\_area()}} & Fills the area below the line in a line plot. Useful for highlighting the cumulative effect of changes in a variable over time. & Area Plot \\
+\textbf{\texttt{geom\_smooth()}} & Adds a smoothed line to the plot, often useful for visualizing trends or patterns in noisy data. & Trend Line \\
+\textbf{\texttt{geom\_text()}} & Adds text labels to the plot, allowing annotation of specific points or adding additional information. & Text Annotation \\
+\textbf{\texttt{geom\_label()}} & Similar to geom\_text(), but adds labels with a background, making them more prominent and readable. & Labeled Text \\
+\textbf{\texttt{geom\_hline()}} & Draws horizontal lines across the plot, useful for highlighting specific reference points or thresholds. & Horizontal Line \\
+\textbf{\texttt{geom\_vline()}} & Draws vertical lines on the plot, similar to geom\_hline(), but for vertical lines. & Vertical Line \\
+\textbf{\texttt{geom\_polygon()}} & Draws polygons based on provided coordinates, useful for creating custom shapes or highlighting areas on a plot. & Polygon Plot \\
+\textbf{\texttt{geom\_errorbar()}} & Adds error bars to the plot, indicating uncertainty or variability in the data. & Error Bar Plot \\
+\textbf{\texttt{geom\_jitter()}} & Adds random noise to points, useful for avoiding overplotting in dense scatter plots. & Jittered Scatter Plot \\
+\textbf{\texttt{geom\_tile()}} & Creates a heatmap by filling rectangles with color based on a continuous variable. Useful for visualizing patterns in 2D data. & Heatmap \\
+\textbf{\texttt{geom\_path()}} & Similar to geom\_line(), but does not close the path, useful for plotting trajectories or paths. & Path Plot \\
+\end{longtable}
+
+\section{Themes}\label{themes}
+
+Below are a set of can apply to your plots in \texttt{ggplot2}.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.1544}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.8456}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Theme}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Description}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{theme\_gray()}} & Default theme with a gray background. \\
+\textbf{\texttt{theme\_bw()}} & Theme with a white background and black gridlines. \\
+\textbf{\texttt{theme\_minimal()}} & Minimalistic theme with a light gray background and no gridlines. \\
+\textbf{\texttt{theme\_light()}} & Theme with a light gray background and gridlines. \\
+\textbf{\texttt{theme\_dark()}} & Theme with a dark gray background and white gridlines. \\
+\textbf{\texttt{theme\_classic()}} & Classic theme resembling base R plots. \\
+\textbf{\texttt{theme\_void()}} & Theme with no background, gridlines, or axis elements. \\
+\textbf{\texttt{theme\_linedraw()}} & Theme resembling hand-drawn plots, with a white background and black gridlines. \\
+\textbf{\texttt{theme\_apa()}} & Theme consistent with APA style (note: you need to have installed and loaded the \texttt{jtools} package to use this) \\
+\end{longtable}
 
   \bibliography{book.bib,packages.bib}
 

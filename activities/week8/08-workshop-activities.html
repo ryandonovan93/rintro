@@ -277,7 +277,7 @@ Reminder on creating an R script
 <section id="activity-4-one-way-between-subjects-anova-example" class="level2">
 <h2 class="anchored" data-anchor-id="activity-4-one-way-between-subjects-anova-example">Activity 4: One-Way Between Subjects ANOVA Example</h2>
 <p>In recent years, there has been a growing interest in exploring the therapeutic potential of psychoactive treatments for mental health. This dataset examines the effects of Psilocybin and DMT on Neuroticism, a personality trait associated with various psychological disorders. The researchers investigated whether the administration of Psilocybin and DMT had a significant effect on participants’ Neuroticism levels.</p>
-<p><strong><em>ResearchQuestion</em></strong>: Is there an effect of psychoactive treatment on Neuroticism?</p>
+<p><strong><em>Research Question</em></strong>: Is there an effect of psychoactive treatment on Neuroticism?</p>
 <p><strong>Hypotheses</strong>:</p>
 <p><em>H₀ (Null Hypothesis)</em><strong>:</strong> There is no effect of psychoactive treatment on Neuroticism.</p>
 <p><em>H₁ (Alternative Hypothesis):</em> There is an effect of psychoactive treatment on Neuroticism.</p>
@@ -723,7 +723,7 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>The <em>Psilocybin</em> group had significantly higher Neuroticism scores than the <em>DMT</em> group (<em>t</em> = -3.97, <em>p</em> = .0006).</p>
 <p>The <em>Psilocybin</em> group also had significantly higher Neuroticism scores than the <em>Placebo</em> group (<em>t</em> = -3.31, <em>p</em> = .0046).</p>
 <p>No significant difference was found between the <em>DMT</em> and <em>Placebo</em> groups (<em>t</em> = -0.66, <em>p</em> = .787).</p>
-<p>These results suggest that <em>Psilocybin</em> led to significantly higher Neuroticism scores compared to <em>DMT</em> and <em>Placebo</em>, while <em>DMT</em> and <em>Placebo</em> did not differ significantly.</p>
+<p>These results suggest that <em>Psilocybin</em> led to significantly higher Neuroticism scores compared to <em>DMT</em> and <em>Placebo</em>, while <em>DMT</em> and <em>Placebo</em> did not differ significantly. Based on these results, one can reject the null hypothesis.</p>
 </section>
 <section id="step-7-power-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="step-7-power-analysis">Step 7: Power Analysis</h3>
@@ -787,10 +787,10 @@ NOTE: n is number in each group</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_psycho, <span class="fu">aes</span>(<span class="at">x =</span> Treatment, </span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> Neuroticism, </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fill =</span> Treatment))<span class="sc">+</span> </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Effect of Psychoactive Treatment on Neuroticism"</span>) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fill =</span> Treatment)) <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Effect of Psychoactive Treatment on Neuroticism"</span>) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1227,6 +1227,7 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>There was also a significant main effect of treatment duration, <em>F</em>(1, 174) = 64.92, <em>p</em> &lt; .001, <em>η²ₚ</em> = 0.272, suggesting that participants who received 12 weeks of treatment (<em>M</em> = 46.3, <em>SE</em> = 1.19) had significantly lower anxiety scores than those who received 6 weeks of treatment (<em>M</em> = 54.1, <em>SE</em> = 1.19).</p>
 <p>The therapy type by treatment duration interaction was also statistically significant, <em>F</em>(2, 174) = 3.50, <em>p</em> = .032, <em>η²ₚ</em> = 0.039, indicating that the effectiveness of therapy type depended on treatment duration.</p>
 <p>Post-hoc comparisons with Tukey correction showed that <em>CBT</em> (<em>M</em> = 50.7, <em>SE</em> = 1.19) and <em>DBT</em> (<em>M</em> = 47.8, <em>SE</em> = 1.19) were significantly more effective than <em>Mindfulness</em> (<em>M</em> = 63.9, <em>SE</em> = 1.19) at reducing anxiety after 6 weeks (<em>p</em> &lt; .0001). Similarly, after 12 weeks, <em>CBT</em> (<em>M</em> = 40.6, <em>SE</em> = 1.19) and <em>DBT</em> (<em>M</em> = 38.5, <em>SE</em> = 1.19) remained significantly more effective than <em>Mindfulness</em> (<em>M</em> = 59.7, <em>SE</em> = 1.19) (<em>p</em> &lt; .0001). However, there was no significant difference between <em>CBT</em> and <em>DBT</em> at either time point (<em>p</em> = .671 for 12 weeks; <em>p</em> = .243 for 6 weeks).</p>
+<p>Based on these results, one can reject the null hypothesis.</p>
 </section>
 </section>
 <section id="activity-7-factorial-anova-exercise" class="level2">

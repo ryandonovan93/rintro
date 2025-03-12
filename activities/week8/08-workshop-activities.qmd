@@ -128,7 +128,7 @@ This week, we will work with **four separate datasets**. You can find these data
 
 In recent years, there has been a growing interest in exploring the therapeutic potential of psychoactive treatments for mental health. This dataset examines the effects of Psilocybin and DMT on Neuroticism, a personality trait associated with various psychological disorders. The researchers investigated whether the administration of Psilocybin and DMT had a significant effect on participants' Neuroticism levels.
 
-***ResearchQuestion***: Is there an effect of psychoactive treatment on Neuroticism?
+***Research Question***: Is there an effect of psychoactive treatment on Neuroticism?
 
 **Hypotheses**:
 
@@ -451,7 +451,7 @@ The *Psilocybin* group also had significantly higher Neuroticism scores than the
 
 No significant difference was found between the *DMT* and *Placebo* groups (*t* = -0.66, *p* = .787).
 
-These results suggest that *Psilocybin* led to significantly higher Neuroticism scores compared to *DMT* and *Placebo*, while *DMT* and *Placebo* did not differ significantly.
+These results suggest that *Psilocybin* led to significantly higher Neuroticism scores compared to *DMT* and *Placebo*, while *DMT* and *Placebo* did not differ significantly. Based on these results, one can reject the null hypothesis.
 
 ### Step 7: Power Analysis
 
@@ -502,10 +502,10 @@ Next week we will go into more detail on how to create nice visualisations in R.
 
 ggplot(df_psycho, aes(x = Treatment, 
                       y = Neuroticism, 
-                      fill = Treatment))+ 
+                      fill = Treatment)) + 
+  labs(title = "Effect of Psychoactive Treatment on Neuroticism") +
   geom_violin(trim = FALSE) +
   geom_boxplot(width = .2, colour = "black") + 
-  labs(title = "Effect of Psychoactive Treatment on Neuroticism") +
   theme_classic() +
   theme(legend.position = "none")
 ```
@@ -846,6 +846,8 @@ There was also a significant main effect of treatment duration, *F*(1, 174) = 64
 The therapy type by treatment duration interaction was also statistically significant, *F*(2, 174) = 3.50, *p* = .032, *η²ₚ* = 0.039, indicating that the effectiveness of therapy type depended on treatment duration.
 
 Post-hoc comparisons with Tukey correction showed that *CBT* (*M* = 50.7, *SE* = 1.19) and *DBT* (*M* = 47.8, *SE* = 1.19) were significantly more effective than *Mindfulness* (*M* = 63.9, *SE* = 1.19) at reducing anxiety after 6 weeks (*p* \< .0001). Similarly, after 12 weeks, *CBT* (*M* = 40.6, *SE* = 1.19) and *DBT* (*M* = 38.5, *SE* = 1.19) remained significantly more effective than *Mindfulness* (*M* = 59.7, *SE* = 1.19) (*p* \< .0001). However, there was no significant difference between *CBT* and *DBT* at either time point (*p* = .671 for 12 weeks; *p* = .243 for 6 weeks).
+
+Based on these results, one can reject the null hypothesis.
 
 ## Activity 7: Factorial ANOVA Exercise
 
