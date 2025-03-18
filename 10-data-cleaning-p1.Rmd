@@ -248,7 +248,7 @@ The following functions are extremely useful for cleaning data frame in R. They 
 | [disinct()](https://dplyr.tidyverse.org/articles/base.html?q=distinct#distinct-select-distinctunique-rows) | Select unique observations (rows)                   |
 |    [rename()](https://dplyr.tidyverse.org/articles/base.html?q=rename#rename-rename-variables-by-name)     | Rename variables (columns)                          |
 
-## Choosing our Columns of Interest with `Select()`
+## Selecting Columns using `Select()`
 
 When you are first cleaning a data set, the first thing you should do is identify the columns that you might need in your analysis or hold important information. In our cases, these columns would be `Participant.Private.ID`, `Experiment.Status`, the response, remote associations, openness, and demographic columns. We can select those columns by using the `select()` function.
 
@@ -287,7 +287,7 @@ df_select <- select(df_select, -Response) #this will remove the #response column
 head(df_select)
 ```
 
-## Renaming our Columns of Interest with `rename()`
+## Renaming Columns with `rename()`
 
 Our data set is definitely looking cleaner after having shedding those columns, but good grief are those names still ugly. Luckily, we can change their name using the `rename()` function. The syntax for this function is slightly counter intuitive in its order, as it goes like this: `rename(df, newcolumnane = oldcolumnname)`
 
@@ -306,7 +306,7 @@ head(df_rename)
 
 ```
 
-## Creating new Columns using the `mutate()` function
+## Creating New Columns using `mutate()`
 
 Okay, so we have gotten rid of superfluous columns and cleaned up the names of the ones we have left. But there is still a column "missing". At the moment, we have participants' scores on individual items for Openness to Experience. But unless we are running a reliability or factor analysis, we actually want participants' total level of openness.
 
@@ -352,7 +352,7 @@ df_mutate <- mutate(df_rename,
 head(df_mutate)
 ```
 
-### Rewriting existing columns using `mutate()`
+### Rewriting Existing using `mutate()`
 
 If we have a column that contains mistakes, we can use **`mutate()`** to rewrite that column's values. The syntax for this is the same as when you are creating new columns with **`mutate`**: **`mutate(df, existing_column_name = instructions on what to do with current columns)`**
 
@@ -461,7 +461,7 @@ duplicated(df_distinct)
 
 There we go, we have successfully removed the duplicate from our data frame. Now let's handle the data that was collected when the study was being `previewed`.
 
-## Removing Rows using the `filter()` Function
+## Removing Rows Using `filter()`
 
 We can use the **`filter()`** function to selectively retain or discard rows in a dataset based on specified conditions. Its syntax is structured as follows: **`filter(dataframe, condition)`**, where the condition specifies which rows to retain.
 
@@ -620,126 +620,6 @@ glimpse(df_factor)
 
 ```
 
-## Summarising our Data by Groups using `group_by()` and `summarise()`
-
-Now our data frame is looking substantially nicer than when we first started.
-
-```{r}
-
-head(df_filter_multi)
-
-```
-
-At this point, I am happy to say that the data is cleaned. We do not have any superfluous columns or rows. Our variable names are clear. We have created important new columns and fixed incorrect values in original columns. At this point, I would rename the dataframe to something like **`df_clean`** to make it clear to future me (or to others), which data frame is ready for analysis.
-
-```{r}
-
-df_clean <- df_factor
-
-```
-
-Now we can actually start summarizing our data. There are two key functions that enable us to do this: **`summarise()`** and **`group_by()`** functions.
-
-The **`summarise()`** function enables you to calculate specific descriptive statistics for columns in your data frame. The syntax for summarise is: **`summarise(df, output_statistic = statistic function(column))`**. On the left-hand side of **`=`**, you name the column that you will be creating and on the right-hand side, you specify the descriptive statistic function that you want to call.
-
-Let's use **`summarise()`** to display the number of participants and the mean and SD scores for our numeric variables.
-
-```{r}
-
-sum_df <- summarise(df_clean, 
-          
-          n = n(), #the n() function counts the number of rows in your sample
-          
-          mean_remote_pos = mean(remote_pos),
-          sd_remote_pos = sd(remote_pos),
-          
-          mean_remote_neg = mean(remote_neg),
-          sd_remote_neg = sd(remote_neg),
-          
-          mean_remote_neut = mean(remote_neut),
-          sd_remote_neut = sd(remote_neut),
-          
-          mean_openness = mean(total_openness),
-          sd_openness = sd(total_openness),
-          
-          mean_mood = mean(total_mood),
-          sd_mood = sd(total_mood))
-
-sum_df
-
-```
-
-The output of the **`summarise()`** function is a data frame. It's somewhat useful to use when you are calculating descriptive statistics for your entire sample, but we'll learn quicker and easier ways to compute these statistics later on in the course. Where **`summarise()`** really shines is when you use it in conjunction with **`group_by()`**.
-
-The **`group_by()`** function enables you to group together observations in your data frame based on different categories within a column(s). If you combine **`group_by`** with **`summarise`**, then you can calculate specific statistics per each group within your data frame.
-
-Let's first do this with gender.
-
-```{r}
-
-group_gender <- group_by(df_clean, gender)
-
-sum_gen_df <- summarise(group_gender, 
-                        n = n(), 
-                        
-                        mean_remote_pos = mean(remote_pos),
-                        sd_remote_pos = sd(remote_pos),
-          
-                        mean_remote_neg = mean(remote_neg),
-                        sd_remote_neg = sd(remote_neg),
-          
-                        mean_remote_neut = mean(remote_neut),
-                        sd_remote_neut = sd(remote_neut))
-
-sum_gen_df
-
-```
-
-We could also do it based on the **`condition`**.
-
-```{r}
-
-group_condition <- group_by(df_clean, condition)
-
-sum_condition_df <- summarise(group_condition, 
-                        n = n(), 
-                        
-                        mean_remote_pos = mean(remote_pos),
-                        sd_remote_pos = sd(remote_pos),
-          
-                        mean_remote_neg = mean(remote_neg),
-                        sd_remote_neg = sd(remote_neg),
-          
-                        mean_remote_neut = mean(remote_neut),
-                        sd_remote_neut = sd(remote_neut))
-
-sum_condition_df
-
-```
-
-In each example, the **`group_by()`** function tells R to pay attention to the participant's score on the specified columns when calculating descriptive statistics. We can also tell R to **`group_by`** two variables at the same time.
-
-```{r}
-
-group_multi <- group_by(df_clean, condition, gender)
-
-multi_df <- summarise(group_multi,
-                      n = n(), 
-                        
-                        mean_remote_pos = mean(remote_pos),
-                        sd_remote_pos = sd(remote_pos),
-          
-                        mean_remote_neg = mean(remote_neg),
-                        sd_remote_neg = sd(remote_neg),
-          
-                        mean_remote_neut = mean(remote_neut),
-                        sd_remote_neut = sd(remote_neut))
-
-multi_df
-
-```
-
-Running this block of code will produce the warning: **`summarise() has grouped output by 'condition'. You can override using the .groups argument.`** This basically means that R will summarize by **`condition`** first. That's why in the output you see the groups clumped together (e.g., ABC - female, ABC - male; BCA - female...).
 
 There we have it! We have successfully cleaned our first data frame in R. Well done.
 
@@ -810,20 +690,6 @@ df_clean_pipe <- df_raw %>%  #we take our raw dataframe AND THEN ( %>% )
          condition = as.factor(condition)) 
   
   
-  
-df_clean_pipe %>% 
-  group_by(condition, gender) %>% 
-  summarise(
-            n = n(), 
-                        
-            mean_remote_pos = mean(remote_pos),
-            sd_remote_pos = sd(remote_pos),
-          
-            mean_remote_neg = mean(remote_neg),
-            sd_remote_neg = sd(remote_neg),
-          
-            mean_remote_neut = mean(remote_neut),
-            sd_remote_neut = sd(remote_neut))
 
 
 
@@ -936,7 +802,7 @@ Now that we've loaded the necessary package and imported our data, we can procee
 
     -   Use the **`mutate()`** function to convert the columns relating to experimental condition and gender to factors using **`as.factor()`**.
 
-8.  **Finalize Cleaning:**
+8.  **Finalise Cleaning:**
 
     -   Create a variable called **`df_clean`** with the following code: **`df_clean <- df_factor`**.
 

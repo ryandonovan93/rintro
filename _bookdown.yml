@@ -6,7 +6,9 @@ rmd_files: ["index.Rmd",
             "05-t-tests.Rmd",
             "06-correlational.Rmd",
             "07-regression.Rmd",
-            "09-data-visualisation.Rmd"]
+            "09-data-visualisation.Rmd",
+            "10-data-cleaning-p1.Rmd",
+            "11-data-cleaning-p2.Rmd"]
 output_dir: "docs"
 language:
   ui:

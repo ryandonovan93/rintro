@@ -874,4 +874,3 @@ head(clean_df)
 
 That concludes our two sessions on data cleaning. You have covered a lot in these two sessions. The lessons you have learn here are applicable to cleaning the majority of the datasets you will encounter in your research. Well done.
 
-In the next session, we will learn how we can use R to create nice data visualisations. See you then.
