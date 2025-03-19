@@ -12,13 +12,17 @@ format:
 editor: visual
 ---
 
-In this weeks workshop, we are going to learn how to generate APA style plots in R. In particular, we are going to learn about the `ggplot2` package and it's associated function `ggplot()`. This package has been used to create plots for publications like the BBC and the Economist. By the end of this session you should be capable of:
+In this part of the session, we are going to learn how to use key packages and functions that enable you to conduct data cleaning in R.
 
--   Understanding the logic of the ggplot method for drawing plots.
--   Generating and customising elegant Box Plots, Violin Plots, Bar Charts, Scatterplots, Histograms, and Line Charts.
--   Making your plots APA ready.
--   Arranging and faceting (grouping together) your plots.
--   Export your plots to PDFs.
+By the end of this session, you should be capable of the following:
+
+-   Use the functions **`select()`**, **`mutate()`**, **`rename()`**, to perform key operations on columns.
+
+-   Use the functions **`filter()`**, **`arrange()`**, and **`distinct()`** to perform key operations on rows.
+
+-   Understand how to group information and perform calculations on those groupings.
+
+-   Understand how to pipe together functions to enable efficient data cleaning analysis.
 
 ## Let's Get Set Up
 
@@ -26,7 +30,7 @@ Let's begin by ensuring your working environment is ready for today's session. O
 
 ## Activity 1: Set Up Your Working Directory & R Script for this week
 
-First, create your week10 folder and set it as your working directory.
+First, create a folder named `week10` inside your course directory and set it as your working directory.
 
 ::: {.callout-tip collapse="true"}
 ## Reminder on Steps to Set Up Your Working Directory
@@ -38,7 +42,7 @@ First, create your week10 folder and set it as your working directory.
 
 3.  Create a new folder called week10 inside this directory.
 
-4.  Select the `week9` folder and click **Open**.
+4.  Select the `week10` folder and click **Open**.
 
 Don't forget to verify your working directory before we get started
 
@@ -49,7 +53,7 @@ getwd()
 ```
 :::
 
-Second, we are going to create our ***first R script*** for today. We will be creating more than one. Call your first script `10-data-wrangling-p1`
+Next, we will create our ***first R script*** for today. We will be creating more than one. Call your first script `10-data-wrangling-p1`.
 
 ::: {.callout-tip collapse="true"}
 ## Reminder on creating an R script
@@ -72,7 +76,7 @@ Second, we are going to create our ***first R script*** for today. We will be cr
 
 We only need one package for data wrangling - `tidyverse`.
 
-```{r echo=F, warning = F}
+```{r echo = F, warning = F, output = F}
 library(tidyverse)
 ```
 
@@ -88,15 +92,21 @@ install.packages("tidyverse") #replace "package name" with the actual package na
 
 ## Activity 3: Load in your datasets
 
-This exercise involves cleaning the Flanker Test Dataset, which was collected as part of a study investigating the effect of alcohol consumption on inhibiting incongruent responses (e.g., flanker effect). The dataset includes responses from 50 participants who took part in the study when it was made live. Participants answered questions related to their age, gender, and neuroticism. Additionally, participants were split into two conditions: control (no alcohol) and experiment (high alcohol).
+In this exercise, we will clean the Flanker Test Dataset, which was collected as part of a study investigating the effect of alcohol consumption on inhibiting incongruent responses (e.g., the flanker effect).
 
-Download the files:
+The dataset includes responses from 50 participants, who provided information on their age, gender, and mean Neuroticism scores. Additionally, participants were split into two conditions:
 
-`- flanker.csv`
+-   Control (no alcohol)
 
-### Download this file onto your computer and move it to your `week10` folder.
+-   Experimental (high alcohol)
 
-Once this is done load the dataset into R and save it as a dataframes called "df_flanker_raw":
+### Download the Dataset
+
+Download the file **`flanker.csv`** onto your computer and move it to your `week10` folder.
+
+### Load the Dataset into R
+
+Once you have downloaded the file, load it into R and save it as a dataframe named `df_flanker_raw`:
 
 ::: {.callout-tip collapse="true"}
 ```{r}
@@ -104,7 +114,7 @@ df_flanker_raw <- read.csv("flanker.csv")
 ```
 :::
 
-## Activity 4: Inspect your Dataset
+## Activity 4: Inspect your Data set
 
 The first step after importing a dataset is to check it to ensure that we have imported the correct data. We can do this using the **`head()`** function:
 
@@ -114,495 +124,560 @@ head(df_flanker_raw)
 
 ```
 
-Ouch! Now that is a data set only a parent could love. Here is what each column is telling us about each participant
+
+::: {.callout-tip title="What if I want to view the entire dataset?" collapse="true"}
+![You can click on the dataset in the Environment page to view it](images/08-view-entire-dataset.gif){fig-align="center"}
+:::
+
+
+Ouch! Now that is a dataset only a parent could love. Here’s what each column tells us about each participant:
 
 | Column | Description |
-|-------------------|-----------------------------------------------------|
-| X & X.1 | Empty Columns |
-| Participant.Private.ID | Experiment ID. |
-| aGe | Participant#s age |
+|--------------------------|----------------------------------------------|
+| Private.ID | Experiment ID. |
 | Experiment.Status | Indicates whether the study was published (live) or not (preview) for each participant. |
-| status | Whether the person was in the experiment or the control group |
-| order | Order of watching the vignettes (A = "positive", B = "negative", C = "neutral"). |
-| Response | Participants' answers on the remote associations task. |
-| Participant.OS | Operating system used by participants. |
-| response1 | Aggregated mood score. |
-| open1-open5 | Scores on Openness items. |
-| age and gender | Participants' age and gender. |
+| aGe | Participant's age. |
+| status | Indicates whether the participant was in the experiment or control group. |
+| nero3 | Participant's score on the 3rd item from a Neuroticism scale. |
+| net2 | Participant's score on the 2nd item from a Neuroticism scale. |
+| X | An empty column. NA values indicate missing data (Not Available). |
+| X.1 | Another empty column. |
+| neuro5 | Participant's score on the 5th item from a Neuroticism scale. |
+| nationality | Participant's gender. |
+| wlanker_congruent | Participant's average reaction time (ms) on the flanker task when the stimulus/flanker direction was congruent. (An unfortunately suggestive misspelling!) |
+| flanker_incongruent | Participant's average reaction time (ms) on the flanker task when the stimulus/flanker direction was incongruent. |
+| Participant.OS | The operating system the participant used to take the survey. |
+| Local.Timestamp | Timestamp indicating when participants took part in the study. |
+| neuro1 | Participant's score on the 1st item from a Neuroticism scale. |
+| neuro4 | Participant's score on the 4th item from a Neuroticism scale. |
 
-However, several issues are evident in this dataset:
+### Issues in the Dataset:
 
-1.  **Pointless columns:** Columns such as "Local.Timestamp" and "Participant.OS" are unnecessary for our analysis.
+Several issues are evident in this dataset:
 
-2.  **Awkward, inconsistent, or misspelled column names:** Columns like "Participant.Private.ID" and "remote.assocotations.2" have awkward or misspelled names.
+1.  **Unnecessary columns:** Variables like `"Local.Timestamp"` and `"Participant.OS"` are not needed for our analysis.
 
-3.  **Column order:** The order of columns is not ideal, with important columns scattered throughout the dataset.
+2.  **Misspelled or inconsistent column names:** Columns such as `"Participant.Private.ID"`, `"wlanker_congruent"`, and `"nero3"` are awkwardly named, misspelled, or inconsistent.
 
-4.  **Improper scoring:** The maximum score on each remote association task in this study was 9. However, we have several scores that exceed this maximum value.
+3.  **Disorganized column order:** The dataset is not structured optimally—important variables (e.g., Neuroticism items) are scattered throughout.
 
-5.  **Mismatch in participant count:** The dataset reports a different number of participants who completed the experiment (52) than what was expected (41).
+4.  **Incomplete scoring:** We want to analyse participants' **total Neuroticism scores**, but only have individual item scores.
 
-6.  **Presence of preview data:** The dataset contains responses from both the preview and live phases of the study, which need to be addressed by removing preview data.
+5.  **Incorrect information:** The `"nationality"` column actually contains participants' gender.
+
+6.  **Unexpected participant count:** The dataset reports **60 participants** instead of the expected **50**.
+
+7.  **Presence of preview data:** The dataset contains responses from both **preview** and **live** study phases. Preview data needs to be removed.
 
 ### Key Functions That Will Help You Clean Most Datasets
 
-The following functions are extremely useful for cleaning data frame in R. They all come from the `tidyverse` package. The following table defines each package and what it does. We will use each function in this chapter to clean the `remote_associations` data frame, so you will get to practice each one.
+The following functions, all from the **`tidyverse`** package, will help us clean the `df_flanker_raw` dataset. Each function serves a unique purpose:
 
 | Function | Description |
-|:---------------------------------------------:|:------------------------|
+|:--------------------------------------------:|:-------------------------|
 | [`select()`](https://dplyr.tidyverse.org/reference/select.html) | Include or exclude certain variables (columns) |
 | [`filter()`](https://dplyr.tidyverse.org/reference/filter.html) | Include or exclude certain observations (rows) |
 | [`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html) | Create new variables (columns) |
-| [`arrange()`](https://dplyr.tidyverse.org/reference/arrange.html) | Change the order of observations (rows) |
-| [disinct()](https://dplyr.tidyverse.org/articles/base.html?q=distinct#distinct-select-distinctunique-rows) | Select unique observations (rows) |
-| [rename()](https://dplyr.tidyverse.org/articles/base.html?q=rename#rename-rename-variables-by-name) | Rename variables (columns) |
+| [`arrange()`](https://dplyr.tidyverse.org/reference/arrange.html) | Change the order of rows |
+| [`disinct()`](https://dplyr.tidyverse.org/articles/base.html?q=distinct#distinct-select-distinctunique-rows) | Select unique observations (rows) / identify duplicate values. |
+| [`rename()`](https://dplyr.tidyverse.org/articles/base.html?q=rename#rename-rename-variables-by-name) | Rename variables (columns) |
 
-When you are first cleaning a data set, the first thing you should do is identify the columns that you might need in your analysis or hold important information. In our cases, these columns would be `Participant.Private.ID`, `Experiment.Status`, the response, remote associations, openness, and demographic columns. We can select those columns by using the `select()` function.
+We will use each of these functions in this chapter to clean the `df_flanker_raw` dataset—so you'll get plenty of practice!
 
-The formula for this function is: `select(dataframe, c(col1name, col2name, col3name))`
+## Activity 5: Renaming Columns with `rename()`
+
+When cleaning a dataset, one of the first things you should do is identify the columns that you need for your analysis or that contain important information.
+
+In our case, these columns include the **participant's ID** (`Private.ID`), whether they **completed the study or a preview** (`Experiment.Status`), whether they were in the **experimental or control group** (`status`), their **Neuroticism scores** (`neuro1`, `net2`, `nero3`, `neuro4`, `neuro5`), demographic information (`aGe`, `nationality`), and their **reaction times on the flanker trials** (`wlanker_congruent` & `flanker_incongruent`).
+
+The first step is to **rename any awkward or inconsistent column names** to make them easier to work with—because good grief, these names are ugly!
+
+Luckily, we can rename these columns using the `rename()` function.
+
+The syntax for this function is slightly counterintuitive in its order, as it follows this structure:
+
+`rename(dataframe, newcolumnane = oldcolumnname)`
+
+For our dataset, we will rename the relevant columns:
 
 ```{r}
 
-df_select <- select(df_raw, c(Participant.Private.ID, Experiment.Status, order,
-                              remote.assocotations.1, remote.assocotations.2,   Remote.association.3, Response, response1, open1: gender))
+df_flanker_renamed <- rename(df_flanker_raw,
+                             ID = Private.ID,
+                             neuro2 = net2,
+                             neuro3 = nero3,
+                             flanker_congruent = wlanker_congruent,
+                             age = aGe,
+                             gender = nationality,
+                             group = status,
+                             experiment_status = Experiment.Status)
 
-head(df_select)
+
+head(df_flanker_renamed)
 
 ```
 
-Instantly, that is immediately better. Now there is a couple of things you might have noticed in my code.
-
-The first is that the order in which I put columns in `select()` is the order in which the columns appear in the `df_select`. This is a very useful feature of `select()` as it means we can reorder our dataframe and select the columns at the same time. Just to demonstrate this further.
+We can also verify the updated column names in our dataframe by using the `colnames()` function, which will print only the names of the columns in our dataframe:
 
 ```{r}
 
-df_select <- select(df_select, Participant.Private.ID, Experiment.Status, age, gender, order, remote.assocotations.1:open5)
+colnames(df_flanker_renamed)
 
-head(df_select)
 
 ```
 
-The second thing you might notice is that inside the `c` function I go from naming each column one at a time to using the `:` operator. If you remember from Chapters 3 & 4, when you are selecting elements from a data structure, the `:` operator enables you to select anything between those elements. So the code `remote.assoctations.1:open5` selects every column starting from `remote.assoctations1` and ending with `open5`. This saves us from having to type out every column.
+Either way, we now have clearer and more consistent column names for the data we need.
 
-What if we wanted to remove one or two columns? Is there an easier way to remove them then by specifying the columns we want? Yes! We can use `select()` to remove columns. All we need to do is put the `-` operator before the column we want to remove.
+Next, let's remove the columns that we **do not** need for our analysis.
 
-If you look at the `Response` column, it doesn't really provide us with any genuinely useful information - we already have their performance on the task. So let's get rid of it.
+## Activity 6: Selecting columns with select()
+
+We can use the `select()` function to extract only the columns we need from a dataframe. The syntax for this function is:
+
+The syntax for this function is: `select(dataframe, c(col1name, col2name, col3name))`
+
+For this exercise, we will select only the relevant columns and store them in a new dataframe called `df_flanker_selected`:
 
 ```{r}
 
-df_select <- select(df_select, -Response) #this will remove the #response column
-head(df_select)
+df_flanker_selected <- select(df_flanker_renamed, c(ID,
+                                                experiment_status,
+                                                group,
+                                                age,
+                                                gender,
+                                                flanker_congruent,
+                                                flanker_incongruent,
+                                                neuro1,
+                                                neuro2,
+                                                neuro3,
+                                                neuro4,
+                                                neuro5))
+
+head(df_flanker_selected)
+
 ```
 
-## Renaming Columns with `rename()`
+That looks much cleaner already!
 
-Our data set is definitely looking cleaner after having shedding those columns, but good grief are those names still ugly. Luckily, we can change their name using the `rename()` function. The syntax for this function is slightly counter intuitive in its order, as it goes like this: `rename(df, newcolumnane = oldcolumnname)`
+You may have noticed that the order of columns in `df_flanker_selected` matches the order in which they were listed inside `select()`. This is a useful feature that allows us to easily reorder our dataframe.
 
-```{r}
+Now, I want you to modify `df_flanker_selected` so that our **dependent variables** (`flanker_congruent` and `flanker_incongruent`) appear immediately **after** the `group` column, before the other variables. The output should look like this:
 
-df_rename <- rename(df_select, 
-                    ID = Participant.Private.ID, #newcolname = oldcolname
-                    status = Experiment.Status,
-                    remote_pos = remote.assocotations.1,
-                    remote_neg = remote.assocotations.2,
-                    remote_neut = Remote.association.3,
-                    total_mood = response1,
-                    condition = order)
+```{r echo = F}
 
-head(df_rename)
+df_flanker_selected <- select(df_flanker_renamed, c(ID,
+                                                experiment_status,
+                                                group,
+                                                flanker_congruent,
+                                                flanker_incongruent,
+                                                age,
+                                                gender,
+                                                neuro1,
+                                                neuro2,
+                                                neuro3,
+                                                neuro4,
+                                                neuro5))
+
+head(df_flanker_selected)
+
 
 ```
 
-## Creating New Columns using `mutate()`
+::: {.callout-tip collapse="true" title="What if I have lots of columns, do I have to type everything out?" appearance="minimal"}
+When working with large datasets, manually specifying every column can be tedious. Fortunately, `select()` has several shortcuts that make life easier.
 
-Okay, so we have gotten rid of superfluous columns and cleaned up the names of the ones we have left. But there is still a column "missing". At the moment, we have participants' scores on individual items for Openness to Experience. But unless we are running a reliability or factor analysis, we actually want participants' total level of openness.
+## Removing Columns with `-` Operator
 
-The **`mutate()`** function will help us create that column. This function takes existing column(s) and performs operations on them to create new columns in our data set.
+If you want to **exclude** specific columns instead of selecting them, use the `-` operator before the column name.
 
-Let's use **`mutate()`** to create a column called **`total_openness`**. The syntax for this function is: **`mutate(df, new_column_name = instructions on what to do with current columns)`**
+For example, to remove the `gender` column:
 
 ```{r}
 
-df_mutate <- mutate(df_rename, 
-                    total_openness = open1 + open2 + open3 + open4 + open5)
+df_flanker_remove_gender <- select(df_flanker_selected, -c(gender))
+
+colnames(df_flanker_remove_gender)
+
+```
+
+And voilà—`gender` is gone!
+
+Similarly, you can remove multiple columns
+
+```{r}
+
+df_flanker_remove_demographics <- select(df_flanker_selected, -c(gender, age))
+
+colnames(df_flanker_remove_demographics) 
+
+```
+
+## **Selecting Consecutive Columns with `:`**
+
+The `:` operator allows you to select a **range** of columns that are **next to each other**.
+
+For example, to keep only the `ID` column and the **Neuroticism** scale items:
+
+```{r}
+
+df_flanker_select_simultaneous <- select(df_flanker_selected, c(ID, neuro1:neuro5))
+
+head(df_flanker_select_simultaneous)
+
+```
+
+## **Combining `-` (Remove) and `:` (Select a Range)**
+
+You can **combine** both techniques to remove a consecutive range of columns.
+
+For example, to remove `ID`, `age`, and all **Neuroticism** items (`neuro1` to `neuro5`):
+
+```{r}
+
+df_flanker_unselect_simultaneous <- select(df_flanker_selected, -c(ID, age, neuro1:neuro5))
+
+head(df_flanker_unselect_simultaneous)
+
+```
+
+Now, `ID`, `age`, and all Neuroticism-related columns are gone!
+:::
+
+## Activity 7: Creating New Columns using `mutate()`
+
+So far, we have removed unnecessary columns and renamed the remaining ones. However, one key variable is missing.
+
+At the moment, we have *individual item scores* for Neuroticism (`neuro1` to `neuro5`). Since we're not conducting a reliability or factor analysis, we need a **total Neuroticism score** for each participant.
+
+The **`mutate()`** function allows us to *create new columns* by applying operations to existing ones.
+
+The syntax for this function is:
+
+**`mutate(df, new_column_name = instructions on what to do with current columns)`**
+
+Let's use `mutate()` to create a new column called **`neuroticism_total`**, which sums the five Neuroticism items:
+
+```{r}
+
+df_flanker_mutated <- mutate(df_flanker_selected, 
+                    neuroticism_total = neuro1 + neuro2 + neuro3 + neuro4 + neuro5)
                     #new_col_name = operation on current columns
 
-df_mutate$total_openness
+head(df_flanker_mutated)
+
+df_flanker_mutated$neuroticism_total
 
 ```
 
-If we wanted to calculate the mean of these items, then the process is slightly more complicated. First, we would need to tell R that we want the mean per observation rather than per column (e.g., we need the mean score of open1 to open5 per participant, rather than across the entire dataset) by using the **`rowMeans()`** function. Then we would need to **`select()`** the columns that we want the row means from.
+::: {.callout-tip collapse="true" title="What if I want to calculate the mean?"}
+If we wanted to calculate the **mean** of these items (rather than the total score), we need to ensure that R calculates the **mean per participant** (row-wise) rather than across the entire dataset.
 
-Let's do this and save the operation to a new column called **`mean_openness`**
+To do this, we use the **`rowMeans()`** function, which calculates the mean **for each row** (i.e., for each participant).
+
+Since `rowMeans()` requires us to specify which columns to use, we must first **select** the relevant columns inside `mutate()`.
+
+Let's save this new variable as **`neuroticism_mean`**:
 
 ```{r}
 
-df_mutate <- mutate(df_mutate, 
+df_flanker_mutated_average <- mutate(df_flanker_mutated, 
                     #we use `select()` to pick the columns we want
-                    mean_openness = rowMeans(select(df_mutate, 
-                                                    c(open1, open2, open3,
-                                                      open4, open5))))
+                    neuroticism_mean = rowMeans(select(df_flanker_mutated, 
+                                                    c(neuro1, neuro2, neuro3,
+                                                      neuro4, neuro5))))
                     
 
-head(df_mutate)
+head(df_flanker_mutated_average)
 
 ```
+:::
 
-If we do not need the individual items, then there is an argument in **`mutate()`** called **`.keep`**. This specifies what should be done with the columns that were operated on to create the new column. If this argument is set to **`unused`**, then R will only keep columns that were not used to create the new column. In other words, it will remove any columns used to calculate the new column.
+### Using `.keep` to Remove Unnecessary Columns
+
+If we no longer need the original Neuroticism item scores (`neuro1` to `neuro5`), we can automatically remove them by using the `.keep` argument inside `mutate()`.
+
+The `.keep` argument controls what happens to the original columns:
+
+-   **`.keep = "all"`** (default) → Keeps **all** original columns.
+
+-   **`.keep = "unused"`** → Removes the columns used in the calculation.
+
+-   **`.keep = "none"`** → Removes **all** columns except the newly created one.
+
+Since we only need the **total score**, let's use `.keep = "unused"`
 
 ```{r}
 
-df_mutate <- mutate(df_rename, 
-                    total_openness = open1 + open2 + open3 + open4 + open5,
+df_flanker_mutated_exclusive <- mutate(df_flanker_selected, 
+                    neuroticism_total = neuro1 + neuro2 + neuro3 + neuro4 + neuro5,
                     .keep = "unused")
 
-head(df_mutate)
+head(df_flanker_mutated_exclusive)
 ```
 
-### Rewriting Existing using `mutate()`
+This means the original columns (`neuro1` to `neuro5`) have been removed, leaving only the new total score.
 
-If we have a column that contains mistakes, we can use **`mutate()`** to rewrite that column's values. The syntax for this is the same as when you are creating new columns with **`mutate`**: **`mutate(df, existing_column_name = instructions on what to do with current columns)`**
+Since we no longer need the individual items, we will use this new dataframe moving forward.
 
-If you look at our columns **`remote_pos`**, **`remote_neg`**, and **`remote_neut`**, there is a mistake. Each column should represent the participants' scores (out of a maximum score of 9) on the remote associations task after engaging with either positive, negative, or neutral stimuli. However, while **`remote_pos`** scoring looks correct, the scores for **`remote_neg`** are going up to 18, and the scores for **`remote_neut`** are going up to 27. So what is going on?
+## Checking in on our data
 
-What happened here is that Gorilla Research added participants' scores on each task to each other. So the **`remote_neg`** column is really the participants' correct answers on **`remote_pos`** plus their correct answers on **`remote_neg`**. Similarly, the **`remote_neut`** contains their scores on the **`remote_neg`** column plus their scores on the **`remote_neut`** task.
+We've made significant progress in cleaning our dataset. So far, we have:
 
-To fix this, the formula we need to use is the following:
+-   Removed unnecessary columns
 
-1.  remote_neg = remote_neg - remote_pos
+-   Fixed column names and ordering
 
-2.  remote_neut = remote_neut - remote_neg
+-   Created new columns for our analysis.
 
-We can fix this error using the **`mutate()`** function
+-   Corrected errors in existing columns.
+
+Our dataset is almost ready for analysis!
+
+However, there are still extra participants in our dataset that we need to remove. We expect **50 participants**, but if we check the number of rows, we see that there are actually **62 participants**.
 
 ```{r}
 
-df_mutate_ra <- mutate(df_mutate, 
-                    remote_neg = remote_neg - remote_pos,
-                    remote_neut = remote_neut - remote_neg)
+nrow(df_flanker_mutated_exclusive)
 
-head(df_mutate_ra)
 ```
 
-Hold on, what happened here? The **`remote_neut`** scores are still 9+? Well, we first changed the column **`remote_neg`** to get our correct scores on this task. However, the new values of **`remote_neg`** are then inserted on the next line of the formula. To fix for this error, we need to put **`remote_neut`** first
+So, where did these extra **12 participants** come from?
+
+If you look at the **`experiment_status`** column in our dataset, you'll notice that it contains **both `preview` and `live` data**. We can use the **`table()`** function to count how many participants contributed to each category:
 
 ```{r}
 
-df_mutate_ra_fixed <- mutate(df_mutate,
-                    remote_neut =  remote_neut - remote_neg,
-                    remote_neg = remote_neg - remote_pos)
-
-df_mutate_ra_fixed$remote_neut
+table(df_flanker_mutated_exclusive$experiment_status)
 
 ```
 
-Better!
+The output tells us that **10 of the 12 extra participants** are from preview data. However, we still have **two additional participants** who completed the study under `live` conditions.
 
-## Checking in on our data set
+Before proceeding, we need to investigate why we have these extra participants in the live condition.
 
-We've done a good bit of cleaning so far. We have removed unnecessary columns, we have fixed their names and their order, we have created new columns, and we have fixed errors in existing columns. Our data set is looking nearly ready for analysis.
+## Activity 8 - Removing Duplicates using `distinct()`
 
-However, there is still data that needs to be removed. We should only have 41 participants in our sample, but if you look at your dataframe, we actually have 51 participants.
+**Why Do We Have Extra Participants?**
+
+In the previous step, we discovered that our dataset contains 12 extra participants instead of the expected 50. While we identified that 10 of these participants were part of the preview phase, there are still two additional participants that we need to investigate.
+
+One possible explanation is that some participants data were accidently duplicated when downloading the dataset.
+
+### Step 1: Identifying Duplicate Rows
+
+The `duplicated()` function checks whether each row in a dataframe is an **exact duplicate** of a previous row.
 
 ```{r}
 
-nrow(df_mutate_ra_fixed)
+duplicated(df_flanker_mutated_exclusive)
 
 ```
 
-So where are these extra 10 participants coming from? If you look in the **`status`** column in our data set, you'll notice that there exists both **`preview`** and **`live`** data. We can use the **`table()`** function to count the number of participants who contributed **`preview`** versus **`live`** data.
+The function returns a **logical vector** of `TRUE` and `FALSE` values:
+
+-   `TRUE` means the row is a duplicate.
+
+-   `FALSE` means the row is unique.
+
+Each `TRUE` or `FALSE` corresponds to a row in the dataframe.
+
+If we want to extract and see the duplicated rows, we can follow the syntax we discussed in Chapter 3 about extracting values from a dataframe: **`dataframe[rows_we_want, columns_we_want]`**
 
 ```{r}
 
-table(df_mutate_ra_fixed$status)
+df_flanker_mutated_exclusive[duplicated(df_flanker_mutated_exclusive), ]
 
 ```
 
-Okay, so 9 of our extra 10 participants are coming from preview data. That means we have one extra participant than we should have from when we published the study. The first thing we should do is check what is going on here.
+From this output, we see that **the participant with ID = `11` has duplicate rows**.
 
-After that, we'll need to remove the 9 preview participants from the dataframe.
+### **Step 2: Removing Duplicate Rows with `distinct()`**
 
-The following operations will enable us to clean our datasets based on participant scores on a row-by-row basis rather than on a column basis.
+Now that we have identified the duplicated participant, we need to remove them.
 
-## Removing Duplicates using `distinct()`
+The **`distinct()`** function removes any **duplicate rows**, ensuring that only **unique records remain**.
 
-What could explain the extra participant? Well, there may have been an error when we downloaded the data and rows got duplicated. Luckily, there is a relatively easy way to do this through the **`duplicated()`** function. We call the function and give it the dataframe we want to check. The function then checks each row to see if it is a duplicate of another row.
+To remove these values we can use the **`distinct()`** function. This function takes in a data frame or a column and only keeps the rows that are unique.
 
 ```{r}
 
-duplicated(df_mutate_ra_fixed)
+df_flanker_distinct <- distinct(df_flanker_mutated_exclusive)
 
 ```
 
-The function prints out logical data types **`TRUE`** or **`FALSE`**. Each answer corresponds to a row in the **`df_mutate_ra_fixed`** data frame. We can see that the last row is the only one with a value of **`TRUE`**, which means it is a duplicate of another row. If we want to extract and see the duplicated rows, we can follow the syntax we discussed in Chapter 3 about extracting values from a dataframe: **`dataframe[rows_we_want, columns_we_want]`**
+To confirm that the duplicate has been removed, we can check the number of participants in each study phase again using `table()`:
 
 ```{r}
 
-df_mutate_ra_fixed[duplicated(df_mutate_ra_fixed), ]
+table(df_flanker_distinct$experiment_status)
 
 ```
 
-We can see that the participant with the **`ID = 10230547`** has a duplicated value. To remove these values we can use the **`distinct()`** function. This function takes in a data frame or a column and only keeps the rows that are unique.
+It looks like we have. We can also double-check this by calling the **`duplicated()`** function again to see if any values return as **`TRUE`**
 
 ```{r}
 
-df_distinct <- distinct(df_mutate_ra_fixed)
+duplicated(df_flanker_distinct)
 
 ```
 
-We can use the **`table()`** function to check whether we have removed the extra participant.
+All values are `FALSE`—this confirms that our dataset no longer contains duplicates.
+
+Now that we have removed duplicate participants, our next step is to clean up the `preview` data from our dataset.
+
+## Activity 9 - Selecting Rows using `filter()`
+
+### Removing Rows Using `filter()`
+
+The filter() function allows us to select rows that meet specific conditions while filtering out those that do not. Its syntax follows this structure: **`filter(dataframe, condition)`**, where the condition specifies which rows to retain.
+
+In our dataset, the `experiment_status` column tells us whether a participant was part of the live or preview study. We only want to keep participants who completed the live version of the study and remove all preview data.
+
+We can do this using filter():
 
 ```{r}
 
-table(df_distinct$status)
+df_flanker_filtered <- filter(df_flanker_distinct, experiment_status == "live")
 
 ```
 
-It looks like we have. We can also double-check this by calling the Similarly, if we used the **`duplicated()`** function again to see if any values return as **`TRUE`**
+The condition **`experiment_status == "live"`** instructs R to keep only rows where the `experiment_status` column is `"live"`.
+
+To confirm that we have successfully removed all preview participants, we can use the **`table()`** function:
 
 ```{r}
 
-duplicated(df_distinct)
+table(df_flanker_filtered$experiment_status)
 
 ```
 
-There we go, we have successfully removed the duplicate from our data frame. Now let's handle the data that was collected when the study was being `previewed`.
+The output now only contains `"live"`, meaning that all `"preview"` data has been successfully removed.
 
-## Removing Rows Using `filter()`
+::: {.callout-note title="What if I want to tell R what **not** to select?" collapse="true"}
+We can also **exclude** specific rows using `filter()`.
 
-We can use the **`filter()`** function to selectively retain or discard rows in a dataset based on specified conditions. Its syntax is structured as follows: **`filter(dataframe, condition)`**, where the condition specifies which rows to retain.
-
-In the case of our status column, suppose we want to retain only the rows where the status is "live" and remove those where it is "preview". We achieve this with the following code:
+For example, instead of specifying that we want only `"live"` rows, we could **remove** `"preview"` rows using **`!=`**, which means "not equal to":
 
 ```{r}
 
-df_filter <- filter(df_distinct, status == "live")
+df_filter_neg <- filter(df_flanker_distinct, experiment_status != "preview")
+
+table(df_filter_neg$experiment_status)
 
 ```
 
-The condition **`status == "live"`** instructs R to retain rows where the status column equals **`"live"`**. Rows that do not meet this condition are filtered out (e.g., where **`status == "preview"`**). We can use the **`table()`** function to check that we only have rows where **`status == "live"`**
+Here, **`!=`** tells R to **keep everything except** `"preview"`.
 
-```{r}
-
-table(df_filter$status)
-
-```
-
-We can also use negative conditions in **`filter()`**. By that, I mean we can tell R to keep rows that ***do not*** meet a certain condition. For example, I will get the same resulting data set if I tell R to keep rows that are not equal to **`preview`** in the **`status`** column.
-
-```{r}
-
-df_filter_neg <- filter(df_distinct, status != "preview")
-
-table(df_filter_neg$status)
-
-```
-
-Here, **`!=`** denotes "not equal to", allowing us to exclude rows where the status is **`"preview"`**. This can be really useful if you have multiple answers within a column and it's easier to tell R what not to keep rather than specify everything it needs to keep.
+This is especially useful when a column contains multiple values, and it's easier to exclude certain ones rather than specify every value you want to keep.
+:::
 
 Since we have removed the **`preview`** scores from our **`status`** column, do we actually need it anymore? Probably not as it won't be used in our final analysis. So let's remove it using the **`select()`** function and **`-`** operator.
 
 ```{r}
 
-df_filter <- select(df_filter, -status)
+df_flanker_filtered <- select(df_flanker_filtered, -c(experiment_status))
+
+head(df_flanker_filtered)
 
 ```
 
 ### Removing Rows Using Multiple Conditions with `filter()`
 
-We can also use **`filter()`** to check whether rows meet several conditions at the same time. For example, let's look at our columns **`remote_pos`**, **`remote_neg`**, and **`remote_neut`** which corresponds to different times they completed the remote associations task. Participants could score a maximum of 9 and a minimum of 0 on each task.
+We can also use **`filter()`** to check whether rows meet several conditions at the same time. For example, let's look at our columns **`flanker_congruent`** and **`flanker_incongruent`**, which contains participants reaction times (ms).
 
-We might expect that it is reasonable that any participant could score a 0 on a single remote association task. Similarly, we might conclude that it is reasonable that a participant scored a 0 on two remote associations tasks. But we might be suspicious if they scored 0 on all three remote associations tasks. This could be evidence that the participant wasn't paying attention and was just motoring through the study as quickly as possible.
+When cleaning reaction time (RT) data, it's common to remove extreme values that are likely due to accidental premature responses or inattentiveness. The choice of cutoff points depends on the nature of your experiment and the typical response range, but for the sake of our analysis, let's go with the following:
 
-We can use the **`arrange()`** function to check whether participants scored **`0`** on these columns. To use the **`arrange()`** function you specify the data frame, and then you specify the column or columns that you want to arrange by. The syntax is: **`arrange(df, col1, col2, col3)`**
+1.  Very fast responses (e.g., under 100 ms) might indicate that a participant anticipated the stimulus or accidentally pressed a button.
+2.  Very slow responses (e.g., over 2000 ms) might suggest that a participant was distracted or inattentive
 
-The function arranges in ascending fashion by default (this can be overridden). If you specify multiple columns, it will arrange in the order of the columns you enter. The following code will arrange our dataframe first by the values of **`remote_pos`**, then by **`remote_neg`**, and then by **`remote_neut`**.
+In this case, we want to remove any participant's data who scored too fast or too slow on either **`flanker_congruent`** OR **`flanker_incongruent`**.
+
+#### Step 1: Checking for Extreme Values
+
+Before filtering, let's first check if any participants **fall outside our thresholds**. We will start by inspecting the **`flanker_congruent`** column.
 
 ```{r}
 
-df_filter <- arrange(df_filter, remote_pos, remote_neg, remote_neut)
-
-head(df_filter)
+sort(df_flanker_filtered$flanker_congruent)
 
 ```
 
-We can see that there are three participants scored a **`0`** on all three tasks. How could we remove these participants? Well, we can use **`filter()`** to individually check whether participants' scores on the relevant column were greater than 0 using the sign **`>`**. We could then save the results to different data frames.
+**What are we doing here?**
+
+-   The `sort()` function **sorts** the values from **smallest to largest**, allowing us to quickly see **any extreme values**.
+
+**What do we find?**
+
+-   **Two participants** have reaction times **under 100 ms**.
+
+-   **One participant** has a reaction time of **2000 ms**.
+
+Next, let's check the **`flanker_incongruent`** column.
 
 ```{r}
 
-df_filter_pos <- filter(df_filter, remote_pos > 0) #it will only keep rows in remote_pos that are greater than 0
-
-df_filter_neg <- filter(df_filter_pos, remote_neg > 0) #this code will only keeps row in remote_neg that are greater than 0
-
-df_filter_neut <- filter(df_filter_neg, remote_neut > 0) #this code will only keep rows in the remote_neg that are greater than 0 
-
-
-```
-
-This gets the job done, but it is a tedious approach as we need to type out the same command three times. It makes it significantly more likely we will make a mistake somewhere too.
-
-Luckily, we can do this all in the one line using the \| operator. The \| operator translates to the logical condition **`OR`**.
-
-```{r}
-
-df_filter_multi <- filter(df_filter, remote_pos > 0 | remote_neg > 0 | remote_neg > 0)
-
-```
-
-This code translates to "Create a new variable called **`df_filter_multi`** by taking the **`df_filter`** dataframe and keep only the rows where participants score higher than 0 on either remote_pos, remote_neg, and remote_neut. If a participant scores 0 on ALL of these columns, please remove them."
-
-This removes any participants from our dataset that did not get a single correct answer on any of the three remote associations tasks. The **`nrow()`** function shows us that our manipulation was successful.
-
-```{r}
-
-nrow(df_filter_multi)
-
-```
-
-What if we wanted to be more strict? What if we wanted to remove any participant that scored a **`0`** on ***any*** of **`remote_pos`**, **`remote_neg`**, **`remote_neut`**? In this case, we can use the **`&`** operator, which translates to the logical condition **`AND`**.
-
-```{r}
-
-
-
-df_filter_multi_strict <- filter(df_filter, remote_pos > 0 & remote_neg > 0 & remote_neg > 0)
+sort(df_flanker_filtered$flanker_incongruent)
 
 
 ```
 
-This code translates to: "Create a new variable called **`df_filter_multi_strict`** by taking the **`df_filter`** dataframe and keeping only the rows that have a score that is greater than or equal (\>=) to 0 on remote_pos, remote_neg, and remote_neut. If a participant has a score of 0 on ANY of these columns, please remove them."
+**What do we find?**
 
-If we check the number of rows again, we can see that our data frame has shrunk.
+-   No participants have **reaction times under 100 ms**.
 
-```{r}
+-   **One participant** has a reaction time of **3000 ms**, which exceeds our **2000 ms** threshold.
 
-nrow(df_filter_multi_strict)
+#### Step 2: Removing Extreme Values Using `filter()`
 
-```
+Now that we know which values to exclude, we will use **`filter()`** to remove all participants who have:
 
-What if we wanted to be stricter again and say that we want to remove participants if they scored less than a 2 on any of the remote association columns? Well, we use the less than or equal to operator **`>=`**
+-   **RTs below 100 ms** in either `flanker_congruent` OR `flanker_incongruent`.
 
-```{r}
-
-df_filter_multi_stricter <- filter(df_filter, remote_pos >= 2 & remote_neg >= 2 & remote_neg >= 2)
-
-```
-
-This code will only keep participants who scored a 2 or higher in all three columns. If we check **`nrow()`**, we will see that our data frame has shrunk even further
+-   **RTs above 2000 ms** in either `flanker_congruent` OR `flanker_incongruent`
 
 ```{r}
 
-nrow(df_filter_multi_stricter)
-
-```
-
-I am not a big fan of either the `df_filter_multi_strict` or `df_filter_multi_stricter` columns. So let's carry the `df_filter_multi` data frame to the next section.
-
-## Identifying the Factors in our Data Frame
-
-In the last chapter, we talked about the **`factor`** data type, which enables us to identify different levels of a variable. This would be the equivalent of identifying which variables are **`nominal`** or **`ordinal`** in SPSS. It is important to specify which of your columns are factors when you are cleaning your data, as certain inferential tests require the factor data type as an input. If we look at our current columns, none of them are the **`factors`**.
-
-```{r}
-
-glimpse(df_filter_multi)
-
-```
-
-Let's say for this study, we were interested in investigating the effect of **`gender`** and **`condition`** on participants' performance. We would need to convert these two columns to factors. How could we do this? Well, if you remember, we can use **`as.factor()`** to convert a vector into a factor, and we can use **`mutate()`** to rewrite existing columns. Let's combine these two approaches now to turn **`gender`** and **`condition`** into factors.
-
-```{r}
-
-df_factor <- mutate(df_filter_multi,
-                    gender = as.factor(gender),
-                    condition = as.factor(condition))
+df_flanker_filtered_ms <- filter(df_flanker_filtered,
+                                 flanker_congruent >= 100 & flanker_congruent <= 2000,
+                                 flanker_incongruent >= 100 & flanker_incongruent <= 2000)
 
 
 ```
 
-Now if we call **`glimpse()`**, we will see that these columns are now factors.
+What the hell is happening here? Let's break down the code
+
+-   **`flanker_congruent >= 100 & flanker_congruent <= 2000`**
+
+    -   Keep rows where `flanker_congruent` is at least 100 ***AND*** at most 2000.
+
+<!-- -->
+
+-   **`flanker_incongruent >= 100 & flanker_incongruent <= 2000`**
+
+    -   Keep rows where `flanker_incongruent` is at least 100 ***AND*** at most 2000.
+
+#### Step 3: Confirming Data Changes
+
+Now let's check how many participants remain after filtering.
 
 ```{r}
 
-glimpse(df_factor)
+nrow(df_flanker_filtered_ms)
 
 ```
+
+We can see that we have three fewer participants. But in this case, although our sample is smaller, the quality of our data is now more consistent.
+
+## Activity 10: Save your Clean Data
 
 There we have it! We have successfully cleaned our first data frame in R. Well done.
 
-## Chaining it All Together with the Pipe Operator
-
-The way we cleaned our data so far is perfectly legitimate. The only annoying thing is that it does clutter up your environment tab, as we needed to create several intermediate data frames on the way to getting to `df_clean`. This process of creating intermediate data frames is (ironically) a bit of a messy workflow. If you come back to this data frame in a few months time, you might forget the difference between `df_factor`, `df_mutate_ra_fixed`, `df_filter`. You might wonder if there is a cleaner way to clean data.
-
-Yes! We can streamline our cleaning process by using tidyverse's pipe operator (%\>%), which enables us to chain together multiple functions into a single, cohesive block of code. The pipe operator functions as a "AND THEN" connector, allowing us to sequentially apply different data manipulation functions to our data frame. By using the pipe operator, we can avoid the need to create multiple intermediate data frames and instead perform all cleaning steps in one concise code block.
-
-Let's say I wanted to create a data frame (`df_demo`) with only demographic information and with variable `gender` changed to `sex`. In the way I have shown you so far, I would need to do this:
-
-I want to rename the `gender` column to `sex`, instead of doing this:
+Now that we have successfully cleaned the dataset, let’s **rename it** and **export it** so that we can use it in future analyses.
 
 ```{r}
 
-df_demo_raw <- select(df_clean, ID, age, gender)
-head(df_demo_raw)
+df_flanker_clean <- df_flanker_filtered
 
-df_demo <- rename(df_demo_raw, sex = gender)
-head(df_demo)
+write.csv(df_flanker_clean, "df_clean.csv", row.names = F)
 
 ```
-
-I can use the pipe operator to connect these functions into one code chunk, like this
-
-```{r}
-
-df_demo_pipe <- df_clean %>% #create a variable called df_demo_pipe. To create it, take the df_clean data frame AND THEN (%>%)
-  select(ID, age, gender) %>%  #select its columns ID, age, gender AND THEN
-  rename(sex = gender) #rename gender to sex
-
-head(df_demo_pipe)
-  
-
-```
-
-Using the pipe operator, we can chain together the functions select() and rename() in one code block. This makes our code more concise and readable compared to the traditional approach of creating separate intermediate data frames.
-
-### Using a Pipe Operator on the Remote Associations Data Frame
-
-If we wanted to clean our `remote_associations` data frame using `%>%`, we can run the following code:
-
-```{r}
-
-df_clean_pipe <- df_raw %>%  #we take our raw dataframe AND THEN ( %>% )
-  select(Participant.Private.ID, Experiment.Status, age, gender, order, response1, remote.assocotations.1:Remote.association.3, open1:open5) %>%  #we select the columns we want AND THEN 
-  
-  rename(ID = Participant.Private.ID, #newcolname = oldcolname
-         status = Experiment.Status,
-         remote_pos = remote.assocotations.1,
-         remote_neg = remote.assocotations.2,
-         remote_neut = Remote.association.3,
-         total_mood = response1,
-         condition = order) %>% #We RENAME our columns AND THEN
-  
-  mutate(total_openness = open1 + open2 + open3 + open4 + open5,
-                    .keep = "unused") %>% #we create the total_openess column and fix the remote columns AND THEN
-  
-  mutate(remote_neut = remote_neut - remote_neg,
-         remote_neg = remote_neg - remote_pos,) %>% 
-  
-  distinct() %>%  #remove duplicates
-  
-  filter(status == "live" & (remote_pos > 0 | remote_neg > 0 | remote_neg > 0)) %>% 
-  
-  
-  mutate(gender = as.factor(gender),
-         condition = as.factor(condition)) 
-  
-  
-
-
-
-```
-
-The pipe operator enables us to produce the same output as before, but with significantly cleaner code. By chaining together commands, we reduce the need for intermediate data frames and make our data cleaning process more efficient.
-
-The Pipe is an extremely useful operator. But I actually encourage you to first clean your data frames the first way by creating intermediate data frames and calling each function separately. Even though it is more cumbersome, there are two advantages to this approach when you are a beginner. Firstly, it forces you to test each line of code that you run when you are cleaning a data frame, thereby encouraging you to think about what cleaning steps you are taking. Secondly, if you make a mistake in using a function, you will get immediate feedback from R on what the error is. When you use the pipe, R will run the entire code chunk at once and the error message might not tell you exactly where your code broke down. Fixing this can be very frustrating for any programmer, but it can be incredibly disheartening when you are just starting out.
-
-My advice, clean your data frames first using the approach we used here. Once it is clean, try and recreate it using pipes. After a while you should start to feel comfortable using pipes from the start - that's the time to make the transition.

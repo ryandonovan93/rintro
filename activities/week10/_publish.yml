@@ -1,0 +1,4 @@
+- source: 10-workshop-activities.qmd
+  quarto-pub:
+    - id: 906f8456-9630-4ce1-b94c-365c648ee076
+      url: 'https://ryandonovan.quarto.pub/week10-dw1'

@@ -8,7 +8,8 @@ rmd_files: ["index.Rmd",
             "07-regression.Rmd",
             "09-data-visualisation.Rmd",
             "10-data-cleaning-p1.Rmd",
-            "11-data-cleaning-p2.Rmd"]
+            "11-data-cleaning-p2.Rmd",
+            "appendix_boolean.Rmd"]
 output_dir: "docs"
 language:
   ui:

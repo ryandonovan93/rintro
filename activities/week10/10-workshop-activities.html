@@ -84,12 +84,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#activity-2-installing-loading-r-packages" id="toc-activity-2-installing-loading-r-packages" class="nav-link" data-scroll-target="#activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</a></li>
   <li><a href="#activity-3-load-in-your-datasets" id="toc-activity-3-load-in-your-datasets" class="nav-link" data-scroll-target="#activity-3-load-in-your-datasets">Activity 3: Load in your datasets</a>
   <ul>
-  <li><a href="#download-this-file-onto-your-computer-and-move-it-to-your-week10-folder." id="toc-download-this-file-onto-your-computer-and-move-it-to-your-week10-folder." class="nav-link" data-scroll-target="#download-this-file-onto-your-computer-and-move-it-to-your-week10-folder.">Download this file onto your computer and move it to your <code>week10</code> folder.</a></li>
+  <li><a href="#download-the-dataset" id="toc-download-the-dataset" class="nav-link" data-scroll-target="#download-the-dataset">Download the Dataset</a></li>
+  <li><a href="#load-the-dataset-into-r" id="toc-load-the-dataset-into-r" class="nav-link" data-scroll-target="#load-the-dataset-into-r">Load the Dataset into R</a></li>
   </ul></li>
-  <li><a href="#activity-4-inspect-your-dataset" id="toc-activity-4-inspect-your-dataset" class="nav-link" data-scroll-target="#activity-4-inspect-your-dataset">Activity 4: Inspect your Dataset</a>
+  <li><a href="#activity-4-inspect-your-data-set" id="toc-activity-4-inspect-your-data-set" class="nav-link" data-scroll-target="#activity-4-inspect-your-data-set">Activity 4: Inspect your Data set</a>
   <ul>
+  <li><a href="#issues-in-the-dataset" id="toc-issues-in-the-dataset" class="nav-link" data-scroll-target="#issues-in-the-dataset">Issues in the Dataset:</a></li>
   <li><a href="#key-functions-that-will-help-you-clean-most-datasets" id="toc-key-functions-that-will-help-you-clean-most-datasets" class="nav-link" data-scroll-target="#key-functions-that-will-help-you-clean-most-datasets">Key Functions That Will Help You Clean Most Datasets</a></li>
   </ul></li>
+  <li><a href="#activity-5-renaming-columns-with-rename" id="toc-activity-5-renaming-columns-with-rename" class="nav-link" data-scroll-target="#activity-5-renaming-columns-with-rename">Activity 5: Renaming Columns with <code>rename()</code></a></li>
+  <li><a href="#activity-6-selecting-columns-with-select" id="toc-activity-6-selecting-columns-with-select" class="nav-link" data-scroll-target="#activity-6-selecting-columns-with-select">Activity 6: Selecting columns with select()</a></li>
+  <li><a href="#activity-7-creating-new-columns-using-mutate" id="toc-activity-7-creating-new-columns-using-mutate" class="nav-link" data-scroll-target="#activity-7-creating-new-columns-using-mutate">Activity 7: Creating New Columns using <code>mutate()</code></a>
+  <ul>
+  <li><a href="#using-.keep-to-remove-unnecessary-columns" id="toc-using-.keep-to-remove-unnecessary-columns" class="nav-link" data-scroll-target="#using-.keep-to-remove-unnecessary-columns">Using <code>.keep</code> to Remove Unnecessary Columns</a></li>
+  </ul></li>
+  <li><a href="#checking-in-on-our-data" id="toc-checking-in-on-our-data" class="nav-link" data-scroll-target="#checking-in-on-our-data">Checking in on our data</a></li>
+  <li><a href="#activity-8---removing-duplicates-using-distinct" id="toc-activity-8---removing-duplicates-using-distinct" class="nav-link" data-scroll-target="#activity-8---removing-duplicates-using-distinct">Activity 8 - Removing Duplicates using <code>distinct()</code></a>
+  <ul>
+  <li><a href="#step-1-identifying-duplicate-rows" id="toc-step-1-identifying-duplicate-rows" class="nav-link" data-scroll-target="#step-1-identifying-duplicate-rows">Step 1: Identifying Duplicate Rows</a></li>
+  <li><a href="#step-2-removing-duplicate-rows-with-distinct" id="toc-step-2-removing-duplicate-rows-with-distinct" class="nav-link" data-scroll-target="#step-2-removing-duplicate-rows-with-distinct"><strong>Step 2: Removing Duplicate Rows with <code>distinct()</code></strong></a></li>
+  </ul></li>
+  <li><a href="#activity-9---selecting-rows-using-filter" id="toc-activity-9---selecting-rows-using-filter" class="nav-link" data-scroll-target="#activity-9---selecting-rows-using-filter">Activity 9 - Selecting Rows using <code>filter()</code></a>
+  <ul>
+  <li><a href="#removing-rows-using-filter" id="toc-removing-rows-using-filter" class="nav-link" data-scroll-target="#removing-rows-using-filter">Removing Rows Using <code>filter()</code></a></li>
+  <li><a href="#removing-rows-using-multiple-conditions-with-filter" id="toc-removing-rows-using-multiple-conditions-with-filter" class="nav-link" data-scroll-target="#removing-rows-using-multiple-conditions-with-filter">Removing Rows Using Multiple Conditions with <code>filter()</code></a>
+  <ul class="collapse">
+  <li><a href="#step-1-checking-for-extreme-values" id="toc-step-1-checking-for-extreme-values" class="nav-link" data-scroll-target="#step-1-checking-for-extreme-values">Step 1: Checking for Extreme Values</a></li>
+  <li><a href="#step-2-removing-extreme-values-using-filter" id="toc-step-2-removing-extreme-values-using-filter" class="nav-link" data-scroll-target="#step-2-removing-extreme-values-using-filter">Step 2: Removing Extreme Values Using <code>filter()</code></a></li>
+  <li><a href="#step-3-confirming-data-changes" id="toc-step-3-confirming-data-changes" class="nav-link" data-scroll-target="#step-3-confirming-data-changes">Step 3: Confirming Data Changes</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#activity-10-save-your-clean-data" id="toc-activity-10-save-your-clean-data" class="nav-link" data-scroll-target="#activity-10-save-your-clean-data">Activity 10: Save your Clean Data</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="10-workshop-activities.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
 </div>
@@ -114,13 +139,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this weeks workshop, we are going to learn how to generate APA style plots in R. In particular, we are going to learn about the <code>ggplot2</code> package and it’s associated function <code>ggplot()</code>. This package has been used to create plots for publications like the BBC and the Economist. By the end of this session you should be capable of:</p>
+<p>In this part of the session, we are going to learn how to use key packages and functions that enable you to conduct data cleaning in R.</p>
+<p>By the end of this session, you should be capable of the following:</p>
 <ul>
-<li>Understanding the logic of the ggplot method for drawing plots.</li>
-<li>Generating and customising elegant Box Plots, Violin Plots, Bar Charts, Scatterplots, Histograms, and Line Charts.</li>
-<li>Making your plots APA ready.</li>
-<li>Arranging and faceting (grouping together) your plots.</li>
-<li>Export your plots to PDFs.</li>
+<li><p>Use the functions <strong><code>select()</code></strong>, <strong><code>mutate()</code></strong>, <strong><code>rename()</code></strong>, to perform key operations on columns.</p></li>
+<li><p>Use the functions <strong><code>filter()</code></strong>, <strong><code>arrange()</code></strong>, and <strong><code>distinct()</code></strong> to perform key operations on rows.</p></li>
+<li><p>Understand how to group information and perform calculations on those groupings.</p></li>
+<li><p>Understand how to pipe together functions to enable efficient data cleaning analysis.</p></li>
 </ul>
 <section id="lets-get-set-up" class="level2">
 <h2 class="anchored" data-anchor-id="lets-get-set-up">Let’s Get Set Up</h2>
@@ -128,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="activity-1-set-up-your-working-directory-r-script-for-this-week" class="level2">
 <h2 class="anchored" data-anchor-id="activity-1-set-up-your-working-directory-r-script-for-this-week">Activity 1: Set Up Your Working Directory &amp; R Script for this week</h2>
-<p>First, create your week10 folder and set it as your working directory.</p>
+<p>First, create a folder named <code>week10</code> inside your course directory and set it as your working directory.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -146,20 +171,20 @@ Reminder on Steps to Set Up Your Working Directory
 <strong>Session → Set Working Directory → Choose Directory</strong></p></li>
 <li><p>Navigate to the folder you created for this course (this should be the same folder you used for previous workshops).</p></li>
 <li><p>Create a new folder called week10 inside this directory.</p></li>
-<li><p>Select the <code>week9</code> folder and click <strong>Open</strong>.</p></li>
+<li><p>Select the <code>week10</code> folder and click <strong>Open</strong>.</p></li>
 </ol>
 <p>Don’t forget to verify your working directory before we get started</p>
 <p>You can always check your current working directory by typing in the following command in the console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/ryandonovan 1/Desktop/rintro/activities/week10"</code></pre>
+<pre><code>[1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/activities/week10"</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Second, we are going to create our <strong><em>first R script</em></strong> for today. We will be creating more than one. Call your first script <code>10-data-wrangling-p1</code></p>
+<p>Next, we will create our <strong><em>first R script</em></strong> for today. We will be creating more than one. Call your first script <code>10-data-wrangling-p1</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -189,35 +214,28 @@ Reminder on creating an R script
 <h2 class="anchored" data-anchor-id="activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</h2>
 <p>We only need one package for data wrangling - <code>tidyverse</code>.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>REMEMBER</strong>: If you encounter an error message like “<code>Error in library(package name): there is no packaged calledpackage name</code>”, you’ll need to install the package first by editing the following for your console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co">#replace "package name" with the actual package name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co">#replace "package name" with the actual package name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="activity-3-load-in-your-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="activity-3-load-in-your-datasets">Activity 3: Load in your datasets</h2>
-<p>This exercise involves cleaning the Flanker Test Dataset, which was collected as part of a study investigating the effect of alcohol consumption on inhibiting incongruent responses (e.g., flanker effect). The dataset includes responses from 50 participants who took part in the study when it was made live. Participants answered questions related to their age, gender, and neuroticism. Additionally, participants were split into two conditions: control (no alcohol) and experiment (high alcohol).</p>
-<p>Download the files:</p>
-<p><code>- flanker.csv</code></p>
-<section id="download-this-file-onto-your-computer-and-move-it-to-your-week10-folder." class="level3">
-<h3 class="anchored" data-anchor-id="download-this-file-onto-your-computer-and-move-it-to-your-week10-folder.">Download this file onto your computer and move it to your <code>week10</code> folder.</h3>
-<p>Once this is done load the dataset into R and save it as a dataframes called “df_flanker_raw”:</p>
+<p>In this exercise, we will clean the Flanker Test Dataset, which was collected as part of a study investigating the effect of alcohol consumption on inhibiting incongruent responses (e.g., the flanker effect).</p>
+<p>The dataset includes responses from 50 participants, who provided information on their age, gender, and mean Neuroticism scores. Additionally, participants were split into two conditions:</p>
+<ul>
+<li><p>Control (no alcohol)</p></li>
+<li><p>Experimental (high alcohol)</p></li>
+</ul>
+<section id="download-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="download-the-dataset">Download the Dataset</h3>
+<p>Download the file <strong><code>flanker.csv</code></strong> onto your computer and move it to your <code>week10</code> folder.</p>
+</section>
+<section id="load-the-dataset-into-r" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-dataset-into-r">Load the Dataset into R</h3>
+<p>Once you have downloaded the file, load it into R and save it as a dataframe named <code>df_flanker_raw</code>:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -231,18 +249,18 @@ Tip
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_flanker_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"flanker.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_flanker_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"flanker.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="activity-4-inspect-your-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="activity-4-inspect-your-dataset">Activity 4: Inspect your Dataset</h2>
+<section id="activity-4-inspect-your-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="activity-4-inspect-your-data-set">Activity 4: Inspect your Data set</h2>
 <p>The first step after importing a dataset is to check it to ensure that we have imported the correct data. We can do this using the <strong><code>head()</code></strong> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Private.ID Experiment.Status aGe     status nero3 net2  X X.1 neuro5
 1          1           preview  32 experiment     2    2 NA  NA      5
@@ -267,11 +285,32 @@ Tip
 6        1.71E+12      2      3</code></pre>
 </div>
 </div>
-<p>Ouch! Now that is a data set only a parent could love. Here is what each column is telling us about each participant</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="What if I want to view the entire dataset?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What if I want to view the entire dataset?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/08-view-entire-dataset.gif" class="img-fluid figure-img"></p>
+<figcaption>You can click on the dataset in the Environment page to view it</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Ouch! Now that is a dataset only a parent could love. Here’s what each column tells us about each participant:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
+<col style="width: 36%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -281,63 +320,87 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td>X &amp; X.1</td>
-<td>Empty Columns</td>
-</tr>
-<tr class="even">
-<td>Participant.Private.ID</td>
+<td>Private.ID</td>
 <td>Experiment ID.</td>
-</tr>
-<tr class="odd">
-<td>aGe</td>
-<td>Participant#s age</td>
 </tr>
 <tr class="even">
 <td>Experiment.Status</td>
 <td>Indicates whether the study was published (live) or not (preview) for each participant.</td>
 </tr>
 <tr class="odd">
+<td>aGe</td>
+<td>Participant’s age.</td>
+</tr>
+<tr class="even">
 <td>status</td>
-<td>Whether the person was in the experiment or the control group</td>
-</tr>
-<tr class="even">
-<td>order</td>
-<td>Order of watching the vignettes (A = “positive”, B = “negative”, C = “neutral”).</td>
+<td>Indicates whether the participant was in the experiment or control group.</td>
 </tr>
 <tr class="odd">
-<td>Response</td>
-<td>Participants’ answers on the remote associations task.</td>
+<td>nero3</td>
+<td>Participant’s score on the 3rd item from a Neuroticism scale.</td>
 </tr>
 <tr class="even">
+<td>net2</td>
+<td>Participant’s score on the 2nd item from a Neuroticism scale.</td>
+</tr>
+<tr class="odd">
+<td>X</td>
+<td>An empty column. NA values indicate missing data (Not Available).</td>
+</tr>
+<tr class="even">
+<td>X.1</td>
+<td>Another empty column.</td>
+</tr>
+<tr class="odd">
+<td>neuro5</td>
+<td>Participant’s score on the 5th item from a Neuroticism scale.</td>
+</tr>
+<tr class="even">
+<td>nationality</td>
+<td>Participant’s gender.</td>
+</tr>
+<tr class="odd">
+<td>wlanker_congruent</td>
+<td>Participant’s average reaction time (ms) on the flanker task when the stimulus/flanker direction was congruent. (An unfortunately suggestive misspelling!)</td>
+</tr>
+<tr class="even">
+<td>flanker_incongruent</td>
+<td>Participant’s average reaction time (ms) on the flanker task when the stimulus/flanker direction was incongruent.</td>
+</tr>
+<tr class="odd">
 <td>Participant.OS</td>
-<td>Operating system used by participants.</td>
-</tr>
-<tr class="odd">
-<td>response1</td>
-<td>Aggregated mood score.</td>
+<td>The operating system the participant used to take the survey.</td>
 </tr>
 <tr class="even">
-<td>open1-open5</td>
-<td>Scores on Openness items.</td>
+<td>Local.Timestamp</td>
+<td>Timestamp indicating when participants took part in the study.</td>
 </tr>
 <tr class="odd">
-<td>age and gender</td>
-<td>Participants’ age and gender.</td>
+<td>neuro1</td>
+<td>Participant’s score on the 1st item from a Neuroticism scale.</td>
+</tr>
+<tr class="even">
+<td>neuro4</td>
+<td>Participant’s score on the 4th item from a Neuroticism scale.</td>
 </tr>
 </tbody>
 </table>
-<p>However, several issues are evident in this dataset:</p>
+<section id="issues-in-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="issues-in-the-dataset">Issues in the Dataset:</h3>
+<p>Several issues are evident in this dataset:</p>
 <ol type="1">
-<li><p><strong>Pointless columns:</strong> Columns such as “Local.Timestamp” and “Participant.OS” are unnecessary for our analysis.</p></li>
-<li><p><strong>Awkward, inconsistent, or misspelled column names:</strong> Columns like “Participant.Private.ID” and “remote.assocotations.2” have awkward or misspelled names.</p></li>
-<li><p><strong>Column order:</strong> The order of columns is not ideal, with important columns scattered throughout the dataset.</p></li>
-<li><p><strong>Improper scoring:</strong> The maximum score on each remote association task in this study was 9. However, we have several scores that exceed this maximum value.</p></li>
-<li><p><strong>Mismatch in participant count:</strong> The dataset reports a different number of participants who completed the experiment (52) than what was expected (41).</p></li>
-<li><p><strong>Presence of preview data:</strong> The dataset contains responses from both the preview and live phases of the study, which need to be addressed by removing preview data.</p></li>
+<li><p><strong>Unnecessary columns:</strong> Variables like <code>"Local.Timestamp"</code> and <code>"Participant.OS"</code> are not needed for our analysis.</p></li>
+<li><p><strong>Misspelled or inconsistent column names:</strong> Columns such as <code>"Participant.Private.ID"</code>, <code>"wlanker_congruent"</code>, and <code>"nero3"</code> are awkwardly named, misspelled, or inconsistent.</p></li>
+<li><p><strong>Disorganized column order:</strong> The dataset is not structured optimally—important variables (e.g., Neuroticism items) are scattered throughout.</p></li>
+<li><p><strong>Incomplete scoring:</strong> We want to analyse participants’ <strong>total Neuroticism scores</strong>, but only have individual item scores.</p></li>
+<li><p><strong>Incorrect information:</strong> The <code>"nationality"</code> column actually contains participants’ gender.</p></li>
+<li><p><strong>Unexpected participant count:</strong> The dataset reports <strong>60 participants</strong> instead of the expected <strong>50</strong>.</p></li>
+<li><p><strong>Presence of preview data:</strong> The dataset contains responses from both <strong>preview</strong> and <strong>live</strong> study phases. Preview data needs to be removed.</p></li>
 </ol>
+</section>
 <section id="key-functions-that-will-help-you-clean-most-datasets" class="level3">
 <h3 class="anchored" data-anchor-id="key-functions-that-will-help-you-clean-most-datasets">Key Functions That Will Help You Clean Most Datasets</h3>
-<p>The following functions are extremely useful for cleaning data frame in R. They all come from the <code>tidyverse</code> package. The following table defines each package and what it does. We will use each function in this chapter to clean the <code>remote_associations</code> data frame, so you will get to practice each one.</p>
+<p>The following functions, all from the <strong><code>tidyverse</code></strong> package, will help us clean the <code>df_flanker_raw</code> dataset. Each function serves a unique purpose:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -360,27 +423,619 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange()</code></a></td>
-<td style="text-align: left;">Change the order of observations (rows)</td>
+<td style="text-align: left;">Change the order of rows</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by()</code></a></td>
-<td style="text-align: left;">Organize the observations (rows) into groups</td>
+<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/articles/base.html?q=distinct#distinct-select-distinctunique-rows"><code>disinct()</code></a></td>
+<td style="text-align: left;">Select unique observations (rows) / identify duplicate values.</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise()</code></a></td>
-<td style="text-align: left;">Create summary variables for groups of observations</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/articles/base.html?q=distinct#distinct-select-distinctunique-rows">disinct()</a></td>
-<td style="text-align: left;">Select unique observations (rows)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/articles/base.html?q=rename#rename-rename-variables-by-name">rename()</a></td>
+<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/articles/base.html?q=rename#rename-rename-variables-by-name"><code>rename()</code></a></td>
 <td style="text-align: left;">Rename variables (columns)</td>
 </tr>
 </tbody>
 </table>
+<p>We will use each of these functions in this chapter to clean the <code>df_flanker_raw</code> dataset—so you’ll get plenty of practice!</p>
 </section>
+</section>
+<section id="activity-5-renaming-columns-with-rename" class="level2">
+<h2 class="anchored" data-anchor-id="activity-5-renaming-columns-with-rename">Activity 5: Renaming Columns with <code>rename()</code></h2>
+<p>When cleaning a dataset, one of the first things you should do is identify the columns that you need for your analysis or that contain important information.</p>
+<p>In our case, these columns include the <strong>participant’s ID</strong> (<code>Private.ID</code>), whether they <strong>completed the study or a preview</strong> (<code>Experiment.Status</code>), whether they were in the <strong>experimental or control group</strong> (<code>status</code>), their <strong>Neuroticism scores</strong> (<code>neuro1</code>, <code>net2</code>, <code>nero3</code>, <code>neuro4</code>, <code>neuro5</code>), demographic information (<code>aGe</code>, <code>nationality</code>), and their <strong>reaction times on the flanker trials</strong> (<code>wlanker_congruent</code> &amp; <code>flanker_incongruent</code>).</p>
+<p>The first step is to <strong>rename any awkward or inconsistent column names</strong> to make them easier to work with—because good grief, these names are ugly!</p>
+<p>Luckily, we can rename these columns using the <code>rename()</code> function.</p>
+<p>The syntax for this function is slightly counterintuitive in its order, as it follows this structure:</p>
+<p><code>rename(dataframe, newcolumnane = oldcolumnname)</code></p>
+<p>For our dataset, we will rename the relevant columns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_flanker_renamed <span class="ot">&lt;-</span> <span class="fu">rename</span>(df_flanker_raw,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">ID =</span> Private.ID,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">neuro2 =</span> net2,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">neuro3 =</span> nero3,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">flanker_congruent =</span> wlanker_congruent,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">age =</span> aGe,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">gender =</span> nationality,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">group =</span> status,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">experiment_status =</span> Experiment.Status)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_renamed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID experiment_status age      group neuro3 neuro2  X X.1 neuro5     gender
+1  1           preview  32 experiment      2      2 NA  NA      5       Male
+2  2           preview  37    control      3      2 NA  NA      3     Female
+3  3           preview  28 experiment      4      3 NA  NA      2 Non-Binary
+4  4           preview  30    control      2      3 NA  NA      4       Male
+5  5           preview  28 experiment      2      2 NA  NA      2     Female
+6  6           preview  33    control      3      3 NA  NA      2 Non-Binary
+  flanker_congruent flanker_incongruent Participant.OS Local.Timestamp neuro1
+1               643                 607     Windows 10        1.71E+12      3
+2               545                 625     Windows 10        1.71E+12      3
+3               629                 556     Windows 10        1.71E+12      4
+4               616                 617     Windows 10        1.71E+12      2
+5               794                 752     Windows 10        1.71E+12      4
+6               629                 529     Windows 10        1.71E+12      2
+  neuro4
+1      4
+2      3
+3      4
+4      3
+5      3
+6      3</code></pre>
+</div>
+</div>
+<p>We can also verify the updated column names in our dataframe by using the <code>colnames()</code> function, which will print only the names of the columns in our dataframe:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_flanker_renamed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ID"                  "experiment_status"   "age"                
+ [4] "group"               "neuro3"              "neuro2"             
+ [7] "X"                   "X.1"                 "neuro5"             
+[10] "gender"              "flanker_congruent"   "flanker_incongruent"
+[13] "Participant.OS"      "Local.Timestamp"     "neuro1"             
+[16] "neuro4"             </code></pre>
+</div>
+</div>
+<p>Either way, we now have clearer and more consistent column names for the data we need.</p>
+<p>Next, let’s remove the columns that we <strong>do not</strong> need for our analysis.</p>
+</section>
+<section id="activity-6-selecting-columns-with-select" class="level2">
+<h2 class="anchored" data-anchor-id="activity-6-selecting-columns-with-select">Activity 6: Selecting columns with select()</h2>
+<p>We can use the <code>select()</code> function to extract only the columns we need from a dataframe. The syntax for this function is:</p>
+<p>The syntax for this function is: <code>select(dataframe, c(col1name, col2name, col3name))</code></p>
+<p>For this exercise, we will select only the relevant columns and store them in a new dataframe called <code>df_flanker_selected</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_flanker_selected <span class="ot">&lt;-</span> <span class="fu">select</span>(df_flanker_renamed, <span class="fu">c</span>(ID,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                                experiment_status,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                                group,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                                                age,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                                                gender,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                                                flanker_congruent,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                                                flanker_incongruent,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                                                neuro1,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                                                neuro2,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                                                neuro3,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                                                neuro4,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                                                neuro5))</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_selected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID experiment_status      group age     gender flanker_congruent
+1  1           preview experiment  32       Male               643
+2  2           preview    control  37     Female               545
+3  3           preview experiment  28 Non-Binary               629
+4  4           preview    control  30       Male               616
+5  5           preview experiment  28     Female               794
+6  6           preview    control  33 Non-Binary               629
+  flanker_incongruent neuro1 neuro2 neuro3 neuro4 neuro5
+1                 607      3      2      2      4      5
+2                 625      3      2      3      3      3
+3                 556      4      3      4      4      2
+4                 617      2      3      2      3      4
+5                 752      4      2      2      3      2
+6                 529      2      3      3      3      2</code></pre>
+</div>
+</div>
+<p>That looks much cleaner already!</p>
+<p>You may have noticed that the order of columns in <code>df_flanker_selected</code> matches the order in which they were listed inside <code>select()</code>. This is a useful feature that allows us to easily reorder our dataframe.</p>
+<p>Now, I want you to modify <code>df_flanker_selected</code> so that our <strong>dependent variables</strong> (<code>flanker_congruent</code> and <code>flanker_incongruent</code>) appear immediately <strong>after</strong> the <code>group</code> column, before the other variables. The output should look like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID experiment_status      group flanker_congruent flanker_incongruent age
+1  1           preview experiment               643                 607  32
+2  2           preview    control               545                 625  37
+3  3           preview experiment               629                 556  28
+4  4           preview    control               616                 617  30
+5  5           preview experiment               794                 752  28
+6  6           preview    control               629                 529  33
+      gender neuro1 neuro2 neuro3 neuro4 neuro5
+1       Male      3      2      2      4      5
+2     Female      3      2      3      3      3
+3 Non-Binary      4      3      4      4      2
+4       Male      2      3      2      3      4
+5     Female      4      2      2      3      2
+6 Non-Binary      2      3      3      3      2</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="What if I have lots of columns, do I have to type everything out?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What if I have lots of columns, do I have to type everything out?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When working with large datasets, manually specifying every column can be tedious. Fortunately, <code>select()</code> has several shortcuts that make life easier.</p>
+<section id="removing-columns-with---operator" class="level2">
+<h2 class="anchored" data-anchor-id="removing-columns-with---operator">Removing Columns with <code>-</code> Operator</h2>
+<p>If you want to <strong>exclude</strong> specific columns instead of selecting them, use the <code>-</code> operator before the column name.</p>
+<p>For example, to remove the <code>gender</code> column:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_flanker_remove_gender <span class="ot">&lt;-</span> <span class="fu">select</span>(df_flanker_selected, <span class="sc">-</span><span class="fu">c</span>(gender))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_flanker_remove_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ID"                  "experiment_status"   "group"              
+ [4] "flanker_congruent"   "flanker_incongruent" "age"                
+ [7] "neuro1"              "neuro2"              "neuro3"             
+[10] "neuro4"              "neuro5"             </code></pre>
+</div>
+</div>
+<p>And voilà—<code>gender</code> is gone!</p>
+<p>Similarly, you can remove multiple columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_flanker_remove_demographics <span class="ot">&lt;-</span> <span class="fu">select</span>(df_flanker_selected, <span class="sc">-</span><span class="fu">c</span>(gender, age))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_flanker_remove_demographics) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ID"                  "experiment_status"   "group"              
+ [4] "flanker_congruent"   "flanker_incongruent" "neuro1"             
+ [7] "neuro2"              "neuro3"              "neuro4"             
+[10] "neuro5"             </code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-consecutive-columns-with" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-consecutive-columns-with"><strong>Selecting Consecutive Columns with <code>:</code></strong></h2>
+<p>The <code>:</code> operator allows you to select a <strong>range</strong> of columns that are <strong>next to each other</strong>.</p>
+<p>For example, to keep only the <code>ID</code> column and the <strong>Neuroticism</strong> scale items:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_flanker_select_simultaneous <span class="ot">&lt;-</span> <span class="fu">select</span>(df_flanker_selected, <span class="fu">c</span>(ID, neuro1<span class="sc">:</span>neuro5))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_select_simultaneous)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID neuro1 neuro2 neuro3 neuro4 neuro5
+1  1      3      2      2      4      5
+2  2      3      2      3      3      3
+3  3      4      3      4      4      2
+4  4      2      3      2      3      4
+5  5      4      2      2      3      2
+6  6      2      3      3      3      2</code></pre>
+</div>
+</div>
+</section>
+<section id="combining---remove-and-select-a-range" class="level2">
+<h2 class="anchored" data-anchor-id="combining---remove-and-select-a-range"><strong>Combining <code>-</code> (Remove) and <code>:</code> (Select a Range)</strong></h2>
+<p>You can <strong>combine</strong> both techniques to remove a consecutive range of columns.</p>
+<p>For example, to remove <code>ID</code>, <code>age</code>, and all <strong>Neuroticism</strong> items (<code>neuro1</code> to <code>neuro5</code>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_flanker_unselect_simultaneous <span class="ot">&lt;-</span> <span class="fu">select</span>(df_flanker_selected, <span class="sc">-</span><span class="fu">c</span>(ID, age, neuro1<span class="sc">:</span>neuro5))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_unselect_simultaneous)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  experiment_status      group flanker_congruent flanker_incongruent     gender
+1           preview experiment               643                 607       Male
+2           preview    control               545                 625     Female
+3           preview experiment               629                 556 Non-Binary
+4           preview    control               616                 617       Male
+5           preview experiment               794                 752     Female
+6           preview    control               629                 529 Non-Binary</code></pre>
+</div>
+</div>
+<p>Now, <code>ID</code>, <code>age</code>, and all Neuroticism-related columns are gone!</p>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-7-creating-new-columns-using-mutate" class="level2">
+<h2 class="anchored" data-anchor-id="activity-7-creating-new-columns-using-mutate">Activity 7: Creating New Columns using <code>mutate()</code></h2>
+<p>So far, we have removed unnecessary columns and renamed the remaining ones. However, one key variable is missing.</p>
+<p>At the moment, we have <em>individual item scores</em> for Neuroticism (<code>neuro1</code> to <code>neuro5</code>). Since we’re not conducting a reliability or factor analysis, we need a <strong>total Neuroticism score</strong> for each participant.</p>
+<p>The <strong><code>mutate()</code></strong> function allows us to <em>create new columns</em> by applying operations to existing ones.</p>
+<p>The syntax for this function is:</p>
+<p><strong><code>mutate(df, new_column_name = instructions on what to do with current columns)</code></strong></p>
+<p>Let’s use <code>mutate()</code> to create a new column called <strong><code>neuroticism_total</code></strong>, which sums the five Neuroticism items:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_flanker_mutated <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df_flanker_selected, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">neuroticism_total =</span> neuro1 <span class="sc">+</span> neuro2 <span class="sc">+</span> neuro3 <span class="sc">+</span> neuro4 <span class="sc">+</span> neuro5)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#new_col_name = operation on current columns</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_mutated)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID experiment_status      group flanker_congruent flanker_incongruent age
+1  1           preview experiment               643                 607  32
+2  2           preview    control               545                 625  37
+3  3           preview experiment               629                 556  28
+4  4           preview    control               616                 617  30
+5  5           preview experiment               794                 752  28
+6  6           preview    control               629                 529  33
+      gender neuro1 neuro2 neuro3 neuro4 neuro5 neuroticism_total
+1       Male      3      2      2      4      5                16
+2     Female      3      2      3      3      3                14
+3 Non-Binary      4      3      4      4      2                17
+4       Male      2      3      2      3      4                14
+5     Female      4      2      2      3      2                13
+6 Non-Binary      2      3      3      3      2                13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_flanker_mutated<span class="sc">$</span>neuroticism_total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 16 14 17 14 13 13 13 13 16 14 13 16 17 12 14 14 13 15 13 17 16 16 16 16 13
+[26] 15 15 14 16 11 16 18 17 14 13 13 13 14 14 15 17 17 18 19 15 15 15 16 13 20
+[51] 20  9 13 14 15 15 14 11 15 14 16 13</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="What if I want to calculate the mean?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What if I want to calculate the mean?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If we wanted to calculate the <strong>mean</strong> of these items (rather than the total score), we need to ensure that R calculates the <strong>mean per participant</strong> (row-wise) rather than across the entire dataset.</p>
+<p>To do this, we use the <strong><code>rowMeans()</code></strong> function, which calculates the mean <strong>for each row</strong> (i.e., for each participant).</p>
+<p>Since <code>rowMeans()</code> requires us to specify which columns to use, we must first <strong>select</strong> the relevant columns inside <code>mutate()</code>.</p>
+<p>Let’s save this new variable as <strong><code>neuroticism_mean</code></strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_flanker_mutated_average <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df_flanker_mutated, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#we use `select()` to pick the columns we want</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">neuroticism_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(df_flanker_mutated, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                                                    <span class="fu">c</span>(neuro1, neuro2, neuro3,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                                                      neuro4, neuro5))))</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_mutated_average)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID experiment_status      group flanker_congruent flanker_incongruent age
+1  1           preview experiment               643                 607  32
+2  2           preview    control               545                 625  37
+3  3           preview experiment               629                 556  28
+4  4           preview    control               616                 617  30
+5  5           preview experiment               794                 752  28
+6  6           preview    control               629                 529  33
+      gender neuro1 neuro2 neuro3 neuro4 neuro5 neuroticism_total
+1       Male      3      2      2      4      5                16
+2     Female      3      2      3      3      3                14
+3 Non-Binary      4      3      4      4      2                17
+4       Male      2      3      2      3      4                14
+5     Female      4      2      2      3      2                13
+6 Non-Binary      2      3      3      3      2                13
+  neuroticism_mean
+1              3.2
+2              2.8
+3              3.4
+4              2.8
+5              2.6
+6              2.6</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="using-.keep-to-remove-unnecessary-columns" class="level3">
+<h3 class="anchored" data-anchor-id="using-.keep-to-remove-unnecessary-columns">Using <code>.keep</code> to Remove Unnecessary Columns</h3>
+<p>If we no longer need the original Neuroticism item scores (<code>neuro1</code> to <code>neuro5</code>), we can automatically remove them by using the <code>.keep</code> argument inside <code>mutate()</code>.</p>
+<p>The <code>.keep</code> argument controls what happens to the original columns:</p>
+<ul>
+<li><p><strong><code>.keep = "all"</code></strong> (default) → Keeps <strong>all</strong> original columns.</p></li>
+<li><p><strong><code>.keep = "unused"</code></strong> → Removes the columns used in the calculation.</p></li>
+<li><p><strong><code>.keep = "none"</code></strong> → Removes <strong>all</strong> columns except the newly created one.</p></li>
+</ul>
+<p>Since we only need the <strong>total score</strong>, let’s use <code>.keep = "unused"</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_flanker_mutated_exclusive <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df_flanker_selected, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">neuroticism_total =</span> neuro1 <span class="sc">+</span> neuro2 <span class="sc">+</span> neuro3 <span class="sc">+</span> neuro4 <span class="sc">+</span> neuro5,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.keep =</span> <span class="st">"unused"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_mutated_exclusive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID experiment_status      group flanker_congruent flanker_incongruent age
+1  1           preview experiment               643                 607  32
+2  2           preview    control               545                 625  37
+3  3           preview experiment               629                 556  28
+4  4           preview    control               616                 617  30
+5  5           preview experiment               794                 752  28
+6  6           preview    control               629                 529  33
+      gender neuroticism_total
+1       Male                16
+2     Female                14
+3 Non-Binary                17
+4       Male                14
+5     Female                13
+6 Non-Binary                13</code></pre>
+</div>
+</div>
+<p>This means the original columns (<code>neuro1</code> to <code>neuro5</code>) have been removed, leaving only the new total score.</p>
+<p>Since we no longer need the individual items, we will use this new dataframe moving forward.</p>
+</section>
+</section>
+<section id="checking-in-on-our-data" class="level2">
+<h2 class="anchored" data-anchor-id="checking-in-on-our-data">Checking in on our data</h2>
+<p>We’ve made significant progress in cleaning our dataset. So far, we have:</p>
+<ul>
+<li><p>Removed unnecessary columns</p></li>
+<li><p>Fixed column names and ordering</p></li>
+<li><p>Created new columns for our analysis.</p></li>
+<li><p>Corrected errors in existing columns.</p></li>
+</ul>
+<p>Our dataset is almost ready for analysis!</p>
+<p>However, there are still extra participants in our dataset that we need to remove. We expect <strong>50 participants</strong>, but if we check the number of rows, we see that there are actually <strong>62 participants</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df_flanker_mutated_exclusive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 62</code></pre>
+</div>
+</div>
+<p>So, where did these extra <strong>12 participants</strong> come from?</p>
+<p>If you look at the <strong><code>experiment_status</code></strong> column in our dataset, you’ll notice that it contains <strong>both <code>preview</code> and <code>live</code> data</strong>. We can use the <strong><code>table()</code></strong> function to count how many participants contributed to each category:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_flanker_mutated_exclusive<span class="sc">$</span>experiment_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   live preview 
+     52      10 </code></pre>
+</div>
+</div>
+<p>The output tells us that <strong>10 of the 12 extra participants</strong> are from preview data. However, we still have <strong>two additional participants</strong> who completed the study under <code>live</code> conditions.</p>
+<p>Before proceeding, we need to investigate why we have these extra participants in the live condition.</p>
+</section>
+<section id="activity-8---removing-duplicates-using-distinct" class="level2">
+<h2 class="anchored" data-anchor-id="activity-8---removing-duplicates-using-distinct">Activity 8 - Removing Duplicates using <code>distinct()</code></h2>
+<p><strong>Why Do We Have Extra Participants?</strong></p>
+<p>In the previous step, we discovered that our dataset contains 12 extra participants instead of the expected 50. While we identified that 10 of these participants were part of the preview phase, there are still two additional participants that we need to investigate.</p>
+<p>One possible explanation is that some participants data were accidently duplicated when downloading the dataset.</p>
+<section id="step-1-identifying-duplicate-rows" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-identifying-duplicate-rows">Step 1: Identifying Duplicate Rows</h3>
+<p>The <code>duplicated()</code> function checks whether each row in a dataframe is an <strong>exact duplicate</strong> of a previous row.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(df_flanker_mutated_exclusive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[61] FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>The function returns a <strong>logical vector</strong> of <code>TRUE</code> and <code>FALSE</code> values:</p>
+<ul>
+<li><p><code>TRUE</code> means the row is a duplicate.</p></li>
+<li><p><code>FALSE</code> means the row is unique.</p></li>
+</ul>
+<p>Each <code>TRUE</code> or <code>FALSE</code> corresponds to a row in the dataframe.</p>
+<p>If we want to extract and see the duplicated rows, we can follow the syntax we discussed in Chapter 3 about extracting values from a dataframe: <strong><code>dataframe[rows_we_want, columns_we_want]</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_flanker_mutated_exclusive[<span class="fu">duplicated</span>(df_flanker_mutated_exclusive), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   ID experiment_status      group flanker_congruent flanker_incongruent age
+49 11              live experiment               753                 574  25
+62 11              live experiment               753                 574  25
+   gender neuroticism_total
+49 Female                13
+62 Female                13</code></pre>
+</div>
+</div>
+<p>From this output, we see that <strong>the participant with ID = <code>11</code> has duplicate rows</strong>.</p>
+</section>
+<section id="step-2-removing-duplicate-rows-with-distinct" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-removing-duplicate-rows-with-distinct"><strong>Step 2: Removing Duplicate Rows with <code>distinct()</code></strong></h3>
+<p>Now that we have identified the duplicated participant, we need to remove them.</p>
+<p>The <strong><code>distinct()</code></strong> function removes any <strong>duplicate rows</strong>, ensuring that only <strong>unique records remain</strong>.</p>
+<p>To remove these values we can use the <strong><code>distinct()</code></strong> function. This function takes in a data frame or a column and only keeps the rows that are unique.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_flanker_distinct <span class="ot">&lt;-</span> <span class="fu">distinct</span>(df_flanker_mutated_exclusive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To confirm that the duplicate has been removed, we can check the number of participants in each study phase again using <code>table()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_flanker_distinct<span class="sc">$</span>experiment_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   live preview 
+     50      10 </code></pre>
+</div>
+</div>
+<p>It looks like we have. We can also double-check this by calling the <strong><code>duplicated()</code></strong> function again to see if any values return as <strong><code>TRUE</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(df_flanker_distinct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>All values are <code>FALSE</code>—this confirms that our dataset no longer contains duplicates.</p>
+<p>Now that we have removed duplicate participants, our next step is to clean up the <code>preview</code> data from our dataset.</p>
+</section>
+</section>
+<section id="activity-9---selecting-rows-using-filter" class="level2">
+<h2 class="anchored" data-anchor-id="activity-9---selecting-rows-using-filter">Activity 9 - Selecting Rows using <code>filter()</code></h2>
+<section id="removing-rows-using-filter" class="level3">
+<h3 class="anchored" data-anchor-id="removing-rows-using-filter">Removing Rows Using <code>filter()</code></h3>
+<p>The filter() function allows us to select rows that meet specific conditions while filtering out those that do not. Its syntax follows this structure: <strong><code>filter(dataframe, condition)</code></strong>, where the condition specifies which rows to retain.</p>
+<p>In our dataset, the <code>experiment_status</code> column tells us whether a participant was part of the live or preview study. We only want to keep participants who completed the live version of the study and remove all preview data.</p>
+<p>We can do this using filter():</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_flanker_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_flanker_distinct, experiment_status <span class="sc">==</span> <span class="st">"live"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The condition <strong><code>experiment_status == "live"</code></strong> instructs R to keep only rows where the <code>experiment_status</code> column is <code>"live"</code>.</p>
+<p>To confirm that we have successfully removed all preview participants, we can use the <strong><code>table()</code></strong> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_flanker_filtered<span class="sc">$</span>experiment_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+live 
+  50 </code></pre>
+</div>
+</div>
+<p>The output now only contains <code>"live"</code>, meaning that all <code>"preview"</code> data has been successfully removed.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="What if I want to tell R what **not** to select?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What if I want to tell R what <strong>not</strong> to select?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can also <strong>exclude</strong> specific rows using <code>filter()</code>.</p>
+<p>For example, instead of specifying that we want only <code>"live"</code> rows, we could <strong>remove</strong> <code>"preview"</code> rows using <strong><code>!=</code></strong>, which means “not equal to”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_filter_neg <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_flanker_distinct, experiment_status <span class="sc">!=</span> <span class="st">"preview"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_filter_neg<span class="sc">$</span>experiment_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+live 
+  50 </code></pre>
+</div>
+</div>
+<p>Here, <strong><code>!=</code></strong> tells R to <strong>keep everything except</strong> <code>"preview"</code>.</p>
+<p>This is especially useful when a column contains multiple values, and it’s easier to exclude certain ones rather than specify every value you want to keep.</p>
+</div>
+</div>
+</div>
+<p>Since we have removed the <strong><code>preview</code></strong> scores from our <strong><code>status</code></strong> column, do we actually need it anymore? Probably not as it won’t be used in our final analysis. So let’s remove it using the <strong><code>select()</code></strong> function and <strong><code>-</code></strong> operator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_flanker_filtered <span class="ot">&lt;-</span> <span class="fu">select</span>(df_flanker_filtered, <span class="sc">-</span><span class="fu">c</span>(experiment_status))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_flanker_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID      group flanker_congruent flanker_incongruent age     gender
+1 11 experiment               753                 574  25     Female
+2 12    control               655                 719  25 Non-Binary
+3 13 experiment               747                 680  31       Male
+4 14    control               554                 509  31     Female
+5 15 experiment               567                 588  28 Non-Binary
+6 16    control               544                 505  26       Male
+  neuroticism_total
+1                13
+2                16
+3                17
+4                12
+5                14
+6                14</code></pre>
+</div>
+</div>
+</section>
+<section id="removing-rows-using-multiple-conditions-with-filter" class="level3">
+<h3 class="anchored" data-anchor-id="removing-rows-using-multiple-conditions-with-filter">Removing Rows Using Multiple Conditions with <code>filter()</code></h3>
+<p>We can also use <strong><code>filter()</code></strong> to check whether rows meet several conditions at the same time. For example, let’s look at our columns <strong><code>flanker_congruent</code></strong> and <strong><code>flanker_incongruent</code></strong>, which contains participants reaction times (ms).</p>
+<p>When cleaning reaction time (RT) data, it’s common to remove extreme values that are likely due to accidental premature responses or inattentiveness. The choice of cutoff points depends on the nature of your experiment and the typical response range, but for the sake of our analysis, let’s go with the following:</p>
+<ol type="1">
+<li>Very fast responses (e.g., under 100 ms) might indicate that a participant anticipated the stimulus or accidentally pressed a button.</li>
+<li>Very slow responses (e.g., over 2000 ms) might suggest that a participant was distracted or inattentive</li>
+</ol>
+<p>In this case, we want to remove any participant’s data who scored too fast or too slow on either <strong><code>flanker_congruent</code></strong> OR <strong><code>flanker_incongruent</code></strong>.</p>
+<section id="step-1-checking-for-extreme-values" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-checking-for-extreme-values">Step 1: Checking for Extreme Values</h4>
+<p>Before filtering, let’s first check if any participants <strong>fall outside our thresholds</strong>. We will start by inspecting the <strong><code>flanker_congruent</code></strong> column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(df_flanker_filtered<span class="sc">$</span>flanker_congruent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  50  60 505 514 525 525 538 542 544 544 553 554 555 561 565 567 568 574 575
+[20] 588 592 598 613 627 628 638 640 651 655 676 690 694 698 705 707 725 743 744
+[39] 747 751 753 763 768 776 777 787 789 789 797 800</code></pre>
+</div>
+</div>
+<p><strong>What are we doing here?</strong></p>
+<ul>
+<li>The <code>sort()</code> function <strong>sorts</strong> the values from <strong>smallest to largest</strong>, allowing us to quickly see <strong>any extreme values</strong>.</li>
+</ul>
+<p><strong>What do we find?</strong></p>
+<ul>
+<li><p><strong>Two participants</strong> have reaction times <strong>under 100 ms</strong>.</p></li>
+<li><p><strong>One participant</strong> has a reaction time of <strong>2000 ms</strong>.</p></li>
+</ul>
+<p>Next, let’s check the <strong><code>flanker_incongruent</code></strong> column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(df_flanker_filtered<span class="sc">$</span>flanker_incongruent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  505  509  516  519  529  535  536  540  542  549  558  564  574  580  582
+[16]  585  588  595  601  607  611  613  629  647  650  658  665  672  680  682
+[31]  684  694  707  711  715  716  719  720  727  734  734  741  747  750  756
+[46]  766  772  785  793 3000</code></pre>
+</div>
+</div>
+<p><strong>What do we find?</strong></p>
+<ul>
+<li><p>No participants have <strong>reaction times under 100 ms</strong>.</p></li>
+<li><p><strong>One participant</strong> has a reaction time of <strong>3000 ms</strong>, which exceeds our <strong>2000 ms</strong> threshold.</p></li>
+</ul>
+</section>
+<section id="step-2-removing-extreme-values-using-filter" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-removing-extreme-values-using-filter">Step 2: Removing Extreme Values Using <code>filter()</code></h4>
+<p>Now that we know which values to exclude, we will use <strong><code>filter()</code></strong> to remove all participants who have:</p>
+<ul>
+<li><p><strong>RTs below 100 ms</strong> in either <code>flanker_congruent</code> OR <code>flanker_incongruent</code>.</p></li>
+<li><p><strong>RTs above 2000 ms</strong> in either <code>flanker_congruent</code> OR <code>flanker_incongruent</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df_flanker_filtered_ms <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_flanker_filtered,</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>                                 flanker_congruent <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">&amp;</span> flanker_congruent <span class="sc">&lt;=</span> <span class="dv">2000</span>,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                                 flanker_incongruent <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">&amp;</span> flanker_incongruent <span class="sc">&lt;=</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What the hell is happening here? Let’s break down the code</p>
+<ul>
+<li><p><strong><code>flanker_congruent &gt;= 100 &amp; flanker_congruent &lt;= 2000</code></strong></p>
+<ul>
+<li>Keep rows where <code>flanker_congruent</code> is at least 100 <strong><em>AND</em></strong> at most 2000.</li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong><code>flanker_incongruent &gt;= 100 &amp; flanker_incongruent &lt;= 2000</code></strong></p>
+<ul>
+<li>Keep rows where <code>flanker_incongruent</code> is at least 100 <strong><em>AND</em></strong> at most 2000.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-3-confirming-data-changes" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-confirming-data-changes">Step 3: Confirming Data Changes</h4>
+<p>Now let’s check how many participants remain after filtering.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df_flanker_filtered_ms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47</code></pre>
+</div>
+</div>
+<p>We can see that we have three fewer participants. But in this case, although our sample is smaller, the quality of our data is now more consistent.</p>
+</section>
+</section>
+</section>
+<section id="activity-10-save-your-clean-data" class="level2">
+<h2 class="anchored" data-anchor-id="activity-10-save-your-clean-data">Activity 10: Save your Clean Data</h2>
+<p>There we have it! We have successfully cleaned our first data frame in R. Well done.</p>
+<p>Now that we have successfully cleaned the dataset, let’s <strong>rename it</strong> and <strong>export it</strong> so that we can use it in future analyses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_flanker_clean <span class="ot">&lt;-</span> df_flanker_filtered</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df_flanker_clean, <span class="st">"df_clean.csv"</span>, <span class="at">row.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 
 </main>
