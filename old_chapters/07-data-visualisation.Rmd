@@ -630,7 +630,7 @@ One of my hypotheses was that Extraverts are more sensitive to experiencing Joy 
 
 ### Drawing our Plot
 
-Let's visualize this relationship by creating a scatterplot in R. There are several steps we need to take to do this. 
+Let's visualise this relationship by creating a scatterplot in R. There are several steps we need to take to do this. 
 
 First, let's call the ggplot() function, mapping Extraversion to the x-axis and Joy_reaction to the y-axis with the `mapping = aes()` call. 
 

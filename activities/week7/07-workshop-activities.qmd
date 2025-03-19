@@ -91,11 +91,11 @@ Here are the packages we will be using today:
 ```{r }
 library(jmv) # this will help us run descriptive statistics 
 library(car) #this will help to run our regression
-library(see) # this is needed to check our assumptions
+#library(see) # this is needed to check our assumptions
 library(performance) # this is needed to check our assumptions
 library(ggplot2) # we use this for our graphs
-library(ggiraph) # we also use this for our graphs
-library(ggiraphExtra) # once again.. graphs
+#library(ggiraph) # we also use this for our graphs
+#library(ggiraphExtra) # once again.. graphs
 ```
 
 ## Activity 3: Load in your datasets
