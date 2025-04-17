@@ -1,0 +1,4 @@
+- source: 11-workshop-activities.qmd
+  quarto-pub:
+    - id: 5cf19d48-9282-4aaa-a764-b59d4ba52290
+      url: 'https://ryandonovan.quarto.pub/week11-activities-r'

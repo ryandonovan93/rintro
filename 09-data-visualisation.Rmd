@@ -27,7 +27,7 @@ This chapter aims to supplement your in-lecture learning about data visualizatio
 
 ## Activities
 
-As in previous sessions there are several activities associated with this chapter. You can find them on Canvas under the **Week 9 module**.
+As in previous sessions there are several activities associated with this chapter. [You can find them here](https://quartopub.com/sites/ff76f9df-9aa3-44a6-9b3e-7ebd9bdabb81) or on Canvas under the **Week 9 module**.
 
 
 ## Introduction to `ggplot2`

@@ -1,0 +1,4 @@
+- source: test.qmd
+  quarto-pub:
+    - id: e098a19d-8022-411b-be85-3042708ed16e
+      url: 'https://ryandonovan.quarto.pub/test'

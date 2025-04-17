@@ -12,7 +12,6 @@ format:
 editor: visual
 ---
 
-
 In contrast to the last set of activities, this section is more of a reference guide than an end-to-end cleaning example. That’s because the tools you learn here might not always pop up, or at least are unlikely to all pop up in the one data frame. Nonetheless, when you combine the functions you learn here to clean data with the functions from last week, you will be able to handle an impressive amount (probably around 80%) of any data cleaning challenges you will encounter in your research.
 
 By the end of this session, you should be capable of the following:
@@ -93,14 +92,13 @@ install.packages("tidyverse") #replace "package name" with the actual package na
 
 You need to download several files for this activity and move them to your week 10 folder.
 
-
 1.  **demographics.csv**
 
 2.  **reaction_time.csv**
 
 3.  **wide_personality.csv**
 
-4. **example_missing_data.csv**
+4.  **example_missing_data.csv**
 
 Once they are in your week 10 folder, make sure to load each of them in R in your new script.
 
@@ -116,10 +114,6 @@ df_personality_wide <- read.csv("wide_personality.csv")
 df_missing <- read.csv("example_missing_data.csv")
   
 ```
-
-
-
-
 
 ## Activity 4: Transforming Data from Wide to Long
 
@@ -185,7 +179,7 @@ There is a lot of information that will appear in the help section. I want to dr
 There is a lot of potential inputs we can throw in, but I want to highlight the key arguments that you will use most of the time when you use this function
 
 | Argument | Meaning |
-|---------------------|---------------------------------------------------|
+|----|----|
 | `data` | Here you specify the wide data frame that you want to convert to long format |
 | `cols` | The column(s) that will be moved or altered when you pivot the data frame. |
 | `names_to` | The names of each variable identified in cols will be stored in a new column in our long data frame. The names_to argument specifies the name(s) of that new column(s). |
@@ -222,16 +216,12 @@ pivot_longer(
 Now we have lost our record for identifying which participant contributed to which data point. This identifies a key about using pivot_longer() in that not EVERYTHING needs to pivoted, it depends on our analytical needs are.
 
 ::: {.callout-tip title="Pivoting Image" collapse="true"}
-
 ```{r}
 
 
 include_graphics("../../img/06-pivot-visualisation.png")
 ```
-
-
 :::
-
 
 ## Activity 5: Transforming Data from Long to Wide
 
@@ -274,17 +264,16 @@ Each row in Table 6.2 represents a participant's response to a single variable. 
 It is more difficult to scan long data to quickly capture the information that we need. However, it is often easier for computers and programming languages to work with long data. That's why you will sometimes get long-data from external sources.
 :::
 
-There has been a growing trend/push for researchers to store their data in long format when making it available or downloadable online, as this can make data easier to find and extract using computational methods. 
+There has been a growing trend/push for researchers to store their data in long format when making it available or downloadable online, as this can make data easier to find and extract using computational methods.
 
-So it is worthwhile to know how to pivot your data from Long to Wide if you ever come across a dataset you need that is in long format. 
+So it is worthwhile to know how to pivot your data from Long to Wide if you ever come across a dataset you need that is in long format.
 
-To do this, we can use the `pivot_wider()` function. Typing `?pivot_woder` into the console provides detailed information about this function in RStudio through the Help tab in the Files Pane. Check the collapse box for what that should look like. 
+To do this, we can use the `pivot_wider()` function. Typing `?pivot_woder` into the console provides detailed information about this function in RStudio through the Help tab in the Files Pane. Check the collapse box for what that should look like.
 
 The table below shows the key arguments of this function.
 
 ::: {.callout-note title="Help information on the pivot_wider() function"}
-
-The following should appear in the help pane when you type ?pivot_wider into your console. 
+The following should appear in the help pane when you type ?pivot_wider into your console.
 
 ```{r fig.cap = "The arguments that we can pass to the pivot_wider() function", echo = FALSE, warning = FALSE}
 
@@ -293,17 +282,14 @@ library(knitr)
 include_graphics("../../img/06-pivotwider.png")
 
 ```
-
 :::
 
-
-
-| Argument      | Meaning                                                                                                                                                                       |
-|--------------------|----------------------------------------------------|
-| `data`        | The long data frame that you want to convert to wide format                                                                                                                   |
-| `id_cols`     | The columns that help identify each participant. This is often the values that are repeated in each row within a long data frame (e.g., like ID or any independent variables) |
-| `names_from`  | When we pivot from long to wide, we will be creating new columns for each variable that we collected data on. We need to tell R where to find the names for those variables.  |
-| `values_from` | We need to tell R where to find the values for the new columns that we are creating.                                                                                          |
+| Argument | Meaning |
+|----|----|
+| `data` | The long data frame that you want to convert to wide format |
+| `id_cols` | The columns that help identify each participant. This is often the values that are repeated in each row within a long data frame (e.g., like ID or any independent variables) |
+| `names_from` | When we pivot from long to wide, we will be creating new columns for each variable that we collected data on. We need to tell R where to find the names for those variables. |
+| `values_from` | We need to tell R where to find the values for the new columns that we are creating. |
 
 Let's use `pivot_wider()` to convert our `long_df` back into wide format.
 
@@ -318,21 +304,20 @@ pivot_wider(df_personality_long,
 
 Look familiar? If you compare it to our original `df_personality_wide`, you'll notice they look exactly the same - which is what we should expect!
 
-
 ```{r}
 head(df_personality_wide, n = 10)
 
 ```
+
 ## Activity 6: Handling Missing Data
 
 Missing values, often represented as NA in R, occur when data is not available or cannot be recorded for certain observations. This can occur due to various reasons such as non-response in surveys, data entry errors, or incomplete data collection processes. It’s essential to understand and address missing values appropriately to avoid biased or misleading results in data analysis. In psychological research, dealing with missing data is a common challenge that requires careful consideration to ensure the integrity and validity of analyses.
- 
-Detecting missing values in datasets is the first step towards handling them effectively.The quickest way to check if you have missing data in R is through the functions `colSums()` and `is.na()`. The function `colSums` we count up the number of certain values within each column of a data frame, and we can tell it to search for missing (`NA`) values through the `is.na()` function.  
+
+Detecting missing values in datasets is the first step towards handling them effectively.The quickest way to check if you have missing data in R is through the functions `colSums()` and `is.na()`. The function `colSums` we count up the number of certain values within each column of a data frame, and we can tell it to search for missing (`NA`) values through the `is.na()` function.
 
 ### Our Dataset
 
-Here we are going to use the `df_missing` data frame which contains data on demographic information. 
-
+Here we are going to use the `df_missing` data frame which contains data on demographic information.
 
 ```{r}
 
@@ -350,10 +335,10 @@ colSums(is.na(df_missing))
 
 
 ```
-We can see there are no missing values for `id`, but we have three missing values for `age` and `gender`. 
+
+We can see there are no missing values for `id`, but we have three missing values for `age` and `gender`.
 
 To remove rows or columns with missing values, we can use functions like `drop_na()`. Here’s how we can remove rows with missing values in the age column:
-
 
 ```{r}
 
@@ -365,6 +350,7 @@ colSums(is.na(df_removed))
 
 
 ```
+
 ## Activity 7: Merging Data (Joining Different Datasets Together)
 
 In psychological research, we’ll often encounter situations where data from multiple sources or studies need to be combined for analysis. We might have collected demographic information separately from participants answers on experimental tasks. We may have collected data using a variety of platforms (e.g., survey data using Qualtrics and response data using PsychoPy). Additionally, the research software tools we use might modulate the data. For example, if we run a study in Gorilla Research, then each separate task and questionnaire gets downloaded as separate files.
@@ -390,7 +376,6 @@ nrow(df_rt)
 ```
 
 There are 60 participants in the demographics data frame whereas there are only 42 participants in the reaction time data frame. If the study was online, maybe participants gave up after completing the demographic information, maybe there was connection issues, maybe the data did not save correctly. Whatever the reason for this mismatch in participants, we need to account for this when we merge these data frames together.
-
 
 I am going to show you two ways we can join these datasets: `inner_join`, and `left_join`
 
@@ -427,12 +412,11 @@ nrow(df_inner)
 
 ```
 
-
 ### Left_Join
 
 The function left_join keeps every participant (row) in the first data frame we feed it. It then matches participants responses in the second data frame and joins them together, once we specify a value that needs to be matched. If there is not a match on that column, then it fills the results with NA values.
 
-Let’s create the data frame `df_left` using `left_join()`. The syntax for this function is: `left_join(df1, df2, by = join_by(ID))``
+Let’s create the data frame `df_left` using `left_join()`. The syntax for this function is: \`left_join(df1, df2, by = join_by(ID))\`\`
 
 ```{r}
 
@@ -446,16 +430,10 @@ nrow(df_left)
 
 ```
 
-
 We can see that every participant in the df_demographics is included inside the df_left data frame. If that participant does not have scores on condition and mean_rt, then NA is substituted in.
 
-The function is called left_join() because it joins whatever is put first (i.e., left) in the function is given priority over what comes second (i.e., right). 
+The function is called left_join() because it joins whatever is put first (i.e., left) in the function is given priority over what comes second (i.e., right).
 
 ### Other Join Functions
 
-There are two other join functions that you can use: `right_join` and `full_join`. The textbook provides more information on both. I have only `left_join` and `inner_join` here as they are probably the most important to know. 
-
-
-
-
-
+There are two other join functions that you can use: `right_join` and `full_join`. The textbook provides more information on both. I have only `left_join` and `inner_join` here as they are probably the most important to know.

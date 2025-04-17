@@ -112,7 +112,7 @@ You need to import several files for this activity:
 
 2.  **data_cleaning_script.R**
 
-To download these files, navigate to the Teams channel for this course and access the "Week 4 - Data Cleaning (Part I)" channel. Once downloaded, use your file management system (File Explorer on Windows or Finder on Mac) to copy and paste these files into the "Week4" folder you created in Activity 1.1.
+You can find this files either on Canvas or on the [OSF Page.](https://osf.io/2v4bs/)
 
 If you're using RStudio, you should see these files in your working directory within the Files pane. Open the R script (**data_cleaning_script.R**).
 

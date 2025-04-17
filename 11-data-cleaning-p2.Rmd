@@ -12,7 +12,7 @@ df_clean <- df_clean %>% select(-X)
 
 ```
 
-In this session, we are going to learn how to clean more challenging data than what we encountered in [Chapter 5](#datacleaning1). In contrast to the last chapter, this section is more of a reference guide than an end-to-end cleaning example. That's because the tools you learn here might not always pop up, or at least are unlikely to all pop up in the one data frame. Nonetheless, when you combine the functions you learn here to clean data with the functions from last week, you will be able to handle an impressive amount (probably around 80%) of any data cleaning challenges you will encounter in your research.
+In this session, we are going to learn how to clean more challenging data than what we encountered in the [last chapter](#datacleaning1). In contrast to the last chapter, this section is more of a reference guide than an end-to-end cleaning example. That's because the tools you learn here might not always pop up, or at least are unlikely to all pop up in the one data frame. Nonetheless, when you combine the functions you learn here to clean data with the functions from last week, you will be able to handle an impressive amount (probably around 80%) of any data cleaning challenges you will encounter in your research.
 
 By the end of this session, you should be capable of the following:
 
@@ -30,7 +30,7 @@ Similar to the last chapter, first we need to set up RStudio and download some d
 
 Remember that the working directory is the location where we want to store any resulting data files or scripts that you'll work on in a session. In Chapter 2, I showed you how to do this using [a button-and-click interface](#set_wd).
 
-Using those instructions, create a folder called "Week5" in the **`rintro`** project folder (or whatever folder you created) and set it as your working directory. Use the **`getwd()`** to check that it has been set as your working directory. Your output should be something like this:
+Using those instructions, create a folder called "Week11" in the **`rintro`** project folder (or whatever folder you created) and set it as your working directory. Use the **`getwd()`** to check that it has been set as your working directory. Your output should be something like this:
 
 ```{r eval = F}
 
@@ -56,9 +56,10 @@ You need to import several files for this activity:
 
 7.  **raw_remote_clean.csv**
 
-To download these files, navigate to the Teams channel for this course and access the "Week 5 - Data Cleaning (Part II)" channel. Once downloaded, use your file management system (File Explorer on Windows or Finder on Mac) to copy and paste these files into the "Week5" folder you created in Activity 1.1.
+You can find this files either on Canvas or on the [OSF Page.](https://osf.io/2v4bs/)
 
-f you're using RStudio, you should see these files in your working directory within the Files pane. Create an R script and save it as (**data_cleaning_ii_script.R**).
+
+If you're using RStudio, you should see these files in your working directory within the Files pane. Create an R script and save it as (**data_cleaning_ii_script.R**).
 
 To import the raw_remote_associations.csv dataset into R, do the following:
 
@@ -69,7 +70,7 @@ To import the raw_remote_associations.csv dataset into R, do the following:
 5.  Follow the same instructions to import the **demographics.csv**, **reaction_time.csv,** and **raw_remote_clean.csv** files. Change their name to **df_demographics,** **df_rt, and df_clean** respectively.
 6.  [See Chapter 4's section on importing data for more information](#importing)
 
-Alternatively, you can write and run the following commands within the **data_cleaning_ii_script.R**. Just make sure they are in the Week 5 folder and that you have set that folder as your working directory.
+Alternatively, you can write and run the following commands within the **data_cleaning_ii_script.R**. Just make sure they are in the Week 11 folder and that you have set that folder as your working directory.
 
 ```{r eval = F}
 
@@ -130,11 +131,11 @@ In this section, we will first define **`wide`** and **`long`** data formats and
 
 In wide data, each row represents a unique participant, and each column represents a separate variable. Table 6.1 shows an example of data in wide format. Each row contains all the information on a specific participant across each variable collected. For example, in one row of information, we can observe that participant 2 is 25 years old, 165 centimeters tall, weighs 60kg, and has a BMI score of 22.
 
-| ID | Age | Height | Weight | BMI |
-|:--:|:---:|:------:|:------:|:---:|
-|  1 |  30 |   175  |   76   | 24.8 |
-|  2 |  25 |   165  |   60   |   22 |
-|  3 |  35 |   185  |   80   | 23.4 |
+| ID  | Age | Height | Weight | BMI  |
+|:---:|:---:|:------:|:------:|:----:|
+|  1  | 30  |  175   |   76   | 24.8 |
+|  2  | 25  |  165   |   60   |  22  |
+|  3  | 35  |  185   |   80   | 23.4 |
 
 If you are like most psychologists, you are used to seeing data in wide formats. Data is often inputted in wide format in software like Excel or SPSS, as it easier for humans to read. We are used to scanning data horizontally (left-right) rather than vertically (up-down). Because each participant is in a single row, repetition in the data frame is minimized, again making it easier for us to read..
 
@@ -144,20 +145,20 @@ In terms of statistical analysis, wide data is useful for calculating descriptiv
 
 In long data, each row contains a participant's single response to a single variable. The table below illustrates data in long format. Instead of having a column for each variable, there is one column that identifies the measured variable, and another column contains the participant's response to that variable. If multiple variables are collected, each participant has several rows, with each row representing a single response to a single variable.
 
-| ID | Variable | Value |
-|:--:|:--------:|:-----:|
-|  1 |   Age    |   30  |
-|  1 |  Height  |  175  |
-|  1 |  Weight  |   76  |
-|  1 |   BMI    |  24.8 |
-|  2 |   Age    |   25  |
-|  2 |  Height  |  165  |
-|  2 |  Weight  |   60  |
-|  2 |   BMI    |   22  |
-|  3 |   Age    |   35  |
-|  3 |  Height  |  185  |
-|  3 |  Weight  |   80  |
-|  3 |   BMI    |  23.4 |
+| ID  | Variable | Value |
+|:---:|:--------:|:-----:|
+|  1  |   Age    |  30   |
+|  1  |  Height  |  175  |
+|  1  |  Weight  |  76   |
+|  1  |   BMI    | 24.8  |
+|  2  |   Age    |  25   |
+|  2  |  Height  |  165  |
+|  2  |  Weight  |  60   |
+|  2  |   BMI    |  22   |
+|  3  |   Age    |  35   |
+|  3  |  Height  |  185  |
+|  3  |  Weight  |  80   |
+|  3  |   BMI    | 23.4  |
 
 Each row in Table 6.2 represents a participant's response to a single variable. For example, in row 1, we see that participant 1 reported their age (**`Variable`**) as 30 (**`Value`**). But I have to look to other rows to see this participant's score on other variables.
 
@@ -171,9 +172,9 @@ While it's important to know the differences between wide and long data formats,
 
 ### Pivoting from Wide to Long
 
-The **`pivot_longer()`** function converts a wide data frame into long format. Typing **`?pivot_longer`** into the console provides detailed information about this function in RStudio through the Help tab in the Files Pane[^06-cleaning-p2-1].
+The **`pivot_longer()`** function converts a wide data frame into long format. Typing **`?pivot_longer`** into the console provides detailed information about this function in RStudio through the Help tab in the Files Pane[^11-data-cleaning-p2-1].
 
-[^06-cleaning-p2-1]: You can use this syntax with every function in R. We haven't used so far in the course because I personally think the "helpful information" that R gives you is absolute GARBAGE if you are beginner. It tends to be highly technical, minimal, and will often confuse more people than it will help inform.
+[^11-data-cleaning-p2-1]: You can use this syntax with every function in R. We haven't used so far in the course because I personally think the "helpful information" that R gives you is absolute GARBAGE if you are beginner. It tends to be highly technical, minimal, and will often confuse more people than it will help inform.
 
 ```{r eval = FALSE}
 
@@ -185,13 +186,13 @@ There is a lot of information that will appear in the help section. I want to dr
 
 There is a lot of potential inputs we can throw in, but I want to highlight the key arguments that you will use most of the time when you use this function
 
-| Argument    | Meaning                                                                                                                                                                          |
-|--------------------|----------------------------------------------------|
-| `data`      | Here you specify the wide data frame that you want to convert to long format                                                                                                     |
-| `cols`      | The column(s) that will be moved or altered when you pivot the data frame.                                                                                                       |
-| `names_to`  | The names of each variable identified in cols will be stored in a new column in our long data frame. The names_to argument specifies the name(s) of that new column(s).          |
+| Argument | Meaning |
+|---------------------|---------------------------------------------------|
+| `data` | Here you specify the wide data frame that you want to convert to long format |
+| `cols` | The column(s) that will be moved or altered when you pivot the data frame. |
+| `names_to` | The names of each variable identified in cols will be stored in a new column in our long data frame. The names_to argument specifies the name(s) of that new column(s). |
 | `values_to` | The values associated with each variable identified in cols will be stored in a new column in our long data frame. The values_to argument specifies the name of that new column. |
-|             |                                                                                                                                                                                  |
+|  |  |
 
 Let's create an example data frame to use `pivot_longer()`longer with. I recommend you copy and paste the code below to your R script and run it to create the data frame
 
@@ -342,12 +343,12 @@ include_graphics("img/06-pivotwider.png")
 
 ```
 
-| Argument      | Meaning                                                                                                                                                                       |
-|--------------------|----------------------------------------------------|
-| `data`        | The long data frame that you want to convert to wide format                                                                                                                   |
-| `id_cols`     | The columns that help identify each participant. This is often the values that are repeated in each row within a long data frame (e.g., like ID or any independent variables) |
-| `names_from`  | When we pivot from long to wide, we will be creating new columns for each variable that we collected data on. We need to tell R where to find the names for those variables.  |
-| `values_from` | We need to tell R where to find the values for the new columns that we are creating.                                                                                          |
+| Argument | Meaning |
+|---------------------|---------------------------------------------------|
+| `data` | The long data frame that you want to convert to wide format |
+| `id_cols` | The columns that help identify each participant. This is often the values that are repeated in each row within a long data frame (e.g., like ID or any independent variables) |
+| `names_from` | When we pivot from long to wide, we will be creating new columns for each variable that we collected data on. We need to tell R where to find the names for those variables. |
+| `values_from` | We need to tell R where to find the values for the new columns that we are creating. |
 
 Let's use `pivot_wider()` to convert our `long_df` back into wide format.
 
@@ -671,15 +672,15 @@ Using just two functions we have significantly cleaned up our data frame by redu
 
 Now we need to think about cleaning our rows. If you look at the values under the `Question` and `Response` columns, you will see relatively strange responses. Let's talk through the values in Question and their associated Response.
 
-| Question            | Response                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|----------------------------------------------------|
-| BEGIN QUESTIONNAIRE | This "response" is something Gorilla records in the data frame to help us quickly identify the start and end of participants' responses to a questionnaire. We do not need this response in our clean dataset, so we will be getting rid of it.                                                                                            |
-| Sex                 | Participants were asked to select a drop-down choice to identify their sex as either male or female. This records that selection.                                                                                                                                                                                                          |
-| Sex-quantised       | This translates the participant's response to a numerical value. The numbers correspond to the order in which they were displayed answers. Female was displayed first, so it gets recorded as a 1. Male was displayed second, so it gets recorded as a 2. We will get rid of this column because we just want the male or female response. |
-| Sex-text            | No idea, to be honest. But we don't need it either way.                                                                                                                                                                                                                                                                                    |
-| Age                 | Participants asked to select a drop-down choice to identify their age across the categories 18-24, 25-30 up to 41-50. This records that selection.                                                                                                                                                                                         |
-| Age-quantised       | Again, this translates the participant's response to a numerical value in relation to the order options were displayed. Not needed.                                                                                                                                                                                                        |
-| Age-text            | Again, no clue. But we do not need it.                                                                                                                                                                                                                                                                                                     |
+| Question | Response |
+|---------------------|---------------------------------------------------|
+| BEGIN QUESTIONNAIRE | This "response" is something Gorilla records in the data frame to help us quickly identify the start and end of participants' responses to a questionnaire. We do not need this response in our clean dataset, so we will be getting rid of it. |
+| Sex | Participants were asked to select a drop-down choice to identify their sex as either male or female. This records that selection. |
+| Sex-quantised | This translates the participant's response to a numerical value. The numbers correspond to the order in which they were displayed answers. Female was displayed first, so it gets recorded as a 1. Male was displayed second, so it gets recorded as a 2. We will get rid of this column because we just want the male or female response. |
+| Sex-text | No idea, to be honest. But we don't need it either way. |
+| Age | Participants asked to select a drop-down choice to identify their age across the categories 18-24, 25-30 up to 41-50. This records that selection. |
+| Age-quantised | Again, this translates the participant's response to a numerical value in relation to the order options were displayed. Not needed. |
+| Age-text | Again, no clue. But we do not need it. |
 
 We only need the rows where Question is equal to Age or Sex. Let's select only these rows by using the `filter()` function and the `|` operator.
 
@@ -873,4 +874,3 @@ head(clean_df)
 ## Summary
 
 That concludes our two sessions on data cleaning. You have covered a lot in these two sessions. The lessons you have learn here are applicable to cleaning the majority of the datasets you will encounter in your research. Well done.
-

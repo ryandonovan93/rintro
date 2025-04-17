@@ -57,16 +57,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="10-workshop-activities-clean_files/libs/clipboard/clipboard.min.js"></script>
-<script src="10-workshop-activities-clean_files/libs/quarto-html/quarto.js"></script>
-<script src="10-workshop-activities-clean_files/libs/quarto-html/popper.min.js"></script>
-<script src="10-workshop-activities-clean_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="10-workshop-activities-clean_files/libs/quarto-html/anchor.min.js"></script>
-<link href="10-workshop-activities-clean_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="10-workshop-activities-clean_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="10-workshop-activities-clean_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="10-workshop-activities-clean_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="10-workshop-activities-clean_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="11-workshop-activities_files/libs/clipboard/clipboard.min.js"></script>
+<script src="11-workshop-activities_files/libs/quarto-html/quarto.js"></script>
+<script src="11-workshop-activities_files/libs/quarto-html/popper.min.js"></script>
+<script src="11-workshop-activities_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="11-workshop-activities_files/libs/quarto-html/anchor.min.js"></script>
+<link href="11-workshop-activities_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="11-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="11-workshop-activities_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="11-workshop-activities_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="11-workshop-activities_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -99,8 +99,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#left_join" id="toc-left_join" class="nav-link" data-scroll-target="#left_join">Left_Join</a></li>
   <li><a href="#other-join-functions" id="toc-other-join-functions" class="nav-link" data-scroll-target="#other-join-functions">Other Join Functions</a></li>
   </ul></li>
+  <li><a href="#activity-8-dealing-with-reverse-scored-items" id="toc-activity-8-dealing-with-reverse-scored-items" class="nav-link" data-scroll-target="#activity-8-dealing-with-reverse-scored-items">Activity 8: Dealing with Reverse Scored Items</a>
+  <ul>
+  <li><a href="#why-reverse-scoring-is-needed" id="toc-why-reverse-scoring-is-needed" class="nav-link" data-scroll-target="#why-reverse-scoring-is-needed">Why Reverse Scoring Is Needed</a></li>
+  </ul></li>
+  <li><a href="#step-by-step-example-in-r" id="toc-step-by-step-example-in-r" class="nav-link" data-scroll-target="#step-by-step-example-in-r">Step-by-Step Example in R</a>
+  <ul>
+  <li><a href="#step-1-create-the-dataset" id="toc-step-1-create-the-dataset" class="nav-link" data-scroll-target="#step-1-create-the-dataset">Step 1: Create the Dataset</a></li>
+  <li><a href="#step-2-reverse-score-the-item" id="toc-step-2-reverse-score-the-item" class="nav-link" data-scroll-target="#step-2-reverse-score-the-item">Step 2: Reverse Score the Item</a></li>
+  </ul></li>
+  <li><a href="#reverse-scoring-multiple-items" id="toc-reverse-scoring-multiple-items" class="nav-link" data-scroll-target="#reverse-scoring-multiple-items">Reverse Scoring Multiple Items</a>
+  <ul>
+  <li><a href="#how-to-reverse-multiple-items-efficiently" id="toc-how-to-reverse-multiple-items-efficiently" class="nav-link" data-scroll-target="#how-to-reverse-multiple-items-efficiently">How to Reverse Multiple Items Efficiently</a></li>
+  <li><a href="#step-1-identify-the-reverse-scored-items" id="toc-step-1-identify-the-reverse-scored-items" class="nav-link" data-scroll-target="#step-1-identify-the-reverse-scored-items">Step 1: Identify the Reverse-Scored Items</a></li>
+  <li><a href="#step-2-reverse-the-scores-using-a-formula" id="toc-step-2-reverse-the-scores-using-a-formula" class="nav-link" data-scroll-target="#step-2-reverse-the-scores-using-a-formula">Step 2: Reverse the Scores Using a Formula</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="10-workshop-activities-clean.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -161,7 +176,7 @@ Reminder on Steps to Set Up Your Working Directory
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/activities/week10p2"</code></pre>
+<pre><code>[1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/activities/week11"</code></pre>
 </div>
 </div>
 </div>
@@ -383,8 +398,8 @@ What is long and wide data?
 <p>There is a lot of potential inputs we can throw in, but I want to highlight the key arguments that you will use most of the time when you use this function</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 29%">
-<col style="width: 70%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -475,11 +490,11 @@ Pivoting Image
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include_graphics</span>(<span class="st">"../../img/06-pivot-visualisation.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include_graphics</span>(<span class="st">"06-pivot-visualisation.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="../../img/06-pivot-visualisation.png" class="img-fluid figure-img"></p>
+<p><img src="06-pivot-visualisation.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -642,7 +657,7 @@ Help information on the pivot_wider() function
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../img/06-pivotwider.png" class="img-fluid figure-img"></p>
+<p><img src="06-pivot-visualisation.png" class="img-fluid figure-img"></p>
 <figcaption>The arguments that we can pass to the pivot_wider() function</figcaption>
 </figure>
 </div>
@@ -652,8 +667,8 @@ Help information on the pivot_wider() function
 </div>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -922,6 +937,205 @@ Help information on the pivot_wider() function
 <section id="other-join-functions" class="level3">
 <h3 class="anchored" data-anchor-id="other-join-functions">Other Join Functions</h3>
 <p>There are two other join functions that you can use: <code>right_join</code> and <code>full_join</code>. The textbook provides more information on both. I have only <code>left_join</code> and <code>inner_join</code> here as they are probably the most important to know.</p>
+</section>
+</section>
+<section id="activity-8-dealing-with-reverse-scored-items" class="level2">
+<h2 class="anchored" data-anchor-id="activity-8-dealing-with-reverse-scored-items">Activity 8: Dealing with Reverse Scored Items</h2>
+<p>In psychology, <strong>reverse scoring</strong> is an important step in preparing questionnaire data. Many psychological scales include a mix of <em>positively</em> and <em>negatively</em> worded items. The goal is to reduce response bias (like people agreeing with everything). However, it also means that some items must be <strong>reverse scored</strong> before you calculate total or average scores.</p>
+<p>Let’s take the <strong>Extraversion</strong> scale from the Big Five personality traits as an example.</p>
+<section id="why-reverse-scoring-is-needed" class="level3">
+<h3 class="anchored" data-anchor-id="why-reverse-scoring-is-needed">Why Reverse Scoring Is Needed</h3>
+<p>Imagine a short questionnaire measuring Extraversion with 3 items:</p>
+<ul>
+<li><p><em>“I like being the centre of attention”</em> → <strong>Positive</strong> (higher score = more extraverted)</p></li>
+<li><p><em>“I prefer to be alone”</em> → <strong>Negative</strong> (higher score = more introverted)</p></li>
+<li><p><em>“I enjoy being around others”</em> → <strong>Positive</strong></p></li>
+</ul>
+<p>If someone scores high on <em>“I prefer to be alone”</em>, they are showing <strong>low</strong> Extraversion. But to combine this item fairly with the others, we must <strong>flip</strong> or <strong>reverse</strong> the score so that higher values always mean more Extraversion.</p>
+</section>
+</section>
+<section id="step-by-step-example-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="step-by-step-example-in-r">Step-by-Step Example in R</h2>
+<p>Let’s say participants rated each item from <strong>1 = Strongly Disagree</strong> to <strong>5 = Strongly Agree</strong>.</p>
+<section id="step-1-create-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-the-dataset">Step 1: Create the Dataset</h3>
+<p>We’ll start with a small dataset of 5 participants.</p>
+<p>Let’s say we are working with the following short Extraversion scale. Each item is rated from 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_extraversion <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_1 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),  <span class="co"># "I like being the center of attention"</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_2R =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="co"># "I prefer to be alone" — needs reversing</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_3 =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)   <span class="co"># "I enjoy being around others"</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_extraversion)                          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Extraversion_1 Extraversion_2R Extraversion_3
+1  1              5               1              4
+2  2              4               2              3
+3  3              3               2              3
+4  4              2               4              2
+5  5              1               5              1</code></pre>
+</div>
+</div>
+<p>Here, Extraversion_2R is the reverse-scored item. Let’s reverse it.</p>
+</section>
+<section id="step-2-reverse-score-the-item" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-reverse-score-the-item">Step 2: Reverse Score the Item</h3>
+<p>For items scored from 1 to 5, you reverse the score using the formula:</p>
+<p><code>reversed_score = (Maximum + Minimum) - original_score</code></p>
+<p>So for a 1–5 scale that translates to: <code>(5 + 1) - original_score</code>, which translates to: <code>6 - original_score</code></p>
+<p>Let’s apply this to <code>Extraversion_2R</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_extraversion <span class="ot">&lt;-</span> df_extraversion <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Extraversion_2 =</span> <span class="dv">6</span> <span class="sc">-</span> Extraversion_2R)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_extraversion)                          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Extraversion_1 Extraversion_2R Extraversion_3 Extraversion_2
+1  1              5               1              4              5
+2  2              4               2              3              4
+3  3              3               2              3              4
+4  4              2               4              2              2
+5  5              1               5              1              1</code></pre>
+</div>
+</div>
+<p>Now, <code>Extraversion_2</code> contains the correctly reversed scores. These are the values you would use when computing total or average Extraversion scores.</p>
+</section>
+</section>
+<section id="reverse-scoring-multiple-items" class="level2">
+<h2 class="anchored" data-anchor-id="reverse-scoring-multiple-items">Reverse Scoring Multiple Items</h2>
+<p>Most real psychological scales are longer and have <strong>multiple</strong> reverse-scored items.</p>
+<p>Here’s a sample dataset with 10 Extraversion items. Items <strong>2, 4, 7, and 10</strong> are written in the opposite direction of the trait and need to be reversed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_extraversion <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_1 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_2 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="co">#needs to be reversed</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_3 =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_4 =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="co">#needs to be reversed</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_5 =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_6 =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_7 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="co">#reverse</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_8 =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_9 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>),</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Extraversion_10 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="co">#reverse</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_extraversion)                          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Extraversion_1 Extraversion_2 Extraversion_3 Extraversion_4 Extraversion_5
+1  1              5              1              4              2              3
+2  2              4              2              3              1              3
+3  3              3              2              3              4              4
+4  4              2              4              2              3              2
+5  5              1              5              1              5              2
+  Extraversion_6 Extraversion_7 Extraversion_8 Extraversion_9 Extraversion_10
+1              4              5              4              5               1
+2              2              4              4              5               2
+3              2              2              3              4               1
+4              1              1              3              4               3
+5              3              1              2              3               5</code></pre>
+</div>
+</div>
+<section id="how-to-reverse-multiple-items-efficiently" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-reverse-multiple-items-efficiently">How to Reverse Multiple Items Efficiently</h3>
+<p>Manually reversing each item one at a time can be slow and error-prone. Instead, we can reverse score all relevant items in <strong>a couple of steps</strong> using three tools from the <code>dplyr</code> package:</p>
+<ul>
+<li><p><code>mutate()</code> – to create new variables</p></li>
+<li><p><code>across()</code> – to apply a function across multiple columns</p></li>
+<li><p><code>all_of()</code> – to select specific columns from a character vector</p></li>
+</ul>
+</section>
+<section id="step-1-identify-the-reverse-scored-items" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-identify-the-reverse-scored-items">Step 1: Identify the Reverse-Scored Items</h3>
+<p>We first list the names of the reverse-scored items in a character vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>reverse_items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Extraversion_2"</span>, <span class="st">"Extraversion_4"</span>, <span class="st">"Extraversion_7"</span>, <span class="st">"Extraversion_10"</span>) <span class="co">#put all the items into a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-reverse-the-scores-using-a-formula" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-reverse-the-scores-using-a-formula">Step 2: Reverse the Scores Using a Formula</h3>
+<p>We’ll apply the formula:</p>
+<p><code>Reversed Score = 6 - Original Score</code></p>
+<p>This works because our items are scored from 1 to 5, so 6 is the maximum + 1.</p>
+<p>We use <code>mutate()</code> with <code>across()</code> to apply this formula to every item in our list, and save the results as <strong>new columns</strong> ending in <code>_reversed</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically reverse all columns that end in R</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>df_extraversion <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  df_extraversion,</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">across</span>(</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.cols =</span> <span class="fu">all_of</span>(reverse_items),</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.fns =</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> .x, <span class="co">#this is the formula for rescoring: the maximum + 1 (in this example 6) minus the participants score (.x)</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.names =</span> <span class="st">"{.col}_reversed"</span> <span class="co">#this renames the columns </span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">.keep =</span> <span class="st">"unused"</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_extraversion)                          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Extraversion_1 Extraversion_3 Extraversion_5 Extraversion_6 Extraversion_8
+1  1              5              4              3              4              4
+2  2              4              3              3              2              4
+3  3              3              3              4              2              3
+4  4              2              2              2              1              3
+5  5              1              1              2              3              2
+  Extraversion_9 Extraversion_2_reversed Extraversion_4_reversed
+1              5                       5                       4
+2              5                       4                       5
+3              4                       4                       2
+4              4                       2                       3
+5              3                       1                       1
+  Extraversion_7_reversed Extraversion_10_reversed
+1                       1                        5
+2                       2                        4
+3                       4                        5
+4                       5                        3
+5                       5                        1</code></pre>
+</div>
+</div>
+<p>The dataset now includes the original items and new reversed versions for the four reverse-scored items. You can now safely use the reversed versions when calculating total or average scores for the scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df_extraversion <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  df_extraversion,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Mean_Extraversion =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(Extraversion_1<span class="sc">:</span>Extraversion_10_reversed)),</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_extraversion)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Extraversion_1 Extraversion_3 Extraversion_5 Extraversion_6 Extraversion_8
+1  1              5              4              3              4              4
+2  2              4              3              3              2              4
+3  3              3              3              4              2              3
+4  4              2              2              2              1              3
+5  5              1              1              2              3              2
+  Extraversion_9 Extraversion_2_reversed Extraversion_4_reversed
+1              5                       5                       4
+2              5                       4                       5
+3              4                       4                       2
+4              4                       2                       3
+5              3                       1                       1
+  Extraversion_7_reversed Extraversion_10_reversed Mean_Extraversion
+1                       1                        5               4.0
+2                       2                        4               3.6
+3                       4                        5               3.4
+4                       5                        3               2.7
+5                       5                        1               2.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df_extraversion_clean <span class="ot">&lt;-</span> <span class="fu">select</span>(df_extraversion, </span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">c</span>(ID, Mean_Extraversion))</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_extraversion_clean)                          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID Mean_Extraversion
+1  1               4.0
+2  2               3.6
+3  3               3.4
+4  4               2.7
+5  5               2.0</code></pre>
+</div>
+</div>
 </section>
 </section>
 
