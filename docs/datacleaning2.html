@@ -1399,10 +1399,8 @@ Figure 10.2: The arguments that we can pass to the pivot_wider() function
 ##  $ condition      : chr  &quot;ABC&quot; &quot;ABC&quot; &quot;ABC&quot; &quot;ABC&quot; ...</code></pre>
 <p>Each data frame has the same number of columns (5 variables) with the same variable names and the same number of participants (rows). So rather than clean each one individually, let’s combine them all into the one data frame and clean it there.</p>
 <p>We can do that using <code>full_join()</code> since we want to keep all observations in each data frame. The only thing is that <code>full_join</code> only allows us to merge two <code>dataframes</code> at a time, so we will need to first join <code>df_flanker1</code> with <code>df_flanker2</code> and call the result <code>df_flanker_proxy</code>. Then we will merge <code>df_flanker_proxy</code> with <code>df_flanker_total</code>.</p>
-<pre><code>## Joining with `by = join_by(participant..id, trial, reaction.time, stimulus,
-## condition)`
-## Joining with `by = join_by(participant..id, trial, reaction.time, stimulus,
-## condition)`</code></pre>
+<pre><code>## Joining with `by = join_by(participant..id, trial, reaction.time, stimulus, condition)`
+## Joining with `by = join_by(participant..id, trial, reaction.time, stimulus, condition)`</code></pre>
 <div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="datacleaning2.html#cb474-1" tabindex="-1"></a>df_flanker_proxy <span class="ot">&lt;-</span> <span class="fu">full_join</span>(df_flanker1, df_flanker2)</span>
 <span id="cb474-2"><a href="datacleaning2.html#cb474-2" tabindex="-1"></a></span>
 <span id="cb474-3"><a href="datacleaning2.html#cb474-3" tabindex="-1"></a>df_flanker_total <span class="ot">&lt;-</span> <span class="fu">full_join</span>(df_flanker_proxy, df_flanker3)</span></code></pre></div>
