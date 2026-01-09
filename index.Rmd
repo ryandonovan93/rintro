@@ -105,18 +105,18 @@ The lab space will have computers that you can sign in and work on and use R.
 
 ## Office hours and why they are important for everyone (R Support - Ryan Donovan).
 
-Programming concepts can take a while to sink in and it is naturally to need additional help.  
+Programming concepts can take a while to sink in and it is naturally to need additional help.\
 But in my experience, students often worry about asking for help, often from fears of being judged by their instructor.
 This fear is exacerbated in courses involving mathematics and programming, as students are quick to label themselves as "*no good*" at these subjects.
 
 This is a completely unwarranted belief.
 My job is to teach you R.
 Consequently, if you are reading the material or listening in class, and it's not sinking in at all, then that is ***my fault, not yours.*** If this is happening, then it is important that this feedback is being relayed.
-The most valuable teaching hours I've had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust. That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
+The most valuable teaching hours I've had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust.
+That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
 We all win.
 
-So pretty please, do not be a silent martyr and let me know if you are struggling with any of the R-based material in this course. 
-
+So pretty please, do not be a silent martyr and let me know if you are struggling with any of the R-based material in this course.
 
 +-------------------------------------+-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Staff Member                        | Office Hours                                        | Location                                                                                                                                                                                                                                                                      |
@@ -125,7 +125,7 @@ So pretty please, do not be a silent martyr and let me know if you are strugglin
 |                                     |                                                     |                                                                                                                                                                                                                                                                               |
 | ryan.donovan\@universityofgalway.ie | (In-person or online option).                       | Teams Link: [click here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NDQ1YjRiNmQtNDQ4MC00NjgzLWIwYTQtNWI5OTg3ZmE1NWRj%40thread.v2/0?context=%7b%22Tid%22%3a%2213e3b186-c446-4aab-9c6d-9ab9bb76816c%22%2c%22Oid%22%3a%22c088ea08-9d92-460e-8972-64cd26bc4899%22%7d) |
 |                                     |                                                     |                                                                                                                                                                                                                                                                               |
-|                                     | Time does not suit?                                 |                                                                                                                                                                                                                                                                               |
+|                                     | Time doesn't suit?                                  |                                                                                                                                                                                                                                                                               |
 |                                     |                                                     |                                                                                                                                                                                                                                                                               |
 |                                     | Just get in touch, we can arrange a different time. |                                                                                                                                                                                                                                                                               |
 +-------------------------------------+-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
