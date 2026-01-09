@@ -10,13 +10,7 @@ By the end of this session, you should be capable of the following:
 
 -   Importing and exporting datasets using R.
 
-```{r echo=FALSE, warning=FALSE}
 
-library(webexercises)
-
-
-
-```
 
 ```{r echo = F}
 

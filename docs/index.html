@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -338,33 +339,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.1" data-path="datacleaning1.html"><a href="datacleaning1.html#context-and-viewing-it-in-rstudio"><i class="fa fa-check"></i><b>9.3.1</b> Context and Viewing it in RStudio</a></li>
 <li class="chapter" data-level="9.3.2" data-path="datacleaning1.html"><a href="datacleaning1.html#key-functions-that-will-help-you-clean-most-datasets"><i class="fa fa-check"></i><b>9.3.2</b> Key Functions That Will Help You Clean Most Datasets</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#choosing-our-columns-of-interest-with-select"><i class="fa fa-check"></i><b>9.4</b> Choosing our Columns of Interest with <code>Select()</code></a></li>
-<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-our-columns-of-interest-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming our Columns of Interest with <code>rename()</code></a></li>
-<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-the-mutate-function"><i class="fa fa-check"></i><b>9.6</b> Creating new Columns using the <code>mutate()</code> function</a>
+<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#selecting-columns-using-select"><i class="fa fa-check"></i><b>9.4</b> Selecting Columns using <code>Select()</code></a></li>
+<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-columns-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming Columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-mutate"><i class="fa fa-check"></i><b>9.6</b> Creating New Columns using <code>mutate()</code></a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-columns-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting existing columns using <code>mutate()</code></a></li>
+<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting Existing using <code>mutate()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="datacleaning1.html"><a href="datacleaning1.html#checking-in-on-our-data-set"><i class="fa fa-check"></i><b>9.7</b> Checking in on our data set</a></li>
 <li class="chapter" data-level="9.8" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-duplicates-using-distinct"><i class="fa fa-check"></i><b>9.8</b> Removing Duplicates using <code>distinct()</code></a></li>
-<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-the-filter-function"><i class="fa fa-check"></i><b>9.9</b> Removing Rows using the <code>filter()</code> Function</a>
+<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-filter"><i class="fa fa-check"></i><b>9.9</b> Removing Rows Using <code>filter()</code></a>
 <ul>
 <li class="chapter" data-level="9.9.1" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-multiple-conditions-with-filter"><i class="fa fa-check"></i><b>9.9.1</b> Removing Rows Using Multiple Conditions with <code>filter()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="datacleaning1.html"><a href="datacleaning1.html#identifying-the-factors-in-our-data-frame"><i class="fa fa-check"></i><b>9.10</b> Identifying the Factors in our Data Frame</a></li>
-<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#summarising-our-data-by-groups-using-group_by-and-summarise"><i class="fa fa-check"></i><b>9.11</b> Summarising our Data by Groups using <code>group_by()</code> and <code>summarise()</code></a></li>
-<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.12</b> Chaining it All Together with the Pipe Operator</a>
+<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.11</b> Chaining it All Together with the Pipe Operator</a>
 <ul>
-<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.12.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
+<li class="chapter" data-level="9.11.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.11.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
 </ul></li>
-<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.13</b> Activity: Clean the Flanker Dataset</a>
+<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.12</b> Activity: Clean the Flanker Dataset</a>
 <ul>
-<li class="chapter" data-level="9.13.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.13.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
-<li class="chapter" data-level="9.13.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.13.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
-<li class="chapter" data-level="9.13.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.13.3</b> <strong>Reset Your Environment</strong></a></li>
-<li class="chapter" data-level="9.13.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.13.4</b> <strong>Import the Data</strong></a></li>
-<li class="chapter" data-level="9.13.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.13.5</b> Cleaning Instructions</a></li>
+<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.12.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
+<li class="chapter" data-level="9.12.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.12.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
+<li class="chapter" data-level="9.12.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.12.3</b> <strong>Reset Your Environment</strong></a></li>
+<li class="chapter" data-level="9.12.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.12.4</b> <strong>Import the Data</strong></a></li>
+<li class="chapter" data-level="9.12.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.12.5</b> Cleaning Instructions</a></li>
 </ul></li>
-<li class="chapter" data-level="9.14" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.14</b> Summary</a></li>
+<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.13</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="datacleaning2.html"><a href="datacleaning2.html"><i class="fa fa-check"></i><b>10</b> Data Wrangling and Cleaning (Part II)</a>
 <ul>
@@ -406,6 +406,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6.3" data-path="datacleaning2.html"><a href="datacleaning2.html#merging-the-data-frames"><i class="fa fa-check"></i><b>10.6.3</b> Merging the Data Frames</a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="datacleaning2.html"><a href="datacleaning2.html#summary-8"><i class="fa fa-check"></i><b>10.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><i class="fa fa-check"></i><b>11</b> Appendix - Understanding Boolean Operators in the Context of <code>filter()</code></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#how-boolean-operators-work"><i class="fa fa-check"></i><b>11.1</b> How Boolean Operators Work:</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#understanding-rs-evaluation-process"><i class="fa fa-check"></i><b>11.1.1</b> Understanding R’s Evaluation Process:</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -511,7 +518,8 @@ This fear is exacerbated in courses involving mathematics and programming, as st
 <p>This is a completely unwarranted belief.
 My job is to teach you R.
 Consequently, if you are reading the material or listening in class, and it’s not sinking in at all, then that is <strong><em>my fault, not yours.</em></strong> If this is happening, then it is important that this feedback is being relayed.
-The most valuable teaching hours I’ve had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust. That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
+The most valuable teaching hours I’ve had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust.
+That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
 We all win.</p>
 <p>So pretty please, do not be a silent martyr and let me know if you are struggling with any of the R-based material in this course.</p>
 <table style="width:100%;">
@@ -521,17 +529,17 @@ We all win.</p>
 <col width="74%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Staff Member</td>
 <td>Office Hours</td>
 <td>Location</td>
 </tr>
-<tr>
+<tr class="even">
 <td><p>Ryan Donovan</p>
 <p>ryan.donovan@universityofgalway.ie</p></td>
 <td><p>Wednesdays, 2.30-3.30pm.</p>
 <p>(In-person or online option).</p>
-<p>Time does not suit?</p>
+<p>Time doesn’t suit?</p>
 <p>Just get in touch, we can arrange a different time.</p></td>
 <td><p>2065A, which is on the top floor of the Psychology building. It is in the corridor right next to the elevator.</p>
 <p>Teams Link: <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NDQ1YjRiNmQtNDQ4MC00NjgzLWIwYTQtNWI5OTg3ZmE1NWRj%40thread.v2/0?context=%7b%22Tid%22%3a%2213e3b186-c446-4aab-9c6d-9ab9bb76816c%22%2c%22Oid%22%3a%22c088ea08-9d92-460e-8972-64cd26bc4899%22%7d">click here</a></p></td>
@@ -561,42 +569,42 @@ We all win.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["rintro_demo.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["rintro_demo.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

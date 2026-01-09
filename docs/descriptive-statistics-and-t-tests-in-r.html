@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Descriptive Statistics and T-Tests in R | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Descriptive Statistics and T-Tests in R | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -338,33 +339,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.1" data-path="datacleaning1.html"><a href="datacleaning1.html#context-and-viewing-it-in-rstudio"><i class="fa fa-check"></i><b>9.3.1</b> Context and Viewing it in RStudio</a></li>
 <li class="chapter" data-level="9.3.2" data-path="datacleaning1.html"><a href="datacleaning1.html#key-functions-that-will-help-you-clean-most-datasets"><i class="fa fa-check"></i><b>9.3.2</b> Key Functions That Will Help You Clean Most Datasets</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#choosing-our-columns-of-interest-with-select"><i class="fa fa-check"></i><b>9.4</b> Choosing our Columns of Interest with <code>Select()</code></a></li>
-<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-our-columns-of-interest-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming our Columns of Interest with <code>rename()</code></a></li>
-<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-the-mutate-function"><i class="fa fa-check"></i><b>9.6</b> Creating new Columns using the <code>mutate()</code> function</a>
+<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#selecting-columns-using-select"><i class="fa fa-check"></i><b>9.4</b> Selecting Columns using <code>Select()</code></a></li>
+<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-columns-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming Columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-mutate"><i class="fa fa-check"></i><b>9.6</b> Creating New Columns using <code>mutate()</code></a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-columns-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting existing columns using <code>mutate()</code></a></li>
+<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting Existing using <code>mutate()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="datacleaning1.html"><a href="datacleaning1.html#checking-in-on-our-data-set"><i class="fa fa-check"></i><b>9.7</b> Checking in on our data set</a></li>
 <li class="chapter" data-level="9.8" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-duplicates-using-distinct"><i class="fa fa-check"></i><b>9.8</b> Removing Duplicates using <code>distinct()</code></a></li>
-<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-the-filter-function"><i class="fa fa-check"></i><b>9.9</b> Removing Rows using the <code>filter()</code> Function</a>
+<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-filter"><i class="fa fa-check"></i><b>9.9</b> Removing Rows Using <code>filter()</code></a>
 <ul>
 <li class="chapter" data-level="9.9.1" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-multiple-conditions-with-filter"><i class="fa fa-check"></i><b>9.9.1</b> Removing Rows Using Multiple Conditions with <code>filter()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="datacleaning1.html"><a href="datacleaning1.html#identifying-the-factors-in-our-data-frame"><i class="fa fa-check"></i><b>9.10</b> Identifying the Factors in our Data Frame</a></li>
-<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#summarising-our-data-by-groups-using-group_by-and-summarise"><i class="fa fa-check"></i><b>9.11</b> Summarising our Data by Groups using <code>group_by()</code> and <code>summarise()</code></a></li>
-<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.12</b> Chaining it All Together with the Pipe Operator</a>
+<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.11</b> Chaining it All Together with the Pipe Operator</a>
 <ul>
-<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.12.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
+<li class="chapter" data-level="9.11.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.11.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
 </ul></li>
-<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.13</b> Activity: Clean the Flanker Dataset</a>
+<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.12</b> Activity: Clean the Flanker Dataset</a>
 <ul>
-<li class="chapter" data-level="9.13.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.13.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
-<li class="chapter" data-level="9.13.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.13.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
-<li class="chapter" data-level="9.13.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.13.3</b> <strong>Reset Your Environment</strong></a></li>
-<li class="chapter" data-level="9.13.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.13.4</b> <strong>Import the Data</strong></a></li>
-<li class="chapter" data-level="9.13.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.13.5</b> Cleaning Instructions</a></li>
+<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.12.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
+<li class="chapter" data-level="9.12.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.12.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
+<li class="chapter" data-level="9.12.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.12.3</b> <strong>Reset Your Environment</strong></a></li>
+<li class="chapter" data-level="9.12.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.12.4</b> <strong>Import the Data</strong></a></li>
+<li class="chapter" data-level="9.12.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.12.5</b> Cleaning Instructions</a></li>
 </ul></li>
-<li class="chapter" data-level="9.14" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.14</b> Summary</a></li>
+<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.13</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="datacleaning2.html"><a href="datacleaning2.html"><i class="fa fa-check"></i><b>10</b> Data Wrangling and Cleaning (Part II)</a>
 <ul>
@@ -406,6 +406,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6.3" data-path="datacleaning2.html"><a href="datacleaning2.html#merging-the-data-frames"><i class="fa fa-check"></i><b>10.6.3</b> Merging the Data Frames</a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="datacleaning2.html"><a href="datacleaning2.html#summary-8"><i class="fa fa-check"></i><b>10.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><i class="fa fa-check"></i><b>11</b> Appendix - Understanding Boolean Operators in the Context of <code>filter()</code></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#how-boolean-operators-work"><i class="fa fa-check"></i><b>11.1</b> How Boolean Operators Work:</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#understanding-rs-evaluation-process"><i class="fa fa-check"></i><b>11.1.1</b> Understanding R’s Evaluation Process:</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -490,22 +497,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>The dependent variable should be approximately normally distributed for each group. We can check this using a Shapiro-Wilk test. When interpreting Shapiro-Wilk A <strong>significant p-value (p &lt; 0.05)</strong> means that the <em>assumption has been violated</em>, and you cannot run an independent samples t-test. A <strong>not significant p-value (p &gt; 0.05)</strong> means that the <em>assumption has been met</em>, and you can proceed.</p></li>
 <li><p>The dependent variable should exhibit homogeneity of variance. We can check this using Levene’s Test using the function <em>levenetest</em> from the <em>car</em> package. The syntax for this is below:</p></li>
 </ol>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-1" tabindex="-1"></a><span class="fu">leveneTest</span>(DependentVariable <span class="sc">~</span> IndependentVariable, <span class="at">data =</span> ourdataset)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb229-1" tabindex="-1"></a><span class="fu">leveneTest</span>(DependentVariable <span class="sc">~</span> IndependentVariable, <span class="at">data =</span> ourdataset)</span></code></pre></div>
 <p>When interpreting Levenes test A <strong>significant p-value (p &lt; 0.05)</strong> means that the <em>assumption has been violated</em>, and you cannot run an independent samples t-test. A <strong>not significant p-value (p &gt; 0.05)</strong> means that the <em>assumption has been met</em>, and you can proceed.</p>
 <p>Activity 5 in the associated Activities for this week will show in detail how to check assumptions d-f. Once again we will be using the <strong>descriptives</strong> function for this.</p>
 <p>For future reference you could use code like that below to check your assumptions (except for homogeneity of variance) <strong>and</strong> get your descriptive statistics</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-1" tabindex="-1"></a><span class="fu">descriptives</span>(dataframe_name, <span class="co"># our dataset</span></span>
-<span id="cb231-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-2" tabindex="-1"></a>             <span class="at">vars =</span> <span class="st">&quot;DV&quot;</span>, <span class="co"># our DV</span></span>
-<span id="cb231-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-3" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="st">&quot;IV&quot;</span>, <span class="co"># our IV</span></span>
-<span id="cb231-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-4" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs confidence intervals to include in your descriptives</span></span>
-<span id="cb231-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-5" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs boxplots, so you can check for outliers</span></span>
-<span id="cb231-6"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-6" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>) <span class="co"># this conducts a shapiro-wilk test to check if our dependent variable is normally distributed </span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-1" tabindex="-1"></a><span class="fu">descriptives</span>(dataframe_name, <span class="co"># our dataset</span></span>
+<span id="cb230-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-2" tabindex="-1"></a>             <span class="at">vars =</span> <span class="st">&quot;DV&quot;</span>, <span class="co"># our DV</span></span>
+<span id="cb230-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-3" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="st">&quot;IV&quot;</span>, <span class="co"># our IV</span></span>
+<span id="cb230-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-4" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs confidence intervals to include in your descriptives</span></span>
+<span id="cb230-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-5" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs boxplots, so you can check for outliers</span></span>
+<span id="cb230-6"><a href="descriptive-statistics-and-t-tests-in-r.html#cb230-6" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>) <span class="co"># this conducts a shapiro-wilk test to check if our dependent variable is normally distributed </span></span></code></pre></div>
 <p>If all of the assumptions are met you can proceed to running the independent samples t-test.</p>
 <p>We use the <strong>t.test function</strong> to perform the t-test. The syntax is:</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-1" tabindex="-1"></a><span class="fu">t.test</span>(DV <span class="sc">~</span> IV, </span>
-<span id="cb232-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-2" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb232-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-3" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>, <span class="st">&quot;less&quot;</span>, <span class="st">&quot;greater&quot;</span>),</span>
-<span id="cb232-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-4" tabindex="-1"></a>       <span class="at">data =</span> ourdataset)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-1" tabindex="-1"></a><span class="fu">t.test</span>(DV <span class="sc">~</span> IV, </span>
+<span id="cb231-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-2" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb231-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-3" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>, <span class="st">&quot;less&quot;</span>, <span class="st">&quot;greater&quot;</span>),</span>
+<span id="cb231-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb231-4" tabindex="-1"></a>       <span class="at">data =</span> ourdataset)</span></code></pre></div>
 <p>In this function:</p>
 <p>DV ~ IV specifies the <strong>dependent variable (DV)</strong> and <strong>independent variable (IV)</strong>.</p>
 <p><strong>paired = FALSE</strong> indicates that we are conducting an independent samples t-test. If we were comparing related groups (e.g., pre-test vs. post-test), we would set paired = TRUE.</p>
@@ -529,10 +536,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>d = 0.5 is a medium effect</p>
 <p>d = 0.8 is a large effect</p>
 <p>We can use the below code to calculate the effect size for the independent samples t-test which we ran this week. We need to do a little data wrangling to run this for our paired-samples t-test, which is fine, but we’ll come back to it in later weeks.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-1" tabindex="-1"></a><span class="fu">library</span>(effectsize) <span class="co">#that calculates the effect size - note we may need to install this package</span></span>
-<span id="cb233-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-2" tabindex="-1"></a><span class="fu">cohens_d</span>(health <span class="sc">~</span> condition, <span class="co"># DV ~ IV</span></span>
-<span id="cb233-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-3" tabindex="-1"></a>              <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="co">#paired = FALSE for independent samples, but would be true for paired samples t-test</span></span>
-<span id="cb233-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-4" tabindex="-1"></a>              <span class="at">data =</span> df_wellbeing) <span class="co"># our data</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-1" tabindex="-1"></a><span class="fu">library</span>(effectsize) <span class="co">#that calculates the effect size - note we may need to install this package</span></span>
+<span id="cb232-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-2" tabindex="-1"></a><span class="fu">cohens_d</span>(health <span class="sc">~</span> condition, <span class="co"># DV ~ IV</span></span>
+<span id="cb232-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-3" tabindex="-1"></a>              <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="co">#paired = FALSE for independent samples, but would be true for paired samples t-test</span></span>
+<span id="cb232-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb232-4" tabindex="-1"></a>              <span class="at">data =</span> df_wellbeing) <span class="co"># our data</span></span></code></pre></div>
 <p><strong>Writing up the results:</strong></p>
 <p>After following the steps outlined above/in the activities you should be able to fill in the below blanks to write up the results of the independent samples t-test.</p>
 <p>A Welch independent samples t-test was perfomed and <strong>a</strong> / <strong>no</strong> significant difference on performance was found between group A (M= <strong>Group A mean value</strong>, SD= <strong>Group A standard deviation</strong>) and group B (M= <strong>Group B mean value</strong>, SD= <strong>Group B standard deviation</strong>) on the task t(<strong>df value</strong>)= <strong>t statistic value</strong>, p=<strong>exact p value to two or three decimal places</strong>), with a large effect (d= <strong>Cohen’s d to two decimal places</strong>, 95% CI [<strong>lower bound</strong> ‐ <strong>higher bound</strong>]).</p>
@@ -568,15 +575,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Our dependent variable should be normally distributed</p></li>
 </ol>
 <p>Here, it’s only really the outliers and the normal distribution that needs to be evaluated using functions in R, both of which we can assess using the <strong>descriptives</strong> function. The below code will output the descriptive statistics you need, <strong>and</strong> check your assumptions.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-1" tabindex="-1"></a><span class="fu">descriptives</span>(df_reading, <span class="co"># your dataframe name here</span></span>
-<span id="cb234-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-2" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&quot;Baseline&quot;</span>, <span class="st">&quot;Time2&quot;</span>), <span class="co"># your two conditions / timepoints</span></span>
-<span id="cb234-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-3" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs confidence intervals to include in your descriptives</span></span>
-<span id="cb234-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-4" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs boxplots, so you can check for outliers</span></span>
-<span id="cb234-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-5" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>) <span class="co"># this conducts a shapiro-wilk test to check if our dependent variable is normally distributed </span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-1" tabindex="-1"></a><span class="fu">descriptives</span>(df_reading, <span class="co"># your dataframe name here</span></span>
+<span id="cb233-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-2" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&quot;Baseline&quot;</span>, <span class="st">&quot;Time2&quot;</span>), <span class="co"># your two conditions / timepoints</span></span>
+<span id="cb233-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-3" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs confidence intervals to include in your descriptives</span></span>
+<span id="cb233-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-4" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>, <span class="co"># this outputs boxplots, so you can check for outliers</span></span>
+<span id="cb233-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb233-5" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>) <span class="co"># this conducts a shapiro-wilk test to check if our dependent variable is normally distributed </span></span></code></pre></div>
 <p>We use the t.test function to perform the t-test. Here the syntax is:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-1" tabindex="-1"></a><span class="fu">t.test</span>(ourDataset<span class="sc">$</span>Condition1, ourDataset<span class="sc">$</span>Condition2, <span class="co"># here we specify our two conditions         </span></span>
-<span id="cb235-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-2" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="co"># here we specify that it is a paired samples t-test       </span></span>
-<span id="cb235-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-3" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>, <span class="st">&quot;less&quot;</span>, <span class="st">&quot;greater&quot;</span>)) <span class="co">#here you specify whether the test is directional or nondirectional, dependent on your hypothesis</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-1" tabindex="-1"></a><span class="fu">t.test</span>(ourDataset<span class="sc">$</span>Condition1, ourDataset<span class="sc">$</span>Condition2, <span class="co"># here we specify our two conditions         </span></span>
+<span id="cb234-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-2" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="co"># here we specify that it is a paired samples t-test       </span></span>
+<span id="cb234-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb234-3" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>, <span class="st">&quot;less&quot;</span>, <span class="st">&quot;greater&quot;</span>)) <span class="co">#here you specify whether the test is directional or nondirectional, dependent on your hypothesis</span></span></code></pre></div>
 <p>Once you have run the t-test you should have the information to replace the information in bold with the correct information.</p>
 <p>A paired-samples t-test was perfomed and <strong>a</strong> / <strong>no</strong> significant difference on <strong>dependent variable</strong> was found between <strong>Baseline</strong> (M= <strong>Baseline mean value</strong>, SD= <strong>Baseline standard deviation</strong>) and <strong>Time 2</strong> (M= <strong>Time 2 mean value</strong>, SD= <strong>Time 2 standard deviation</strong>) on the task t(<strong>df value</strong>)= <strong>t statistic value</strong>, p=<strong>exact p value to two or three decimal places</strong>), with a <strong>large</strong> effect (d= <strong>Cohen’s d to two decimal places</strong>, 95% CI [<strong>lower bound</strong> ‐ <strong>higher bound</strong>]).</p>
 </div>
@@ -596,21 +603,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="power-analysis-for-an-independent-samples-t-test" class="section level2 hasAnchor" number="5.10">
 <h2><span class="header-section-number">5.10</span> Power analysis for an independent samples t-test<a href="descriptive-statistics-and-t-tests-in-r.html#power-analysis-for-an-independent-samples-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The syntax for conducting an apriori statistical power analysis for an independent samples t-test is the following:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-1" tabindex="-1"></a><span class="co"># Conduct power analysis for an independent samples t-test</span></span>
-<span id="cb236-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-2" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,         <span class="co"># Your Expected effect size</span></span>
-<span id="cb236-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-3" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
-<span id="cb236-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-4" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
-<span id="cb236-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-5" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>,  <span class="co"># Indicates an independent t-test</span></span>
-<span id="cb236-6"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-6" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to &quot;one.sided&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-1" tabindex="-1"></a><span class="co"># Conduct power analysis for an independent samples t-test</span></span>
+<span id="cb235-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-2" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,         <span class="co"># Your Expected effect size</span></span>
+<span id="cb235-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-3" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
+<span id="cb235-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-4" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
+<span id="cb235-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-5" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>,  <span class="co"># Indicates an independent t-test</span></span>
+<span id="cb235-6"><a href="descriptive-statistics-and-t-tests-in-r.html#cb235-6" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to &quot;one.sided&quot;</span></span></code></pre></div>
 </div>
 <div id="power-analysis-for-a-paired-samples-t-test" class="section level2 hasAnchor" number="5.11">
 <h2><span class="header-section-number">5.11</span> Power analysis for a paired-samples t-test<a href="descriptive-statistics-and-t-tests-in-r.html#power-analysis-for-a-paired-samples-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If we want to run a paired samples-test, then we can change the type from “two.sample” to “one.sample”:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb237-1" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,         <span class="co"># Your Expected effect size</span></span>
-<span id="cb237-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb237-2" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
-<span id="cb237-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb237-3" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
-<span id="cb237-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb237-4" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>,  <span class="co"># Indicates an independent t-test</span></span>
-<span id="cb237-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb237-5" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to &quot;one.sided&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-1" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,         <span class="co"># Your Expected effect size</span></span>
+<span id="cb236-2"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-2" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
+<span id="cb236-3"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-3" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
+<span id="cb236-4"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-4" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>,  <span class="co"># Indicates an independent t-test</span></span>
+<span id="cb236-5"><a href="descriptive-statistics-and-t-tests-in-r.html#cb236-5" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to &quot;one.sided&quot;</span></span></code></pre></div>
 
 </div>
 </div>
@@ -634,42 +641,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/05-t-tests.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["rintro_demo.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/05-t-tests.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["rintro_demo.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

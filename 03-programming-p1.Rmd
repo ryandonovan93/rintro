@@ -17,12 +17,6 @@ If you are reading this chapter. I recommend that you type out every piece of co
 
 There are several activities associated with this chapter. [You can find them by clicking this link.](https://ryandonovan.quarto.pub/week-2---activities/) 
 
-```{r echo=FALSE, warning=FALSE}
-
-library(webexercises)
-
-```
-
 ## Using the Console
 
 In the previous chapter, I made a distinction between the script and the console. I said that the script was an environment where we would write and run polished code, and the R console is an environment for writing and running "dirty" quick code to test ideas, or code that we would run once.

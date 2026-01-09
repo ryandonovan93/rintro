@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Programming Fundamentals in R (Part I) | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Programming Fundamentals in R (Part I) | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -338,33 +339,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.1" data-path="datacleaning1.html"><a href="datacleaning1.html#context-and-viewing-it-in-rstudio"><i class="fa fa-check"></i><b>9.3.1</b> Context and Viewing it in RStudio</a></li>
 <li class="chapter" data-level="9.3.2" data-path="datacleaning1.html"><a href="datacleaning1.html#key-functions-that-will-help-you-clean-most-datasets"><i class="fa fa-check"></i><b>9.3.2</b> Key Functions That Will Help You Clean Most Datasets</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#choosing-our-columns-of-interest-with-select"><i class="fa fa-check"></i><b>9.4</b> Choosing our Columns of Interest with <code>Select()</code></a></li>
-<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-our-columns-of-interest-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming our Columns of Interest with <code>rename()</code></a></li>
-<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-the-mutate-function"><i class="fa fa-check"></i><b>9.6</b> Creating new Columns using the <code>mutate()</code> function</a>
+<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#selecting-columns-using-select"><i class="fa fa-check"></i><b>9.4</b> Selecting Columns using <code>Select()</code></a></li>
+<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-columns-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming Columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-mutate"><i class="fa fa-check"></i><b>9.6</b> Creating New Columns using <code>mutate()</code></a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-columns-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting existing columns using <code>mutate()</code></a></li>
+<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting Existing using <code>mutate()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="datacleaning1.html"><a href="datacleaning1.html#checking-in-on-our-data-set"><i class="fa fa-check"></i><b>9.7</b> Checking in on our data set</a></li>
 <li class="chapter" data-level="9.8" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-duplicates-using-distinct"><i class="fa fa-check"></i><b>9.8</b> Removing Duplicates using <code>distinct()</code></a></li>
-<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-the-filter-function"><i class="fa fa-check"></i><b>9.9</b> Removing Rows using the <code>filter()</code> Function</a>
+<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-filter"><i class="fa fa-check"></i><b>9.9</b> Removing Rows Using <code>filter()</code></a>
 <ul>
 <li class="chapter" data-level="9.9.1" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-multiple-conditions-with-filter"><i class="fa fa-check"></i><b>9.9.1</b> Removing Rows Using Multiple Conditions with <code>filter()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="datacleaning1.html"><a href="datacleaning1.html#identifying-the-factors-in-our-data-frame"><i class="fa fa-check"></i><b>9.10</b> Identifying the Factors in our Data Frame</a></li>
-<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#summarising-our-data-by-groups-using-group_by-and-summarise"><i class="fa fa-check"></i><b>9.11</b> Summarising our Data by Groups using <code>group_by()</code> and <code>summarise()</code></a></li>
-<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.12</b> Chaining it All Together with the Pipe Operator</a>
+<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.11</b> Chaining it All Together with the Pipe Operator</a>
 <ul>
-<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.12.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
+<li class="chapter" data-level="9.11.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.11.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
 </ul></li>
-<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.13</b> Activity: Clean the Flanker Dataset</a>
+<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.12</b> Activity: Clean the Flanker Dataset</a>
 <ul>
-<li class="chapter" data-level="9.13.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.13.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
-<li class="chapter" data-level="9.13.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.13.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
-<li class="chapter" data-level="9.13.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.13.3</b> <strong>Reset Your Environment</strong></a></li>
-<li class="chapter" data-level="9.13.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.13.4</b> <strong>Import the Data</strong></a></li>
-<li class="chapter" data-level="9.13.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.13.5</b> Cleaning Instructions</a></li>
+<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.12.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
+<li class="chapter" data-level="9.12.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.12.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
+<li class="chapter" data-level="9.12.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.12.3</b> <strong>Reset Your Environment</strong></a></li>
+<li class="chapter" data-level="9.12.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.12.4</b> <strong>Import the Data</strong></a></li>
+<li class="chapter" data-level="9.12.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.12.5</b> Cleaning Instructions</a></li>
 </ul></li>
-<li class="chapter" data-level="9.14" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.14</b> Summary</a></li>
+<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.13</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="datacleaning2.html"><a href="datacleaning2.html"><i class="fa fa-check"></i><b>10</b> Data Wrangling and Cleaning (Part II)</a>
 <ul>
@@ -406,6 +406,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6.3" data-path="datacleaning2.html"><a href="datacleaning2.html#merging-the-data-frames"><i class="fa fa-check"></i><b>10.6.3</b> Merging the Data Frames</a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="datacleaning2.html"><a href="datacleaning2.html#summary-8"><i class="fa fa-check"></i><b>10.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><i class="fa fa-check"></i><b>11</b> Appendix - Understanding Boolean Operators in the Context of <code>filter()</code></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#how-boolean-operators-work"><i class="fa fa-check"></i><b>11.1</b> How Boolean Operators Work:</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#understanding-rs-evaluation-process"><i class="fa fa-check"></i><b>11.1.1</b> Understanding R’s Evaluation Process:</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -483,7 +490,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">3.3.2.1</span> R Console and Typos<a href="programming1.html#r-console-and-typos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>One of the most important things you need to know when you are programming, is that you need to type <em>exactly</em> what you want R to do. If you make a mistake (e.g., a typo), R won’t attempt to decipher your intention. For instance, consider the following code:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="programming1.html#cb23-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">10</span> <span class="ot">=</span> <span class="dv">20</span></span></code></pre></div>
-<pre><code>## Error in 10 = 20: invalid (do_set) left-hand side to assignment</code></pre>
+<pre><code>## Error in `10 = 20`:
+## ! invalid (do_set) left-hand side to assignment</code></pre>
 <p>R interprets this as you claiming that 10 equals 20, which is not true. Consequently, R panics and refuses to execute your command. Now any person looking at your code would guess that since <code>+</code> and <code>=</code> are on the same key on our keyboards, you probably meant to type <code>10 + 20</code>. But that’s because we have a theory of mind, whereas programming languages do not.</p>
 <p>So be exact with your code or else be <a href="https://www.youtube.com/watch?v=X3zfP14pLxc">Ron Burgundy?</a>.</p>
 <p>On the grand scheme of mistakes though, this type of mistake is relatively harmless because R will tell us immediately that something is wrong and stop us from doing anything.</p>
@@ -763,19 +771,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="vector-indexing-and-subsetting" class="section level4 hasAnchor" number="3.7.1.2">
 <h4><span class="header-section-number">3.7.1.2</span> Vector Indexing and Subsetting<a href="programming1.html#vector-indexing-and-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A vector in R is like a list of items. To be more specific, vectors in R are actually <em>ordered</em> lists of items. Each item in that list will have a position (known as its index). When you create that list (i.e. vector), the order in which you input the items (elements) determines its position (index). So the first item is at index 1, the second at index 2, and so on. Think of it like numbering items in a shopping list:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
 <img src="img/03-index_numeric.png" alt="Indexing for Numeric Vector"  />
 <p class="caption">
 Figure 3.1: Indexing for Numeric Vector
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
 <img src="img/03-index-character.png" alt="Indexing for Character Vector"  />
 <p class="caption">
 Figure 3.2: Indexing for Character Vector
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
 <img src="img/03-index-logical.png" alt="Indexing for Logical Vector"  />
 <p class="caption">
 Figure 3.3: Indexing for Logical Vector
@@ -833,7 +841,7 @@ Figure 3.3: Indexing for Logical Vector
 <p>Similarly, rows are lines of data going horizontally. Imagine, I collect data from another participant (p11). I could represent the data from that individual participant like this in R:</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="programming1.html#cb122-1" tabindex="-1"></a>p11 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">175</span>)</span></code></pre></div>
 <p>So whenever you think of a vector, just remember that it refers to a line of data, like a column or a row.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
 <img src="img/03-vectors-summarised.png" alt="Vectors can visually conceptualised as a column or row of data."  />
 <p class="caption">
 Figure 3.4: Vectors can visually conceptualised as a column or row of data.
@@ -845,7 +853,7 @@ Figure 3.4: Vectors can visually conceptualised as a column or row of data.
 <div id="data-frames" class="section level3 hasAnchor" number="3.7.2">
 <h3><span class="header-section-number">3.7.2</span> Data frames<a href="programming1.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A data frame is a rectangular data structure that is composed of rows and columns. A data frame in R is like a spreadsheet in Excel or a table in a word document:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
 <img src="img/03-dataframes_vectors.png" alt="The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors"  />
 <p class="caption">
 Figure 3.5: The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors
@@ -974,7 +982,8 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="programming1.html#cb151-1" tabindex="-1"></a>new_row2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="st">&quot;Eric&quot;</span>, <span class="at">age =</span> <span class="dv">34</span>, <span class="at">gender =</span> <span class="st">&quot;Non-binary&quot;</span>)</span>
 <span id="cb151-2"><a href="programming1.html#cb151-2" tabindex="-1"></a></span>
 <span id="cb151-3"><a href="programming1.html#cb151-3" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(my_df, new_row2)</span></code></pre></div>
-<pre><code>## Error in rbind(deparse.level, ...): numbers of columns of arguments do not match</code></pre>
+<pre><code>## Error in `rbind()`:
+## ! numbers of columns of arguments do not match</code></pre>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="programming1.html#cb153-1" tabindex="-1"></a>my_df</span></code></pre></div>
 <pre><code>##      name age score     gender
 ## 1   Alice  25 95.65     Female
@@ -1013,65 +1022,65 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <col width="66%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Term</th>
 <th>Definition</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Assignment</td>
 <td>The process of assigning a value to a variable using the assignment operator (<code>&lt;-</code> or <code>=</code>).</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Character</td>
 <td>A data type representing text or strings of characters.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Data Frame</td>
 <td>A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Data Type</td>
 <td>The classification of data values into categories, such as numeric, logical, integer, or character.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Element</td>
 <td>An individual item or value within a data structure, such as a character in a vector.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Index</td>
 <td>A numerical position or identifier used to access elements within a vector or other data structures.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Indexing</td>
 <td>The process of selecting specific elements from a data structure using their index values.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Integer</td>
 <td>A data type representing whole numbers without decimals.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Logical</td>
 <td>A data type representing binary values (TRUE or FALSE), often used for conditions and logical operations.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Numeric</td>
 <td>A data type representing numeric values, including real numbers and decimals.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Object</td>
 <td>A fundamental data structure in R that can store data or values. Objects can include vectors, data frames, and more.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Subsetting</td>
 <td>The technique of selecting a subset of elements from a data structure, such as a vector or data frame, based on specific criteria.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Variable</td>
 <td>A named storage location in R that holds data or values. It can represent different types of information.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Vector</td>
 <td>A one-dimensional data structure in R that can hold multiple elements of the same data type.</td>
 </tr>
@@ -1088,7 +1097,7 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <col width="24%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Rule</th>
 <th>Type</th>
 <th>Incorrect Example</th>
@@ -1096,61 +1105,61 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Variable names can only contain uppercase alphabetic characters A-Z, lowercase a-z, numeric characters 0-9, periods ., and underscores _.</td>
 <td>Strict</td>
 <td>1st_name</td>
 <td>first_name</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Variable names must begin with a letter or a period.</td>
 <td>Strict</td>
 <td>_1stname</td>
 <td>.firstname</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Avoid using spaces in variable names.</td>
 <td>Strict</td>
 <td>my name</td>
 <td>my_name</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Variable names are case-sensitive.</td>
 <td>Strict</td>
 <td>my_name == my_Name</td>
 <td>my_Name == my_Name</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Variable names cannot include special words reserved by R.</td>
 <td>Strict</td>
 <td>print</td>
 <td>to_print</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Choose informative variable names that clearly describe the information they represent.</td>
 <td>Recommended</td>
 <td>money</td>
 <td>income</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Opt for short variable names when possible.</td>
 <td>Recommended</td>
 <td>date_of_birth</td>
 <td>dob</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Prioritize clarity over brevity.</td>
 <td>Recommended</td>
 <td>tem</td>
 <td>total_exam_marks</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Avoid starting variable names with a capital letter.</td>
 <td>Recommended</td>
 <td>FirstName</td>
 <td>firstName</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Choose a consistent naming style and stick to it.</td>
 <td>Recommended</td>
 <td>myName, last_Name</td>
@@ -1189,42 +1198,42 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/03-programming-p1.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["rintro_demo.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/03-programming-p1.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["rintro_demo.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

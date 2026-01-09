@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Programming Fundamentals in R (Part II) | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Programming Fundamentals in R (Part II) | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -338,33 +339,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.1" data-path="datacleaning1.html"><a href="datacleaning1.html#context-and-viewing-it-in-rstudio"><i class="fa fa-check"></i><b>9.3.1</b> Context and Viewing it in RStudio</a></li>
 <li class="chapter" data-level="9.3.2" data-path="datacleaning1.html"><a href="datacleaning1.html#key-functions-that-will-help-you-clean-most-datasets"><i class="fa fa-check"></i><b>9.3.2</b> Key Functions That Will Help You Clean Most Datasets</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#choosing-our-columns-of-interest-with-select"><i class="fa fa-check"></i><b>9.4</b> Choosing our Columns of Interest with <code>Select()</code></a></li>
-<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-our-columns-of-interest-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming our Columns of Interest with <code>rename()</code></a></li>
-<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-the-mutate-function"><i class="fa fa-check"></i><b>9.6</b> Creating new Columns using the <code>mutate()</code> function</a>
+<li class="chapter" data-level="9.4" data-path="datacleaning1.html"><a href="datacleaning1.html#selecting-columns-using-select"><i class="fa fa-check"></i><b>9.4</b> Selecting Columns using <code>Select()</code></a></li>
+<li class="chapter" data-level="9.5" data-path="datacleaning1.html"><a href="datacleaning1.html#renaming-columns-with-rename"><i class="fa fa-check"></i><b>9.5</b> Renaming Columns with <code>rename()</code></a></li>
+<li class="chapter" data-level="9.6" data-path="datacleaning1.html"><a href="datacleaning1.html#creating-new-columns-using-mutate"><i class="fa fa-check"></i><b>9.6</b> Creating New Columns using <code>mutate()</code></a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-columns-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting existing columns using <code>mutate()</code></a></li>
+<li class="chapter" data-level="9.6.1" data-path="datacleaning1.html"><a href="datacleaning1.html#rewriting-existing-using-mutate"><i class="fa fa-check"></i><b>9.6.1</b> Rewriting Existing using <code>mutate()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="datacleaning1.html"><a href="datacleaning1.html#checking-in-on-our-data-set"><i class="fa fa-check"></i><b>9.7</b> Checking in on our data set</a></li>
 <li class="chapter" data-level="9.8" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-duplicates-using-distinct"><i class="fa fa-check"></i><b>9.8</b> Removing Duplicates using <code>distinct()</code></a></li>
-<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-the-filter-function"><i class="fa fa-check"></i><b>9.9</b> Removing Rows using the <code>filter()</code> Function</a>
+<li class="chapter" data-level="9.9" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-filter"><i class="fa fa-check"></i><b>9.9</b> Removing Rows Using <code>filter()</code></a>
 <ul>
 <li class="chapter" data-level="9.9.1" data-path="datacleaning1.html"><a href="datacleaning1.html#removing-rows-using-multiple-conditions-with-filter"><i class="fa fa-check"></i><b>9.9.1</b> Removing Rows Using Multiple Conditions with <code>filter()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="datacleaning1.html"><a href="datacleaning1.html#identifying-the-factors-in-our-data-frame"><i class="fa fa-check"></i><b>9.10</b> Identifying the Factors in our Data Frame</a></li>
-<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#summarising-our-data-by-groups-using-group_by-and-summarise"><i class="fa fa-check"></i><b>9.11</b> Summarising our Data by Groups using <code>group_by()</code> and <code>summarise()</code></a></li>
-<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.12</b> Chaining it All Together with the Pipe Operator</a>
+<li class="chapter" data-level="9.11" data-path="datacleaning1.html"><a href="datacleaning1.html#chaining-it-all-together-with-the-pipe-operator"><i class="fa fa-check"></i><b>9.11</b> Chaining it All Together with the Pipe Operator</a>
 <ul>
-<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.12.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
+<li class="chapter" data-level="9.11.1" data-path="datacleaning1.html"><a href="datacleaning1.html#using-a-pipe-operator-on-the-remote-associations-data-frame"><i class="fa fa-check"></i><b>9.11.1</b> Using a Pipe Operator on the Remote Associations Data Frame</a></li>
 </ul></li>
-<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.13</b> Activity: Clean the Flanker Dataset</a>
+<li class="chapter" data-level="9.12" data-path="datacleaning1.html"><a href="datacleaning1.html#clean-activity"><i class="fa fa-check"></i><b>9.12</b> Activity: Clean the Flanker Dataset</a>
 <ul>
-<li class="chapter" data-level="9.13.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.13.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
-<li class="chapter" data-level="9.13.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.13.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
-<li class="chapter" data-level="9.13.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.13.3</b> <strong>Reset Your Environment</strong></a></li>
-<li class="chapter" data-level="9.13.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.13.4</b> <strong>Import the Data</strong></a></li>
-<li class="chapter" data-level="9.13.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.13.5</b> Cleaning Instructions</a></li>
+<li class="chapter" data-level="9.12.1" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-flanker-test-dataset"><i class="fa fa-check"></i><b>9.12.1</b> <strong>Cleaning Flanker Test Dataset</strong></a></li>
+<li class="chapter" data-level="9.12.2" data-path="datacleaning1.html"><a href="datacleaning1.html#load-the-tidyverse-package"><i class="fa fa-check"></i><b>9.12.2</b> <strong>Load the “Tidyverse” Package</strong></a></li>
+<li class="chapter" data-level="9.12.3" data-path="datacleaning1.html"><a href="datacleaning1.html#reset-your-environment"><i class="fa fa-check"></i><b>9.12.3</b> <strong>Reset Your Environment</strong></a></li>
+<li class="chapter" data-level="9.12.4" data-path="datacleaning1.html"><a href="datacleaning1.html#import-the-data"><i class="fa fa-check"></i><b>9.12.4</b> <strong>Import the Data</strong></a></li>
+<li class="chapter" data-level="9.12.5" data-path="datacleaning1.html"><a href="datacleaning1.html#cleaning-instructions"><i class="fa fa-check"></i><b>9.12.5</b> Cleaning Instructions</a></li>
 </ul></li>
-<li class="chapter" data-level="9.14" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.14</b> Summary</a></li>
+<li class="chapter" data-level="9.13" data-path="datacleaning1.html"><a href="datacleaning1.html#summary-5"><i class="fa fa-check"></i><b>9.13</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="datacleaning2.html"><a href="datacleaning2.html"><i class="fa fa-check"></i><b>10</b> Data Wrangling and Cleaning (Part II)</a>
 <ul>
@@ -406,6 +406,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6.3" data-path="datacleaning2.html"><a href="datacleaning2.html#merging-the-data-frames"><i class="fa fa-check"></i><b>10.6.3</b> Merging the Data Frames</a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="datacleaning2.html"><a href="datacleaning2.html#summary-8"><i class="fa fa-check"></i><b>10.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><i class="fa fa-check"></i><b>11</b> Appendix - Understanding Boolean Operators in the Context of <code>filter()</code></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#how-boolean-operators-work"><i class="fa fa-check"></i><b>11.1</b> How Boolean Operators Work:</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="appendix---understanding-boolean-operators-in-the-context-of-filter.html"><a href="appendix---understanding-boolean-operators-in-the-context-of-filter.html#understanding-rs-evaluation-process"><i class="fa fa-check"></i><b>11.1.1</b> Understanding R’s Evaluation Process:</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -825,7 +832,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Go to the <strong>Packages</strong> tab.</p></li>
 <li><p>Scroll down to find the package you want (e.g., <code>praise</code>) and tick the checkbox next to its name. This loads the package.</p></li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-131"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-129"></span>
 <img src="img/04-praise-loaded.png" alt="Loading Packages through RStudio Interface"  />
 <p class="caption">
 Figure 4.1: Loading Packages through RStudio Interface
@@ -859,10 +866,9 @@ Figure 4.1: Loading Packages through RStudio Interface
 <div id="testing-a-package" class="section level3 hasAnchor" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Testing a Package<a href="programming2.html#testing-a-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s test the <code>praise</code> package, which generates random compliments (not groundbreaking, but fun to use!). After loading the package, run:</p>
-<pre><code>## Warning: package &#39;praise&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## [1] &quot;You are amazing!&quot;</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="programming2.html#cb217-1" tabindex="-1"></a><span class="fu">praise</span>() <span class="co">#everytime you run this line of code it gives you a different line of praise</span></span>
-<span id="cb217-2"><a href="programming2.html#cb217-2" tabindex="-1"></a><span class="co">#so don&#39;t be worried if your result is different than mine</span></span></code></pre></div>
+<pre><code>## [1] &quot;You are prime!&quot;</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="programming2.html#cb216-1" tabindex="-1"></a><span class="fu">praise</span>() <span class="co">#everytime you run this line of code it gives you a different line of praise</span></span>
+<span id="cb216-2"><a href="programming2.html#cb216-2" tabindex="-1"></a><span class="co">#so don&#39;t be worried if your result is different than mine</span></span></code></pre></div>
 <p>Every time you run <code>praise()</code>, you’ll get a different compliment. Try it out!</p>
 </div>
 <div id="troubleshooting-common-issues" class="section level3 hasAnchor" number="4.4.5">
@@ -879,23 +885,23 @@ Figure 4.1: Loading Packages through RStudio Interface
 <li><strong>Dependencies Missing</strong>:</li>
 </ol>
 <p>If you see a message about missing dependencies, reinstall the package with “Install dependencies” checked, or run:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="programming2.html#cb218-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="programming2.html#cb217-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Conflicting Function Names Between Packages</strong>:</li>
 </ol>
 <p>If two loaded packages have functions with the same name, R will use the version from the package loaded most recently. You will typically see a message that looks like this in your R console</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="programming2.html#cb219-1" tabindex="-1"></a>Attaching package<span class="sc">:</span> ‘dplyr’</span>
-<span id="cb219-2"><a href="programming2.html#cb219-2" tabindex="-1"></a></span>
-<span id="cb219-3"><a href="programming2.html#cb219-3" tabindex="-1"></a>The following objects are masked from ‘package<span class="sc">:</span>stats’<span class="sc">:</span></span>
-<span id="cb219-4"><a href="programming2.html#cb219-4" tabindex="-1"></a></span>
-<span id="cb219-5"><a href="programming2.html#cb219-5" tabindex="-1"></a>    filter, lag</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="programming2.html#cb218-1" tabindex="-1"></a>Attaching package<span class="sc">:</span> ‘dplyr’</span>
+<span id="cb218-2"><a href="programming2.html#cb218-2" tabindex="-1"></a></span>
+<span id="cb218-3"><a href="programming2.html#cb218-3" tabindex="-1"></a>The following objects are masked from ‘package<span class="sc">:</span>stats’<span class="sc">:</span></span>
+<span id="cb218-4"><a href="programming2.html#cb218-4" tabindex="-1"></a></span>
+<span id="cb218-5"><a href="programming2.html#cb218-5" tabindex="-1"></a>    filter, lag</span></code></pre></div>
 <p><strong><em>Here’s what this means:</em></strong></p>
 <p>R is informing you that the functions filter and lag from the stats package (which comes with base R) are now “masked” by the versions from the dplyr package.</p>
 <p>This simply means that if you call filter() or lag() without specifying the package, R will use the version from dplyr because it was loaded most recently.</p>
 <p><strong><em>How to Handle This:</em></strong></p>
 <p>If you see this message, it’s not an error — it’s just a warning that there’s a conflict. To explicitly use a function from a specific package, you can use the :: operator</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="programming2.html#cb220-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from stats</span></span>
-<span id="cb220-2"><a href="programming2.html#cb220-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from dplyr</span></span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="programming2.html#cb219-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from stats</span></span>
+<span id="cb219-2"><a href="programming2.html#cb219-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()  <span class="co"># Use the filter function from dplyr</span></span></code></pre></div>
 </div>
 <div id="best-practices-for-installing-and-loading-packages" class="section level3 hasAnchor" number="4.4.6">
 <h3><span class="header-section-number">4.4.6</span> Best Practices for Installing and Loading Packages<a href="programming2.html#best-practices-for-installing-and-loading-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -905,7 +911,7 @@ Figure 4.1: Loading Packages through RStudio Interface
 <li><p><strong>Avoid Running <code>install.packages()</code> in a Script:</strong> Use <code>install.packages()</code> in the console, not in your script. If someone downloads your script and accidentally runs it, it will automatically install the packages on their computer. Generally it’s better for people to make a decision themselves on whether they want to install anything on their computer. By not writing the <code>install.packages()</code> command in our script, we give them the power.</p></li>
 <li><p><strong>Comment Out Install Commands:</strong> If you include <code>install.packages()</code> in your script for documentation purposes, make sure it’s commented out:</p></li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-140"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-138"></span>
 <img src="img/04-packages-convention.png" alt="Conventions for Installing and Loading Packages in R Script"  />
 <p class="caption">
 Figure 4.2: Conventions for Installing and Loading Packages in R Script
@@ -932,13 +938,13 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <li><p>Make sure you have download (or uploaded) the “psycho.csv” file to your <code>week3</code> folder</p></li>
 <li><p>In your script, write and run the following line of code:</p></li>
 </ol>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="programming2.html#cb221-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro&quot;</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="programming2.html#cb223-1" tabindex="-1"></a>psycho_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/psycho.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="programming2.html#cb220-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;C:/Users/0131045S/Desktop/Teaching/PS6183/rintro&quot;</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="programming2.html#cb222-1" tabindex="-1"></a>psycho_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/psycho.csv&quot;</span>)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Once you have run that line of code, you can have a look at the data frame by using the <code>head()</code> and <code>summary()</code> functions.</li>
 </ol>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="programming2.html#cb224-1" tabindex="-1"></a><span class="fu">head</span>(psycho) <span class="co">#this will print out the first six rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="programming2.html#cb223-1" tabindex="-1"></a><span class="fu">head</span>(psycho) <span class="co">#this will print out the first six rows</span></span></code></pre></div>
 <pre><code>##   Participant_ID Treatment Neuroticism
 ## 1              1   Placebo    39.39524
 ## 2              2   Placebo    42.69823
@@ -946,7 +952,7 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 ## 4              4   Placebo    45.70508
 ## 5              5   Placebo    46.29288
 ## 6              6   Placebo    62.15065</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="programming2.html#cb226-1" tabindex="-1"></a><span class="fu">summary</span>(psycho) <span class="co">#print out summary stats for each column</span></span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="programming2.html#cb225-1" tabindex="-1"></a><span class="fu">summary</span>(psycho) <span class="co">#print out summary stats for each column</span></span></code></pre></div>
 <pre><code>##  Participant_ID   Treatment          Neuroticism   
 ##  Min.   : 1.00   Length:60          Min.   :25.33  
 ##  1st Qu.:15.75   Class :character   1st Qu.:41.75  
@@ -962,11 +968,11 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <div id="exporting-to-csv-files" class="section level4 hasAnchor" number="4.5.2.1">
 <h4><span class="header-section-number">4.5.2.1</span> Exporting to CSV Files<a href="programming2.html#exporting-to-csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To export a dataset to a CSV file, we can use the <code>write.csv()</code> function:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="programming2.html#cb228-1" tabindex="-1"></a><span class="co"># Export dataset to a CSV file using the following syntax</span></span>
-<span id="cb228-2"><a href="programming2.html#cb228-2" tabindex="-1"></a><span class="fu">write.csv</span>(my_dataset, <span class="at">file =</span> <span class="st">&quot;output.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="programming2.html#cb227-1" tabindex="-1"></a><span class="co"># Export dataset to a CSV file using the following syntax</span></span>
+<span id="cb227-2"><a href="programming2.html#cb227-2" tabindex="-1"></a><span class="fu">write.csv</span>(my_dataset, <span class="at">file =</span> <span class="st">&quot;output.csv&quot;</span>)</span></code></pre></div>
 <p>The argument <code>file</code> will create the name of the file and enable you to change the location of the file. The way this is currently written, it will save your file to your working directory. If you need a reminder on how to set and check your working directory <a href="rstudio.html#set_wd">click here</a>. Make sure it is set to the location you want your file to go.</p>
 <p>Let’s export a copy of our psycho dataframe:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="programming2.html#cb229-1" tabindex="-1"></a><span class="fu">write.csv</span>(psycho, <span class="at">file =</span> <span class="st">&quot;psycho_copy.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="programming2.html#cb228-1" tabindex="-1"></a><span class="fu">write.csv</span>(psycho, <span class="at">file =</span> <span class="st">&quot;psycho_copy.csv&quot;</span>)</span></code></pre></div>
 <p>In your working directory (check the Files pane), you should see the file <code>psycho_copy.csv</code>. If you go to your file manager system on your computer or on Posit Cloud, find the file, and open it, the file should open in either a text or Excel file.</p>
 </div>
 </div>
@@ -984,33 +990,33 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <col width="69%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th><strong>Term</strong></th>
 <th><strong>Definition</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>CSV</td>
 <td>Comma-Separated Values: a common file format for storing tabular data, where each value is separated by a comma.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SPSS</td>
 <td>Statistical Package for the Social Sciences: software commonly used for statistical analysis, often associated with .sav files.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Dataframe</td>
 <td>A two-dimensional data structure in R that resembles a table with rows and columns. It can store mixed data types.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Importing</td>
 <td>The process of bringing data from external sources into R for analysis or manipulation.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Exporting</td>
 <td>The process of saving data from R to external files or formats for use in other applications.</td>
 </tr>
-<tr>
+<tr class="even">
 <td>write.csv()</td>
 <td>A function in R used to export a dataset to a CSV file.</td>
 </tr>
@@ -1048,42 +1054,42 @@ Figure 4.2: Conventions for Installing and Loading Packages in R Script
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-programming-p2.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["rintro_demo.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-programming-p2.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["rintro_demo.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
