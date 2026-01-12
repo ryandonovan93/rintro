@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Programming Fundamentals in R (Part I) | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Programming Fundamentals in R (Part I) | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -53,9 +53,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -157,8 +156,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#downloading-r-on-to-your-computer-personal-laptop-or-desktops-only"><i class="fa fa-check"></i><b>2.3</b> Downloading R on to your Computer (personal laptop or desktops only)</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="rstudio.html"><a href="rstudio.html#downloading-r-on-windows"><i class="fa fa-check"></i><b>2.3.1</b> Downloading R on Windows</a></li>
-<li class="chapter" data-level="2.3.2" data-path="rstudio.html"><a href="rstudio.html#downloading-r-on-mac"><i class="fa fa-check"></i><b>2.3.2</b> Downloading R on Mac</a></li>
+<li class="chapter" data-level="2.3.1" data-path="rstudio.html"><a href="rstudio.html#installing-r-windows"><i class="fa fa-check"></i><b>2.3.1</b> Installing R (Windows)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rstudio.html"><a href="rstudio.html#installing-r-mac"><i class="fa fa-check"></i><b>2.3.2</b> Installing R (Mac)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#install-and-open-rstudio"><i class="fa fa-check"></i><b>2.4</b> Install and Open RStudio</a></li>
 <li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#creating-an-r-project"><i class="fa fa-check"></i><b>2.5</b> Creating an R Project</a></li>
@@ -490,8 +489,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">3.3.2.1</span> R Console and Typos<a href="programming1.html#r-console-and-typos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>One of the most important things you need to know when you are programming, is that you need to type <em>exactly</em> what you want R to do. If you make a mistake (e.g., a typo), R won’t attempt to decipher your intention. For instance, consider the following code:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="programming1.html#cb23-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">10</span> <span class="ot">=</span> <span class="dv">20</span></span></code></pre></div>
-<pre><code>## Error in `10 = 20`:
-## ! invalid (do_set) left-hand side to assignment</code></pre>
+<pre><code>## Error in 10 = 20: invalid (do_set) left-hand side to assignment</code></pre>
 <p>R interprets this as you claiming that 10 equals 20, which is not true. Consequently, R panics and refuses to execute your command. Now any person looking at your code would guess that since <code>+</code> and <code>=</code> are on the same key on our keyboards, you probably meant to type <code>10 + 20</code>. But that’s because we have a theory of mind, whereas programming languages do not.</p>
 <p>So be exact with your code or else be <a href="https://www.youtube.com/watch?v=X3zfP14pLxc">Ron Burgundy?</a>.</p>
 <p>On the grand scheme of mistakes though, this type of mistake is relatively harmless because R will tell us immediately that something is wrong and stop us from doing anything.</p>
@@ -982,8 +980,7 @@ Figure 3.5: The relationship between data frames and vectors. The different colo
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="programming1.html#cb151-1" tabindex="-1"></a>new_row2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="st">&quot;Eric&quot;</span>, <span class="at">age =</span> <span class="dv">34</span>, <span class="at">gender =</span> <span class="st">&quot;Non-binary&quot;</span>)</span>
 <span id="cb151-2"><a href="programming1.html#cb151-2" tabindex="-1"></a></span>
 <span id="cb151-3"><a href="programming1.html#cb151-3" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(my_df, new_row2)</span></code></pre></div>
-<pre><code>## Error in `rbind()`:
-## ! numbers of columns of arguments do not match</code></pre>
+<pre><code>## Error in rbind(deparse.level, ...): numbers of columns of arguments do not match</code></pre>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="programming1.html#cb153-1" tabindex="-1"></a>my_df</span></code></pre></div>
 <pre><code>##      name age score     gender
 ## 1   Alice  25 95.65     Female

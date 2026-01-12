@@ -162,7 +162,7 @@ In terms of specific R skills, students will learn how to:
 \item
   Create APA-standard graphs.
 \item
-  Deal with errors or bugs with R code.
+  Deal with errors or bugs in R code.
 \end{itemize}
 
 \section{What will I not learn to do in R?}\label{what-will-i-not-learn-to-do-in-r}
@@ -170,35 +170,32 @@ In terms of specific R skills, students will learn how to:
 This is not an exhaustive introduction to R.
 Similar to human languages, programming languages like R are vast and will take years to master.
 After this course, you will still be considered a ``newbie'' in R.
-But the material covered here will at least provide you a solid foundation in R, enabling you to go ahead and pick up further skills if required as you go on.
+But the material covered here will at least provide you a solid foundation, enabling you to pick up further skills as you go on.
 
 This course will teach you data cleaning and wrangling skills that will enable you to wrangle and clean a lot of data collected on Gorilla or Qualtrics.
 But you will not be able to easily handle all data cleaning problems you are likely to find out in the ``wild'' world of messy data.
-Such datasets can be uniquely messy, and even experienced R programmers will need to bash their head against the desk a few times to figure out a way to clean that dataset entirely in R.
+Such datasets can be uniquely messy, and even experienced R programmers will need to bash their head against the desk a few times to figure out a way to clean such datasets in R.
 
 Similarly, do not expect to be fluent in the concepts you learn here after these workshops.
-It will take practice to become fluent.
-You might need to refer to these materials or look up help repeatedly when using R on real-life datasets.
+It takes practice to become fluent. You will need to refer to these materials or look up help repeatedly when coding in R.
 That's normal - so do not be discouraged when it happens.
 
-This textbook mainly uses the tidyverse approach to R.
-The tidyverse is a particular philosophical approach to how to use R (more on that later).
+This textbook mostly uses the tidyverse approach to R.
+The tidyverse is a particular systematic approach to how to write R code (more on that later).
 The other approach would be to use base R.
 This can incite violent debates in R communities on which approach is better.
 We will focus mainly on tidyverse and use some base R.
 
-This textbook does not teach you how to use R Markdown.
-R Markdown is a package in R that enables you to write reproducible and dynamic reports with R that can be converted into Word documents, PDFs, websites, PowerPoint presentations, books, and much more.
+This textbook does not teach you how to use R Markdown or Quarto.
+R Markdown (and Quarto) is a package in R that enables you to write reproducible and dynamic reports with R that can be converted into Word documents, PDFs, websites, PowerPoint presentations, books, and much more.
 There are a lot of excellent resources available to learn how to use R markdown, but it's far more important to learn how to use R first.
 
 \section{Why are we learning R?}\label{why-are-we-learning-r}
 
-There are many reasons to learn R.
+There are several reasons to learn R.
 
-Psychological research is increasingly moving towards open-science practices.
-One of the key principles of open-science is that all aspects of data handling - including data wrangling, pre-processing, processing, and output generation - are openly accessible.
-This is not just an abstract ideal; several top-tier journals require that you submit R scripts along with manuscripts.
-If you don't know how to use R (or at least no one in your lab does), then this puts you at a disadvantage.
+Firstly, psychological research is increasingly moving towards open-science practices. One of the key principles of open-science is that all aspects of data handling (e,g, data wrangling, pre-processing, processing, and output generation) are done transparently. In contrast to other tools, R enables you to do this. This is not just an abstract ideal; some top-tier journals require that you submit R scripts along with your manuscript.
+If you don't know how to use R or another open-source language (or at least no one in your lab does), then this puts you at a disadvantage.
 The upside to this is that if you do know how to use R, then you will be at an advantage in your future career prospects.
 
 R enables you to import, clean, analyse, and publish manuscripts from R itself.
@@ -235,7 +232,8 @@ This fear is exacerbated in courses involving mathematics and programming, as st
 This is a completely unwarranted belief.
 My job is to teach you R.
 Consequently, if you are reading the material or listening in class, and it's not sinking in at all, then that is \textbf{\emph{my fault, not yours.}} If this is happening, then it is important that this feedback is being relayed.
-The most valuable teaching hours I've had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust. That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
+The most valuable teaching hours I've had are while talking with a student who is struggling to understand the material, because it forces me to see the errors in how I am explaining that material and adjust.
+That way, I learn better ways to explain a particular concept and the student comes with away with a greater understanding of said concept.
 We all win.
 
 So pretty please, do not be a silent martyr and let me know if you are struggling with any of the R-based material in this course.
@@ -255,7 +253,7 @@ ryan.donovan@universityofgalway.ie & Wednesdays, 2.30-3.30pm.
 
 (In-person or online option).
 
-Time does not suit?
+Time doesn't suit?
 
 Just get in touch, we can arrange a different time. & 2065A, which is on the top floor of the Psychology building. It is in the corridor right next to the elevator.
 
@@ -270,11 +268,11 @@ This session introduces the programming language R and the RStudio application. 
 
 R is a statistical programming language that enables us to directly communicate with our computers and ask it perform tasks. Typically we rely on button-click applications (e.g.~SPSS, Excel, Word) to communicate with our computers on our behalf. These applications translate our button-click commands into a language that our computer can understand. Our computer then carries out those commands, returns the results to the application, which then translates those results back to us.
 
-Applications like SPSS are convenient. They usually have a user-friendly interface that makes it easy to communicate with our computer. Consequently, this means one can become highly competent in a short amount of time with such applications.
+Applications like SPSS are convenient. They typically have a user-friendly interface that makes it easy to communicate with our computer. Consequently, this means one can become highly competent in a short amount of time with such applications.
 
-However, these applications also limit what we can do. For example, base SPSS is functional when it comes to creating data visualizations, but it is difficult to make major changes to your graph (e.g., making it interactive). If we want to create such visualizations, we will likely need to use an alternative application. Similarly, we might also be financially limited in our ability to use such apps, as proprietary software like SPSS is not cheap (\href{https://www.ibm.com/products/spss-statistics/pricing}{it can cost between \$3830 - 25200 for a single licence depending on the version})!
+However, these applications also limit what we can do. For example, base SPSS is functional when it comes to creating data visualisations, but it is difficult to make major changes to your graph (e.g., making it interactive). If we want to create such visualisations, we need to use an external application. Similarly, financial costs can limit our ability to use such apps, as proprietary software like SPSS is not cheap (\href{https://www.ibm.com/products/spss-statistics/pricing}{it can cost between \$3830 - 25200 for a single licence depending on the version})!
 
-In contrast, R is a free, open-source statistical programming language that enables us to conduct comprehensive statistical analysis and create highly elegant visualizations. By learning R, we can cut out the middleman.
+In contrast, R is a free, open-source statistical programming language that enables us to conduct comprehensive statistical analysis and create highly elegant visualisations. By learning R, we can cut out the middleman.
 
 \begin{figure}
 \centering
@@ -282,15 +280,15 @@ In contrast, R is a free, open-source statistical programming language that enab
 \caption{\label{fig:unnamed-chunk-1}BBC graphs created in R.}
 \end{figure}
 
-But why R and not a different programming language? R was developed by statisticians for the purpose of conducting statistic analysis. In contrast, other popular programming languages (Python, JavaScript, C) were designed for different purposes. Consequently, R contains an extensive vocabulary that enables us to carry out sophisticated and precise statistical analysis. I have both used R and Python (often used in Data Science) to conduct statistical analysis, and I have found it significantly easier in R to run a wide range of statistical tests. Similarly, there is extensive support available online to enable you to run statistical analyses in R. This explains why R is typically used among statisticians, social scientists, data miners, and bioinformaticians. For these reasons, we will be using R in this course \footnote{There are always tradeoffs in selecting a language. Many programming concepts are easier to grasp in Python than in R. Similarly, there is a lot of resources available for conducting machine-learning analysis in Python.
+But why R and not a different programming language? R was developed by statisticians for the purpose of conducting statistical analysis. In contrast, other popular programming languages (Python, JavaScript, C) were designed for different purposes. Consequently, R contains an extensive vocabulary that enables us to carry out sophisticated and precise analyses. I {[}Ryan{]} have both used R and Python (which is often used in Data Science) to conduct statistical analyses, and I have found it significantly easier to run a wide range of statistical tests in R compared to Python.Similarly, there is substantial online support for using R to conduct statistical analyses. This explains why R is typically used among statisticians, social scientists, data miners, and bioinformaticians. For these reasons, we will be using R in this course \footnote{There are always tradeoffs in selecting a language. Many programming concepts are easier to grasp in Python than in R. Similarly, there is a lot of resources available for conducting machine-learning analysis in Python.
 
   But if you are goal is conduct data cleaning, analysis, visualization, and reporting, then R is a excellent choice. The good thing is that once you achieve a certain level of competency in one programming language, you will find it significantly easier to pick up a following one.}.
 
 \section{Create a Posit Cloud Account.}\label{create-a-posit-cloud-account.}
 
-In the next section, I am going to show you how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud). Posit Cloud enables you to run R and RStudio online for free, with no need to install anything.
+In the next section, you'll learn how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud). Posit Cloud enables you to run R and RStudio online for free, without installing anything.
 
-\textbf{\emph{If you are using the desktops in the lab,}} then please only use Posit Cloud in all of our R and RStudio classes. It is much easier to run R and RStudio on Posit Cloud than on the absolute tragic disaster of an operating system they use on the desktop Windows machines. Please, please, please do not use the RStudio version on the desktop computers in the lab, or else your R life will be brutal and painful.
+\textbf{\emph{If you are using the desktops in the lab,}} then please only use Posit Cloud in all of our R and RStudio classes. It is much easier to run R and RStudio on Posit Cloud than on the absolute tragic disaster on the limited Windows operating system on the Desktops in the class. Please, please, please do not use the RStudio version on the desktop computers in the lab, or else your R life will be frustrating and painful.
 
 \textbf{\emph{If you are using your own laptop,}} then use Posit Cloud as a backup option in case any technical issues pop up. During class, we might not be able to solve those issues quickly and efficiently (in a large classroom, one must always account for Murphy's Law). Rather than being hamstrung by technical difficulties, you can sign into Posit Cloud and keep following along with the session.
 
@@ -300,7 +298,7 @@ For those of you on the desktop computers, if you do hit the max limit, then get
 
 \subsection{Instructions for Creating a Posit Cloud Account}\label{instructions-for-creating-a-posit-cloud-account}
 
-To create a Posit Cloud account, please follow the following instructions:
+To create a Posit Cloud account, see the following instructions:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -324,7 +322,7 @@ To create a Posit Cloud account, please follow the following instructions:
 
 \pandocbounded{\includegraphics[keepaspectratio]{img/01-posit-rintro.png}}
 
-Don't worry about what anything on the screen means for now. We'll come back to that in the section \textbf{Creating an RProject (2.5).}
+Don't worry about what anything on the screen means for now. We'll come back to that in the section \textbf{Creating an R Project (2.5).}
 
 \section{Downloading R on to your Computer (personal laptop or desktops only)}\label{downloading-r-on-to-your-computer-personal-laptop-or-desktops-only}
 
@@ -332,7 +330,7 @@ If you are using your own personal laptop or desktop (if at home), then please f
 
 \textbf{\emph{If you are using the Desktops in the lab, do not follow these instructions, as we will be using Posit Cloud}}
 
-\subsection{Downloading R on Windows}\label{downloading-r-on-windows}
+\subsection{Installing R (Windows)}\label{installing-r-windows}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -351,7 +349,7 @@ If you are using your own personal laptop or desktop (if at home), then please f
 \item
   Click the hyperlink \textbf{\emph{base}} or \textbf{\emph{install R for the first Time}}
 \item
-  Click Download R-4.4.2 for Windows (depending on the date you access this, the version of R might have been been updated. That's okay, you can download the newer version). Let the file download.
+  Click Download R-4.5.2 for Windows (If when you access this page, the number is different, don't worry. R is continuously updating, so download whatever version is in the equivalent place). Let the file download.
 \end{enumerate}
 
 \begin{figure}
@@ -365,12 +363,12 @@ If you are using your own personal laptop or desktop (if at home), then please f
 \setcounter{enumi}{4}
 \tightlist
 \item
-  Once the file has been downloaded, open it and click ``Yes'' if you are asked to allow this app to make changes to your device. Choose English as your setup language. The file name should be something like ``R-4.4.2.-win'' (numbers will differ depending on the version downloaded).
+  Once the file has downloaded, open it and click ``Yes'' if you are asked to allow this app to make changes to your device. Select English as your setup language. The file name should be something like ``R-4.5.2.-win'' (numbers will differ depending on the version downloaded).
 \item
   Agree to the terms and conditions and select a place to install R. The default option is fine.
 \end{enumerate}
 
-\subsection{Downloading R on Mac}\label{downloading-r-on-mac}
+\subsection{Installing R (Mac)}\label{installing-r-mac}
 
 The instructions are largely the same for Mac.
 
@@ -386,7 +384,7 @@ The instructions are largely the same for Mac.
 \begin{itemize}
 \tightlist
 \item
-  Check the \textbf{Latest release} section for the appropriate version and follow the directions for download. If you are unsure, please ask me.
+  Check the \textbf{Latest release} section for the appropriate version and follow the directions for download. You will notice there will be two download links, one if your Mac has an Intel Processor or Apple Silicon. If you are unsure which processor your Mac has, see the following webpage for help: \url{https://help.arcstudiopro.com/all-how-tos/how-do-i-know-if-my-mac-has-intel-processor-or-apple-m1}.
 \end{itemize}
 
 \pandocbounded{\includegraphics[keepaspectratio]{img/01-rversion-mac.png}}
@@ -432,10 +430,6 @@ RStudio is a user-friendly front-end program for R, enhancing your R coding expe
 Once the file is downloaded, open it and allow it to make changes to your device. Follow the instructions to install the program. I recommend using all the default options during installation.
 
 After downloading both R and RStudio, open RStudio on your computer. You do not have to open R separately, as RStudio will work with R if everything is set up correctly.
-
-When you first open RStudio, you will see three panes or ``windows'' in RStudio: \textbf{Console} (left), \textbf{Environment} (top right), and \textbf{Files} (bottom right).
-
-\pandocbounded{\includegraphics[keepaspectratio]{img/rstudio_first.png}}
 
 \section{Creating an R Project}\label{creating-an-r-project}
 
@@ -500,12 +494,16 @@ You can see my example below. Once you're happy with your input for each option,
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/01-newproject-ma.png}}
-\caption{\label{fig:unnamed-chunk-13}New Project Set Up}
+\caption{\label{fig:unnamed-chunk-12}New Project Set Up}
 \end{figure}
 
 \section{Navigating RStudio}\label{navigating-rstudio}
 
-In our new project, \textbf{\emph{rintro}}, we are going to open the ``Source'' pane, which we will often use for writing code and viewing datasets.
+When you first open RStudio, you will see three panes or ``windows'' in RStudio: \textbf{Console} (left), \textbf{Environment} (top right), and \textbf{Files} (bottom right) - more on what each of these panes are for in a second.
+
+\pandocbounded{\includegraphics[keepaspectratio]{img/rstudio_first.png}}
+
+In our new project, \textbf{\emph{rintro}}, we are going to open the ``Source'' pane (again, more on this in a moment), which we will often use for writing code and viewing datasets.
 
 \subsection{Opening the Source Pane}\label{opening-the-source-pane}
 
@@ -540,18 +538,16 @@ Let's briefly describe the purpose of each pane:
 \item
   \textbf{Console Pane}: Where you can write R code or enter commands into R. The console also displays various outputs from your R scripts. For example, if you create a script for running a t-test, the results will appear here. Any error or warning messages related to your code will also be highlighted in the console. In short, this is where R actually runs your code.
 \item
-  \textbf{Environment Pane}: Displays information about datasets and variables imported or created in R within a specific project. The ``History'' tab shows a history of R code executed during the project. This pane is helpful for reviewing your work or returning to a project after some time.
+  \textbf{Environment Pane}: The ``Environment'' tab Displays information about the datasets and variables imported or created in R within a specific project. The ``History'' tab shows a history of R code executed during the project. This pane is helpful for reviewing your work or returning to a project after some time.
 \item
   \textbf{Files Pane}: Includes project files (Files tab), outputs of plots you create (Plots tab), a list of downloaded packages (Packages tab), and help documentation about R functions (Help tab).
 \end{itemize}
 
-We will use all four panes extensively during these classes.
+We use all four panes during these classes.
 
 \subsection{Checking our Working Directory}\label{checking-our-working-directory}
 
-Every time you open a project or file in RStudio, it's good practice to check the working directory. The working directory is the environment on your computer where R is currently operating.
-
-Ideally, you want the working directory to match the location of your R project. This ensures that any files you import into RStudio or any files you export (datasets, results, graphs) can be easily found in your R project folder. Checking the working directory can help prevent many common R problems.
+Every time you open a project or file in RStudio, it's good practice to check the working directory. The working directory is the location in your computer where R is currently operating. Ideally, you want the working directory to match the same location in your computer as your R project. This ensures that any files from your R project are easily imported into R and than any files exported from R (e.g.~results, figures, tables) will be saved to the R project folder, making it easier to find them. Checking the working directory can help prevent many common R problems.
 
 To check the working directory, type the following into the console pane:
 
@@ -562,10 +558,10 @@ To check the working directory, type the following into the console pane:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro"
+## [1] "C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro"
 \end{verbatim}
 
-This will display the current working directory where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (\textbf{Option 2}).
+This will display the current working directory (i.e.~location) where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (\textbf{Option 2}).
 
 \subsection{Setting up a new Working Directory}\label{set_wd}
 
@@ -582,7 +578,7 @@ In our R Project, we are going to create a folder for Week 1 of the workshop. An
 \begin{itemize}
 \tightlist
 \item
-  By default, you should be in your R Project (e.g., \textbf{\emph{rintro}}).
+  By default, this should be in your R Project (e.g., \textbf{\emph{rintro}}).
 \end{itemize}
 
 \begin{itemize}
@@ -594,13 +590,13 @@ In our R Project, we are going to create a folder for Week 1 of the workshop. An
 
 \pandocbounded{\includegraphics[keepaspectratio]{img/01-new_wd.png}}
 
-You should see something like the following in your console
+You should see something like the following in your console.
 
 \begin{verbatim}
 > setwd("C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/week1")
 \end{verbatim}
 
-Check whether this location is where you want to store your files for this course. If it is, you're all set. If not, let me know during class.
+Again my working directory won't match yours, but as long as it is pointing to the ``week1'' folder inside the ``rintro'' folder, then you are all set. If that does not work, then try resetting your working directory following the same steps: Click ``Session'' in the RStudio toolbar → Select ``Set Working Directory'' → Click ``Choose Directory.''
 
 \subsection{Changing some default settings}\label{changing-some-default-settings}
 
@@ -618,7 +614,7 @@ Like most applications, RStudio comes with default settings, some of which can b
 
 \section{Writing our first R Code}\label{writing-our-first-r-code}
 
-Let's write our first line of R code in the console. The R console uses the prompt symbol \texttt{\textgreater{}} to indicate that it is ready for a new line of code.
+Okay we have R and RStudio/Posit Cloud all set up. Now let's write our first line of R code in the console. The R console uses the prompt symbol \texttt{\textgreater{}} to indicate that it is ready for a new line of code.
 
 Type in each of the following instructions (after the \texttt{\textgreater{}} prompt) and press Enter. Feel free to modify the second line of code to include your own name:
 
@@ -644,9 +640,9 @@ Type in each of the following instructions (after the \texttt{\textgreater{}} pr
 
 Congratulations, you've written your first piece of code!
 
-Let's describe what is going on here. We used a function called print() to print the words ``Hello World'' and ``My name is Ryan, and I am learning to code in R'' in the console. Functions are equivalent to verbs in the English language---they describe actions. Here, R identifies the \texttt{print()} function, looks inside the parentheses to see what we want to print, and then displays the specified text. Pretty straightforward.
+Let's describe what is going on here. We used a function called \texttt{print()} to print the words ``Hello World'' and ``My name is Ryan, and I am learning to code in R'' in the console. Functions are equivalent to verbs in the English language---they describe actions. Here, R identifies the \texttt{print()} function, looks inside the parentheses to see what we want to print, and then displays the specified text.
 
-Functions are a core programming concept, and there is a lot more going on under the hood than I have described so far. We'll revist functions repeatedly and filling you in with more information. But in essence, functions are verbs that enable us to tell our computer what actions to perform.
+Functions are a core programming concept, and there is a lot more involved in functions than I have described so far. We will use functions repeatedly in this course, so they are important, and we will explore functions in significantly more depth. But for now, functions are verbs that tell our computer what actions to perform.
 
 \section{Console vs Source Script}\label{console-vs-source-script}
 
@@ -654,20 +650,20 @@ You might have noticed that I asked you to write code in the console rather than
 
 \begin{itemize}
 \item
-  \textbf{Console}: This is like having a live chat with R. You type commands, and R executes them immediately. The console is great for experimentation and quick feedback but not ideal for saving or organising your work.
+  \textbf{Console}: Writing code in the console is similar to having a live chat with R. You type commands, and R executes them immediately. The console is great for experimentation and quick feedback but not ideal for saving or organising your work.
 \item
-  \textbf{Source Script}: This is where you write and save your code in a structured format. Scripts allow you to keep a record of your work, organise it into sections, and rerun it later. Think of the source pane as a document for your final code.
+  \textbf{Source Script}: Writing code in scripts is similar to writing down what you are going to say before you call someone. Scripts allow you to keep a record of your work, organise it into sections and a coherent structure, and rerun it later. Think of the source pane as a document for your final code.
 \end{itemize}
 
-From now on, we'll write most of our code in R scripts. If I want you to use the console, I'll let you know.
+From now on, we'll write most of our code in R scripts. If I want you to use the console, I'll let you know. But the default is to write code in scripts. Let's do that now.
 
 \section{Let's write some statistical code}\label{firstpieceofcode}
 
-Now that we've talked a lot about R and RStudio, let's write some code that will:
+Let's write some code that will.
 
 \begin{itemize}
 \item
-  Take a dataset
+  Import a dataset
 \item
   Calculate descriptive statistics
 \item
@@ -758,11 +754,11 @@ However, this isn't quite what we need. For instance, we don't need descriptives
 \CommentTok{\#Here is what the code means}
 
 
-\CommentTok{\# code: data = sleep meaning: Go to the sleep data set}
+\CommentTok{\# code: data = sleep {-}\textgreater{} Go to the sleep data set}
 
-\CommentTok{\# code: extra \textasciitilde{} group meaning: Take the variable "extra" and split it into subsets based on the variable "group"}
+\CommentTok{\# code: extra \textasciitilde{} group {-}\textgreater{}  Take the variable "extra" and split it into subsets based on the variable "group"}
 
-\CommentTok{\# code: FUN = mean meaning: Apply the mean() function (FUN) on each subset }
+\CommentTok{\# code: FUN = mean {-}\textgreater{} Apply the mean() function (FUN) on each subset, i.e. calculate the mean per each subset }
 \end{Highlighting}
 \end{Shaded}
 
@@ -798,7 +794,10 @@ The \textbf{\texttt{plot()}} function automatically determines the most appropri
 
 
 
-\FunctionTok{plot}\NormalTok{(sleep}\SpecialCharTok{$}\NormalTok{group, sleep}\SpecialCharTok{$}\NormalTok{extra, }\AttributeTok{xlab =} \StringTok{"Treatment"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Hours of Sleep"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Effect of Treament on Sleep Duration"}\NormalTok{)  }
+\FunctionTok{plot}\NormalTok{(sleep}\SpecialCharTok{$}\NormalTok{group, sleep}\SpecialCharTok{$}\NormalTok{extra, }
+     \AttributeTok{xlab =} \StringTok{"Treatment"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Hours of Sleep"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Effect of Treament on Sleep Duration"}\NormalTok{)  }
 \end{Highlighting}
 \end{Shaded}
 
@@ -812,7 +811,7 @@ This plot is more descriptive and also suggests a difference between the two gro
 
 \subsection{Saving the Plot}\label{saving-the-plot}
 
-Now, let's take this plot and save it to a PDF so that we can share our results with others. The standard way of doing this in R is a bit cumbersome. We have to tell R that we are about to create a plot that we want to make into a PDF. Then we have to generate the plot. Then we have to tell R we are done with creating the PDF. We'll learn a much simpler way to do this in future weeks, but this will do for now.
+Now, let's take this plot and save it to a PDF so that we can share our results with others. The standard way of doing this in R is a bit cumbersome. We have to tell R that we are about to create a plot that we want to make into a PDF. Then we have to generate the plot. Then we have to tell R we are done with creating the PDF. We'll learn a much simpler way to do this later on in the course, but this will do for now.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -834,11 +833,11 @@ Go to the files pane, and open up the pdf ``myplot.pdf''. It should be in your w
 
 \subsection{Comments}\label{comments}
 
-You might have noticed that I wrote several lines of text with a \textbf{\texttt{\#}} before them. These are known as comments. Comments are pieces of text that R ignores---they are not executed as part of the code. They are fundamental to writing clear and understandable code.
+You might have noticed that I wrote several lines of text with a \textbf{\texttt{\#}} before them. These are known as comments. Comments are pieces of text that R ignores - they are not executed as part of the code.
 
 We create comments using the \textbf{\texttt{\#}} symbol. This tells R to ignore everything that comes \textbf{after} the \texttt{\#} on the same line.
 
-Comments serve a variety of purposes:
+Comments are fundamental to writing clear and understandable code, as they can serve a variety of purposes. In the figure below, you can see four different types of comments
 
 \begin{figure}
 \centering
@@ -846,23 +845,21 @@ Comments serve a variety of purposes:
 \caption{\label{fig:unnamed-chunk-27}Four Examples of Comments Use}
 \end{figure}
 
-In the above figure, you'll see four different types of comments.
-
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Provide an Introduction}: It can be really useful here to provide clear information on what this script is trying to do, what data it is working on (the sleep dataset), and who wrote or developed this script. This makes it significantly easier for anyone who might be reviewing your work or trying to apply your code to their own work to understand what is going on.
+  \textbf{Provide an Introduction}: This comments provides clear information on what the script is doing, what data it is doing it on (sleep dataset), and who wrote the script. Introduction comments help orient and provide context for anyone reviewing or trying to apply your code to their own data, making it significantly easier to understand what is going on.
 \item
-  \textbf{Structure Your Script}: The second type of comment structures the format of the script by providing headings or steps. Again, this just makes it easier to understand what is going on.
+  \textbf{Structure Your Script}: This comment structures the format of the script by providing headings or steps. Again, this makes it significantly easier to understand what is going on.
 \item
-  \textbf{Disable Code Temporarily}: The third type of comment is placed before the summary. This means that the code \textbf{\texttt{summary(sleep)}} will not be executed in R. Why would we do this? If we wanted to temporarily disable a piece of code but not delete it, because we think might be useful later. This is useful if you want to skip certain steps or keep old code for reference.
+  \textbf{Disable Code Temporarily}: This comments disables the code \textbf{\texttt{summary(sleep)}}, so it will not be executed in R. Remember, any piece of information that placed after a \texttt{\#} and on the same line will be ignored by R. But why would we want to disable code? In this case, it's because we do not need the \textbf{\texttt{summary(sleep)}} right now, but we keep it there in case it is useful later on. There are also other reasons why we would want to disable code, such as: assessing whether the code is causing an error in our script, if the code takes a long time to run and we do not need it right now, or if we just want to skip that line of code for now.
 \item
-  \textbf{Explain Specific Lines of Code}: The fourth type of comment provides some context or information on what a specific line of code is doing, namely, what the \textbf{\texttt{aggregate()}} function does. Again, this is really useful, particularly if you are using functions that are not well-known.
+  \textbf{Explain Specific Lines of Code}: This comments provides some context or information on what a specific line of code is doing, namely, what the \textbf{\texttt{aggregate()}} function does. Again, this is really useful, particularly if you are using functions that are not well-known.
 \end{enumerate}
 
 \subsection{Why Comments Are Important}\label{why-comments-are-important}
 
-Writing comments is like leaving notes for your future self (or for others working with your code). Imagine this scenario: you spend weeks creating a detailed R script to clean a messy dataset and run complex analyses. Months later, a reviewer or your supervisor asks for changes. When you reopen your script, you realise you've forgotten what each piece of code does! Without comments, you may spend hours trying to understand your own work.
+Writing comments is like leaving notes for your future self (or for others working with your code). Imagine this scenario: you spend weeks creating a detailed R script to clean a messy dataset and run several analyses. Months later, a reviewer or your supervisor asks you to change your statistical approach. You go back to your script, reopen it, and realise you have forgotten what most of your code is doing! Without comments, you may spend days/hours trying to understand your own work.
 
 By including comments, you save time and frustration. Additionally, comments help you solidify your understanding by requiring you to explain your code as you write it.
 
@@ -1695,19 +1692,19 @@ A vector in R is like a list of items. To be more specific, vectors in R are act
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-index_numeric.png}}
-\caption{\label{fig:unnamed-chunk-67}Indexing for Numeric Vector}
+\caption{\label{fig:unnamed-chunk-66}Indexing for Numeric Vector}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-index-character.png}}
-\caption{\label{fig:unnamed-chunk-68}Indexing for Character Vector}
+\caption{\label{fig:unnamed-chunk-67}Indexing for Character Vector}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-index-logical.png}}
-\caption{\label{fig:unnamed-chunk-69}Indexing for Logical Vector}
+\caption{\label{fig:unnamed-chunk-68}Indexing for Logical Vector}
 \end{figure}
 
 This property in vectors means we are capable of extracting specific items from a vector based on their position. If I wanted to extract the first item in my list, I can do this by using \textbf{\texttt{{[}{]}}} brackets:
@@ -1857,7 +1854,7 @@ So whenever you think of a vector, just remember that it refers to a line of dat
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-vectors-summarised.png}}
-\caption{\label{fig:unnamed-chunk-82}Vectors can visually conceptualised as a column or row of data.}
+\caption{\label{fig:unnamed-chunk-81}Vectors can visually conceptualised as a column or row of data.}
 \end{figure}
 
 What happens when we combine different vectors (columns and rows) together? We create a \textbf{\texttt{data\ frame}}.
@@ -1869,7 +1866,7 @@ A data frame is a rectangular data structure that is composed of rows and column
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/03-dataframes_vectors.png}}
-\caption{\label{fig:unnamed-chunk-83}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
+\caption{\label{fig:unnamed-chunk-82}The relationship between data frames and vectors. The different colours in the data frame indicate they are composed of independent vectors}
 \end{figure}
 
 Data frames are an excellent way to store and manage data in R because they can store different types of data (e.g., character, numeric, integer) all within the same structure.
@@ -3071,7 +3068,7 @@ Once a package is installed, you need to \textbf{load it} into your R session us
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/04-praise-loaded.png}}
-\caption{\label{fig:unnamed-chunk-131}Loading Packages through RStudio Interface}
+\caption{\label{fig:unnamed-chunk-129}Loading Packages through RStudio Interface}
 \end{figure}
 
 You should see something like the following in your R console (don't worry if you get a warning message like mine, or if you don't receive a warning message)
@@ -3123,7 +3120,7 @@ Let's test the \texttt{praise} package, which generates random compliments (not 
 \end{verbatim}
 
 \begin{verbatim}
-## [1] "You are fine!"
+## [1] "You are badass!"
 \end{verbatim}
 
 \begin{Shaded}
@@ -3226,7 +3223,7 @@ There are important rules to follow when writing code to install and load packag
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/04-packages-convention.png}}
-\caption{\label{fig:unnamed-chunk-140}Conventions for Installing and Loading Packages in R Script}
+\caption{\label{fig:unnamed-chunk-138}Conventions for Installing and Loading Packages in R Script}
 \end{figure}
 
 \subsection{Summary}\label{summary-2}
@@ -3266,7 +3263,7 @@ To import the ``psycho.csv'' file, please follow these steps:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro"
+## [1] "C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4249,7 +4246,7 @@ This chapter aims to supplement your in-lecture learning about data visualizatio
 
 \section{Activities}\label{activities-5}
 
-As in previous sessions there are several activities associated with this chapter. You can find them on Canvas under the \textbf{Week 9 module}.
+As in previous sessions there are several activities associated with this chapter. \href{https://quartopub.com/sites/ff76f9df-9aa3-44a6-9b3e-7ebd9bdabb81}{You can find them here} or on Canvas under the \textbf{Week 9 module}.
 
 \section{\texorpdfstring{Introduction to \texttt{ggplot2}}{Introduction to ggplot2}}\label{introduction-to-ggplot2}
 
@@ -4264,7 +4261,7 @@ In our first session, we analysed the \texttt{sleep} data frame. This involved c
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-174-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-172-1.pdf}}
 
 This is a perfectly fine plot. But R is capable of making plots that are significantly nicer and elegant. This ability represents a significant advantage of using R over other programmning languages or statistical softwaere. This is thanks to the \texttt{ggplot2} package and the \texttt{ggplot()} function.
 
@@ -4292,7 +4289,7 @@ The first thing we do when we want to create a plot is call the \texttt{ggplot()
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-176-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-174-1.pdf}}
 
 This creates a grey canvas where we can draw our plot on. The default R canvas is grey, but we can change its appearance later.
 
@@ -4306,7 +4303,7 @@ Now we will want to add properties to our canvas, like the x and y-axis. This pr
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-177-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-175-1.pdf}}
 
 Now we can see that our x-axis is mapped to the two values in our \texttt{group} variable(1 and 2), whereas the y-axis is mapped to the range of values in the \texttt{extra} variable.
 
@@ -4323,7 +4320,7 @@ For now, we will add a single geom. Since we are creating a boxplot, we'll add \
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-178-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-176-1.pdf}}
 
 We can see that R has now drawn box plots for each of our groups. You'll notice that we used the \texttt{+} operator to add these parts together. This is because we are literally adding this boxplot shape to the canvas we created earlier. Whenever you add a separate element to your graph in ggplot, we always need to use the \texttt{+} operator.
 
@@ -4335,7 +4332,7 @@ In terms of syntax, it should always come at the end of line of code, not at the
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-179-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-177-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4361,7 +4358,7 @@ To do this, we need to tell R to create a shape based on statistical properties 
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-180-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-178-1.pdf}}
 
 Now we have our whisker lines. The error bar lines are slightly too large for me. We can change their \texttt{width} within the \texttt{stat\_boxplot()} function.
 
@@ -4373,7 +4370,7 @@ Now we have our whisker lines. The error bar lines are slightly too large for me
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-181-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-179-1.pdf}}
 
 \subsection{Changing the Name of Our X-Axis and Y-Axis}\label{changing-the-name-of-our-x-axis-and-y-axis}
 
@@ -4389,7 +4386,7 @@ Okay, our plot is looking better. The next thing we will want to do is add infor
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-182-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-180-1.pdf}}
 
 There now we have our x and y-labels. The reason why the x-axis is \texttt{discrete} and the y-axis is \texttt{continuous} is because of the nature of the data. If we flipped the axes, then it would be scale\_x\_continuous and scale\_y\_discrete.
 
@@ -4409,7 +4406,7 @@ One approach to amend this would be to add labels to the x-axis, in \texttt{scal
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-183-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-181-1.pdf}}
 
 \subsection{Changing the Look (Theme) of Our Canvas}\label{changing-the-look-theme-of-our-canvas}
 
@@ -4430,7 +4427,7 @@ Since we are psychologists, we will mostly need plots in \texttt{APA} style. The
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-184-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-182-1.pdf}}
 
 \section{The Real Power of the ggplot package - Customisation}\label{the-real-power-of-the-ggplot-package---customisation}
 
@@ -4477,7 +4474,7 @@ In the last section, we used the argument \texttt{fill\ =\ grey} to specify the 
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-186-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-184-1.pdf}}
 This approach is okay if are only specifying a limited number of colours, but if there are several colours we need to specify, it is cumbersome.
 
 It is okay to manually specify the colours, particularly if you have a small number of box plots. However, one of the advantages of using R is getting it to do the work for you. In particular, we can ask R to map the colour of the boxplots to specific values in our data frame.
@@ -4497,7 +4494,7 @@ We can do this through a similar approach used in \texttt{ggplot()} where we add
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-187-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-185-1.pdf}}
 
 Luckily, R will choose colours that are visually distinct from each other. ANB you may notice that the legend labels (1, 2) are not the most informative. This is because when we relabel them on the x axis this just relabels them there. Next week we are going to learn a neater way to change the labels in the data itself.
 
@@ -4522,7 +4519,7 @@ I can tell R to specify the number of breaks on the y-axis. At the moment, it is
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-188-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-186-1.pdf}}
 \#\#\# Changing the Orientation
 
 We can also change the orientation of our graph in \texttt{ggplot()}. All we need to do is change the \texttt{x} and \texttt{y} values in the \texttt{ggplot()} call. And then we just need to change \texttt{scale\_y\_continuous} to \texttt{scale\_y\_discrete}, and \texttt{scale\_x\_discrete} to \texttt{scale\_x\_continuous}.
@@ -4542,7 +4539,7 @@ We can also change the orientation of our graph in \texttt{ggplot()}. All we nee
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-189-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-187-1.pdf}}
 
 This option is really handy if you have lots of different categorical groups and your struggling to fit your graph onto the page. Let me demonstrate with the \texttt{mpg} data set that is already installed when you download R.
 
@@ -4555,7 +4552,7 @@ This option is really handy if you have lots of different categorical groups and
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-190-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-188-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4566,7 +4563,7 @@ This option is really handy if you have lots of different categorical groups and
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-190-2.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-188-2.pdf}}
 
 \subsection{Plotting our Data Points in the Graph}\label{plotting-our-data-points-in-the-graph}
 
@@ -4588,7 +4585,7 @@ What if I wanted to add individual data points to our graph? To provide more inf
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-191-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-189-1.pdf}}
 
 This is a perfectly legitimate approach to take. There is not a lot of data, so we can make our each individual point, even if there is some overlap. However, we can use another approach called \texttt{geom\_jitter()}. This will plot each individual point just like \texttt{geom\_point()} does, but it will add some random movement (i.e.~a jitter) to each point. This can prevent overplotting of individual points.
 
@@ -4608,7 +4605,7 @@ This is a perfectly legitimate approach to take. There is not a lot of data, so 
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-192-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-190-1.pdf}}
 
 The added space left or right for each data point is randomly generated. But we can reduce the upper and lower bounds of that random generation. Let's do that for our current plot.
 
@@ -4628,7 +4625,7 @@ The added space left or right for each data point is randomly generated. But we 
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-193-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-191-1.pdf}}
 
 \subsection{Adding Statistical Information to Our Plot}\label{adding-statistical-information-to-our-plot}
 
@@ -4651,7 +4648,7 @@ No problem. To do this, we need to tell R to draw a \texttt{geom} shape in the p
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-194-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-192-1.pdf}}
 
 This draws a dot exactly where the mean value falls for both the \texttt{Xanax} and \texttt{Ambien} treatment groups fall. I changed the size of the point to make it more visible salient than the other data points.
 
@@ -4681,7 +4678,7 @@ We can also add the results of our t-test we ran in the first session to the plo
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-195-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-193-1.pdf}}
 
 \subsection{Exporting our Plot}\label{exporting-our-plot}
 
@@ -4740,7 +4737,7 @@ First, let's call the ggplot() function, mapping Extraversion to the x-axis and 
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-197-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-195-1.pdf}}
 
 Now let's add our geometrical shape. For scatter plots, this is our old friend \texttt{geom\_point()}.
 
@@ -4751,7 +4748,7 @@ Now let's add our geometrical shape. For scatter plots, this is our old friend \
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-198-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-196-1.pdf}}
 
 I am happy with the x-axis, but I would like the make the y-axis look more professional. So let's use \texttt{scale\_y\_continous()} to change its label.
 
@@ -4763,7 +4760,7 @@ I am happy with the x-axis, but I would like the make the y-axis look more profe
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-199-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-197-1.pdf}}
 Let's make our plot prettier by adding the APA theme.
 
 \begin{Shaded}
@@ -4775,7 +4772,7 @@ Let's make our plot prettier by adding the APA theme.
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-200-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-198-1.pdf}}
 It's good to provide some information on the relationship between two variables on a scatter plot. We can do this by adding a regression line that best fits their relationship. To do this in R, we add a \texttt{geom} called \texttt{geom\_smooth}, where we specify the model (method) we want to fit onto our data.
 
 \begin{Shaded}
@@ -4793,7 +4790,7 @@ It's good to provide some information on the relationship between two variables 
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-201-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-199-1.pdf}}
 The function \texttt{geom\_smooth} fits a model onto our data. When you specify \texttt{method\ =\ lm}, this mean that you are fitting a linear regression onto your data. I also set \texttt{show.legend} = \texttt{FALSE} because it create an annoying figure that we don't need.
 
 Based on what we know from our previous sessions (e.g.~Week 7) we compute a simple linear regression through the following code:
@@ -4846,7 +4843,7 @@ Based on our plot and our linear regression model, we can see there is a small p
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-203-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-201-1.pdf}}
 While this gets the message across, it is annoying that \texttt{F}, \texttt{p}, and \texttt{R} are not italicised. Additionally, how can we superscript the \texttt{2} in \texttt{R\^{}2}? We can use the \texttt{expression()} function inside \texttt{label}. The syntax is a bit clunky, but it will get the job done.
 
 \begin{Shaded}
@@ -4866,7 +4863,7 @@ While this gets the message across, it is annoying that \texttt{F}, \texttt{p}, 
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-204-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-202-1.pdf}}
 
 That looks nice and our scatter plot is ready to be exported.
 
@@ -4893,7 +4890,7 @@ We can map the \texttt{colour} of the points and their \texttt{shape} to the var
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-205-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-203-1.pdf}}
 This changes the colour and shape of the data points depending on whether the participant was male or female. It also adds a regression line for the male participants scores and the female participants scores. So we can see that male participants experienced more Joy than female participants during the study, but the nature of the relationship is very similar for both males and females (e.g.~small positive relationship).
 
 If we wanted to go with this approach, we could also map the appearance of the linear regression lines to \texttt{Gender}.
@@ -4919,7 +4916,7 @@ If we wanted to go with this approach, we could also map the appearance of the l
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-206-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-204-1.pdf}}
 
 The second way we can map the \texttt{shape} and \texttt{colour} aesthetics is within the \texttt{geom\_point()} function.
 
@@ -4940,7 +4937,7 @@ The second way we can map the \texttt{shape} and \texttt{colour} aesthetics is w
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-207-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-205-1.pdf}}
 
 If you compare this plot to the previous approach, you'll notice that the colours and shape chosen are the same. The only difference is that there is one linear regression line now for the entire data set, rather than two for male and female participants.
 
@@ -4972,7 +4969,7 @@ The syntax for \texttt{facet\_wrap()} is: \texttt{facet\_wrap(\textasciitilde{}v
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-208-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-206-1.pdf}}
 This can be a really useful tool in data exploration when you want to see differences in relationships or effects between different categories or scores. For the purposes of brevity, I will not go into details here about how to add individual annotations to each chart, \href{https://stackoverflow.com/questions/11889625/annotating-text-on-individual-facet-in-ggplot2}{but please check out the answer given by Pedro Aphalo and Kamil Slowikowski here if you are interested in doing this}.
 
 \section{Combining Charts}\label{combining-charts}
@@ -4996,7 +4993,7 @@ Another hypotheses I wanted to test was if there is a positive relationship betw
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-209-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-207-1.pdf}}
 Well that's as a definite ``NO!'' that you're going to see in a scatterplot.
 
 If you wanted to display and export these three plots together (for the sake of it, I am going to add the box plot in here as well), you can use the \texttt{patchwork} package. Once it is installed, all you need to do is assign your plots to variable names, and then use the \texttt{+}, \texttt{\textbar{}} and \texttt{/} operators together. For more information on how to use \texttt{patchwork}, \href{https://gotellilab.github.io/GotelliLabMeetingHacks/NickGotelli/ggplotPatchwork.html}{then see this web page}.
@@ -5043,7 +5040,7 @@ One thing to note is that you may need to change the appearance of each graph to
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-208-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5056,7 +5053,7 @@ One thing to note is that you may need to change the appearance of each graph to
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-2.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-208-2.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5069,7 +5066,7 @@ One thing to note is that you may need to change the appearance of each graph to
 ## `geom_smooth()` using formula = 'y ~ x'
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-3.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-208-3.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5111,7 +5108,7 @@ A violin plot is a method to depict the distribution of numeric data across diff
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-211-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-209-1.pdf}}
 Inside the \texttt{geom\_violin} function, we specified three arguments: trim, show.legend, and alpha. If the \texttt{trim} argument is \texttt{TRUE}, then the tails of the violin plot are trimmed to match the exact range of the data. If the \texttt{trim} argument is \texttt{FALSE}, it will extend slightly past the range.
 
 \textbf{Trim} - If the \texttt{trim} argument is \texttt{TRUE} (this is the default option), then the tails of the violin plot are trimmed to match the exact range of the data. If the \texttt{trim} argument is \texttt{FALSE}, it will extend slightly past the range.
@@ -5142,7 +5139,7 @@ Let's do this with the \texttt{df\_personality} data frame. We will put \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-212-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-210-1.pdf}}
 
 \section{Bar Chart}\label{bar-chart}
 
@@ -5166,7 +5163,7 @@ A bar chart is great for displaying categorical data. It consists of rectangular
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-213-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-211-1.pdf}}
 
 In \texttt{df\_personality}, there is a variable called \texttt{Publication}. This variable captures whether participants were okay with having their recorded video and audio data potentially published in publications (for context, the participants facial expressions were recorded while they watched each video clip. After each video clip, they were asked to speak about their experiences and this was also recorded).
 
@@ -5185,7 +5182,7 @@ Let's use a \texttt{geom\_bar} to visualise the count for each variable.
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-214-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-212-1.pdf}}
 
 \section{Histograms}\label{histograms}
 
@@ -5206,7 +5203,7 @@ Creating a histogram in ggplot2 is straightforward. We use the geom\_histogram()
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-215-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-213-1.pdf}}
 We can change the bin width by specify it in the \texttt{geom\_histogram()} function. Often you might need to play around with this to get the value you want.
 
 \begin{Shaded}
@@ -5225,7 +5222,7 @@ We can change the bin width by specify it in the \texttt{geom\_histogram()} func
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-216-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-214-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5259,7 +5256,7 @@ Creating a line chart in ggplot2 involves mapping a continuous variable to the x
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-217-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-215-1.pdf}}
 \#\# Making our Plots more Inclusive
 
 We can also specify options to make sure our plots are colour-blind friendly.
@@ -5283,7 +5280,7 @@ We can also specify options to make sure our plots are colour-blind friendly.
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-218-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{rintro_demo_files/figure-latex/unnamed-chunk-216-1.pdf}}
 
 The \texttt{scale\_fill\_viridis\_d()} function uses colour palettes that are distinctive enough to those who suffer from colour-blind issues. There are several options in this function (A to E), feel free to change it and see which ones you like.
 
@@ -5445,7 +5442,7 @@ The \textbf{\texttt{tidyverse}} package is a comprehensive collection of R packa
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/05-tidy-principles.PNG}}
-\caption{\label{fig:unnamed-chunk-219}Tidy Data principles}
+\caption{\label{fig:unnamed-chunk-217}Tidy Data principles}
 \end{figure}
 
 Tidyverse is probably the most well-known package in the R community, but there is controversy behind it. High-profile people in the R community debate about whether \textbf{\texttt{tidyverse}} is actually appropriate for beginners to learn and whether it really is more effective and efficient than base R. Similarly, some of the R community dislike the idea that the \textbf{\texttt{tidyverse}} is the only ``real'' way to conduct data cleaning.
@@ -5482,7 +5479,7 @@ You need to import several files for this activity:
   \textbf{data\_cleaning\_script.R}
 \end{enumerate}
 
-To download these files, navigate to the Teams channel for this course and access the ``Week 4 - Data Cleaning (Part I)'' channel. Once downloaded, use your file management system (File Explorer on Windows or Finder on Mac) to copy and paste these files into the ``Week4'' folder you created in Activity 1.1.
+You can find this files either on Canvas or on the \href{https://osf.io/2v4bs/}{OSF Page.}
 
 If you're using RStudio, you should see these files in your working directory within the Files pane. Open the R script (\textbf{data\_cleaning\_script.R}).
 
@@ -5519,7 +5516,7 @@ A good practice in R is to load packages at the start of your script. In the dow
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/05-tidyverse-install.PNG}}
-\caption{\label{fig:unnamed-chunk-224}Tidyverse Installation}
+\caption{\label{fig:unnamed-chunk-222}Tidyverse Installation}
 \end{figure}
 
 Once installed, uncomment and run the \textbf{\texttt{library(tidyverse)}} in your script to load the package. If installed correctly, you should see the tidyverse package and its dependencies listed in the console. Since tidyverse contains multiple packages, it will load them all at once. So if you see the following then you are good to go.
@@ -5661,7 +5658,7 @@ Description
 \href{https://dplyr.tidyverse.org/articles/base.html?q=rename\#rename-rename-variables-by-name}{rename()} & Rename variables (columns) \\
 \end{longtable}
 
-\section{\texorpdfstring{Choosing our Columns of Interest with \texttt{Select()}}{Choosing our Columns of Interest with Select()}}\label{choosing-our-columns-of-interest-with-select}
+\section{\texorpdfstring{Selecting Columns using \texttt{Select()}}{Selecting Columns using Select()}}\label{selecting-columns-using-select}
 
 When you are first cleaning a data set, the first thing you should do is identify the columns that you might need in your analysis or hold important information. In our cases, these columns would be \texttt{Participant.Private.ID}, \texttt{Experiment.Status}, the response, remote associations, openness, and demographic columns. We can select those columns by using the \texttt{select()} function.
 
@@ -5773,7 +5770,7 @@ If you look at the \texttt{Response} column, it doesn't really provide us with a
 ## 6     2     3     3     2     3
 \end{verbatim}
 
-\section{\texorpdfstring{Renaming our Columns of Interest with \texttt{rename()}}{Renaming our Columns of Interest with rename()}}\label{renaming-our-columns-of-interest-with-rename}
+\section{\texorpdfstring{Renaming Columns with \texttt{rename()}}{Renaming Columns with rename()}}\label{renaming-columns-with-rename}
 
 Our data set is definitely looking cleaner after having shedding those columns, but good grief are those names still ugly. Luckily, we can change their name using the \texttt{rename()} function. The syntax for this function is slightly counter intuitive in its order, as it goes like this: \texttt{rename(df,\ newcolumnane\ =\ oldcolumnname)}
 
@@ -5809,7 +5806,7 @@ Our data set is definitely looking cleaner after having shedding those columns, 
 ## 6         54     2     3     3     2     3
 \end{verbatim}
 
-\section{\texorpdfstring{Creating new Columns using the \texttt{mutate()} function}{Creating new Columns using the mutate() function}}\label{creating-new-columns-using-the-mutate-function}
+\section{\texorpdfstring{Creating New Columns using \texttt{mutate()}}{Creating New Columns using mutate()}}\label{creating-new-columns-using-mutate}
 
 Okay, so we have gotten rid of superfluous columns and cleaned up the names of the ones we have left. But there is still a column ``missing''. At the moment, we have participants' scores on individual items for Openness to Experience. But unless we are running a reliability or factor analysis, we actually want participants' total level of openness.
 
@@ -5896,7 +5893,7 @@ If we do not need the individual items, then there is an argument in \textbf{\te
 ## 6         54             13
 \end{verbatim}
 
-\subsection{\texorpdfstring{Rewriting existing columns using \texttt{mutate()}}{Rewriting existing columns using mutate()}}\label{rewriting-existing-columns-using-mutate}
+\subsection{\texorpdfstring{Rewriting Existing using \texttt{mutate()}}{Rewriting Existing using mutate()}}\label{rewriting-existing-using-mutate}
 
 If we have a column that contains mistakes, we can use \textbf{\texttt{mutate()}} to rewrite that column's values. The syntax for this is the same as when you are creating new columns with \textbf{\texttt{mutate}}: \textbf{\texttt{mutate(df,\ existing\_column\_name\ =\ instructions\ on\ what\ to\ do\ with\ current\ columns)}}
 
@@ -6072,7 +6069,7 @@ It looks like we have. We can also double-check this by calling the Similarly, i
 
 There we go, we have successfully removed the duplicate from our data frame. Now let's handle the data that was collected when the study was being \texttt{previewed}.
 
-\section{\texorpdfstring{Removing Rows using the \texttt{filter()} Function}{Removing Rows using the filter() Function}}\label{removing-rows-using-the-filter-function}
+\section{\texorpdfstring{Removing Rows Using \texttt{filter()}}{Removing Rows Using filter()}}\label{removing-rows-using-filter}
 
 We can use the \textbf{\texttt{filter()}} function to selectively retain or discard rows in a dataset based on specified conditions. Its syntax is structured as follows: \textbf{\texttt{filter(dataframe,\ condition)}}, where the condition specifies which rows to retain.
 
@@ -6295,194 +6292,6 @@ Now if we call \textbf{\texttt{glimpse()}}, we will see that these columns are n
 ## $ total_openness <int> 16, 15, 17, 14, 16, 14, 17, 15, 14, 14, 15, 18, 14, 14,~
 \end{verbatim}
 
-\section{\texorpdfstring{Summarising our Data by Groups using \texttt{group\_by()} and \texttt{summarise()}}{Summarising our Data by Groups using group\_by() and summarise()}}\label{summarising-our-data-by-groups-using-group_by-and-summarise}
-
-Now our data frame is looking substantially nicer than when we first started.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(df\_filter\_multi)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##         ID age gender condition remote_pos remote_neg remote_neut total_mood
-## 1 10229436  26   male       CAB          0          2           4         61
-## 2 10230533  36 female       CAB          0          4           4         62
-## 3 10230659  45 female       ABC          0          5           0         74
-## 4 10428518  37   male       BCA          0          9           9         68
-## 5 10229522  30 female       CAB          1          1           0         59
-## 6 10229414  36 female       ABC          1          1           1         63
-##   total_openness
-## 1             16
-## 2             15
-## 3             17
-## 4             14
-## 5             16
-## 6             14
-\end{verbatim}
-
-At this point, I am happy to say that the data is cleaned. We do not have any superfluous columns or rows. Our variable names are clear. We have created important new columns and fixed incorrect values in original columns. At this point, I would rename the dataframe to something like \textbf{\texttt{df\_clean}} to make it clear to future me (or to others), which data frame is ready for analysis.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_clean }\OtherTok{\textless{}{-}}\NormalTok{ df\_factor}
-\end{Highlighting}
-\end{Shaded}
-
-Now we can actually start summarizing our data. There are two key functions that enable us to do this: \textbf{\texttt{summarise()}} and \textbf{\texttt{group\_by()}} functions.
-
-The \textbf{\texttt{summarise()}} function enables you to calculate specific descriptive statistics for columns in your data frame. The syntax for summarise is: \textbf{\texttt{summarise(df,\ output\_statistic\ =\ statistic\ function(column))}}. On the left-hand side of \textbf{\texttt{=}}, you name the column that you will be creating and on the right-hand side, you specify the descriptive statistic function that you want to call.
-
-Let's use \textbf{\texttt{summarise()}} to display the number of participants and the mean and SD scores for our numeric variables.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sum\_df }\OtherTok{\textless{}{-}} \FunctionTok{summarise}\NormalTok{(df\_clean, }
-          
-          \AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\CommentTok{\#the n() function counts the number of rows in your sample}
-          
-          \AttributeTok{mean\_remote\_pos =} \FunctionTok{mean}\NormalTok{(remote\_pos),}
-          \AttributeTok{sd\_remote\_pos =} \FunctionTok{sd}\NormalTok{(remote\_pos),}
-          
-          \AttributeTok{mean\_remote\_neg =} \FunctionTok{mean}\NormalTok{(remote\_neg),}
-          \AttributeTok{sd\_remote\_neg =} \FunctionTok{sd}\NormalTok{(remote\_neg),}
-          
-          \AttributeTok{mean\_remote\_neut =} \FunctionTok{mean}\NormalTok{(remote\_neut),}
-          \AttributeTok{sd\_remote\_neut =} \FunctionTok{sd}\NormalTok{(remote\_neut),}
-          
-          \AttributeTok{mean\_openness =} \FunctionTok{mean}\NormalTok{(total\_openness),}
-          \AttributeTok{sd\_openness =} \FunctionTok{sd}\NormalTok{(total\_openness),}
-          
-          \AttributeTok{mean\_mood =} \FunctionTok{mean}\NormalTok{(total\_mood),}
-          \AttributeTok{sd\_mood =} \FunctionTok{sd}\NormalTok{(total\_mood))}
-
-\NormalTok{sum\_df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##    n mean_remote_pos sd_remote_pos mean_remote_neg sd_remote_neg
-## 1 38        4.210526      3.129268        5.710526      2.967462
-##   mean_remote_neut sd_remote_neut mean_openness sd_openness mean_mood  sd_mood
-## 1         6.526316       4.717631      15.15789    1.127694  61.55263 8.916118
-\end{verbatim}
-
-The output of the \textbf{\texttt{summarise()}} function is a data frame. It's somewhat useful to use when you are calculating descriptive statistics for your entire sample, but we'll learn quicker and easier ways to compute these statistics later on in the course. Where \textbf{\texttt{summarise()}} really shines is when you use it in conjunction with \textbf{\texttt{group\_by()}}.
-
-The \textbf{\texttt{group\_by()}} function enables you to group together observations in your data frame based on different categories within a column(s). If you combine \textbf{\texttt{group\_by}} with \textbf{\texttt{summarise}}, then you can calculate specific statistics per each group within your data frame.
-
-Let's first do this with gender.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{group\_gender }\OtherTok{\textless{}{-}} \FunctionTok{group\_by}\NormalTok{(df\_clean, gender)}
-
-\NormalTok{sum\_gen\_df }\OtherTok{\textless{}{-}} \FunctionTok{summarise}\NormalTok{(group\_gender, }
-                        \AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }
-                        
-                        \AttributeTok{mean\_remote\_pos =} \FunctionTok{mean}\NormalTok{(remote\_pos),}
-                        \AttributeTok{sd\_remote\_pos =} \FunctionTok{sd}\NormalTok{(remote\_pos),}
-          
-                        \AttributeTok{mean\_remote\_neg =} \FunctionTok{mean}\NormalTok{(remote\_neg),}
-                        \AttributeTok{sd\_remote\_neg =} \FunctionTok{sd}\NormalTok{(remote\_neg),}
-          
-                        \AttributeTok{mean\_remote\_neut =} \FunctionTok{mean}\NormalTok{(remote\_neut),}
-                        \AttributeTok{sd\_remote\_neut =} \FunctionTok{sd}\NormalTok{(remote\_neut))}
-
-\NormalTok{sum\_gen\_df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   gender     n mean_remote_pos sd_remote_pos mean_remote_neg sd_remote_neg
-##   <fct>  <int>           <dbl>         <dbl>           <dbl>         <dbl>
-## 1 female    20            4             2.94            5.55          2.84
-## 2 male      18            4.44          3.40            5.89          3.18
-## # i 2 more variables: mean_remote_neut <dbl>, sd_remote_neut <dbl>
-\end{verbatim}
-
-We could also do it based on the \textbf{\texttt{condition}}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{group\_condition }\OtherTok{\textless{}{-}} \FunctionTok{group\_by}\NormalTok{(df\_clean, condition)}
-
-\NormalTok{sum\_condition\_df }\OtherTok{\textless{}{-}} \FunctionTok{summarise}\NormalTok{(group\_condition, }
-                        \AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }
-                        
-                        \AttributeTok{mean\_remote\_pos =} \FunctionTok{mean}\NormalTok{(remote\_pos),}
-                        \AttributeTok{sd\_remote\_pos =} \FunctionTok{sd}\NormalTok{(remote\_pos),}
-          
-                        \AttributeTok{mean\_remote\_neg =} \FunctionTok{mean}\NormalTok{(remote\_neg),}
-                        \AttributeTok{sd\_remote\_neg =} \FunctionTok{sd}\NormalTok{(remote\_neg),}
-          
-                        \AttributeTok{mean\_remote\_neut =} \FunctionTok{mean}\NormalTok{(remote\_neut),}
-                        \AttributeTok{sd\_remote\_neut =} \FunctionTok{sd}\NormalTok{(remote\_neut))}
-
-\NormalTok{sum\_condition\_df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 3 x 8
-##   condition     n mean_remote_pos sd_remote_pos mean_remote_neg sd_remote_neg
-##   <fct>     <int>           <dbl>         <dbl>           <dbl>         <dbl>
-## 1 ABC          13            3.92          3.25            5.38          3.15
-## 2 BCA          11            4.55          2.66            7.09          1.92
-## 3 CAB          14            4.21          3.53            4.93          3.27
-## # i 2 more variables: mean_remote_neut <dbl>, sd_remote_neut <dbl>
-\end{verbatim}
-
-In each example, the \textbf{\texttt{group\_by()}} function tells R to pay attention to the participant's score on the specified columns when calculating descriptive statistics. We can also tell R to \textbf{\texttt{group\_by}} two variables at the same time.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{group\_multi }\OtherTok{\textless{}{-}} \FunctionTok{group\_by}\NormalTok{(df\_clean, condition, gender)}
-
-\NormalTok{multi\_df }\OtherTok{\textless{}{-}} \FunctionTok{summarise}\NormalTok{(group\_multi,}
-                      \AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }
-                        
-                        \AttributeTok{mean\_remote\_pos =} \FunctionTok{mean}\NormalTok{(remote\_pos),}
-                        \AttributeTok{sd\_remote\_pos =} \FunctionTok{sd}\NormalTok{(remote\_pos),}
-          
-                        \AttributeTok{mean\_remote\_neg =} \FunctionTok{mean}\NormalTok{(remote\_neg),}
-                        \AttributeTok{sd\_remote\_neg =} \FunctionTok{sd}\NormalTok{(remote\_neg),}
-          
-                        \AttributeTok{mean\_remote\_neut =} \FunctionTok{mean}\NormalTok{(remote\_neut),}
-                        \AttributeTok{sd\_remote\_neut =} \FunctionTok{sd}\NormalTok{(remote\_neut))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## `summarise()` has grouped output by 'condition'. You can override using the
-## `.groups` argument.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{multi\_df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 6 x 9
-## # Groups:   condition [3]
-##   condition gender     n mean_remote_pos sd_remote_pos mean_remote_neg
-##   <fct>     <fct>  <int>           <dbl>         <dbl>           <dbl>
-## 1 ABC       female     6            4             3.74            5.67
-## 2 ABC       male       7            3.86          3.08            5.14
-## 3 BCA       female     6            5.17          2.14            7.33
-## 4 BCA       male       5            3.8           3.27            6.8 
-## 5 CAB       female     8            3.12          2.85            4.12
-## 6 CAB       male       6            5.67          4.08            6   
-## # i 3 more variables: sd_remote_neg <dbl>, mean_remote_neut <dbl>,
-## #   sd_remote_neut <dbl>
-\end{verbatim}
-
-Running this block of code will produce the warning: \textbf{\texttt{summarise()\ has\ grouped\ output\ by\ \textquotesingle{}condition\textquotesingle{}.\ You\ can\ override\ using\ the\ .groups\ argument.}} This basically means that R will summarize by \textbf{\texttt{condition}} first. That's why in the output you see the groups clumped together (e.g., ABC - female, ABC - male; BCA - female\ldots).
-
 There we have it! We have successfully cleaned our first data frame in R. Well done.
 
 \section{Chaining it All Together with the Pipe Operator}\label{chaining-it-all-together-with-the-pipe-operator}
@@ -6583,44 +6392,8 @@ If we wanted to clean our \texttt{remote\_associations} data frame using \texttt
   
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{gender =} \FunctionTok{as.factor}\NormalTok{(gender),}
          \AttributeTok{condition =} \FunctionTok{as.factor}\NormalTok{(condition)) }
-  
-  
-  
-\NormalTok{df\_clean\_pipe }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{group\_by}\NormalTok{(condition, gender) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{summarise}\NormalTok{(}
-            \AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }
-                        
-            \AttributeTok{mean\_remote\_pos =} \FunctionTok{mean}\NormalTok{(remote\_pos),}
-            \AttributeTok{sd\_remote\_pos =} \FunctionTok{sd}\NormalTok{(remote\_pos),}
-          
-            \AttributeTok{mean\_remote\_neg =} \FunctionTok{mean}\NormalTok{(remote\_neg),}
-            \AttributeTok{sd\_remote\_neg =} \FunctionTok{sd}\NormalTok{(remote\_neg),}
-          
-            \AttributeTok{mean\_remote\_neut =} \FunctionTok{mean}\NormalTok{(remote\_neut),}
-            \AttributeTok{sd\_remote\_neut =} \FunctionTok{sd}\NormalTok{(remote\_neut))}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## `summarise()` has grouped output by 'condition'. You can override using the
-## `.groups` argument.
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 6 x 9
-## # Groups:   condition [3]
-##   condition gender     n mean_remote_pos sd_remote_pos mean_remote_neg
-##   <fct>     <fct>  <int>           <dbl>         <dbl>           <dbl>
-## 1 ABC       female     6            4             3.74            5.67
-## 2 ABC       male       7            3.86          3.08            5.14
-## 3 BCA       female     6            5.17          2.14            7.33
-## 4 BCA       male       5            3.8           3.27            6.8 
-## 5 CAB       female     8            3.12          2.85            4.12
-## 6 CAB       male       6            5.67          4.08            6   
-## # i 3 more variables: sd_remote_neg <dbl>, mean_remote_neut <dbl>,
-## #   sd_remote_neut <dbl>
-\end{verbatim}
 
 The pipe operator enables us to produce the same output as before, but with significantly cleaner code. By chaining together commands, we reduce the need for intermediate data frames and make our data cleaning process more efficient.
 
@@ -6760,7 +6533,7 @@ Now that we've loaded the necessary package and imported our data, we can procee
     Use the \textbf{\texttt{mutate()}} function to convert the columns relating to experimental condition and gender to factors using \textbf{\texttt{as.factor()}}.
   \end{itemize}
 \item
-  \textbf{Finalize Cleaning:}
+  \textbf{Finalise Cleaning:}
 
   \begin{itemize}
   \tightlist
@@ -6783,7 +6556,7 @@ Well done. You have cleaned your first data sets in R. The functions that we use
 
 \chapter{Data Wrangling and Cleaning (Part II)}\label{datacleaning2}
 
-In this session, we are going to learn how to clean more challenging data than what we encountered in \hyperref[datacleaning1]{Chapter 5}. In contrast to the last chapter, this section is more of a reference guide than an end-to-end cleaning example. That's because the tools you learn here might not always pop up, or at least are unlikely to all pop up in the one data frame. Nonetheless, when you combine the functions you learn here to clean data with the functions from last week, you will be able to handle an impressive amount (probably around 80\%) of any data cleaning challenges you will encounter in your research.
+In this session, we are going to learn how to clean more challenging data than what we encountered in the \hyperref[datacleaning1]{last chapter}. In contrast to the last chapter, this section is more of a reference guide than an end-to-end cleaning example. That's because the tools you learn here might not always pop up, or at least are unlikely to all pop up in the one data frame. Nonetheless, when you combine the functions you learn here to clean data with the functions from last week, you will be able to handle an impressive amount (probably around 80\%) of any data cleaning challenges you will encounter in your research.
 
 By the end of this session, you should be capable of the following:
 
@@ -6804,7 +6577,7 @@ Similar to the last chapter, first we need to set up RStudio and download some d
 
 Remember that the working directory is the location where we want to store any resulting data files or scripts that you'll work on in a session. In Chapter 2, I showed you how to do this using \hyperref[set_wd]{a button-and-click interface}.
 
-Using those instructions, create a folder called ``Week5'' in the \textbf{\texttt{rintro}} project folder (or whatever folder you created) and set it as your working directory. Use the \textbf{\texttt{getwd()}} to check that it has been set as your working directory. Your output should be something like this:
+Using those instructions, create a folder called ``Week11'' in the \textbf{\texttt{rintro}} project folder (or whatever folder you created) and set it as your working directory. Use the \textbf{\texttt{getwd()}} to check that it has been set as your working directory. Your output should be something like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6834,9 +6607,9 @@ You need to import several files for this activity:
   \textbf{raw\_remote\_clean.csv}
 \end{enumerate}
 
-To download these files, navigate to the Teams channel for this course and access the ``Week 5 - Data Cleaning (Part II)'' channel. Once downloaded, use your file management system (File Explorer on Windows or Finder on Mac) to copy and paste these files into the ``Week5'' folder you created in Activity 1.1.
+You can find this files either on Canvas or on the \href{https://osf.io/2v4bs/}{OSF Page.}
 
-f you're using RStudio, you should see these files in your working directory within the Files pane. Create an R script and save it as (\textbf{data\_cleaning\_ii\_script.R}).
+If you're using RStudio, you should see these files in your working directory within the Files pane. Create an R script and save it as (\textbf{data\_cleaning\_ii\_script.R}).
 
 To import the raw\_remote\_associations.csv dataset into R, do the following:
 
@@ -6857,7 +6630,7 @@ To import the raw\_remote\_associations.csv dataset into R, do the following:
   \hyperref[importing]{See Chapter 4's section on importing data for more information}
 \end{enumerate}
 
-Alternatively, you can write and run the following commands within the \textbf{data\_cleaning\_ii\_script.R}. Just make sure they are in the Week 5 folder and that you have set that folder as your working directory.
+Alternatively, you can write and run the following commands within the \textbf{data\_cleaning\_ii\_script.R}. Just make sure they are in the Week 11 folder and that you have set that folder as your working directory.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6967,8 +6740,8 @@ There is a lot of information that will appear in the help section. I want to dr
 There is a lot of potential inputs we can throw in, but I want to highlight the key arguments that you will use most of the time when you use this function
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2778}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7222}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7083}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Argument
@@ -7085,7 +6858,7 @@ Now we have lost our record for identifying which participant contributed to whi
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/06-pivot-visualisation.png}}
-\caption{\label{fig:unnamed-chunk-279}Visual representation of what is pivoted}
+\caption{\label{fig:unnamed-chunk-271}Visual representation of what is pivoted}
 \end{figure}
 
 \subsection{Pivoting our Remote Associations Data Frame}\label{pivoting-our-remote-associations-data-frame}
@@ -7234,12 +7007,12 @@ Now that we've covered converting data frames from wide to long, how can we conv
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{img/06-pivotwider.png}}
-\caption{\label{fig:unnamed-chunk-285}The arguments that we can pass to the pivot\_wider() function}
+\caption{\label{fig:unnamed-chunk-277}The arguments that we can pass to the pivot\_wider() function}
 \end{figure}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2778}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7222}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7083}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Argument
@@ -7887,8 +7660,8 @@ Using just two functions we have significantly cleaned up our data frame by redu
 Now we need to think about cleaning our rows. If you look at the values under the \texttt{Question} and \texttt{Response} columns, you will see relatively strange responses. Let's talk through the values in Question and their associated Response.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2778}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7222}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7083}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Question
@@ -8280,7 +8053,55 @@ For our final step, we can merge our two data frames together into \texttt{clean
 
 That concludes our two sessions on data cleaning. You have covered a lot in these two sessions. The lessons you have learn here are applicable to cleaning the majority of the datasets you will encounter in your research. Well done.
 
-In the next session, we will learn how we can use R to create nice data visualisations. See you then.
+\chapter{\texorpdfstring{Appendix - Understanding Boolean Operators in the Context of \texttt{filter()}}{Appendix - Understanding Boolean Operators in the Context of filter()}}\label{appendix---understanding-boolean-operators-in-the-context-of-filter}
+
+In the Chapter 5, I brushed over what the operators \texttt{\textless{}} and \texttt{\&}, and \texttt{\textbar{}} meant and what they were actually doing in R. Each of these operators are known as Boolean operators in R.
+
+Boolean operators are logical operators used in programming to combine or modify conditions, resulting in either \textbf{\texttt{TRUE}} or \textbf{\texttt{FALSE}} outcomes. In the context of data cleaning in R, Boolean operators help us construct conditions to select specific rows from a data frame based on certain criteria. When using \textbf{\texttt{filter()}}, R evaluates each row in the data frame against the specified conditions, determining whether each row meets the criteria and should be retained or not.
+
+\section{How Boolean Operators Work:}\label{how-boolean-operators-work}
+
+\begin{itemize}
+\item
+  \textbf{Logical AND (\texttt{\&}):} The \textbf{\texttt{\&}} operator evaluates to \textbf{\texttt{TRUE}} only if both conditions on either side of the operator are \textbf{\texttt{TRUE}}. In the context of \textbf{\texttt{filter()}}, rows are retained if they satisfy \textbf{all} conditions joined by \textbf{\texttt{\&}}. For example, \textbf{\texttt{filter(df,\ x\ \textgreater{}\ 5\ \&\ y\ \textless{}\ 10)}} will retain rows where \textbf{\texttt{x}} is greater than \textbf{\texttt{5}} \textbf{and} \textbf{\texttt{y}} is less than \textbf{\texttt{10}}.
+\item
+  \textbf{Logical OR (\texttt{\textbar{}}):} The \textbf{\texttt{\textbar{}}} operator evaluates to \textbf{\texttt{TRUE}} if \textbf{at least one} of the conditions on either side of the operator is \textbf{\texttt{TRUE}}. In the context of \textbf{\texttt{filter()}}, rows are retained if they satisfy \textbf{any} of the conditions joined by \textbf{\texttt{\textbar{}}}. For example, \textbf{\texttt{filter(df,\ x\ \textgreater{}\ 5\ \textbar{}\ y\ \textless{}\ 10)}} will retain rows where \textbf{\texttt{x}} is greater than \textbf{\texttt{5}} \textbf{or} \textbf{\texttt{y}} is less than \textbf{\texttt{10}}.
+\item
+  \textbf{Logical NOT (\texttt{!}):} The \textbf{\texttt{!}} operator negates a condition, converting \textbf{\texttt{TRUE}} to \textbf{\texttt{FALSE}} and vice versa. In the context of \textbf{\texttt{filter()}}, \textbf{\texttt{!}} can be used to exclude rows that satisfy a particular condition. For example, \textbf{\texttt{filter(df,\ !(x\ ==\ 5))}} will exclude rows where \textbf{\texttt{x}} equals \textbf{\texttt{5}}.
+\end{itemize}
+
+\subsection{Understanding R's Evaluation Process:}\label{understanding-rs-evaluation-process}
+
+When applying \textbf{\texttt{filter()}} with Boolean operators, R sequentially evaluates each row in the data frame against the specified conditions. If a row satisfies \textbf{all} conditions joined by \textbf{\texttt{\&}}, or \textbf{any} condition joined by \textbf{\texttt{\textbar{}}}, it is retained in the filtered data frame. Rows that do not meet the specified criteria are excluded from the output.
+
+The following table summarises the main Boolean operators we would use in R
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2192}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5616}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2192}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Operator/Condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{==} & Checks if two values are equal. & \texttt{x\ ==\ 5} evaluates to \texttt{TRUE} if \texttt{x} equals \texttt{5}. \\
+\texttt{!=} & Checks if two values are not equal. & \texttt{x\ !=\ 5} evaluates to \texttt{TRUE} if \texttt{x} does not equal \texttt{5}. \\
+\texttt{\textgreater{}} & Checks if one value is greater than another. & \texttt{x\ \textgreater{}\ 5} evaluates to \texttt{TRUE} if \texttt{x} is greater than \texttt{5}. \\
+\texttt{\textless{}} & Checks if one value is less than another. & \texttt{x\ \textless{}\ 5} evaluates to \texttt{TRUE} if \texttt{x} is less than \texttt{5}. \\
+\texttt{\textgreater{}=} & Checks if one value is greater than or equal to another. & \texttt{x\ \textgreater{}=\ 5} evaluates to \texttt{TRUE} if \texttt{x} is greater than or equal to \texttt{5}. \\
+\texttt{\textless{}=} & Checks if one value is less than or equal to another. & \texttt{x\ \textless{}=\ 5} evaluates to \texttt{TRUE} if \texttt{x} is less than or equal to \texttt{5}. \\
+\texttt{\&} & Logical AND operator; evaluates to \texttt{TRUE} only if both conditions are \texttt{TRUE}. & \texttt{(x\ \textgreater{}\ 5)\ \&\ (y\ \textless{}\ 10)} evaluates to \texttt{TRUE} if \texttt{x} is greater than \texttt{5} AND \texttt{y} is less than \texttt{10}. \\
+\texttt{\textbar{}} & Logical OR operator; evaluates to \texttt{TRUE} if at least one condition is \texttt{TRUE}. & \texttt{(x\ \textgreater{}\ 5)\ \textbackslash{}\textbar{}\ (y\ \textless{}\ 10)} evaluates to \texttt{TRUE} if \texttt{x} is greater than \texttt{5} OR \texttt{y} is less than \texttt{10}. \\
+\texttt{!} & Logical NOT operator; negates a condition. & \texttt{!(x\ ==\ 5)} evaluates to \texttt{TRUE} if \texttt{x} is not equal to \texttt{5}. \\
+\end{longtable}
 
   \bibliography{book.bib,packages.bib}
 

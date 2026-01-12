@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Getting Started with R and RStudio | Introduction to R for Advanced Research Methods (PS6183)</title>
   <meta name="description" content="This GitBook is for the R Workshops" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Getting Started with R and RStudio | Introduction to R for Advanced Research Methods (PS6183)" />
   <meta property="og:type" content="book" />
@@ -53,9 +53,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -157,8 +156,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="rstudio.html"><a href="rstudio.html#downloading-r-on-to-your-computer-personal-laptop-or-desktops-only"><i class="fa fa-check"></i><b>2.3</b> Downloading R on to your Computer (personal laptop or desktops only)</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="rstudio.html"><a href="rstudio.html#downloading-r-on-windows"><i class="fa fa-check"></i><b>2.3.1</b> Downloading R on Windows</a></li>
-<li class="chapter" data-level="2.3.2" data-path="rstudio.html"><a href="rstudio.html#downloading-r-on-mac"><i class="fa fa-check"></i><b>2.3.2</b> Downloading R on Mac</a></li>
+<li class="chapter" data-level="2.3.1" data-path="rstudio.html"><a href="rstudio.html#installing-r-windows"><i class="fa fa-check"></i><b>2.3.1</b> Installing R (Windows)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rstudio.html"><a href="rstudio.html#installing-r-mac"><i class="fa fa-check"></i><b>2.3.2</b> Installing R (Mac)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="rstudio.html"><a href="rstudio.html#install-and-open-rstudio"><i class="fa fa-check"></i><b>2.4</b> Install and Open RStudio</a></li>
 <li class="chapter" data-level="2.5" data-path="rstudio.html"><a href="rstudio.html#creating-an-r-project"><i class="fa fa-check"></i><b>2.5</b> Creating an R Project</a></li>
@@ -453,14 +452,14 @@ Figure 2.1: BBC graphs created in R.
 </div>
 <div id="create-a-posit-cloud-account." class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Create a Posit Cloud Account.<a href="rstudio.html#create-a-posit-cloud-account." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In the next section, you’ll learn how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud). Posit Cloud enables you to run R and RStudio online for free, with no need to install anything.</p>
-<p><strong><em>If you are using the desktops in the lab,</em></strong> then please only use Posit Cloud in all of our R and RStudio classes. It is much easier to run R and RStudio on Posit Cloud than on the absolute tragic disaster of an operating system they use on the desktop Windows machines. Please, please, please do not use the RStudio version on the desktop computers in the lab, or else your R life will be brutal and painful.</p>
+<p>In the next section, you’ll learn how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud). Posit Cloud enables you to run R and RStudio online for free, without installing anything.</p>
+<p><strong><em>If you are using the desktops in the lab,</em></strong> then please only use Posit Cloud in all of our R and RStudio classes. It is much easier to run R and RStudio on Posit Cloud than on the absolute tragic disaster on the limited Windows operating system on the Desktops in the class. Please, please, please do not use the RStudio version on the desktop computers in the lab, or else your R life will be frustrating and painful.</p>
 <p><strong><em>If you are using your own laptop,</em></strong> then use Posit Cloud as a backup option in case any technical issues pop up. During class, we might not be able to solve those issues quickly and efficiently (in a large classroom, one must always account for Murphy’s Law). Rather than being hamstrung by technical difficulties, you can sign into Posit Cloud and keep following along with the session.</p>
 <p>You might be wondering, why not just use Posit Cloud? The reason is that there are some restrictions to the free version of Posit Cloud, namely that you can only use 25 hours per month and are limited in the amount of data you can use during that time. It’s highly unlikely that we will hit those restrictions in the next 10 weeks, but if you primarily use your laptop and Posit Cloud secondarily, then we do not have to worry about that.</p>
 <p>For those of you on the desktop computers, if you do hit the max limit, then get in touch with Ryan (email: ryan.donovan@universityofgalway.ie). The simplest solution is just to create a second Posit Cloud account.</p>
 <div id="instructions-for-creating-a-posit-cloud-account" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Instructions for Creating a Posit Cloud Account<a href="rstudio.html#instructions-for-creating-a-posit-cloud-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To create a Posit Cloud account, please follow the following instructions:</p>
+<p>To create a Posit Cloud account, see the following instructions:</p>
 <ol style="list-style-type: decimal">
 <li><p><a href="https://login.posit.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Fposit.cloud%252Flogin%26client_id%3Dposit-cloud%26response_type%3Dcode%26show_auth%3D0">Go to their sign up page website</a> and enter your details to create an account or Sign up with Google.</p>
 <p><img src="img/01-posit-sign-up.png" /><!-- --></p></li>
@@ -471,15 +470,15 @@ Figure 2.1: BBC graphs created in R.
 <li>Once it is deployed, name your project at the top as <strong><em>rintro</em></strong></li>
 </ol>
 <p><img src="img/01-posit-rintro.png" /><!-- --></p>
-<p>Don’t worry about what anything on the screen means for now. We’ll come back to that in the section <strong>Creating an RProject (2.5).</strong></p>
+<p>Don’t worry about what anything on the screen means for now. We’ll come back to that in the section <strong>Creating an R Project (2.5).</strong></p>
 </div>
 </div>
 <div id="downloading-r-on-to-your-computer-personal-laptop-or-desktops-only" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Downloading R on to your Computer (personal laptop or desktops only)<a href="rstudio.html#downloading-r-on-to-your-computer-personal-laptop-or-desktops-only" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you are using your own personal laptop or desktop (if at home), then please follow the following instructions to download R on either Windows or Mac.</p>
 <p><strong><em>If you are using the Desktops in the lab, do not follow these instructions, as we will be using Posit Cloud</em></strong></p>
-<div id="downloading-r-on-windows" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Downloading R on Windows<a href="rstudio.html#downloading-r-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="installing-r-windows" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Installing R (Windows)<a href="rstudio.html#installing-r-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Go to the website: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></li>
 <li>Under the heading <em>Download and Install R,</em> click <em>Download R for Windows</em></li>
@@ -487,7 +486,7 @@ Figure 2.1: BBC graphs created in R.
 <p><img src="img/01-cran.png" /><!-- --></p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Click the hyperlink <strong><em>base</em></strong> or <strong><em>install R for the first Time</em></strong></p></li>
-<li><p>Click Download R-4.5.2 for Windows (depending on the date you access this, the version of R might have been been updated. That’s okay, you can download the newer version). Let the file download.</p></li>
+<li><p>Click Download R-4.5.2 for Windows (If when you access this page, the number is different, don’t worry. R is continuously updating, so download whatever version is in the equivalent place). Let the file download.</p></li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="img/01-base.png" alt="The R programming language is occasionally updated, so the specific version of R that you see might be different than mine. But that's okay!"  />
@@ -496,12 +495,12 @@ Figure 2.2: The R programming language is occasionally updated, so the specific 
 </p>
 </div>
 <ol start="5" style="list-style-type: decimal">
-<li>Once the file has been downloaded, open it and click “Yes” if you are asked to allow this app to make changes to your device. Choose English as your setup language. The file name should be something like “R-4.5.2.-win” (numbers will differ depending on the version downloaded).</li>
+<li>Once the file has downloaded, open it and click “Yes” if you are asked to allow this app to make changes to your device. Select English as your setup language. The file name should be something like “R-4.5.2.-win” (numbers will differ depending on the version downloaded).</li>
 <li>Agree to the terms and conditions and select a place to install R. The default option is fine.</li>
 </ol>
 </div>
-<div id="downloading-r-on-mac" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Downloading R on Mac<a href="rstudio.html#downloading-r-on-mac" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="installing-r-mac" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Installing R (Mac)<a href="rstudio.html#installing-r-mac" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The instructions are largely the same for Mac.</p>
 <ul>
 <li><p>Go to the website: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p></li>
@@ -509,7 +508,7 @@ Figure 2.2: The R programming language is occasionally updated, so the specific 
 </ul>
 <p><img src="img/01-rstudiodownload-mac.png" /><!-- --></p>
 <ul>
-<li>Check the <strong>Latest release</strong> section for the appropriate version and follow the directions for download. If you are unsure, please ask me.</li>
+<li>Check the <strong>Latest release</strong> section for the appropriate version and follow the directions for download. You will notice there will be two download links, one if your Mac has an Intel Processor or Apple Silicon. If you are unsure which processor your Mac has, see the following webpage for help: <a href="https://help.arcstudiopro.com/all-how-tos/how-do-i-know-if-my-mac-has-intel-processor-or-apple-m1" class="uri">https://help.arcstudiopro.com/all-how-tos/how-do-i-know-if-my-mac-has-intel-processor-or-apple-m1</a>.</li>
 </ul>
 <p><img src="img/01-rversion-mac.png" /><!-- --></p>
 <ul>
@@ -539,8 +538,6 @@ Figure 2.3: Depending on your version of Mac OS, this might look slightly differ
 <p><img src="img/01-rstudiodownload.png" /><!-- --></p>
 <p>Once the file is downloaded, open it and allow it to make changes to your device. Follow the instructions to install the program. I recommend using all the default options during installation.</p>
 <p>After downloading both R and RStudio, open RStudio on your computer. You do not have to open R separately, as RStudio will work with R if everything is set up correctly.</p>
-<p>When you first open RStudio, you will see three panes or “windows” in RStudio: <strong>Console</strong> (left), <strong>Environment</strong> (top right), and <strong>Files</strong> (bottom right).</p>
-<p><img src="img/rstudio_first.png" /><!-- --></p>
 </div>
 <div id="creating-an-r-project" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Creating an R Project<a href="rstudio.html#creating-an-r-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -574,7 +571,7 @@ Figure 2.3: Depending on your version of Mac OS, this might look slightly differ
 </ul>
 <p><strong>Note on Github Repository</strong>: This will probably not appear on your RStudio project, but that’s okay, you don’t need it for this course.</p>
 <p>You can see my example below. Once you’re happy with your input for each option, click “Create Project” This will open up the project <strong><em>rintro</em></strong>.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
 <img src="img/01-newproject-ma.png" alt="New Project Set Up"  />
 <p class="caption">
 Figure 2.4: New Project Set Up
@@ -583,7 +580,9 @@ Figure 2.4: New Project Set Up
 </div>
 <div id="navigating-rstudio" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Navigating RStudio<a href="rstudio.html#navigating-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In our new project, <strong><em>rintro</em></strong>, we are going to open the “Source” pane, which we will often use for writing code and viewing datasets.</p>
+<p>When you first open RStudio, you will see three panes or “windows” in RStudio: <strong>Console</strong> (left), <strong>Environment</strong> (top right), and <strong>Files</strong> (bottom right) - more on what each of these panes are for in a second.</p>
+<p><img src="img/rstudio_first.png" /><!-- --></p>
+<p>In our new project, <strong><em>rintro</em></strong>, we are going to open the “Source” pane (again, more on this in a moment), which we will often use for writing code and viewing datasets.</p>
 <div id="opening-the-source-pane" class="section level3 hasAnchor" number="2.6.1">
 <h3><span class="header-section-number">2.6.1</span> Opening the Source Pane<a href="rstudio.html#opening-the-source-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are a variety of ways to open the Source pane:</p>
@@ -603,20 +602,19 @@ Figure 2.4: New Project Set Up
 <ul>
 <li><p><strong>Source Pane</strong>: Where you write R scripts. R scripts enable you to write, save, and run R code in a structured format. For instance, you might have an R script titled “Descriptive,” containing code for computing descriptive statistics on your dataset. Similarly, you might have another R script titled “Regression” for performing regression analyses.</p></li>
 <li><p><strong>Console Pane</strong>: Where you can write R code or enter commands into R. The console also displays various outputs from your R scripts. For example, if you create a script for running a t-test, the results will appear here. Any error or warning messages related to your code will also be highlighted in the console. In short, this is where R actually runs your code.</p></li>
-<li><p><strong>Environment Pane</strong>: Displays information about datasets and variables imported or created in R within a specific project. The “History” tab shows a history of R code executed during the project. This pane is helpful for reviewing your work or returning to a project after some time.</p></li>
+<li><p><strong>Environment Pane</strong>: The “Environment” tab Displays information about the datasets and variables imported or created in R within a specific project. The “History” tab shows a history of R code executed during the project. This pane is helpful for reviewing your work or returning to a project after some time.</p></li>
 <li><p><strong>Files Pane</strong>: Includes project files (Files tab), outputs of plots you create (Plots tab), a list of downloaded packages (Packages tab), and help documentation about R functions (Help tab).</p></li>
 </ul>
-<p>We will use all four panes extensively during these classes.</p>
+<p>We use all four panes during these classes.</p>
 </div>
 </div>
 <div id="checking-our-working-directory" class="section level3 hasAnchor" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Checking our Working Directory<a href="rstudio.html#checking-our-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Every time you open a project or file in RStudio, it’s good practice to check the working directory. The working directory is the environment on your computer where R is currently operating.</p>
-<p>Ideally, you want the working directory to match the location of your R project. This ensures that any files you import into RStudio or any files you export (datasets, results, graphs) can be easily found in your R project folder. Checking the working directory can help prevent many common R problems.</p>
+<p>Every time you open a project or file in RStudio, it’s good practice to check the working directory. The working directory is the location in your computer where R is currently operating. Ideally, you want the working directory to match the same location in your computer as your R project. This ensures that any files from your R project are easily imported into R and than any files exported from R (e.g. results, figures, tables) will be saved to the R project folder, making it easier to find them. Checking the working directory can help prevent many common R problems.</p>
 <p>To check the working directory, type the following into the console pane:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="rstudio.html#cb1-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;C:/Users/0131045S/Desktop/Teaching/PS6183/rintro&quot;</code></pre>
-<p>This will display the current working directory where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (<strong>Option 2</strong>).</p>
+<pre><code>## [1] &quot;C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro&quot;</code></pre>
+<p>This will display the current working directory (i.e. location) where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (<strong>Option 2</strong>).</p>
 </div>
 <div id="set_wd" class="section level3 hasAnchor" number="2.6.3">
 <h3><span class="header-section-number">2.6.3</span> Setting up a new Working Directory<a href="rstudio.html#set_wd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -626,7 +624,7 @@ Figure 2.4: New Project Set Up
 </ul>
 <p><img src="img/01-wd.png" /><!-- --></p>
 <ul>
-<li>By default, you should be in your R Project (e.g., <strong><em>rintro</em></strong>).</li>
+<li>By default, this should be in your R Project (e.g., <strong><em>rintro</em></strong>).</li>
 </ul>
 <!-- -->
 <ul>
@@ -634,9 +632,9 @@ Figure 2.4: New Project Set Up
 <li><p>Click “week1” and then click “Open.”</p></li>
 </ul>
 <p><img src="img/01-new_wd.png" /><!-- --></p>
-<p>You should see something like the following in your console</p>
+<p>You should see something like the following in your console.</p>
 <pre><code>&gt; setwd(&quot;C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/week1&quot;)</code></pre>
-<p>Check whether this location is where you want to store your files for this course. If it is, you’re all set. If not, let me know during class.</p>
+<p>Again my working directory won’t match yours, but as long as it is pointing to the “week1” folder inside the “rintro” folder, then you are all set. If that does not work, then try resetting your working directory following the same steps: Click “Session” in the RStudio toolbar → Select “Set Working Directory” → Click “Choose Directory.”</p>
 </div>
 <div id="changing-some-default-settings" class="section level3 hasAnchor" number="2.6.4">
 <h3><span class="header-section-number">2.6.4</span> Changing some default settings<a href="rstudio.html#changing-some-default-settings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -650,14 +648,14 @@ Figure 2.4: New Project Set Up
 </div>
 <div id="writing-our-first-r-code" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Writing our first R Code<a href="rstudio.html#writing-our-first-r-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let’s write our first line of R code in the console. The R console uses the prompt symbol <code>&gt;</code> to indicate that it is ready for a new line of code.</p>
+<p>Okay we have R and RStudio/Posit Cloud all set up. Now let’s write our first line of R code in the console. The R console uses the prompt symbol <code>&gt;</code> to indicate that it is ready for a new line of code.</p>
 <p>Type in each of the following instructions (after the <code>&gt;</code> prompt) and press Enter. Feel free to modify the second line of code to include your own name:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="rstudio.html#cb4-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello World&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello World&quot;</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="rstudio.html#cb6-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;My name is Ryan and I am learning to code in R&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;My name is Ryan and I am learning to code in R&quot;</code></pre>
 <p>Congratulations, you’ve written your first piece of code!</p>
-<p>Let’s describe what is going on here. We used a function called print() to print the words “Hello World” and “My name is Ryan, and I am learning to code in R” in the console. Functions are equivalent to verbs in the English language—they describe actions. Here, R identifies the <code>print()</code> function, looks inside the parentheses to see what we want to print, and then displays the specified text.</p>
+<p>Let’s describe what is going on here. We used a function called <code>print()</code> to print the words “Hello World” and “My name is Ryan, and I am learning to code in R” in the console. Functions are equivalent to verbs in the English language—they describe actions. Here, R identifies the <code>print()</code> function, looks inside the parentheses to see what we want to print, and then displays the specified text.</p>
 <p>Functions are a core programming concept, and there is a lot more involved in functions than I have described so far. We will use functions repeatedly in this course, so they are important, and we will explore functions in significantly more depth. But for now, functions are verbs that tell our computer what actions to perform.</p>
 </div>
 <div id="console-vs-source-script" class="section level2 hasAnchor" number="2.8">
@@ -667,13 +665,13 @@ Figure 2.4: New Project Set Up
 <li><p><strong>Console</strong>: Writing code in the console is similar to having a live chat with R. You type commands, and R executes them immediately. The console is great for experimentation and quick feedback but not ideal for saving or organising your work.</p></li>
 <li><p><strong>Source Script</strong>: Writing code in scripts is similar to writing down what you are going to say before you call someone. Scripts allow you to keep a record of your work, organise it into sections and a coherent structure, and rerun it later. Think of the source pane as a document for your final code.</p></li>
 </ul>
-<p>From now on, we’ll write most of our code in R scripts. If I want you to use the console, I’ll let you know.</p>
+<p>From now on, we’ll write most of our code in R scripts. If I want you to use the console, I’ll let you know. But the default is to write code in scripts. Let’s do that now.</p>
 </div>
 <div id="firstpieceofcode" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Let’s write some statistical code<a href="rstudio.html#firstpieceofcode" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now that we’ve talked a lot about R and RStudio, let’s write some code that will:</p>
+<p>Let’s write some code that will.</p>
 <ul>
-<li><p>Take a dataset</p></li>
+<li><p>Import a dataset</p></li>
 <li><p>Calculate descriptive statistics</p></li>
 <li><p>Generate a graph</p></li>
 <li><p>Save the results</p></li>
@@ -730,11 +728,11 @@ Figure 2.4: New Project Set Up
 <span id="cb12-4"><a href="rstudio.html#cb12-4" tabindex="-1"></a><span class="co">#Here is what the code means</span></span>
 <span id="cb12-5"><a href="rstudio.html#cb12-5" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="rstudio.html#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="rstudio.html#cb12-7" tabindex="-1"></a><span class="co"># code: data = sleep meaning: Go to the sleep data set</span></span>
+<span id="cb12-7"><a href="rstudio.html#cb12-7" tabindex="-1"></a><span class="co"># code: data = sleep -&gt; Go to the sleep data set</span></span>
 <span id="cb12-8"><a href="rstudio.html#cb12-8" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="rstudio.html#cb12-9" tabindex="-1"></a><span class="co"># code: extra ~ group meaning: Take the variable &quot;extra&quot; and split it into subsets based on the variable &quot;group&quot;</span></span>
+<span id="cb12-9"><a href="rstudio.html#cb12-9" tabindex="-1"></a><span class="co"># code: extra ~ group -&gt;  Take the variable &quot;extra&quot; and split it into subsets based on the variable &quot;group&quot;</span></span>
 <span id="cb12-10"><a href="rstudio.html#cb12-10" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="rstudio.html#cb12-11" tabindex="-1"></a><span class="co"># code: FUN = mean meaning: Apply the mean() function (FUN) on each subset </span></span></code></pre></div>
+<span id="cb12-11"><a href="rstudio.html#cb12-11" tabindex="-1"></a><span class="co"># code: FUN = mean -&gt; Apply the mean() function (FUN) on each subset, i.e. calculate the mean per each subset </span></span></code></pre></div>
 <pre><code>##   group extra
 ## 1     1  0.75
 ## 2     2  2.33</code></pre>
@@ -744,7 +742,7 @@ Figure 2.4: New Project Set Up
 <h3><span class="header-section-number">2.9.2</span> Creating a Visualisation<a href="rstudio.html#creating-a-visualisation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It’s always a good step to create visualisations with your data to get a better picture of what is going on. Let’s visualise our data with the <code>plot()</code> function.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="rstudio.html#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(sleep<span class="sc">$</span>group, sleep<span class="sc">$</span>extra)</span></code></pre></div>
-<p><img src="rintro_demo_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
+<p><img src="rintro_demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>The <strong><code>plot()</code></strong> function automatically determines the most appropriate plot—in this case, a boxplot. While this plot is functional, we can make it more informative by adding a title and labels for the axes:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="rstudio.html#cb15-1" tabindex="-1"></a><span class="co">#xlab = creates a label for the x-axis  </span></span>
 <span id="cb15-2"><a href="rstudio.html#cb15-2" tabindex="-1"></a></span>
@@ -754,7 +752,10 @@ Figure 2.4: New Project Set Up
 <span id="cb15-6"><a href="rstudio.html#cb15-6" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="rstudio.html#cb15-7" tabindex="-1"></a></span>
 <span id="cb15-8"><a href="rstudio.html#cb15-8" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="rstudio.html#cb15-9" tabindex="-1"></a><span class="fu">plot</span>(sleep<span class="sc">$</span>group, sleep<span class="sc">$</span>extra, <span class="at">xlab =</span> <span class="st">&quot;Treatment&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Hours of Sleep&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Effect of Treament on Sleep Duration&quot;</span>)  </span></code></pre></div>
+<span id="cb15-9"><a href="rstudio.html#cb15-9" tabindex="-1"></a><span class="fu">plot</span>(sleep<span class="sc">$</span>group, sleep<span class="sc">$</span>extra, </span>
+<span id="cb15-10"><a href="rstudio.html#cb15-10" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Treatment&quot;</span>, </span>
+<span id="cb15-11"><a href="rstudio.html#cb15-11" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Hours of Sleep&quot;</span>, </span>
+<span id="cb15-12"><a href="rstudio.html#cb15-12" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Effect of Treament on Sleep Duration&quot;</span>)  </span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
 <img src="rintro_demo_files/figure-html/unnamed-chunk-25-1.png" alt="Generic Boxplot with appropriate labelling" width="672" />
 <p class="caption">
@@ -765,7 +766,7 @@ Figure 2.5: Generic Boxplot with appropriate labelling
 </div>
 <div id="saving-the-plot" class="section level3 hasAnchor" number="2.9.3">
 <h3><span class="header-section-number">2.9.3</span> Saving the Plot<a href="rstudio.html#saving-the-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now, let’s take this plot and save it to a PDF so that we can share our results with others. The standard way of doing this in R is a bit cumbersome. We have to tell R that we are about to create a plot that we want to make into a PDF. Then we have to generate the plot. Then we have to tell R we are done with creating the PDF. We’ll learn a much simpler way to do this in future weeks, but this will do for now.</p>
+<p>Now, let’s take this plot and save it to a PDF so that we can share our results with others. The standard way of doing this in R is a bit cumbersome. We have to tell R that we are about to create a plot that we want to make into a PDF. Then we have to generate the plot. Then we have to tell R we are done with creating the PDF. We’ll learn a much simpler way to do this later on in the course, but this will do for now.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="rstudio.html#cb16-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;myplot.pdf&quot;</span>) <span class="co">#Tells R that we will create a pdf file called &quot;my_plot&quot; in our working directory</span></span>
 <span id="cb16-2"><a href="rstudio.html#cb16-2" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="rstudio.html#cb16-3" tabindex="-1"></a><span class="fu">plot</span>(sleep<span class="sc">$</span>group, sleep<span class="sc">$</span>extra, <span class="at">xlab =</span> <span class="st">&quot;Treatment&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Hours of Sleep&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Effect of Treament on Sleep Duration&quot;</span>)  <span class="co">#this will save the plot to our pdf</span></span>
@@ -778,26 +779,25 @@ Figure 2.5: Generic Boxplot with appropriate labelling
 </div>
 <div id="comments" class="section level3 hasAnchor" number="2.9.4">
 <h3><span class="header-section-number">2.9.4</span> Comments<a href="rstudio.html#comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You might have noticed that I wrote several lines of text with a <strong><code>#</code></strong> before them. These are known as comments. Comments are pieces of text that R ignores—they are not executed as part of the code. They are fundamental to writing clear and understandable code.</p>
+<p>You might have noticed that I wrote several lines of text with a <strong><code>#</code></strong> before them. These are known as comments. Comments are pieces of text that R ignores - they are not executed as part of the code.</p>
 <p>We create comments using the <strong><code>#</code></strong> symbol. This tells R to ignore everything that comes <strong>after</strong> the <code>#</code> on the same line.</p>
-<p>Comments serve a variety of purposes:</p>
+<p>Comments are fundamental to writing clear and understandable code, as they can serve a variety of purposes. In the figure below, you can see four different types of comments</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
 <img src="img/03-comments.png" alt="Four Examples of Comments Use"  />
 <p class="caption">
 Figure 2.6: Four Examples of Comments Use
 </p>
 </div>
-<p>In the above figure, you’ll see four different types of comments.</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Provide an Introduction</strong>: It can be really useful here to provide clear information on what this script is trying to do, what data it is working on (the sleep dataset), and who wrote or developed this script. This makes it significantly easier for anyone who might be reviewing your work or trying to apply your code to their own work to understand what is going on.</p></li>
-<li><p><strong>Structure Your Script</strong>: The second type of comment structures the format of the script by providing headings or steps. Again, this just makes it easier to understand what is going on.</p></li>
-<li><p><strong>Disable Code Temporarily</strong>: The third type of comment is placed before the summary. This means that the code <strong><code>summary(sleep)</code></strong> will not be executed in R. Why would we do this? If we wanted to temporarily disable a piece of code but not delete it, because we think might be useful later. This is useful if you want to skip certain steps or keep old code for reference.</p></li>
-<li><p><strong>Explain Specific Lines of Code</strong>: The fourth type of comment provides some context or information on what a specific line of code is doing, namely, what the <strong><code>aggregate()</code></strong> function does. Again, this is really useful, particularly if you are using functions that are not well-known.</p></li>
+<li><p><strong>Provide an Introduction</strong>: This comments provides clear information on what the script is doing, what data it is doing it on (sleep dataset), and who wrote the script. Introduction comments help orient and provide context for anyone reviewing or trying to apply your code to their own data, making it significantly easier to understand what is going on.</p></li>
+<li><p><strong>Structure Your Script</strong>: This comment structures the format of the script by providing headings or steps. Again, this makes it significantly easier to understand what is going on.</p></li>
+<li><p><strong>Disable Code Temporarily</strong>: This comments disables the code <strong><code>summary(sleep)</code></strong>, so it will not be executed in R. Remember, any piece of information that placed after a <code>#</code> and on the same line will be ignored by R. But why would we want to disable code? In this case, it’s because we do not need the <strong><code>summary(sleep)</code></strong> right now, but we keep it there in case it is useful later on. There are also other reasons why we would want to disable code, such as: assessing whether the code is causing an error in our script, if the code takes a long time to run and we do not need it right now, or if we just want to skip that line of code for now.</p></li>
+<li><p><strong>Explain Specific Lines of Code</strong>: This comments provides some context or information on what a specific line of code is doing, namely, what the <strong><code>aggregate()</code></strong> function does. Again, this is really useful, particularly if you are using functions that are not well-known.</p></li>
 </ol>
 </div>
 <div id="why-comments-are-important" class="section level3 hasAnchor" number="2.9.5">
 <h3><span class="header-section-number">2.9.5</span> Why Comments Are Important<a href="rstudio.html#why-comments-are-important" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Writing comments is like leaving notes for your future self (or for others working with your code). Imagine this scenario: you spend weeks creating a detailed R script to clean a messy dataset and run complex analyses. Months later, a reviewer or your supervisor asks for changes. When you reopen your script, you realise you’ve forgotten what each piece of code does! Without comments, you may spend hours trying to understand your own work.</p>
+<p>Writing comments is like leaving notes for your future self (or for others working with your code). Imagine this scenario: you spend weeks creating a detailed R script to clean a messy dataset and run several analyses. Months later, a reviewer or your supervisor asks you to change your statistical approach. You go back to your script, reopen it, and realise you have forgotten what most of your code is doing! Without comments, you may spend days/hours trying to understand your own work.</p>
 <p>By including comments, you save time and frustration. Additionally, comments help you solidify your understanding by requiring you to explain your code as you write it.</p>
 </div>
 <div id="best-practices-for-comments" class="section level3 hasAnchor" number="2.9.6">
