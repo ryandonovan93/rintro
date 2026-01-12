@@ -40,42 +40,39 @@ In terms of specific R skills, students will learn how to:
 
 -   Create APA-standard graphs.
 
--   Deal with errors or bugs with R code.
+-   Deal with errors or bugs in R code.
 
 ## What will I not learn to do in R?
 
 This is not an exhaustive introduction to R.
 Similar to human languages, programming languages like R are vast and will take years to master.
 After this course, you will still be considered a "newbie" in R.
-But the material covered here will at least provide you a solid foundation in R, enabling you to go ahead and pick up further skills if required as you go on.
+But the material covered here will at least provide you a solid foundation, enabling you to pick up further skills as you go on.
 
 This course will teach you data cleaning and wrangling skills that will enable you to wrangle and clean a lot of data collected on Gorilla or Qualtrics.
 But you will not be able to easily handle all data cleaning problems you are likely to find out in the "wild" world of messy data.
-Such datasets can be uniquely messy, and even experienced R programmers will need to bash their head against the desk a few times to figure out a way to clean that dataset entirely in R.
+Such datasets can be uniquely messy, and even experienced R programmers will need to bash their head against the desk a few times to figure out a way to clean such datasets in R.
 
 Similarly, do not expect to be fluent in the concepts you learn here after these workshops.
-It will take practice to become fluent.
-You might need to refer to these materials or look up help repeatedly when using R on real-life datasets.
+It takes practice to become fluent. You will need to refer to these materials or look up help repeatedly when coding in R.
 That's normal - so do not be discouraged when it happens.
 
-This textbook mainly uses the tidyverse approach to R.
-The tidyverse is a particular philosophical approach to how to use R (more on that later).
+This textbook mostly uses the tidyverse approach to R.
+The tidyverse is a particular systematic approach to how to write R code (more on that later).
 The other approach would be to use base R.
 This can incite violent debates in R communities on which approach is better.
 We will focus mainly on tidyverse and use some base R.
 
-This textbook does not teach you how to use R Markdown.
-R Markdown is a package in R that enables you to write reproducible and dynamic reports with R that can be converted into Word documents, PDFs, websites, PowerPoint presentations, books, and much more.
+This textbook does not teach you how to use R Markdown or Quarto.
+R Markdown (and Quarto) is a package in R that enables you to write reproducible and dynamic reports with R that can be converted into Word documents, PDFs, websites, PowerPoint presentations, books, and much more.
 There are a lot of excellent resources available to learn how to use R markdown, but it's far more important to learn how to use R first.
 
 ## Why are we learning R?
 
-There are many reasons to learn R.
+There are several reasons to learn R.
 
-Psychological research is increasingly moving towards open-science practices.
-One of the key principles of open-science is that all aspects of data handling - including data wrangling, pre-processing, processing, and output generation - are openly accessible.
-This is not just an abstract ideal; several top-tier journals require that you submit R scripts along with manuscripts.
-If you don't know how to use R (or at least no one in your lab does), then this puts you at a disadvantage.
+Firstly, psychological research is increasingly moving towards open-science practices. One of the key principles of open-science is that all aspects of data handling (e,g, data wrangling, pre-processing, processing, and output generation) are done transparently. In contrast to other tools, R enables you to do this. This is not just an abstract ideal; some top-tier journals require that you submit R scripts along with your manuscript.
+If you don't know how to use R or another open-source language (or at least no one in your lab does), then this puts you at a disadvantage.
 The upside to this is that if you do know how to use R, then you will be at an advantage in your future career prospects.
 
 R enables you to import, clean, analyse, and publish manuscripts from R itself.

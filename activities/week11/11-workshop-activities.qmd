@@ -180,7 +180,7 @@ There is a lot of information that will appear in the help section. I want to dr
 There is a lot of potential inputs we can throw in, but I want to highlight the key arguments that you will use most of the time when you use this function
 
 | Argument | Meaning |
-|------------------------------------|------------------------------------|
+|----|----|
 | `data` | Here you specify the wide data frame that you want to convert to long format |
 | `cols` | The column(s) that will be moved or altered when you pivot the data frame. |
 | `names_to` | The names of each variable identified in cols will be stored in a new column in our long data frame. The names_to argument specifies the name(s) of that new column(s). |
@@ -286,7 +286,7 @@ include_graphics("06-pivot-visualisation.png")
 :::
 
 | Argument | Meaning |
-|------------------------------------|------------------------------------|
+|----|----|
 | `data` | The long data frame that you want to convert to wide format |
 | `id_cols` | The columns that help identify each participant. This is often the values that are repeated in each row within a long data frame (e.g., like ID or any independent variables) |
 | `names_from` | When we pivot from long to wide, we will be creating new columns for each variable that we collected data on. We need to tell R where to find the names for those variables. |
@@ -453,7 +453,7 @@ Imagine a short questionnaire measuring Extraversion with 3 items:
 
 -   *“I prefer to be alone”* → **Negative** (higher score = more introverted)
 
--    *“I enjoy being around others”* → **Positive**
+-   *“I enjoy being around others”* → **Positive**
 
 If someone scores high on *“I prefer to be alone”*, they are showing **low** Extraversion. But to combine this item fairly with the others, we must **flip** or **reverse** the score so that higher values always mean more Extraversion.
 

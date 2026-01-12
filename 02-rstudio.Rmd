@@ -35,9 +35,9 @@ But why R and not a different programming language? R was developed by statistic
 
 ## Create a Posit Cloud Account.
 
-In the next section, you'll learn how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud). Posit Cloud enables you to run R and RStudio online for free, with no need to install anything.
+In the next section, you'll learn how to download R and RStudio onto your laptop. But before we do that, I want you to set up a free account on Posit Cloud (formerly known as RStudio Cloud). Posit Cloud enables you to run R and RStudio online for free, without installing anything.
 
-***If you are using the desktops in the lab,*** then please only use Posit Cloud in all of our R and RStudio classes. It is much easier to run R and RStudio on Posit Cloud than on the absolute tragic disaster of an operating system they use on the desktop Windows machines. Please, please, please do not use the RStudio version on the desktop computers in the lab, or else your R life will be brutal and painful.
+***If you are using the desktops in the lab,*** then please only use Posit Cloud in all of our R and RStudio classes. It is much easier to run R and RStudio on Posit Cloud than on the absolute tragic disaster on the limited Windows operating system on the Desktops in the class. Please, please, please do not use the RStudio version on the desktop computers in the lab, or else your R life will be frustrating and painful.
 
 ***If you are using your own laptop,*** then use Posit Cloud as a backup option in case any technical issues pop up. During class, we might not be able to solve those issues quickly and efficiently (in a large classroom, one must always account for Murphy's Law). Rather than being hamstrung by technical difficulties, you can sign into Posit Cloud and keep following along with the session.
 
@@ -47,7 +47,7 @@ For those of you on the desktop computers, if you do hit the max limit, then get
 
 ### Instructions for Creating a Posit Cloud Account
 
-To create a Posit Cloud account, please follow the following instructions:
+To create a Posit Cloud account, see the following instructions:
 
 1.  [Go to their sign up page website](https://login.posit.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Fposit.cloud%252Flogin%26client_id%3Dposit-cloud%26response_type%3Dcode%26show_auth%3D0) and enter your details to create an account or Sign up with Google.
 
@@ -71,7 +71,7 @@ include_graphics("img/01-posit-newproject.png")
 include_graphics("img/01-posit-rintro.png")
 ```
 
-Don't worry about what anything on the screen means for now. We'll come back to that in the section **Creating an RProject (2.5).**
+Don't worry about what anything on the screen means for now. We'll come back to that in the section **Creating an R Project (2.5).**
 
 ## Downloading R on to your Computer (personal laptop or desktops only)
 
@@ -79,7 +79,7 @@ If you are using your own personal laptop or desktop (if at home), then please f
 
 ***If you are using the Desktops in the lab, do not follow these instructions, as we will be using Posit Cloud***
 
-### Downloading R on Windows
+### Installing R (Windows)
 
 1.  Go to the website: <https://cran.r-project.org/>
 2.  Under the heading *Download and Install R,* click *Download R for Windows*
@@ -90,17 +90,17 @@ include_graphics("img/01-cran.png")
 
 3.  Click the hyperlink ***base*** or ***install R for the first Time***
 
-4.  Click Download R-4.5.2 for Windows (depending on the date you access this, the version of R might have been been updated. That's okay, you can download the newer version). Let the file download.
+4.  Click Download R-4.5.2 for Windows (If when you access this page, the number is different, don't worry. R is continuously updating, so download whatever version is in the equivalent place). Let the file download.
 
 ```{r fig.cap = "The R programming language is occasionally updated, so the specific version of R that you see might be different than mine. But that\'s okay!", echo = FALSE}
 
 include_graphics("img/01-base.png")
 ```
 
-5.  Once the file has been downloaded, open it and click "Yes" if you are asked to allow this app to make changes to your device. Choose English as your setup language. The file name should be something like "R-4.5.2.-win" (numbers will differ depending on the version downloaded).
+5.  Once the file has downloaded, open it and click "Yes" if you are asked to allow this app to make changes to your device. Select English as your setup language. The file name should be something like "R-4.5.2.-win" (numbers will differ depending on the version downloaded).
 6.  Agree to the terms and conditions and select a place to install R. The default option is fine.
 
-### Downloading R on Mac
+### Installing R (Mac)
 
 The instructions are largely the same for Mac.
 
@@ -114,7 +114,7 @@ include_graphics("img/01-rstudiodownload-mac.png")
 
 ```
 
--   Check the **Latest release** section for the appropriate version and follow the directions for download. If you are unsure, please ask me.
+-   Check the **Latest release** section for the appropriate version and follow the directions for download. You will notice there will be two download links, one if your Mac has an Intel Processor or Apple Silicon. If you are unsure which processor your Mac has, see the following webpage for help: <https://help.arcstudiopro.com/all-how-tos/how-do-i-know-if-my-mac-has-intel-processor-or-apple-m1>. 
 
 ```{r echo=FALSE}
 
@@ -157,14 +157,6 @@ include_graphics("img/01-rstudiodownload.png")
 Once the file is downloaded, open it and allow it to make changes to your device. Follow the instructions to install the program. I recommend using all the default options during installation.
 
 After downloading both R and RStudio, open RStudio on your computer. You do not have to open R separately, as RStudio will work with R if everything is set up correctly.
-
-When you first open RStudio, you will see three panes or "windows" in RStudio: **Console** (left), **Environment** (top right), and **Files** (bottom right).
-
-```{r echo = FALSE}
-
-include_graphics("img/rstudio_first.png")
-
-```
 
 ## Creating an R Project
 
@@ -220,7 +212,15 @@ include_graphics("img/01-newproject-ma.png")
 
 ## Navigating RStudio
 
-In our new project, ***rintro***, we are going to open the "Source" pane, which we will often use for writing code and viewing datasets.
+When you first open RStudio, you will see three panes or "windows" in RStudio: **Console** (left), **Environment** (top right), and **Files** (bottom right) - more on what each of these panes are for in a second.
+
+```{r echo = FALSE}
+
+include_graphics("img/rstudio_first.png")
+
+```
+
+In our new project, ***rintro***, we are going to open the "Source" pane (again, more on this in a moment), which we will often use for writing code and viewing datasets.
 
 ### Opening the Source Pane
 
@@ -252,17 +252,15 @@ Let’s briefly describe the purpose of each pane:
 
 -   **Console Pane**: Where you can write R code or enter commands into R. The console also displays various outputs from your R scripts. For example, if you create a script for running a t-test, the results will appear here. Any error or warning messages related to your code will also be highlighted in the console. In short, this is where R actually runs your code.
 
--   **Environment Pane**: Displays information about datasets and variables imported or created in R within a specific project. The "History" tab shows a history of R code executed during the project. This pane is helpful for reviewing your work or returning to a project after some time.
+-   **Environment Pane**: The "Environment" tab Displays information about the datasets and variables imported or created in R within a specific project. The "History" tab shows a history of R code executed during the project. This pane is helpful for reviewing your work or returning to a project after some time.
 
 -   **Files Pane**: Includes project files (Files tab), outputs of plots you create (Plots tab), a list of downloaded packages (Packages tab), and help documentation about R functions (Help tab).
 
-We will use all four panes extensively during these classes.
+We use all four panes during these classes.
 
 ### Checking our Working Directory
 
-Every time you open a project or file in RStudio, it's good practice to check the working directory. The working directory is the environment on your computer where R is currently operating.
-
-Ideally, you want the working directory to match the location of your R project. This ensures that any files you import into RStudio or any files you export (datasets, results, graphs) can be easily found in your R project folder. Checking the working directory can help prevent many common R problems.
+Every time you open a project or file in RStudio, it's good practice to check the working directory. The working directory is the location in your computer where R is currently operating. Ideally, you want the working directory to match the same location in your computer as your R project. This ensures that any files from your R project are easily imported into R and than any files exported from R (e.g. results, figures, tables) will be saved to the R project folder, making it easier to find them. Checking the working directory can help prevent many common R problems.
 
 To check the working directory, type the following into the console pane:
 
@@ -270,7 +268,7 @@ To check the working directory, type the following into the console pane:
 getwd()
 ```
 
-This will display the current working directory where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (**Option 2**).
+This will display the current working directory (i.e. location) where R is operating. Your working directory will likely differ from mine, which is normal. Just confirm that it matches the location you specified when creating your project (**Option 2**).
 
 ### Setting up a new Working Directory {#set_wd}
 
@@ -284,7 +282,7 @@ include_graphics("img/01-wd.png")
 
 ```
 
--   By default, you should be in your R Project (e.g., ***rintro***).
+-   By default, this should be in your R Project (e.g., ***rintro***).
 
 <!-- -->
 
@@ -298,13 +296,13 @@ include_graphics("img/01-new_wd.png")
 
 ```
 
-You should see something like the following in your console
+You should see something like the following in your console. 
 
 ```         
 > setwd("C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/week1")
 ```
 
-Check whether this location is where you want to store your files for this course. If it is, you're all set. If not, let me know during class.
+Again my working directory won't match yours, but as long as it is pointing to the "week1" folder inside the "rintro" folder, then you are all set. If that does not work, then try resetting your working directory following the same steps:  Click "Session" in the RStudio toolbar → Select "Set Working Directory" → Click "Choose Directory."
 
 ### Changing some default settings
 
@@ -322,7 +320,7 @@ include_graphics("img/01-workspace-setting.PNG")
 
 ## Writing our first R Code
 
-Let’s write our first line of R code in the console. The R console uses the prompt symbol `>` to indicate that it is ready for a new line of code.
+Okay we have R and RStudio/Posit Cloud all set up. Now let’s write our first line of R code in the console. The R console uses the prompt symbol `>` to indicate that it is ready for a new line of code.
 
 Type in each of the following instructions (after the `>` prompt) and press Enter. Feel free to modify the second line of code to include your own name:
 
@@ -336,7 +334,7 @@ print("My name is Ryan and I am learning to code in R")
 
 Congratulations, you've written your first piece of code!
 
-Let's describe what is going on here. We used a function called print() to print the words "Hello World" and "My name is Ryan, and I am learning to code in R" in the console. Functions are equivalent to verbs in the English language—they describe actions. Here, R identifies the `print()` function, looks inside the parentheses to see what we want to print, and then displays the specified text. 
+Let's describe what is going on here. We used a function called `print() ` to print the words "Hello World" and "My name is Ryan, and I am learning to code in R" in the console. Functions are equivalent to verbs in the English language—they describe actions. Here, R identifies the `print()` function, looks inside the parentheses to see what we want to print, and then displays the specified text. 
 
 Functions are a core programming concept, and there is a lot more involved in functions than I have described so far. We will use functions repeatedly in this course, so they are important, and we will explore functions in significantly more depth. But for now, functions are verbs that tell our computer what actions to perform.
 
@@ -348,13 +346,13 @@ You might have noticed that I asked you to write code in the console rather than
 
 -   **Source Script**: Writing code in scripts is similar to writing down what you are going to say before you call someone. Scripts allow you to keep a record of your work, organise it into sections and a coherent structure, and rerun it later. Think of the source pane as a document for your final code.
 
-From now on, we’ll write most of our code in R scripts. If I want you to use the console, I’ll let you know.
+From now on, we’ll write most of our code in R scripts. If I want you to use the console, I’ll let you know. But the default is to write code in scripts. Let's do that now. 
 
 ## Let's write some statistical code {#firstpieceofcode}
 
-Now that we’ve talked a lot about R and RStudio, let’s write some code that will:
+Let's write some code that will. 
 
--   Take a dataset
+-   Import a dataset
 
 -   Calculate descriptive statistics
 
@@ -408,11 +406,11 @@ aggregate(data = sleep, extra ~ group, FUN = mean)
 #Here is what the code means
 
 
-# code: data = sleep meaning: Go to the sleep data set
+# code: data = sleep -> Go to the sleep data set
 
-# code: extra ~ group meaning: Take the variable "extra" and split it into subsets based on the variable "group"
+# code: extra ~ group ->  Take the variable "extra" and split it into subsets based on the variable "group"
 
-# code: FUN = mean meaning: Apply the mean() function (FUN) on each subset 
+# code: FUN = mean -> Apply the mean() function (FUN) on each subset, i.e. calculate the mean per each subset 
 
 ```
 
@@ -451,7 +449,10 @@ The **`plot()`** function automatically determines the most appropriate plot—i
 
 
 
-plot(sleep$group, sleep$extra, xlab = "Treatment", ylab = "Hours of Sleep", main = "Effect of Treament on Sleep Duration")  
+plot(sleep$group, sleep$extra, 
+     xlab = "Treatment", 
+     ylab = "Hours of Sleep", 
+     main = "Effect of Treament on Sleep Duration")  
 
 
 
@@ -461,7 +462,7 @@ This plot is more descriptive and also suggests a difference between the two gro
 
 ### Saving the Plot
 
-Now, let's take this plot and save it to a PDF so that we can share our results with others. The standard way of doing this in R is a bit cumbersome. We have to tell R that we are about to create a plot that we want to make into a PDF. Then we have to generate the plot. Then we have to tell R we are done with creating the PDF. We'll learn a much simpler way to do this in future weeks, but this will do for now.
+Now, let's take this plot and save it to a PDF so that we can share our results with others. The standard way of doing this in R is a bit cumbersome. We have to tell R that we are about to create a plot that we want to make into a PDF. Then we have to generate the plot. Then we have to tell R we are done with creating the PDF. We'll learn a much simpler way to do this later on in the course, but this will do for now.
 
 ```{r}
 
@@ -480,11 +481,12 @@ Go to the files pane, and open up the pdf "myplot.pdf". It should be in your wor
 
 ### Comments
 
-You might have noticed that I wrote several lines of text with a **`#`** before them. These are known as comments. Comments are pieces of text that R ignores—they are not executed as part of the code. They are fundamental to writing clear and understandable code.
+You might have noticed that I wrote several lines of text with a **`#`** before them. These are known as comments. Comments are pieces of text that R ignores - they are not executed as part of the code. 
 
 We create comments using the **`#`** symbol. This tells R to ignore everything that comes **after** the `#` on the same line.
 
-Comments serve a variety of purposes:
+Comments are fundamental to writing clear and understandable code, as they can serve a variety of purposes. In the figure below, you can see four different types of comments 
+
 
 ```{r fig.cap = "Four Examples of Comments Use", echo = FALSE, warning = FALSE}
 
@@ -495,19 +497,17 @@ include_graphics("img/03-comments.png")
 
 ```
 
-In the above figure, you'll see four different types of comments.
+1.  **Provide an Introduction**: This comments provides clear information on what the script is doing, what data it is doing it on (sleep dataset), and who wrote the script. Introduction comments help orient and provide context for anyone reviewing or trying to apply your code to their own data, making it significantly easier to understand what is going on. 
 
-1.  **Provide an Introduction**: It can be really useful here to provide clear information on what this script is trying to do, what data it is working on (the sleep dataset), and who wrote or developed this script. This makes it significantly easier for anyone who might be reviewing your work or trying to apply your code to their own work to understand what is going on.
+2.  **Structure Your Script**: This comment structures the format of the script by providing headings or steps. Again, this makes it significantly easier to understand what is going on.
 
-2.  **Structure Your Script**: The second type of comment structures the format of the script by providing headings or steps. Again, this just makes it easier to understand what is going on.
+3.  **Disable Code Temporarily**: This comments disables the code **`summary(sleep)`**, so it will not be executed in R. Remember, any piece of information that placed after a `#` and on the same line will be ignored by R. But why would we want to disable code? In this case, it's because we do not need the **`summary(sleep)`** right now, but we keep it there in case it is useful later on. There are also other reasons why we would want to disable code, such as: assessing whether the code is causing an error in our script, if the code takes a long time to run and we do not need it right now, or if we just want to skip that line of code for now. 
 
-3.  **Disable Code Temporarily**: The third type of comment is placed before the summary. This means that the code **`summary(sleep)`** will not be executed in R. Why would we do this? If we wanted to temporarily disable a piece of code but not delete it, because we think might be useful later. This is useful if you want to skip certain steps or keep old code for reference.
-
-4.  **Explain Specific Lines of Code**: The fourth type of comment provides some context or information on what a specific line of code is doing, namely, what the **`aggregate()`** function does. Again, this is really useful, particularly if you are using functions that are not well-known.
+4.  **Explain Specific Lines of Code**: This comments provides some context or information on what a specific line of code is doing, namely, what the **`aggregate()`** function does. Again, this is really useful, particularly if you are using functions that are not well-known.
 
 ### Why Comments Are Important
 
-Writing comments is like leaving notes for your future self (or for others working with your code). Imagine this scenario: you spend weeks creating a detailed R script to clean a messy dataset and run complex analyses. Months later, a reviewer or your supervisor asks for changes. When you reopen your script, you realise you’ve forgotten what each piece of code does! Without comments, you may spend hours trying to understand your own work.
+Writing comments is like leaving notes for your future self (or for others working with your code). Imagine this scenario: you spend weeks creating a detailed R script to clean a messy dataset and run several analyses. Months later, a reviewer or your supervisor asks you to change your statistical approach. You go back to your script, reopen it, and realise you have forgotten what most of your code is doing! Without comments, you may spend days/hours trying to understand your own work.
 
 By including comments, you save time and frustration. Additionally, comments help you solidify your understanding by requiring you to explain your code as you write it.
 
