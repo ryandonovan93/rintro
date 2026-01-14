@@ -160,7 +160,7 @@ After downloading both R and RStudio, open RStudio on your computer. You do not 
 
 ## Creating an R Project
 
-***Note: If you are using PositCloud instructions from 2.2.1, you have already created a project on PositCloud. Only follow this section if you are using your own computer or laptop. 
+***Note: If you are only using PositCloud, you have already created a project on PositCloud. Feel free to skip to Section 2.6. Only follow this section if you are using your own personal computer or laptop
 
 Our first step in RStudio is to create an *R Project*. R Projects are environments that group together input files (e.g., data sets), analyses on those files (e.g., code), and any outputs (e.g., results or plots). Creating an R Project will set up a new directory (folder) on your computer. Whenever you open that project, you are telling R to work within that specific directory (in this context, "directory" is just a fancy word for a folder).
 
