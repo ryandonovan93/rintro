@@ -22,9 +22,9 @@ Don’t hesitate to collaborate! Feel free to chat with your neighbours and help
 
 ```{r echo = F}
 
-psycho_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/psycho.csv")
+psycho_df <- read.csv("C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro/datasets/psycho.csv")
 
-burnout_df <- read.csv("/Users/ryandonovan 1/Desktop/rintro/datasets/burnout.csv")
+burnout_df <- read.csv("C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro/datasets/burnout.csv")
 
 ```
 
@@ -413,8 +413,6 @@ head(burnout_df)
 
 ## Activity 6: Dataframes
 
-Just a note, this is the same set of activities that were in last week's activity sheet. But since we did not have time in the last session to go through data frames, I have pasted the exercises here. If you already completed last week's activity on data frames and feel like you understood the content in the slides, then feel free to skip this section.
-
 ### Information on DataFrames
 
 ::: {.callout-caution collapse="true" title="What are data frames? How do we create a data frame?"}
@@ -618,7 +616,7 @@ print(my_df2)
 
         -   `name`: "Judith"
 
-        -   `age`: 31
+        -   `age`: 32
 
         -   `mark`: 89.5
 
