@@ -1,4 +1,4 @@
 - source: 03-workshop-activities.qmd
   quarto-pub:
     - id: d836caec-8895-42a3-87ce-38a931ac45d6
-      url: 'https://ryandonovan.quarto.pub/week-3---activities-fb08'
+      url: https://ryandonovan.quarto.pub/week-3---activities-fb08
