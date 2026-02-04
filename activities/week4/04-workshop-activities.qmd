@@ -404,8 +404,8 @@ Again, it's only really the outliers and the normal distribution that needs to b
 
 You learned how to assess both of these earlier using the `descriptives` function. Use similar code here to assess:
 
-1.  Whether there are any outliers in our reading data?
-2.  Whether it is normally distributed?
+1.  Are there any outliers in our reading data?
+2.  Is our data normally distributed?
 
 ::: {.callout-tip collapse="true"}
 The eagle-eyed among you may have noticed there is a way to get your descriptive statistics for our write-up **and** check these assumptions all is one code chunk, see below:
