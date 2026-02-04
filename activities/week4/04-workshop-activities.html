@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 4 Activities (T-tests in R)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="04-workshop-activities_files/libs/clipboard/clipboard.min.js"></script>
+<script src="04-workshop-activities_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="04-workshop-activities_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="04-workshop-activities_files/libs/quarto-html/popper.min.js"></script>
+<script src="04-workshop-activities_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="04-workshop-activities_files/libs/quarto-html/anchor.min.js"></script>
+<link href="04-workshop-activities_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="04-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="04-workshop-activities_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="04-workshop-activities_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="04-workshop-activities_files/libs/bootstrap/bootstrap-6e70023e03052827610af39d5bd37d6e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#lets-get-set-up" id="toc-lets-get-set-up" class="nav-link active" data-scroll-target="#lets-get-set-up">Let’s Get Set Up</a></li>
+  <li><a href="#activity-1-set-up-your-working-directory-r-script-for-this-week" id="toc-activity-1-set-up-your-working-directory-r-script-for-this-week" class="nav-link" data-scroll-target="#activity-1-set-up-your-working-directory-r-script-for-this-week">Activity 1: Set Up Your Working Directory &amp; R Script for this week</a></li>
+  <li><a href="#activity-2-installing-loading-r-packages" id="toc-activity-2-installing-loading-r-packages" class="nav-link" data-scroll-target="#activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</a></li>
+  <li><a href="#activity-3-download-and-load-in-your-datasets" id="toc-activity-3-download-and-load-in-your-datasets" class="nav-link" data-scroll-target="#activity-3-download-and-load-in-your-datasets">Activity 3: Download and load in your datasets</a>
+  <ul>
+  <li><a href="#download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder." id="toc-download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder." class="nav-link" data-scroll-target="#download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder.">Download these files onto your computer and move each file to your <code>week4</code> folder.</a></li>
+  </ul></li>
+  <li><a href="#between-groups-comparisons" id="toc-between-groups-comparisons" class="nav-link" data-scroll-target="#between-groups-comparisons">Between-Groups Comparisons</a></li>
+  <li><a href="#activity-4-using-the-jmv-package-to-get-descriptive-statistics" id="toc-activity-4-using-the-jmv-package-to-get-descriptive-statistics" class="nav-link" data-scroll-target="#activity-4-using-the-jmv-package-to-get-descriptive-statistics">Activity 4: Using the <code>jmv</code> package to get descriptive statistics</a></li>
+  <li><a href="#activity-5-checking-our-parametric-assumptions" id="toc-activity-5-checking-our-parametric-assumptions" class="nav-link" data-scroll-target="#activity-5-checking-our-parametric-assumptions">Activity 5: Checking our parametric assumptions</a>
+  <ul>
+  <li><a href="#checking-our-parametric-assumptions" id="toc-checking-our-parametric-assumptions" class="nav-link" data-scroll-target="#checking-our-parametric-assumptions">Checking our parametric assumptions</a></li>
+  </ul></li>
+  <li><a href="#activity-6-running-the-independent-samples-t-test" id="toc-activity-6-running-the-independent-samples-t-test" class="nav-link" data-scroll-target="#activity-6-running-the-independent-samples-t-test">Activity 6: Running the Independent Samples T-test</a></li>
+  <li><a href="#within-subjects-comparisons" id="toc-within-subjects-comparisons" class="nav-link" data-scroll-target="#within-subjects-comparisons">Within-Subjects Comparisons</a></li>
+  <li><a href="#activity-7-descriptive-statistics-for-within-subjects-comparisons" id="toc-activity-7-descriptive-statistics-for-within-subjects-comparisons" class="nav-link" data-scroll-target="#activity-7-descriptive-statistics-for-within-subjects-comparisons">Activity 7: Descriptive Statistics for Within-Subjects Comparisons</a></li>
+  <li><a href="#activity-8-checking-our-assumptions" id="toc-activity-8-checking-our-assumptions" class="nav-link" data-scroll-target="#activity-8-checking-our-assumptions">Activity 8: Checking our assumptions</a>
+  <ul>
+  <li><a href="#checking-our-parametric-assumptions-1" id="toc-checking-our-parametric-assumptions-1" class="nav-link" data-scroll-target="#checking-our-parametric-assumptions-1">Checking our parametric assumptions</a></li>
+  </ul></li>
+  <li><a href="#activity-9-running-the-paired-samples-t-test" id="toc-activity-9-running-the-paired-samples-t-test" class="nav-link" data-scroll-target="#activity-9-running-the-paired-samples-t-test">Activity 9: Running the Paired-Samples T-test</a>
+  <ul>
+  <li><a href="#how-might-you-write-up-these-results-in-apa-style" id="toc-how-might-you-write-up-these-results-in-apa-style" class="nav-link" data-scroll-target="#how-might-you-write-up-these-results-in-apa-style">How might you write up these results in APA style?</a></li>
+  </ul></li>
+  <li><a href="#activity-10-power-analyses" id="toc-activity-10-power-analyses" class="nav-link" data-scroll-target="#activity-10-power-analyses">Activity 10: Power analyses!</a></li>
+  <li><a href="#power-analysis-for-an-independent-samples-t-test" id="toc-power-analysis-for-an-independent-samples-t-test" class="nav-link" data-scroll-target="#power-analysis-for-an-independent-samples-t-test">Power analysis for an independent samples t-test</a></li>
+  <li><a href="#power-analysis-for-a-paired-samples-t-test" id="toc-power-analysis-for-a-paired-samples-t-test" class="nav-link" data-scroll-target="#power-analysis-for-a-paired-samples-t-test">Power analysis for a paired-samples t-test</a></li>
+  <li><a href="#activity-11-choose-and-run-a-paired-or-independent-t-test" id="toc-activity-11-choose-and-run-a-paired-or-independent-t-test" class="nav-link" data-scroll-target="#activity-11-choose-and-run-a-paired-or-independent-t-test">Activity 11: Choose and run a Paired or Independent T-Test</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="04-workshop-activities.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 4 Activities (T-tests in R)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this weeks workshop, we are going to learn how to perform descriptive statistics and conduct both independent and paired-samples t-tests (which you covered in today’s lecture).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/05-T-tests.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="A graphical image illustrating the two main types of t-test. The first shows two groups of people with the header &quot;unpaired-t-test&quot; and a caption underneath reading &quot;Is there a difference between two groups&quot;. The second shows the same group of people with a clock between them, the caption &quot;paired t-test&quot; and written underneath is &quot;Is there a difference in a group between two points in time&quot;."></p>
+</figure>
+</div>
+<p>Additionally, we will learn how to check parametric assumptions in R. By the end of this session, you will be able to:</p>
+<p>- Use the <code>jmv</code> package to run descriptive statistics and check parametric assumptions.</p>
+<p>- Conduct an independent samples t-test in R.</p>
+<p>- Conduct a paired-samples t-test in R.</p>
+<p>- Conduct an apriori power analysis in R for t-tests.</p>
+<section id="lets-get-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="lets-get-set-up">Let’s Get Set Up</h2>
+<p>Let’s begin by ensuring your working environment is ready for today’s session. Open RStudio or Posit Cloud and complete the following tasks to set everything up.</p>
+</section>
+<section id="activity-1-set-up-your-working-directory-r-script-for-this-week" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1-set-up-your-working-directory-r-script-for-this-week">Activity 1: Set Up Your Working Directory &amp; R Script for this week</h2>
+<p>One of the first steps in each of these workshops is setting up your *working directory*. The working directory is the default folder where R will look to import files or save any files you export.</p>
+<p>If you don’t set the working directory, R might not be able to locate the files you need (e.g., when importing a dataset) or you might not know where your exported files have been saved. Setting the working directory beforehand ensures that everything is in the right place and avoids these issues.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reminder on Steps to Set Up Your Working Directory
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Click:<br>
+<strong>Session → Set Working Directory → Choose Directory</strong></p></li>
+<li><p>Navigate to the folder you created for this course (this should be the same folder you used for previous workshops).</p></li>
+<li><p>Create a new folder called <code>week4</code> inside this directory.</p></li>
+<li><p>Select the <code>week4</code> folder and click <strong>Open</strong>.</p></li>
+</ol>
+<p>Don’t forget to verify your working directory before we get started</p>
+<p>You can always check your current working directory by typing in the following command in the console:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/0131045S/Desktop/R/rintro/activities/week4"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>As in previous weeks we will create an <strong>R script</strong> that we can use for today’s activities. This week we can call our script <code>04-t-tests</code></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reminder on creating an R script
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Go to the menu bar and select:<br>
+<strong>File → New File → R Script</strong></p>
+<p>This will open an untitled R script.</p></li>
+<li><p>To save and name your script, select:</p>
+<p><strong>File→ Save As</strong>, then enter the name:</p>
+<p><code>04-t-tests</code></p>
+<p>Click <strong>Save</strong></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-2-installing-loading-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</h2>
+<p>We’ll be using several <strong>R packages</strong> to make our analysis easier. The <code>jmv</code> package is particularly helpful for running descriptive statistics and t-tests, while <code>pwr</code> helps us calculate power for our tests. The <code>tidyverse</code> will assist with data cleaning, and <code>car</code> will allow us to check assumptions like homogeneity of variance.</p>
+<p><strong>REMEMBER</strong>: If you encounter an error message like “<code>Error in library(package name): there is no packaged calledpackage name</code>”, you’ll need to install the package first by typing the following into your console:</p>
+<p>Here are the packages we will be using today:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv) <span class="co"># this will help us run descriptive statistics </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr) <span class="co"># this will enable us to conduct power analysis  </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># that runs the levenes test </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: carData</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize) <span class="co">#calculate effect size difference</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="activity-3-download-and-load-in-your-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-download-and-load-in-your-datasets">Activity 3: Download and load in your datasets</h2>
+<p>We are going to need the following files for today’s session. You will find them on Canvas under the Module <strong>Week 4 - T-tests</strong></p>
+<p>- <strong>wellbeing.csv</strong> <strong>→</strong> which we will use for our independent samples t-test</p>
+<p>- <strong>reading.csv</strong> <strong>→</strong> which we will use for our paired samples t-test</p>
+<p>- <strong>podcasts.csv</strong> <strong>→</strong> which we will use for our paired samples t-test</p>
+<section id="download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder." class="level3">
+<h3 class="anchored" data-anchor-id="download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder.">Download these files onto your computer and move each file to your <code>week4</code> folder.</h3>
+<p>Once this is done, type the following code in your script to load the datasets into R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_wellbeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"wellbeing.csv"</span>)  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_reading <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"reading.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="between-groups-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="between-groups-comparisons">Between-Groups Comparisons</h2>
+<p>For our between group comparisons we will be using the <strong>wellbeing.csv</strong> data, which we have just saved as <code>df_wellbeing</code></p>
+<p>This data was collected from an experimental study investigating the effects of Caffeine (<code>Low Caffeine</code>, and <code>High Caffeine</code>) on various outcome variables, including experiences of pain, fatigue, depression, wellbeing, and self-reported general health. Additionally, participants’ <code>age</code> and <code>gender</code> were recorded.</p>
+<p>After loading the datasets, it’s always good practice to inspect it before doing any analyses. You can use the <code>head()</code> function to get an overview of the wellbeing dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_wellbeing)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        id gender    Condition age pain fatigue depr wellb health
+1 20221059 Female Low Caffeine  26   30      49   64    72     49
+2 20221065   Male Low Caffeine  20   37      54   77    45     45
+3 20221067   Male Low Caffeine  28   28      49   56    56     47
+4 20221075   Male Low Caffeine  42   39      46   61    58     48
+5 20221090 Female Low Caffeine  47   39      45   62    68     55
+6 20221100 Female Low Caffeine  21   40      44   66    69     48</code></pre>
+</div>
+</div>
+<p>From this, you’ll see that our dataset contains 8 columns. We have two character columns (<code>gender</code> and <code>Condition</code>) and five integer columns (<code>id</code>, <code>age</code>, <code>pain</code>, <code>fatigue</code>, <code>depr</code>, and <code>wellb</code>).</p>
+<p>Now that our environment is set up and our dataset is loaded, we are ready to dive into descriptive statistics.</p>
+</section>
+<section id="activity-4-using-the-jmv-package-to-get-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="activity-4-using-the-jmv-package-to-get-descriptive-statistics">Activity 4: Using the <code>jmv</code> package to get descriptive statistics</h2>
+<p>Lets try using the <code>descriptives</code> function to calculate statistics for the <code>wellb</code> and <code>depr</code> variables within the <code>df_wellbeing</code> dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> df_wellbeing,         <span class="co"># Here we have specified what dataset to use      </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"wellb"</span>, <span class="st">"depr"</span>))   <span class="co"># Here we specify our variables of interest </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                   
+ ────────────────────────────────────────────── 
+                         wellb       depr       
+ ────────────────────────────────────────────── 
+   N                          200         200   
+   Missing                      0           0   
+   Mean                  58.11500    66.34500   
+   Median                59.50000    66.00000   
+   Standard deviation    12.16684    7.318729   
+   Minimum                     21          51   
+   Maximum                     82          85   
+ ────────────────────────────────────────────── </code></pre>
+</div>
+</div>
+<p>By default, this function displays the sample size (N), number of missing values, mean, median, standard deviation, minimum, and maximum for each variable. If you want to include additional statistics, like the mode, standard error (<code>se</code>) or confidence intervals (<code>ci</code>), you can set those options to <code>TRUE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> df_wellbeing,            </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"wellb"</span>, <span class="st">"depr"</span>),             </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="cn">TRUE</span>,             </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">se =</span> <span class="cn">TRUE</span>,            </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                          
+ ───────────────────────────────────────────────────── 
+                              wellb        depr        
+ ───────────────────────────────────────────────────── 
+   N                                200          200   
+   Missing                            0            0   
+   Mean                        58.11500     66.34500   
+   Std. error mean            0.8603253    0.5175123   
+   95% CI mean lower bound     56.41848     65.32449   
+   95% CI mean upper bound     59.81152     67.36551   
+   Median                      59.50000     66.00000   
+   Mode                        69.00000     66.00000   
+   Standard deviation          12.16684     7.318729   
+   Minimum                           21           51   
+   Maximum                           82           85   
+ ───────────────────────────────────────────────────── 
+   Note. The CI of the mean assumes sample means
+   follow a t-distribution with N - 1 degrees of
+   freedom</code></pre>
+</div>
+</div>
+<p>The <code>descriptives</code> function will by default assume you don’t want to split the variables selected in by different groups. But we can easily achieve this by using the <code>splitBy</code> argument. In this example, let’s split our descriptive statistics based on participants identified gender.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> df_wellbeing,  </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"wellb"</span>, <span class="st">"depr"</span>),  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="fu">c</span>(<span class="st">"gender"</span>),      </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="cn">TRUE</span>,         </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">se =</span> <span class="cn">TRUE</span>,      </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                                   
+ ────────────────────────────────────────────────────────────── 
+                              gender    wellb       depr        
+ ────────────────────────────────────────────────────────────── 
+   N                          Female         111          111   
+                              Male            89           89   
+   Missing                    Female           0            0   
+                              Male             0            0   
+   Mean                       Female    58.09910     66.32432   
+                              Male      58.13483     66.37079   
+   Std. error mean            Female    1.251368    0.7032349   
+                              Male      1.148920    0.7681049   
+   95% CI mean lower bound    Female    55.61918     64.93068   
+                              Male      55.85159     64.84434   
+   95% CI mean upper bound    Female    60.57902     67.71797   
+                              Male      60.41807     67.89723   
+   Median                     Female          60           66   
+                              Male            59           66   
+   Mode                       Female    69.00000     68.00000   
+                              Male      61.00000     63.00000   
+   Standard deviation         Female    13.18398     7.409039   
+                              Male      10.83889     7.246287   
+   Minimum                    Female          21           54   
+                              Male            25           51   
+   Maximum                    Female          82           85   
+                              Male            80           83   
+ ────────────────────────────────────────────────────────────── 
+   Note. The CI of the mean assumes sample means follow a
+   t-distribution with N - 1 degrees of freedom</code></pre>
+</div>
+</div>
+<p>You can also split by multiple variables. For example, if you want to examine wellbeing and depression scores by both gender and caffeine conditions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> df_wellbeing,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"wellb"</span>, <span class="st">"depr"</span>),   </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="fu">c</span>(<span class="st">"gender"</span>, <span class="st">"Condition"</span>), </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="cn">TRUE</span>,   </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">se =</span> <span class="cn">TRUE</span>,     </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                                                    
+ ─────────────────────────────────────────────────────────────────────────────── 
+                              gender    Condition        wellb       depr        
+ ─────────────────────────────────────────────────────────────────────────────── 
+   N                          Female    High Caffeine          54           54   
+                                        Low Caffeine           57           57   
+                              Male      High Caffeine          46           46   
+                                        Low Caffeine           43           43   
+   Missing                    Female    High Caffeine           0            0   
+                                        Low Caffeine            0            0   
+                              Male      High Caffeine           0            0   
+                                        Low Caffeine            0            0   
+   Mean                       Female    High Caffeine    59.81481     65.96296   
+                                        Low Caffeine     56.47368     66.66667   
+                              Male      High Caffeine    58.13043     67.21739   
+                                        Low Caffeine     58.13953     65.46512   
+   Std. error mean            Female    High Caffeine    1.749328     1.108055   
+                                        Low Caffeine     1.774595    0.8868764   
+                              Male      High Caffeine    1.606331     1.111605   
+                                        Low Caffeine     1.663424     1.050944   
+   95% CI mean lower bound    Female    High Caffeine    56.30611     63.74049   
+                                        Low Caffeine     52.91874     64.89004   
+                              Male      High Caffeine    54.89512     64.97850   
+                                        Low Caffeine     54.78261     63.34422   
+   95% CI mean upper bound    Female    High Caffeine    63.32352     68.18544   
+                                        Low Caffeine     60.02863     68.44329   
+                              Male      High Caffeine    61.36575     69.45628   
+                                        Low Caffeine     61.49646     67.58601   
+   Median                     Female    High Caffeine    60.00000     66.00000   
+                                        Low Caffeine           60           66   
+                              Male      High Caffeine    60.00000     67.50000   
+                                        Low Caffeine           58           65   
+   Mode                       Female    High Caffeine    53.00000     57.00000   
+                                        Low Caffeine     64.00000     66.00000   
+                              Male      High Caffeine    61.00000     63.00000   
+                                        Low Caffeine     65.00000     61.00000   
+   Standard deviation         Female    High Caffeine    12.85489     8.142511   
+                                        Low Caffeine     13.39790     6.695770   
+                              Male      High Caffeine    10.89466     7.539269   
+                                        Low Caffeine     10.90780     6.891502   
+   Minimum                    Female    High Caffeine          21           54   
+                                        Low Caffeine           21           54   
+                              Male      High Caffeine          25           53   
+                                        Low Caffeine           34           51   
+   Maximum                    Female    High Caffeine          82           85   
+                                        Low Caffeine           77           84   
+                              Male      High Caffeine          80           83   
+                                        Low Caffeine           76           80   
+ ─────────────────────────────────────────────────────────────────────────────── 
+   Note. The CI of the mean assumes sample means follow a t-distribution
+   with N - 1 degrees of freedom</code></pre>
+</div>
+</div>
+<p>Another great feature of the <code>descriptives</code> package is that we can also generate plots like box plots, bar charts, or histograms. Let’s use <code>descriptives</code> to calculate descriptive statistics for the <code>wellb</code> variable based on <code>gender</code> and also generate each plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> df_wellbeing,  </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"wellb"</span>),  </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="fu">c</span>(<span class="st">"gender"</span>),  </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>,   </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">bar =</span> <span class="cn">TRUE</span>,    </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in FUN(X[[i]], ...): no non-missing arguments to max; returning -Inf</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                 
+ ──────────────────────────────────────────── 
+                         gender    wellb      
+ ──────────────────────────────────────────── 
+   N                     Female         111   
+                         Male            89   
+   Missing               Female           0   
+                         Male             0   
+   Mean                  Female    58.09910   
+                         Male      58.13483   
+   Median                Female          60   
+                         Male            59   
+   Standard deviation    Female    13.18398   
+                         Male      10.83889   
+   Minimum               Female          21   
+                         Male            25   
+   Maximum               Female          82   
+                         Male            80   
+ ──────────────────────────────────────────── </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead.
+ℹ The deprecated feature was likely used in the jmvcore package.
+  Please report the issue at &lt;https://github.com/jamovi/jmvcore/issues&gt;.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see the <code>descriptives</code> package is useful for giving us lots of information about our data, and we will come back to often for descriptive statistics to accompany all of our statistical tests.</p>
+</section>
+<section id="activity-5-checking-our-parametric-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="activity-5-checking-our-parametric-assumptions">Activity 5: Checking our parametric assumptions</h2>
+<p>Let’s imagine we’re interested in investigating the effects of caffeine consumption on levels of self-reported <strong>health</strong>. Specifically, we want to determine whether people in the <strong>high caffeine</strong> condition scored significantly differently from those in the <strong>low caffeine</strong> condition.</p>
+<p>In this case:</p>
+<p>Our <strong>independent variable</strong> is caffeine consumption group (low caffeine vs high caffeine)</p>
+<p>Our <strong>dependent variable</strong> is health</p>
+<p>We could specify our hypothesis as such:</p>
+<p><strong>H1:</strong> We predict there will be statistically significant difference in reported health levels between people in the high versus low caffeine conditions.</p>
+<p><strong>H0 (Null hypothesis):</strong> There will not be a statistically significant difference in reported health levels between people in the high versus low caffeine conditions.</p>
+<p>Note that as we do not specify which group will have higher/lower health levels this is a <strong>nondirectional hypothesis</strong></p>
+<p>As we have two independent groups we want to compare, this would be best addressed via an <strong>independent samples t-test</strong>. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the parametric assumptions required for an independent samples t-test.</p>
+<section id="checking-our-parametric-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="checking-our-parametric-assumptions">Checking our parametric assumptions</h3>
+<p>There are several key assumptions for conducting an independent samples t-test:</p>
+<p>a. The dependent variable should be measured on a continuous scale.</p>
+<p>b. The independent variable should consist of two categorical, independent groups.</p>
+<p>c. The groups should be independent of each other.</p>
+<p>d. There should be no significant outliers.</p>
+<p>e. The dependent variable should be approximately normally distributed for each group.</p>
+<p>f. The dependent variable should exhibit homogeneity of variance.</p>
+<p>We don’t need R to check the first three assumptions (a-c). A quick visual inspection of the dataset will tell us whether these are met, and in this case, they are.</p>
+<p>We can now move on to checking our other assumptions.</p>
+<p><strong>d.&nbsp;There should be no significant outliers.</strong></p>
+<p>Earlier, we saw that the <code>descriptives</code> function is able to produce box plots. You may have noticed in the boxplot we produced earlier, it did identify several outliers. So we can use this tool again on our <code>df_wellbeing</code> data but focusing on our <strong>dependent variable</strong>: <code>health</code> and only splitting by our <strong>independent variable</strong>: <code>condition</code>.</p>
+<p>In addition to this we need some additional descriptive statistics for our write-up, specifically <strong>mean</strong>, <strong>standard deviation</strong>, and <strong>confidence intervals</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_wellbeing, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="st">"health"</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="st">"Condition"</span>, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                             
+ ──────────────────────────────────────────────────────── 
+                              Condition        health     
+ ──────────────────────────────────────────────────────── 
+   N                          High Caffeine         100   
+                              Low Caffeine          100   
+   Missing                    High Caffeine           0   
+                              Low Caffeine            0   
+   Mean                       High Caffeine    50.26000   
+                              Low Caffeine     49.74000   
+   95% CI mean lower bound    High Caffeine    49.18179   
+                              Low Caffeine     48.61592   
+   95% CI mean upper bound    High Caffeine    51.33821   
+                              Low Caffeine     50.86408   
+   Median                     High Caffeine    51.00000   
+                              Low Caffeine     50.00000   
+   Standard deviation         High Caffeine    5.433938   
+                              Low Caffeine     5.665098   
+   Minimum                    High Caffeine          36   
+                              Low Caffeine           38   
+   Maximum                    High Caffeine          63   
+                              Low Caffeine           63   
+ ──────────────────────────────────────────────────────── 
+   Note. The CI of the mean assumes sample means
+   follow a t-distribution with N - 1 degrees of
+   freedom</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the box plot, we can see that no outliers present in the dataset, so we can now move on to check the next assumption.</p>
+<p><strong>e. The dependent variable should be approximately normally distributed for each group.</strong></p>
+<p>You may have spotted this in the exercises earlier, but there is a way to check for normality using the <code>descriptives</code> function. In this function, there is an argument labelled <code>sw</code> that will run a Shapiro-wilks test on the variables we select for running descriptive statistics. By default, it is set to <code>FALSE</code>, so all we need to do is set it to <code>TRUE</code>. Once again, I will turn off some of the other default options to reduce the amount of information printed, but feel free to go with the other defaults options - just make sure <code>sw</code> is set to <code>TRUE</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_wellbeing, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="st">"health"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="st">"Condition"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">median =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">missing =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">min =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">max =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>             )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                         
+ ──────────────────────────────────────────────────── 
+                         Condition        health      
+ ──────────────────────────────────────────────────── 
+   N                     High Caffeine          100   
+                         Low Caffeine           100   
+   Mean                  High Caffeine     50.26000   
+                         Low Caffeine      49.74000   
+   Standard deviation    High Caffeine     5.433938   
+                         Low Caffeine      5.665098   
+   Shapiro-Wilk W        High Caffeine    0.9811036   
+                         Low Caffeine     0.9862297   
+   Shapiro-Wilk p        High Caffeine    0.1618916   
+                         Low Caffeine     0.3879399   
+ ──────────────────────────────────────────────────── </code></pre>
+</div>
+</div>
+<p>We can see two new values in our descriptive table, the test statistic <code>Shapiro-Wilk W</code> and its corresponding p-value <code>Shapiro-Wilk p</code>. We can see that for both the High Caffeine and Low Caffeine condition, we have met this assumption (as the p value is above 0.05). As such, we can continue on with our plan to run our parametric test.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If we visualize our data using a histogram you should see it looks something like the example normal distribution from your lecture. It is vitally important to use a formal test (such as Shapiro-Wilk) to test your assumptions, but visualizing the data can be helpful for your own understanding.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_wellbeing, </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="st">"health"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> <span class="st">"Condition"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">median =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">missing =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">min =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">max =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>             )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                         
+ ──────────────────────────────────────────────────── 
+                         Condition        health      
+ ──────────────────────────────────────────────────── 
+   N                     High Caffeine          100   
+                         Low Caffeine           100   
+   Mean                  High Caffeine     50.26000   
+                         Low Caffeine      49.74000   
+   Standard deviation    High Caffeine     5.433938   
+                         Low Caffeine      5.665098   
+   Shapiro-Wilk W        High Caffeine    0.9811036   
+                         Low Caffeine     0.9862297   
+   Shapiro-Wilk p        High Caffeine    0.1618916   
+                         Low Caffeine     0.3879399   
+ ──────────────────────────────────────────────────── </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>f.&nbsp;The dependent variable should exhibit homogeneity of variance.</strong></p>
+<p>Hopefully, you will also have spotted in the exercises earlier that <code>descriptives</code> does not compute a Levene’s Test for measuring Homogeneity of Variance. To do that, we need to a function in the <code>car</code> package that is called <code>leveneTest</code>. The syntax for this function is as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(DependentVariable <span class="sc">~</span> IndependentVariable, <span class="at">data =</span> ourdataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s use this to assess whether <code>fatigue</code> exhibits homogeneity of variance across the two caffeine conditions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(health <span class="sc">~</span> Condition, <span class="at">data =</span> df_wellbeing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+       Df F value Pr(&gt;F)
+group   1  0.6836 0.4093
+      198               </code></pre>
+</div>
+</div>
+<p>Luckily, we can see that our data has met this parametric assumption (as the p value is above 0.05). So let’s proceed on and run our t-test.</p>
+</section>
+</section>
+<section id="activity-6-running-the-independent-samples-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="activity-6-running-the-independent-samples-t-test">Activity 6: Running the Independent Samples T-test</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/05-IndependentSamples%20t-test.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="The image shows two groups of people with the header &quot;unpaired-t-test&quot; and a caption underneath reading &quot;Is there a difference between two groups&quot;."></p>
+</figure>
+</div>
+<p>We use the <code>t.test</code> function to perform the t-test. The syntax is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(DV <span class="sc">~</span> IV, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> ourdataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this function:</p>
+<ul>
+<li><p><code>DV ~ IV</code> specifies the dependent variable (DV) and independent variable (IV).</p></li>
+<li><p><code>paired = FALSE</code> indicates that we are conducting an independent samples t-test. If we were comparing related groups (e.g., pre-test vs.&nbsp;post-test), we would set <code>paired = TRUE</code>.</p></li>
+<li><p>The <code>alternative</code> argument specifies the hypothesis test type:</p>
+<ul>
+<li><p><code>"two.sided"</code> tests for any difference between groups.</p></li>
+<li><p><code>"less"</code> tests whether the first group has a lower mean than the second.</p></li>
+<li><p><code>"greater"</code> tests whether the first group has a higher mean than the second.</p></li>
+</ul></li>
+</ul>
+<p>As we have a <strong>nondirectional hypothesis</strong> we will run a two-sided t-test. Let’s run the two-sided test on our <code>df_wellbeing</code> dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(health <span class="sc">~</span> Condition, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> df_wellbeing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  health by Condition
+t = 0.66243, df = 197.66, p-value = 0.5085
+alternative hypothesis: true difference in means between group High Caffeine and group Low Caffeine is not equal to 0
+95 percent confidence interval:
+ -1.028032  2.068032
+sample estimates:
+mean in group High Caffeine  mean in group Low Caffeine 
+                      50.26                       49.74 </code></pre>
+</div>
+</div>
+<p>The t-test results show no significant difference in health levels between the High Caffeine and Low Caffeine groups.</p>
+<p>We can also evaluate the effect size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(health <span class="sc">~</span> Condition,</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> df_wellbeing,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pooled_sd =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |        95% CI
+-------------------------
+0.09      | [-0.18, 0.37]
+
+- Estimated using un-pooled SD.</code></pre>
+</div>
+</div>
+<p>Here’s how we might write up the results in APA style:</p>
+<p>A Welch independent samples t-test was conducted to compare health levels between participants in the High Caffeine (<em>M</em>= 50.26, <em>SD</em>= 5.43) and Low Caffeine (<em>M</em>= 49.74, <em>SD</em>= 5.67) conditions. The test showed that there was no significant difference in the means of health between the two groups, <em>t</em>(197.66) = 0.66, <em>p</em> = 0.51. As such we fail to reject the null hypothesis.</p>
+</section>
+<section id="within-subjects-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="within-subjects-comparisons">Within-Subjects Comparisons</h2>
+<p>For our within-subjects comparisons we will be using the <strong>reading.csv</strong> data, which we have saved as <code>df_reading</code></p>
+<p>This data was collected from a reading intervention study investigating the effects of a literacy intervention, comparing the same participants before and after the intervention. As such we will be comparing participants reading at: <code>Baseline</code>, and <code>Time2</code>.</p>
+<p>After loading the datasets, it’s always good practice to inspect it before doing any analyses. You can use the <code>head()</code> function to get an overview.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the same procedure we used already today for Between-Groups comparisons</p>
+</div>
+</div>
+</div>
+<p>A lot of the steps for conducting within-subjects comparisons are very similar to between-groups comparisons. So we can refer to the above sections for help if we get unsure.</p>
+</section>
+<section id="activity-7-descriptive-statistics-for-within-subjects-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="activity-7-descriptive-statistics-for-within-subjects-comparisons">Activity 7: Descriptive Statistics for Within-Subjects Comparisons</h2>
+<p>Lets calculate our descriptive statistics for the reading data using the <code>descriptives</code> function. Lets now use this tool on our <code>df_reading</code> data focusing on our two time points (Baseline and Time2).</p>
+<p>In addition to this we need some additional descriptive statistics for our write-up, specifically <strong>mean</strong>, <strong>standard deviation</strong>, and <strong>confidence intervals</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Here’s the code for the above (if you get stuck)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_reading, </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Baseline"</span>, <span class="st">"Time2"</span>), </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                        
+ ─────────────────────────────────────────────────── 
+                              Baseline    Time2      
+ ─────────────────────────────────────────────────── 
+   N                                20          20   
+   Missing                           0           0   
+   Mean                       46.41624    56.06485   
+   95% CI mean lower bound    41.86402    51.58436   
+   95% CI mean upper bound    50.96845    60.54534   
+   Median                     46.19985    54.64291   
+   Standard deviation         9.726653    9.573406   
+   Minimum                    25.33383    39.51247   
+   Maximum                    62.86913    76.68956   
+ ─────────────────────────────────────────────────── 
+   Note. The CI of the mean assumes sample means
+   follow a t-distribution with N - 1 degrees of
+   freedom</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-8-checking-our-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="activity-8-checking-our-assumptions">Activity 8: Checking our assumptions</h2>
+<p>Let’s imagine we’re interested in investigating the effects of our intervention on levels of <strong>reading ability</strong>. Specifically, we want to determine whether children’s reading ability was significantly better at <strong>Time 2</strong> (after intervention) compared to at <strong>baseline</strong> (before the intervention).</p>
+<p>In this case:</p>
+<p>Our <strong>independent variable</strong> is time (Baseline vs Time2)</p>
+<p>Our <strong>dependent variable</strong> is reading ability</p>
+<p>We could specify our hypothesis as such:</p>
+<p><strong>H1:</strong> We predict there will be statistically higher reading ability in children at Time 2 (after intervention) than at Baseline.</p>
+<p><strong>H0 (Null hypothesis):</strong> There will not be statistically significant higher reading ability in children at Time 2 (after intervention) than at Baseline.</p>
+<p>Note that as we do specify which condition will have higher reading ability this is a <strong>directional hypothesis</strong></p>
+<p>As all participants take part in both conditions (e.g.&nbsp;are tested at two timepoints), this would be best addressed via a <strong>paired samples t-test</strong>. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the parametric assumptions required for a paired samples t-test.</p>
+<section id="checking-our-parametric-assumptions-1" class="level3">
+<h3 class="anchored" data-anchor-id="checking-our-parametric-assumptions-1">Checking our parametric assumptions</h3>
+<p>a. Our dependent variable should be measured on a continuous scale</p>
+<p>b. The observations are independent of one another</p>
+<p>c. There should be no significant outliers</p>
+<p>d. Our dependent variable should be normally distributed</p>
+<p>Again, it’s only really the outliers and the normal distribution that needs to be evaluated using functions in R.</p>
+<p>You learned how to assess both of these earlier using the <code>descriptives</code> function. Use similar code here to assess:</p>
+<ol type="1">
+<li>Are there any outliers in our reading data?</li>
+<li>Is our data normally distributed?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The eagle-eyed among you may have noticed there is a way to get your descriptive statistics for our write-up <strong>and</strong> check these assumptions all is one code chunk, see below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_reading, </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Baseline"</span>, <span class="st">"Time2"</span>), </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                          
+ ───────────────────────────────────────────────────── 
+                              Baseline     Time2       
+ ───────────────────────────────────────────────────── 
+   N                                 20           20   
+   Missing                            0            0   
+   Mean                        46.41624     56.06485   
+   95% CI mean lower bound     41.86402     51.58436   
+   95% CI mean upper bound     50.96845     60.54534   
+   Median                      46.19985     54.64291   
+   Standard deviation          9.726653     9.573406   
+   Minimum                     25.33383     39.51247   
+   Maximum                     62.86913     76.68956   
+   Shapiro-Wilk W             0.9685842    0.9739320   
+   Shapiro-Wilk p             0.7247386    0.8347337   
+ ───────────────────────────────────────────────────── 
+   Note. The CI of the mean assumes sample means
+   follow a t-distribution with N - 1 degrees of
+   freedom</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-workshop-activities_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you find it easiest to keep these checks separate there’s nothing wrong with that either.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="activity-9-running-the-paired-samples-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="activity-9-running-the-paired-samples-t-test">Activity 9: Running the Paired-Samples T-test</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/05-PairedT-Test.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="The image shows the same group of people with a clock between them, the caption &quot;paired t-test&quot; and written underneath is &quot;Is there a difference in a group between two points in time&quot;."></p>
+</figure>
+</div>
+<p>We use the <code>t.test</code> function to perform the t-test. Here the syntax is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ourDataset<span class="sc">$</span>Condition1, ourDataset<span class="sc">$</span>Condition2,         </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>,        </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You’ll notice the syntax is similar to how we performed our between-groups comparison. A major difference is that now <code>paired = TRUE</code>.</p>
+<p>Another difference to our first analysis is that we now have a directional hypothesis:</p>
+<p><strong>H1:</strong> We predict there will be statistically higher reading ability in children at Time 2 (after intervention) than at Baseline.</p>
+<p>As such, we need to change <code>alternative</code> to <code>"less"</code> as we are predicting that Baseline has <strong>lower</strong> reading ability than Time 2.</p>
+<p>Run the paired-samples t-test to test our hypothesis.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Our paired-samples t-test code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df_reading<span class="sc">$</span>Baseline, df_reading<span class="sc">$</span>Time2, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  df_reading$Baseline and df_reading$Time2
+t = -2.9807, df = 19, p-value = 0.003841
+alternative hypothesis: true mean difference is less than 0
+95 percent confidence interval:
+      -Inf -4.051362
+sample estimates:
+mean difference 
+      -9.648614 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We can also evaluate the effect size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(df_reading<span class="sc">$</span>Time2,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                     df_reading<span class="sc">$</span>Baseline,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>For paired samples, 'repeated_measures_d()' provides more options.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |       95% CI
+------------------------
+0.67      | [0.17, 1.15]</code></pre>
+</div>
+</div>
+<section id="how-might-you-write-up-these-results-in-apa-style" class="level3">
+<h3 class="anchored" data-anchor-id="how-might-you-write-up-these-results-in-apa-style">How might you write up these results in APA style?</h3>
+<p>Depending what you found above you could fill in the blanks on one of the below:</p>
+<p><strong>Option A:</strong> A paired-samples t-test was conducted to test whether reading ability was lower in participants at baseline (<em>M</em>= , <em>SD</em>= ) as compared to after the intervention at Time 2 (<em>M</em>= , <em>SD</em>= ). In line with predictions the test showed that there was significantly higher reading ability at Time 2, <em>t</em>() = , <em>p</em> =. As such we reject the null hypothesis.</p>
+<p><strong>Option B:</strong> A paired-samples t-test was conducted to test whether reading ability was lower in participants at baseline (<em>M</em>= , <em>SD</em>= ) as compared to after the intervention at Time 2 (<em>M</em>= , <em>SD</em>= ). Contrary to predictions the test did not show significantly higher reading ability at Time 2 , <em>t</em>() = , <em>p</em> =. As such we fail to reject the null hypothesis.</p>
+</section>
+</section>
+<section id="activity-10-power-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="activity-10-power-analyses">Activity 10: Power analyses!</h2>
+<p>Now you may recall in your Week 3 lecture Aoife being very enthusiastic about power analyses, and the importance of conducting one <strong>before</strong> you collect any data (called an a priori or prospective power analysis). There are also power analyses you can conduct after data collection, but there are issues with them, and generally best practice is to do one beforehand (<a href="#0">A useful paper if you’re interested in learning more</a>).</p>
+<p>Here we are going to learn about how to conduct a power analysis for both an independent samples and paired-samples t-test.</p>
+<p>As you may recall there are some key pieces of information we need for a power analysis</p>
+<ol type="1">
+<li><p>Alpha level (typically 0.05 in Psychology and the social sciences)</p></li>
+<li><p>The minimum effect size of interest</p></li>
+<li><p>Our desired power</p></li>
+<li><p>If our test is one or two-tailed (i.e.&nbsp;do we have a directional or nondirectional hypothesis)</p></li>
+</ol>
+<p>Reminder that this <a href="https://rpsychologist.com/d3/nhst/">interactive visualization</a> can be helpful in understanding how these things interact.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do I know what the minimum effect size of interest is?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:</p>
+<ul>
+<li><p>Small Effect (d = ~ 0.2)</p></li>
+<li><p>Medium Effect (d = ~ 0.5)</p></li>
+<li><p>Large Effect (d = ~ 0.8)</p></li>
+</ul>
+<p>As we are aware it is easier to detect large effects. As such, if we really have no idea what effect size we should expect then we should power for small effects.</p>
+<p>If however we are conducting a replication, or a very similar study to one that has been already done, then we can power for the effect size they report.</p>
+<p>Again I refer to: <a href="https://online.ucpress.edu/collabra/article/8/1/33267/120491/Sample-Size-Justification">A useful paper if you’re interested in learning more</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="power-analysis-for-an-independent-samples-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="power-analysis-for-an-independent-samples-t-test">Power analysis for an independent samples t-test</h2>
+<p>The syntax for conducting an apriori statistical power analysis for an independent samples t-test is the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct power analysis for an independent samples t-test</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,         <span class="co"># Your Expected effect size</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"two.sample"</span>,  <span class="co"># Indicates an independent t-test</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"two.sided"</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to "one.sided"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 63.76561
+              d = 0.5
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+</section>
+<section id="power-analysis-for-a-paired-samples-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="power-analysis-for-a-paired-samples-t-test">Power analysis for a paired-samples t-test</h2>
+<p>If we want to run a paired samples-test, then we can change the type from “two.sample” to “one.sample”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,         <span class="co"># Your Expected effect size</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"paired"</span>,  <span class="co"># Indicates an independent t-test</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"two.sided"</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to "one.sided"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Paired t test power calculation 
+
+              n = 33.36713
+              d = 0.5
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number of *pairs*</code></pre>
+</div>
+</div>
+<p>Try running the above power-analyses again but for a one sided (directional) test. What does this do to our required sample size?</p>
+</section>
+<section id="activity-11-choose-and-run-a-paired-or-independent-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="activity-11-choose-and-run-a-paired-or-independent-t-test">Activity 11: Choose and run a Paired or Independent T-Test</h2>
+<p>In this final activity, you will read a brief description of a research study and decide which type of t-test is appropriate. You will then carry out the full analysis yourself, from descriptive statistics to power analysis.</p>
+<p><strong>Research Aim:</strong> The aim of this study was to examine whether exposure to different forms of political media influences individuals’ receptivity to political misinformation online.</p>
+<p><strong>Research Question:</strong> Does listening to political podcasts, compared to reading a traditional newspaper, increase receptivity to political misinformation?</p>
+<p><strong>Methods:</strong> One month before a local election, participants were randomly assigned to one of two conditions:</p>
+<p><em>Podcast condition</em>: participants listened to episodes of the Joe Rogan Experience podcast</p>
+<p><em>Newspaper condition</em>: participants read articles from The New York Times</p>
+<p>Participants engaged with the assigned content for 30 minutes per day over a one-week period. After the election, participants completed a questionnaire measuring receptivity to political misinformation, with higher scores indicating greater susceptibility to false or misleading political claims.</p>
+<p>Receptivity to misinformation was measured once, after the intervention.</p>
+<p><strong>H0 (Null hypothesis):</strong> There will be no significant difference in receptivity to political misinformation between participants in the podcast condition and those in the newspaper condition.</p>
+<p>higher reading ability in children at Time 2 (after intervention) than at Baseline.</p>
+<p><strong>H1:</strong> Participants in the podcast condition will show significantly higher receptivity to political misinformation than participants in the newspaper condition.</p>
+<p>Using the <code>political.csv</code> dataset:</p>
+<ul>
+<li><p>Decide whether an independent samples or paired samples t-test is appropriate</p></li>
+<li><p>Load the data into R and call it <code>df_political</code></p></li>
+<li><p>Run appropriate descriptive statistics</p></li>
+<li><p>Check all relevant parametric assumptions</p></li>
+<li><p>Conduct the correct t-test</p></li>
+<li><p>Evaluate the effect size</p></li>
+<li><p>Make a decision as whether to reject or fail to reject the null hypothesis. Write up your results in a word document.</p></li>
+<li><p>Conduct an a priori power analysis for this study design</p></li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

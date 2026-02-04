@@ -95,6 +95,7 @@ Here are the packages we will be using today:
 library(jmv) # this will help us run descriptive statistics 
 library(pwr) # this will enable us to conduct power analysis  
 library(car) # that runs the levenes test 
+library(effectsize) #calculate effect size difference
 ```
 
 ## Activity 3: Download and load in your datasets
@@ -104,6 +105,8 @@ We are going to need the following files for today's session. You will find them
 \- **wellbeing.csv** **→** which we will use for our independent samples t-test
 
 \- **reading.csv** **→** which we will use for our paired samples t-test
+
+\- **podcasts.csv** **→** which we will use for our paired samples t-test
 
 ### Download these files onto your computer and move each file to your `week4` folder.
 
@@ -336,6 +339,33 @@ t.test(health ~ Condition,
 
 The t-test results show no significant difference in health levels between the High Caffeine and Low Caffeine groups.
 
+We can also evaluate the effect size.
+
+```{r}
+
+cohens_d(health ~ Condition,
+                     data = df_wellbeing,
+                     pooled_sd = FALSE)
+```
+
+**How do we interpret this?**
+
+Cohen’s *d* tells us **how large the difference between the two group means is**, expressed in standard deviation units. Unlike the *p*-value, which tells us whether an effect is statistically detectable, the effect size tells us whether the difference is small, medium, or large in practical terms.
+
+Here, Cohen’s *d* = 0.09, which is considered a **very small effect**. This means that the difference in health scores between the High Caffeine and Low Caffeine groups is minimal.
+
+::: {.callout-tip collapse="true"}
+## How do I know the magnitude of an effect size?
+
+This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:
+
+-   Small Effect (d = \~ 0.2)
+
+-   Medium Effect (d = \~ 0.5)
+
+-   Large Effect (d = \~ 0.8)
+:::
+
 Here's how we might write up the results in APA style:
 
 A Welch independent samples t-test was conducted to compare health levels between participants in the High Caffeine (*M*= 50.26, *SD*= 5.43) and Low Caffeine (*M*= 49.74, *SD*= 5.67) conditions. The test showed that there was no significant difference in the means of health between the two groups, *t*(197.66) = 0.66, *p* = 0.51. As such we fail to reject the null hypothesis.
@@ -453,6 +483,35 @@ t.test(df_reading$Baseline, df_reading$Time2,
 ```
 :::
 
+We can also evaluate the effect size.
+
+```{r}
+
+cohens_d(df_reading$Time2,
+                     df_reading$Baseline,
+                     paired = TRUE)
+```
+
+**How do we interpret this?**
+
+For paired samples designs, Cohen’s *d* represents the **average size of the change within participants**, rather than a difference between two independent groups. This version of the effect size is sometimes referred to as Cohen’s d.
+
+Here, Cohen’s *d* = 0.67, which corresponds to a medium-to-large effect. This indicates that reading ability increased meaningfully from Baseline to Time 2 following the intervention.
+
+The confidence interval does not include zero, which suggests that the improvement is not only statistically significant, but also substantively meaningful.
+
+::: {.callout-tip collapse="true"}
+## How do I know the magnitude of an effect size?
+
+This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:
+
+-   Small Effect (d = \~ 0.2)
+
+-   Medium Effect (d = \~ 0.5)
+
+-   Large Effect (d = \~ 0.8)
+:::
+
 ### How might you write up these results in APA style?
 
 Depending what you found above you could fill in the blanks on one of the below:
@@ -463,7 +522,7 @@ Depending what you found above you could fill in the blanks on one of the below:
 
 ## Activity 10: Power analyses!
 
-Now you may recall in your Week 3 lecture Ciara being very enthusiastic about power analyses, and the importance of conducting one **before** you collect any data (called an a priori or prospective power analysis). There are also power analyses you can conduct after data collection, but there are issues with them, and generally best practice is to do one beforehand ([A useful paper if you're interested in learning more](https://online.ucpress.edu/collabra/article/8/1/33267/120491/Sample-Size-Justification)).
+Now you may recall in your Week 3 lecture Aoife being very enthusiastic about power analyses, and the importance of conducting one **before** you collect any data (called an a priori or prospective power analysis). There are also power analyses you can conduct after data collection, but there are issues with them, and generally best practice is to do one beforehand ([A useful paper if you're interested in learning more](#0)).
 
 Here we are going to learn about how to conduct a power analysis for both an independent samples and paired-samples t-test.
 
@@ -525,3 +584,45 @@ pwr.t.test(d = 0.5,         # Your Expected effect size
 ```
 
 Try running the above power-analyses again but for a one sided (directional) test. What does this do to our required sample size?
+
+## Activity 11: Choose and run a Paired or Independent T-Test
+
+In this final activity, you will read a brief description of a research study and decide which type of t-test is appropriate. You will then carry out the full analysis yourself, from descriptive statistics to power analysis.
+
+**Research Aim:** The aim of this study was to examine whether exposure to different forms of political media influences individuals’ receptivity to political misinformation online.
+
+**Research Question:** Does listening to political podcasts, compared to reading a traditional newspaper, increase receptivity to political misinformation?
+
+**Methods:** One month before a local election, participants were randomly assigned to one of two conditions:
+
+*Podcast condition*: participants listened to episodes of the Joe Rogan Experience podcast
+
+*Newspaper condition*: participants read articles from The New York Times
+
+Participants engaged with the assigned content for 30 minutes per day over a one-week period. After the election, participants completed a questionnaire measuring receptivity to political misinformation, with higher scores indicating greater susceptibility to false or misleading political claims.
+
+Receptivity to misinformation was measured once, after the intervention.
+
+**H0 (Null hypothesis):** There will be no significant difference in receptivity to political misinformation between participants in the podcast condition and those in the newspaper condition.
+
+higher reading ability in children at Time 2 (after intervention) than at Baseline.
+
+**H1:** Participants in the podcast condition will show significantly higher receptivity to political misinformation than participants in the newspaper condition.
+
+Using the `political.csv` dataset:
+
+-   Decide whether an independent samples or paired samples t-test is appropriate
+
+-   Load the data into R and call it `df_political`
+
+-   Run appropriate descriptive statistics
+
+-   Check all relevant parametric assumptions
+
+-   Conduct the correct t-test
+
+-   Evaluate the effect size
+
+-   Make a decision as whether to reject or fail to reject the null hypothesis. Write up your results in a word document.
+
+-   Conduct an a priori power analysis for this study design
