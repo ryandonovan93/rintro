@@ -228,7 +228,7 @@ Reminder on creating an R script
 <p>We are going to need the following files for today’s session. You will find them on Canvas under the Module <strong>Week 4 - T-tests</strong></p>
 <p>- <strong>wellbeing.csv</strong> <strong>→</strong> which we will use for our independent samples t-test</p>
 <p>- <strong>reading.csv</strong> <strong>→</strong> which we will use for our paired samples t-test</p>
-<p>- <strong>podcasts.csv</strong> <strong>→</strong> which we will use for our paired samples t-test</p>
+<p>- <strong>political.csv</strong> <strong>→</strong> which we will use for our paired samples t-test</p>
 <section id="download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder." class="level3">
 <h3 class="anchored" data-anchor-id="download-these-files-onto-your-computer-and-move-each-file-to-your-week4-folder.">Download these files onto your computer and move each file to your <code>week4</code> folder.</h3>
 <p>Once this is done, type the following code in your script to load the datasets into R:</p>
@@ -486,6 +486,7 @@ Reminder on creating an R script
 </div>
 </div>
 <p>As you can see the <code>descriptives</code> package is useful for giving us lots of information about our data, and we will come back to often for descriptive statistics to accompany all of our statistical tests.</p>
+<p><strong>Note</strong>: If you see the error message&nbsp;<code>"Warning message: In FUN(X[[i]], ...) : no non-missing arguments to max; returning -Inf"</code>&nbsp;you can entirely ignore it.</p>
 </section>
 <section id="activity-5-checking-our-parametric-assumptions" class="level2">
 <h2 class="anchored" data-anchor-id="activity-5-checking-our-parametric-assumptions">Activity 5: Checking our parametric assumptions</h2>
@@ -667,6 +668,8 @@ group   1  0.6836 0.4093
 </div>
 </div>
 <p>Luckily, we can see that our data has met this parametric assumption (as the p value is above 0.05). So let’s proceed on and run our t-test.</p>
+<p><strong>Note</strong>: Levene’s test requires the grouping variable to be categorical. If your grouping variable is stored as text (character data type) or numbers (numerical or integer data type), R will automatically convert it into a factor (another data type) so the test can run.</p>
+<p>This warning is purely informational and does not indicate a problem with your analysis. We will talk more about factors in week 10.</p>
 </section>
 </section>
 <section id="activity-6-running-the-independent-samples-t-test" class="level2">
@@ -727,6 +730,30 @@ mean in group High Caffeine  mean in group Low Caffeine
 - Estimated using un-pooled SD.</code></pre>
 </div>
 </div>
+<p><strong>How do we interpret this?</strong></p>
+<p>Cohen’s <em>d</em> tells us <strong>how large the difference between the two group means is</strong>, expressed in standard deviation units. Unlike the <em>p</em>-value, which tells us whether an effect is statistically detectable, the effect size tells us whether the difference is small, medium, or large in practical terms.</p>
+<p>Here, Cohen’s <em>d</em> = 0.09, which is considered a <strong>very small effect</strong>. This means that the difference in health scores between the High Caffeine and Low Caffeine groups is minimal.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do I know the magnitude of an effect size?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:</p>
+<ul>
+<li><p>Small Effect (d = ~ 0.2)</p></li>
+<li><p>Medium Effect (d = ~ 0.5)</p></li>
+<li><p>Large Effect (d = ~ 0.8)</p></li>
+</ul>
+</div>
+</div>
+</div>
 <p>Here’s how we might write up the results in APA style:</p>
 <p>A Welch independent samples t-test was conducted to compare health levels between participants in the High Caffeine (<em>M</em>= 50.26, <em>SD</em>= 5.43) and Low Caffeine (<em>M</em>= 49.74, <em>SD</em>= 5.67) conditions. The test showed that there was no significant difference in the means of health between the two groups, <em>t</em>(197.66) = 0.66, <em>p</em> = 0.51. As such we fail to reject the null hypothesis.</p>
 </section>
@@ -736,7 +763,7 @@ mean in group High Caffeine  mean in group Low Caffeine
 <p>This data was collected from a reading intervention study investigating the effects of a literacy intervention, comparing the same participants before and after the intervention. As such we will be comparing participants reading at: <code>Baseline</code>, and <code>Time2</code>.</p>
 <p>After loading the datasets, it’s always good practice to inspect it before doing any analyses. You can use the <code>head()</code> function to get an overview.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -745,7 +772,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This is the same procedure we used already today for Between-Groups comparisons</p>
 </div>
@@ -758,7 +785,7 @@ Tip
 <p>Lets calculate our descriptive statistics for the reading data using the <code>descriptives</code> function. Lets now use this tool on our <code>df_reading</code> data focusing on our two time points (Baseline and Time2).</p>
 <p>In addition to this we need some additional descriptive statistics for our write-up, specifically <strong>mean</strong>, <strong>standard deviation</strong>, and <strong>confidence intervals</strong>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -767,7 +794,7 @@ Here’s the code for the above (if you get stuck)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_reading, </span>
@@ -824,7 +851,7 @@ Here’s the code for the above (if you get stuck)
 <li>Is our data normally distributed?</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -833,7 +860,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The eagle-eyed among you may have noticed there is a way to get your descriptive statistics for our write-up <strong>and</strong> check these assumptions all is one code chunk, see below:</p>
 <div class="cell">
@@ -906,7 +933,7 @@ Tip
 <p>As such, we need to change <code>alternative</code> to <code>"less"</code> as we are predicting that Baseline has <strong>lower</strong> reading ability than Time 2.</p>
 <p>Run the paired-samples t-test to test our hypothesis.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -915,7 +942,7 @@ Our paired-samples t-test code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df_reading<span class="sc">$</span>Baseline, df_reading<span class="sc">$</span>Time2, </span>
@@ -952,6 +979,31 @@ mean difference
 0.67      | [0.17, 1.15]</code></pre>
 </div>
 </div>
+<p><strong>How do we interpret this?</strong></p>
+<p>For paired samples designs, Cohen’s <em>d</em> represents the <strong>average size of the change within participants</strong>, rather than a difference between two independent groups. This version of the effect size is sometimes referred to as Cohen’s d.</p>
+<p>Here, Cohen’s <em>d</em> = 0.67, which corresponds to a medium-to-large effect. This indicates that reading ability increased meaningfully from Baseline to Time 2 following the intervention.</p>
+<p>The confidence interval does not include zero, which suggests that the improvement is not only statistically significant, but also substantively meaningful.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do I know the magnitude of an effect size?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:</p>
+<ul>
+<li><p>Small Effect (d = ~ 0.2)</p></li>
+<li><p>Medium Effect (d = ~ 0.5)</p></li>
+<li><p>Large Effect (d = ~ 0.8)</p></li>
+</ul>
+</div>
+</div>
+</div>
 <section id="how-might-you-write-up-these-results-in-apa-style" class="level3">
 <h3 class="anchored" data-anchor-id="how-might-you-write-up-these-results-in-apa-style">How might you write up these results in APA style?</h3>
 <p>Depending what you found above you could fill in the blanks on one of the below:</p>
@@ -972,7 +1024,7 @@ mean difference
 </ol>
 <p>Reminder that this <a href="https://rpsychologist.com/d3/nhst/">interactive visualization</a> can be helpful in understanding how these things interact.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -981,7 +1033,7 @@ How do I know what the minimum effect size of interest is?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This is a good question! If you recall from your lecture Cohens d can be split into arbitrary bands of:</p>
 <ul>

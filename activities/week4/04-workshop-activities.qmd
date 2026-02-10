@@ -106,7 +106,7 @@ We are going to need the following files for today's session. You will find them
 
 \- **reading.csv** **→** which we will use for our paired samples t-test
 
-\- **podcasts.csv** **→** which we will use for our paired samples t-test
+\- **political.csv** **→** which we will use for our paired samples t-test
 
 ### Download these files onto your computer and move each file to your `week4` folder.
 
@@ -186,6 +186,8 @@ descriptives(data = df_wellbeing,
 ```
 
 As you can see the `descriptives` package is useful for giving us lots of information about our data, and we will come back to often for descriptive statistics to accompany all of our statistical tests.
+
+**Note**: If you see the error message `"Warning message: In FUN(X[[i]], ...) : no non-missing arguments to max; returning -Inf"` you can entirely ignore it.
 
 ## Activity 5: Checking our parametric assumptions
 
@@ -298,6 +300,10 @@ leveneTest(health ~ Condition, data = df_wellbeing)
 ```
 
 Luckily, we can see that our data has met this parametric assumption (as the p value is above 0.05). So let's proceed on and run our t-test.
+
+**Note**: Levene’s test requires the grouping variable to be categorical. If your grouping variable is stored as text (character data type) or numbers (numerical or integer data type), R will automatically convert it into a factor (another data type) so the test can run.
+
+This warning is purely informational and does not indicate a problem with your analysis. We will talk more about factors in week 10.
 
 ## Activity 6: Running the Independent Samples T-test
 
@@ -566,7 +572,7 @@ pwr.t.test(d = 0.5,         # Your Expected effect size
            sig.level = 0.05, # Significance level
            power = 0.80,     # Desired power level
            type = "two.sample",  # Indicates an independent t-test
-           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "one.sided"
+           alternative = "two.sided")  # Indicates a two-tailed test, can be changed to a one-tailed test by either using the term "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 2 is predicted to score greater than group 1)
 
 ```
 
@@ -579,7 +585,7 @@ pwr.t.test(d = 0.5,         # Your Expected effect size
            sig.level = 0.05, # Significance level
            power = 0.80,     # Desired power level
            type = "paired",  # Indicates an independent t-test
-           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "one.sided"
+           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 2 is predicted to score greater than group 1)
 
 ```
 
@@ -604,8 +610,6 @@ Participants engaged with the assigned content for 30 minutes per day over a one
 Receptivity to misinformation was measured once, after the intervention.
 
 **H0 (Null hypothesis):** There will be no significant difference in receptivity to political misinformation between participants in the podcast condition and those in the newspaper condition.
-
-higher reading ability in children at Time 2 (after intervention) than at Baseline.
 
 **H1:** Participants in the podcast condition will show significantly higher receptivity to political misinformation than participants in the newspaper condition.
 
