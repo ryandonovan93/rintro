@@ -572,7 +572,9 @@ pwr.t.test(d = 0.5,         # Your Expected effect size
            sig.level = 0.05, # Significance level
            power = 0.80,     # Desired power level
            type = "two.sample",  # Indicates an independent t-test
-           alternative = "two.sided")  # Indicates a two-tailed test, can be changed to a one-tailed test by either using the term "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 2 is predicted to score greater than group 1)
+           alternative = "two.sided")  # Indicates a two-tailed test, can be changed to a one-tailed test by either using the term "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 1 is predicted to score greater than group 2)
+
+#note: If your alternative is less, than your cohen's d effect size much be negative (see the end of the activity11_solution_script.R for an example) to run the power analysis
 
 ```
 
@@ -585,7 +587,10 @@ pwr.t.test(d = 0.5,         # Your Expected effect size
            sig.level = 0.05, # Significance level
            power = 0.80,     # Desired power level
            type = "paired",  # Indicates an independent t-test
-           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 2 is predicted to score greater than group 1)
+           alternative = "two.sided")  # Indicates a two-tailed test, #can be changed to "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 1 is predicted to score greater than group 2)
+
+
+#note: If your alternative is less, than your cohen's d effect size much be negative (see the end of the activity11_solution_script.R for an example) to run the power analysis
 
 ```
 
