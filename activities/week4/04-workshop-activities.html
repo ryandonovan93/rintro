@@ -1057,7 +1057,7 @@ How do I know what the minimum effect size of interest is?
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"two.sample"</span>,  <span class="co"># Indicates an independent t-test</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"two.sided"</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to "one.sided"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"two.sided"</span>)  <span class="co"># Indicates a two-tailed test, can be changed to a one-tailed test by either using the term "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 2 is predicted to score greater than group 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -1080,7 +1080,7 @@ NOTE: n is number in *each* group</code></pre>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,     <span class="co"># Desired power level</span></span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"paired"</span>,  <span class="co"># Indicates an independent t-test</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"two.sided"</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to "one.sided"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"two.sided"</span>)  <span class="co"># Indicates a two-tailed test, #can be changed to "less" (if group 1 is predicted to score less than group 2) or "greater" (if group 2 is predicted to score greater than group 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Paired t test power calculation 
@@ -1107,7 +1107,6 @@ NOTE: n is number of *pairs*</code></pre>
 <p>Participants engaged with the assigned content for 30 minutes per day over a one-week period. After the election, participants completed a questionnaire measuring receptivity to political misinformation, with higher scores indicating greater susceptibility to false or misleading political claims.</p>
 <p>Receptivity to misinformation was measured once, after the intervention.</p>
 <p><strong>H0 (Null hypothesis):</strong> There will be no significant difference in receptivity to political misinformation between participants in the podcast condition and those in the newspaper condition.</p>
-<p>higher reading ability in children at Time 2 (after intervention) than at Baseline.</p>
 <p><strong>H1:</strong> Participants in the podcast condition will show significantly higher receptivity to political misinformation than participants in the newspaper condition.</p>
 <p>Using the <code>political.csv</code> dataset:</p>
 <ul>
