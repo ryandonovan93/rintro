@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -63,10 +63,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="07-workshop-activities_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="07-workshop-activities_files/libs/quarto-html/anchor.min.js"></script>
 <link href="07-workshop-activities_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="07-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="07-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="07-workshop-activities_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="07-workshop-activities_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="07-workshop-activities_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="07-workshop-activities_files/libs/bootstrap/bootstrap-8e86427a6cc1d18ca4cd6587f8769fcf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -89,9 +89,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a></li>
   <li><a href="#activity-4-run-the-linear-regression" id="toc-activity-4-run-the-linear-regression" class="nav-link" data-scroll-target="#activity-4-run-the-linear-regression">Activity 4: Run the Linear Regression</a></li>
   <li><a href="#running-the-linear-regression" id="toc-running-the-linear-regression" class="nav-link" data-scroll-target="#running-the-linear-regression">Running the Linear Regression</a></li>
+  <li><a href="#our-linear-regression-code" id="toc-our-linear-regression-code" class="nav-link" data-scroll-target="#our-linear-regression-code">Our linear regression code</a></li>
   <li><a href="#activity-5-get-descriptive-statistics-check-assumptions" id="toc-activity-5-get-descriptive-statistics-check-assumptions" class="nav-link" data-scroll-target="#activity-5-get-descriptive-statistics-check-assumptions">Activity 5: Get descriptive statistics &amp; check assumptions</a>
   <ul>
   <li><a href="#checking-our-assumptions" id="toc-checking-our-assumptions" class="nav-link" data-scroll-target="#checking-our-assumptions">Checking our assumptions</a></li>
+  </ul></li>
+  <li><a href="#scatterplot-code-for-today" id="toc-scatterplot-code-for-today" class="nav-link" data-scroll-target="#scatterplot-code-for-today">Scatterplot code for today</a>
+  <ul>
   <li><a href="#effect-sizes" id="toc-effect-sizes" class="nav-link" data-scroll-target="#effect-sizes">Effect sizes!</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><img src="EffectSizes.jpg" class="img-fluid" width="148"></a></li>
   </ul></li>
@@ -127,10 +131,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this weeks workshop, we are going to learn how to perform regressions (simple and multiple) which you covered in the week 5 lecture, along with checking the relevant assumptions etc.</p>
-<p>- Conduct a linear regression in R &amp; check your assumptions.</p>
-<p>- Conduct a multiple regression R &amp; check your assumptions.</p>
-<p>- Create graphs to visualize your results</p>
+<p>In this weeks workshop, we are going to learn how to perform both simple and multiple regressions, both of which you covered in the week 5 lecture.</p>
+<ul>
+<li><p>Conduct a linear regression</p></li>
+<li><p>Conduct a multiple regression</p></li>
+<li><p>Check your assumptions for both approaces</p></li>
+<li><p>Create graphs to visualise your results.</p></li>
+</ul>
 <section id="lets-get-set-up" class="level2">
 <h2 class="anchored" data-anchor-id="lets-get-set-up">Let’s Get Set Up</h2>
 <p>Let’s begin by ensuring your working environment is ready for today’s session. Open RStudio or Posit Cloud and complete the following tasks to set everything up.</p>
@@ -163,7 +170,7 @@ Reminder on Steps to Set Up Your Working Directory
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "C:/Users/0131045s/Desktop/Programming/R/Workshops/rintro/activities/week7"</code></pre>
+<pre><code>[1] "C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro/activities/week7"</code></pre>
 </div>
 </div>
 </div>
@@ -194,63 +201,27 @@ Reminder on creating an R script
 </div>
 </div>
 </div>
-<p>At the top of your R script type in and run the following code (this turns off scientific notation from your output:</p>
+<p>At the top of your R script type in and run the following code (this turns off scientific notation from your output):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="activity-2-installing-loading-r-packages" class="level2">
 <h2 class="anchored" data-anchor-id="activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</h2>
-<p>We’ll be using several <strong>R packages</strong> to make our analysis easier.</p>
+<p>We’ll use several <strong>R packages</strong> to make our analysis easier.</p>
 <p><strong>REMEMBER</strong>: If you encounter an error message like “<code>Error in library(package name): there is no packaged calledpackage name</code>”, you’ll need to install the package first by editing the following for your console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"package name"</span>) <span class="co">#replace "package name" with the actual package name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here are the packages we will be using today:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv) <span class="co"># this will help us run descriptive statistics </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'jmv' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co">#this will help to run our regression</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'car' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: carData</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'carData' was built under R version 4.3.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see) <span class="co"># this is needed to check our assumptions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'see' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># this is needed to check our assumptions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'performance' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># we use this for our graphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggiraph) <span class="co"># we also use this for our graphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggiraph' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggiraphExtra) <span class="co"># once again.. graphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggiraphExtra' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ggiraphExtra'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:see':
-
-    coord_radar</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv) <span class="co"># this will help us run descriptive statistics </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co">#this will help to run our regression</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see) <span class="co"># this is needed to check our assumptions</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># this is needed to check our assumptions</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># we use this for our graphs</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggiraph) <span class="co"># we also use this for our graphs</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggiraphExtra) <span class="co"># once again.. graphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="activity-3-load-in-your-datasets" class="level2">
@@ -261,24 +232,9 @@ Attaching package: 'ggiraphExtra'</code></pre>
 <section id="download-these-files-onto-your-computer-and-move-them-to-your-week7-folder." class="level3">
 <h3 class="anchored" data-anchor-id="download-these-files-onto-your-computer-and-move-them-to-your-week7-folder.">Download these files onto your computer and move them to your <code>week7</code> folder.</h3>
 <p>Once this is done load the datasets into R and save them as a dataframes called “df_movies” and “df_genres”:</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_movies <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"movies.csv"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df_genres <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"genre.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_movies <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"movies.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_genres <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"genre.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -287,7 +243,7 @@ Tip
 <p>Today we are going to analyse data from a database of movies, with variables on a films budget, runtime, popularity rating, and genre, how much revenue it made, and it’s vote rating. Please note that the values for some of our measures have been normalized.</p>
 <p>After loading the datasets, it’s always good practice to inspect it before doing any analyses. You can use the <code>head()</code> function to get an overview of the sleep quality dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id    genres  revenue              title vote_average     budget popularity
 1  5    Comedy 6.633468         Four Rooms          6.5 -0.7537733 0.07827243
@@ -310,38 +266,28 @@ Tip
 <h2 class="anchored" data-anchor-id="activity-4-run-the-linear-regression">Activity 4: Run the Linear Regression</h2>
 <p>Let’s imagine we’re interested in investigating whether a films <strong>budget</strong> (how much was spent to make it) predicts its <strong>revenue</strong> (how much money it earned at the box office).</p>
 <p>In this case:</p>
-<p>Our <strong>predictor variable</strong> is: budget</p>
-<p>Our <strong>outcome measure (DV)</strong> is: revenue</p>
+<ul>
+<li><p>Our <strong>predictor variable</strong> is: budget</p></li>
+<li><p>Our <strong>outcome measure (DV)</strong> is: revenue</p></li>
+</ul>
 <p>We could specify our hypothesis as such:</p>
+<p><strong>H0:</strong> Budget will not significantly predict revenue.</p>
 <p><strong>H1:</strong> We hypothesis that budget will significantly predict revenue.</p>
-<p><strong>H0 (Null hypothesis):</strong> Budget will not significantly predict revenue.</p>
 <p>As we are interested in the whether a variable predicts a continuous variable, this would be best addressed via a <strong>linear regression</strong>.</p>
-<p>Due to a quirk in how R works we have to run the regression <strong>before</strong> we can check our assumptions.</p>
+<p>In contrast to previous tests, in R we run our regressions <strong>before</strong> we check all our assumptions.</p>
 </section>
 <section id="running-the-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="running-the-linear-regression">Running the Linear Regression</h2>
 <p>We use the <code>lm</code> function to perform the regression. The syntax is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>LR <span class="ot">&lt;-</span> <span class="fu">lm</span>(DV <span class="sc">~</span> IV, <span class="at">data =</span> OurData) <span class="co"># here we are creating an object "LR" which contatins a linear model of our DV ~ IV </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>LR <span class="ot">&lt;-</span> <span class="fu">lm</span>(DV <span class="sc">~</span> IV, <span class="at">data =</span> OurData) <span class="co"># here we are creating an object "LR" which contatins a linear model of our DV ~ IV </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s run this linear regression to find out if budget significantly predicts revenue in our <code>df_movies</code> dataset:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Our linear regression code
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+</section>
+<section id="our-linear-regression-code" class="level2">
+<h2 class="anchored" data-anchor-id="our-linear-regression-code">Our linear regression code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>LR <span class="ot">&lt;-</span> <span class="fu">lm</span>(revenue <span class="sc">~</span> budget, <span class="at">data =</span> df_movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>LR <span class="ot">&lt;-</span> <span class="fu">lm</span>(revenue <span class="sc">~</span> budget, <span class="at">data =</span> df_movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To review the results of our linear regression we use the <code>summary</code> function on the object LR we just created. We are going to save this as an object “LR_summary” which will enable us to:</p>
 <ol type="1">
@@ -349,18 +295,17 @@ Our linear regression code
 <li>Use this object later on when we calculate our effect size</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>LR_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(LR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>LR_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(LR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="activity-5-get-descriptive-statistics-check-assumptions" class="level2">
 <h2 class="anchored" data-anchor-id="activity-5-get-descriptive-statistics-check-assumptions">Activity 5: Get descriptive statistics &amp; check assumptions</h2>
 <section id="checking-our-assumptions" class="level3">
 <h3 class="anchored" data-anchor-id="checking-our-assumptions">Checking our assumptions</h3>
-<p>Conveniently a lot of the assumptions we need to check are similar to correlation, so we’re familiar with them already!</p>
-<p>There are several key assumptions for conducting a linear regression:</p>
-<p>a. The outcome / DV is continuous, and is either interval or ratio.</p>
+<p>There are several key assumptions for conducting a linear regression. Conveniently, you will already be familiar with several of these assumptions already, but there is one assumption we have not seen before:</p>
+<p><em>a. The outcome / DV is continuous, and is either interval or ratio.</em></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -369,67 +314,32 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Interval data</strong> = Data that is measured on a numeric scale with equal distance between adjacent values, that does <strong>not</strong> have a true zero. This is a very common data type in research (e.g.&nbsp;Test scores, IQ etc).</p>
 <p><strong>Ratio data</strong> = Data that is measured on a numeric scale with equal distance between adjacent values, that has a true zero (e.g.&nbsp;Height, Weight etc).</p>
+</div>
+</div>
+</div>
 <p>Here we know our outcome is revenue (measured as money) and as such does have a true zero. As such it is ratio data and this assumption has been met</p>
-</div>
-</div>
-</div>
-<p>b. The predictor variable is interval or ratio or categorical (with two levels)</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p><em>b. The predictor variable is interval or ratio or categorical (with two levels)</em></p>
 <p>Here we know our predictor is budget (measured as money) and as such does have a true zero. As such it is ratio data and this assumption has been met</p>
-</div>
-</div>
-</div>
-<p>c. All values of the outcome variable are independent (i.e., each score should come from a different observation - participants, or in this case movie)</p>
-<p>d. The predictors have non-zero variance</p>
-<p>e. The relationship between outcome and predictor is linear</p>
-<p>f. The residuals should be normally distributed</p>
-<p>g. The assumption of homoscedasticity.</p>
-<p><strong>Assumption d.</strong> <strong>The predictors have non-zero variance</strong></p>
+<p><em>c.&nbsp;All values of the outcome variable are independent (i.e., each score should come from a different observation - participants, or in this case movie)</em></p>
+<p>By inspecting our data we can see that each score for our revenue data comes from a different participant/observation.</p>
+<p><em>d.&nbsp;The relationship between outcome and predictor is linear</em></p>
+<p>We will inspect this momentarily. But this assumption states that the relationship can be accurately described a straight line.</p>
+<p><em>e. The residuals should be normally distributed</em></p>
+<p>This is similar to our normality distribution. Residuals here mean that rather than looking at the distribution of your predictor variables, or your outcome variables, you look at the difference between your predicted scores (based on our regression model) and our actual scores. These differences should form a normal distribution.</p>
+<p><em>f.&nbsp;The assumption of homoscedasticity.</em></p>
+<p>Same as we encountered in correlation, points should have uniform variance across difference points of our predictors and outcome variable.</p>
+<p><strong>g.</strong> <strong>The predictors have non-zero variance</strong></p>
 <p>This assumption means that there is spread / variance in the dataset. In short there would be no real point in running a regression if every observation (movie) had the same value. We can best assess this via visualisation, in this case a scatterplot between budget and revenue. We learned how to make a simple scatterplot last week.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Scatterplot code for today
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="scatterplot-code-for-today" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplot-code-for-today">Scatterplot code for today</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>df_movies<span class="sc">$</span>budget,<span class="at">y=</span>df_movies<span class="sc">$</span>revenue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p><strong>Assumptions e-g:</strong></p>
-<p>These assumptions may all be checked visually for a regression, and conveniently using the function <code>check_model</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(LR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>df_movies<span class="sc">$</span>budget,<span class="at">y=</span>df_movies<span class="sc">$</span>revenue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -438,32 +348,45 @@ Scatterplot code for today
 </div>
 </div>
 </div>
+<p><strong>Assumptions e-g:</strong></p>
+<p>These assumptions may all be checked visually for a regression, and conveniently using the function <code>check_model</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(LR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Help - I can’t see my plots!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You may be finding it hard to see the individual plots for checking your assumptions here. We can then edit our code so that we get the plots individually, as below:</p>
+<p>If you cannot see your plots, then try change the size of the plots pane to take up a larger portion of your screen.</p>
+<p>Alternatively, you can then edit our code so that each plot is printed individually.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">plot</span>(<span class="fu">check_model</span>(LR, <span class="at">panel =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">plot</span>(<span class="fu">check_model</span>(LR, <span class="at">panel =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>For confidence bands, please install `qqplotr`.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$PP_CHECK</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -474,7 +397,7 @@ $NCV</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -485,7 +408,7 @@ $HOMOGENEITY</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -496,7 +419,7 @@ $OUTLIERS</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -507,7 +430,7 @@ $QQ</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-12-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -517,7 +440,7 @@ $QQ</code></pre>
 </div>
 <p>Finally we will get the descriptive statistics needed for our write-up, using the <code>descriptives</code> function.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -526,11 +449,11 @@ Getting our descriptive statistics
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_movies,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"budget"</span>, <span class="st">"revenue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_movies,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"budget"</span>, <span class="st">"revenue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -552,7 +475,6 @@ Getting our descriptive statistics
 </div>
 </div>
 </div>
-</section>
 <section id="effect-sizes" class="level3">
 <h3 class="anchored" data-anchor-id="effect-sizes">Effect sizes!</h3>
 </section>
@@ -560,10 +482,10 @@ Getting our descriptive statistics
 <h3 class="anchored" data-anchor-id="section"><img src="EffectSizes.jpg" class="img-fluid" width="148"></h3>
 <p>As we know it is important to also report effect sizes where possible. For regression we report Cohens F. We calculate this using the below code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> LR_summary<span class="sc">$</span>adj.r.squared<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> LR_summary<span class="sc">$</span>adj.r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> LR_summary<span class="sc">$</span>adj.r.squared<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> LR_summary<span class="sc">$</span>adj.r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -572,7 +494,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Interpreting Cohens F (f2)</p>
 <p>There are several rules of thumb for interpretation of effect size. For f2 they are as follows:</p>
@@ -604,7 +526,7 @@ Tip
 <pre class="mr cell-code"><code></code></pre>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -613,10 +535,10 @@ Multiple regression code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>MR <span class="ot">&lt;-</span> <span class="fu">lm</span>(revenue <span class="sc">~</span> budget <span class="sc">*</span> genres, <span class="at">data =</span> df_genres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>MR <span class="ot">&lt;-</span> <span class="fu">lm</span>(revenue <span class="sc">~</span> budget <span class="sc">*</span> genres, <span class="at">data =</span> df_genres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -628,7 +550,7 @@ Multiple regression code
 </ol>
 <p>Double-check how you did this earlier if you’re stuck.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -637,11 +559,11 @@ Code to double-check your work when you’re done
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>MR_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(MR)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>MR_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>MR_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(MR)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>MR_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -674,7 +596,7 @@ F-statistic: 64.97 on 3 and 329 DF,  p-value: &lt; 0.00000000000000022</code></p
 <p>The assumptions for a multiple regression are the same as for a linear regression but with one extra <strong>Multicolinearity</strong>. Simply put this assumption means that none of our predictors can be too correlated with each other.</p>
 <p>a. The outcome / DV is continuous, and is either interval or ratio.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -683,7 +605,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Interval data</strong> = Data that is measured on a numeric scale with equal distance between adjacent values, that does <strong>not</strong> have a true zero. This is a very common data type in research (e.g.&nbsp;Test scores, IQ etc).</p>
 <p><strong>Ratio data</strong> = Data that is measured on a numeric scale with equal distance between adjacent values, that has a true zero (e.g.&nbsp;Height, Weight etc).</p>
@@ -701,17 +623,17 @@ Tip
 <p><strong>Assumptions e-h:</strong></p>
 <p>These assumptions may all be checked visually for a regression, and conveniently using the function <code>check_model</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(MR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(MR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -720,7 +642,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We showed above how to output these as individual plots, that may be helpful here also</p>
 </div>
@@ -730,7 +652,7 @@ Tip
 <h3 class="anchored" data-anchor-id="effect-sizes-1">Effect sizes!</h3>
 <p>As before we will calculate Cohens F using the below code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>MR_f2 <span class="ot">&lt;-</span> MR_summary<span class="sc">$</span>adj.r.squared<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> MR_summary<span class="sc">$</span>adj.r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>MR_f2 <span class="ot">&lt;-</span> MR_summary<span class="sc">$</span>adj.r.squared<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> MR_summary<span class="sc">$</span>adj.r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>How we might write up the results in APA style?</strong></p>
 <p>Results of the multiple regression indicated that the model significantly predicted movies revenue F(3, 329) = 64.97, p &lt; .001, Adjusted R2 = 0.37, f2 = 0.58), accounting for 37% of the variance. Budget was a significant predictor (β = 0.74, p &lt; 0.001), but genres was not (β = 0.001, p = 0.98), and there was not a significant interaction between the two predictors.</p>
@@ -743,22 +665,22 @@ Tip
 <p>Today we’ll be using the <code>ggPredict</code>function. We will learn a lot more about making visualizations in week 9, but for today we will learn how to quickly and clearly visualize our regression results.</p>
 <p>ggPredict uses the following syntax:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggPredict(ModelName)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggPredict(ModelName)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So now if we try this for our Linear Regression:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggPredict</span>(LR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggPredict</span>(LR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Next lets try this for our multiple regression. Now we can use ggPredict to create a visualisation for this new model</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -767,14 +689,14 @@ Code for checking the above
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggPredict</span>(MR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggPredict</span>(MR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-workshop-activities_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -786,12 +708,12 @@ Code for checking the above
 <ul>
 <li><p>For both of the above graphs try changing the code so that the graph is <strong>interactive</strong>, using the below syntax:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggPredict</span>(ModelName, <span class="at">interactive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggPredict</span>(ModelName, <span class="at">interactive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 <p>What does this do to your graphs?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -800,7 +722,7 @@ Spoiler
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>It does what is says on the tin, it makes your graph interactive so you can identify specific datapoints and the slope of the regression line. Cool right?!</p>
 <p><img src="InteractiveGraph.gif" class="img-fluid"></p>
@@ -905,8 +827,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1017,7 +937,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -12,13 +12,15 @@ format:
 editor: visual
 ---
 
-In this weeks workshop, we are going to learn how to perform regressions (simple and multiple) which you covered in the week 5 lecture, along with checking the relevant assumptions etc.
+In this weeks workshop, we are going to learn how to perform both simple and multiple regressions, both of which you covered in the week 5 lecture.
 
-\- Conduct a linear regression in R & check your assumptions.
+-   Conduct a linear regression
 
-\- Conduct a multiple regression R & check your assumptions.
+-   Conduct a multiple regression
 
-\- Create graphs to visualize your results
+-   Check your assumptions for both approaces
+
+-   Create graphs to visualise your results.
 
 ## Let's Get Set Up
 
@@ -70,7 +72,7 @@ As in previous weeks we will create an **R script** that we can use for today's 
     Click **Save**
 :::
 
-At the top of your R script type in and run the following code (this turns off scientific notation from your output:
+At the top of your R script type in and run the following code (this turns off scientific notation from your output):
 
 ```{r}
 options(scipen = 999)
@@ -78,7 +80,7 @@ options(scipen = 999)
 
 ## Activity 2: Installing / Loading R Packages
 
-We'll be using several **R packages** to make our analysis easier.
+We'll use several **R packages** to make our analysis easier.
 
 **REMEMBER**: If you encounter an error message like "`Error in library(package name): there is no packaged calledpackage name`", you'll need to install the package first by editing the following for your console:
 
@@ -88,14 +90,26 @@ install.packages("package name") #replace "package name" with the actual package
 
 Here are the packages we will be using today:
 
-```{r }
+```{r warning=F, echo = F, message = F}
+
 library(jmv) # this will help us run descriptive statistics 
 library(car) #this will help to run our regression
-#library(see) # this is needed to check our assumptions
+library(see) # this is needed to check our assumptions
 library(performance) # this is needed to check our assumptions
 library(ggplot2) # we use this for our graphs
-#library(ggiraph) # we also use this for our graphs
-#library(ggiraphExtra) # once again.. graphs
+library(ggiraph) # we also use this for our graphs
+library(ggiraphExtra) # once again.. graphs
+
+```
+
+```{r eval=F}
+library(jmv) # this will help us run descriptive statistics 
+library(car) #this will help to run our regression
+library(see) # this is needed to check our assumptions
+library(performance) # this is needed to check our assumptions
+library(ggplot2) # we use this for our graphs
+library(ggiraph) # we also use this for our graphs
+library(ggiraphExtra) # once again.. graphs
 ```
 
 ## Activity 3: Load in your datasets
@@ -110,12 +124,10 @@ This week we will use a database of movies, with variables on a films budget, ru
 
 Once this is done load the datasets into R and save them as a dataframes called "df_movies" and "df_genres":
 
-::: {.callout-tip collapse="true"}
 ```{r}
 df_movies <- read.csv("movies.csv")
 df_genres <-read.csv("genre.csv")
 ```
-:::
 
 ## Linear Regression
 
@@ -133,19 +145,19 @@ Let's imagine we're interested in investigating whether a films **budget** (how 
 
 In this case:
 
-Our **predictor variable** is: budget
+-   Our **predictor variable** is: budget
 
-Our **outcome measure (DV)** is: revenue
+-   Our **outcome measure (DV)** is: revenue
 
 We could specify our hypothesis as such:
 
-**H1:** We hypothesis that budget will significantly predict revenue.
+**H0:** Budget will not significantly predict revenue.
 
-**H0 (Null hypothesis):** Budget will not significantly predict revenue.
+**H1:** We hypothesis that budget will significantly predict revenue.
 
 As we are interested in the whether a variable predicts a continuous variable, this would be best addressed via a **linear regression**.
 
-Due to a quirk in how R works we have to run the regression **before** we can check our assumptions.
+In contrast to previous tests, in R we run our regressions **before** we check all our assumptions.
 
 ## Running the Linear Regression
 
@@ -158,14 +170,12 @@ LR <- lm(DV ~ IV, data = OurData) # here we are creating an object "LR" which co
 
 Let's run this linear regression to find out if budget significantly predicts revenue in our `df_movies` dataset:
 
-::: {.callout-note collapse="true"}
 ## Our linear regression code
 
 ```{r}
 LR <- lm(revenue ~ budget, data = df_movies)
 
 ```
-:::
 
 To review the results of our linear regression we use the `summary` function on the object LR we just created. We are going to save this as an object "LR_summary" which will enable us to:
 
@@ -180,47 +190,47 @@ LR_summary <- summary(LR)
 
 ### Checking our assumptions
 
-Conveniently a lot of the assumptions we need to check are similar to correlation, so we're familiar with them already!
+There are several key assumptions for conducting a linear regression. Conveniently, you will already be familiar with several of these assumptions already, but there is one assumption we have not seen before:
 
-There are several key assumptions for conducting a linear regression:
-
-a\. The outcome / DV is continuous, and is either interval or ratio.
+*a. The outcome / DV is continuous, and is either interval or ratio.*
 
 ::: {.callout-tip collapse="true"}
 **Interval data** = Data that is measured on a numeric scale with equal distance between adjacent values, that does **not** have a true zero. This is a very common data type in research (e.g. Test scores, IQ etc).
 
 **Ratio data** = Data that is measured on a numeric scale with equal distance between adjacent values, that has a true zero (e.g. Height, Weight etc).
+:::
 
 Here we know our outcome is revenue (measured as money) and as such does have a true zero. As such it is ratio data and this assumption has been met
-:::
 
-b\. The predictor variable is interval or ratio or categorical (with two levels)
+*b. The predictor variable is interval or ratio or categorical (with two levels)*
 
-::: {.callout-tip collapse="true"}
 Here we know our predictor is budget (measured as money) and as such does have a true zero. As such it is ratio data and this assumption has been met
-:::
 
-c\. All values of the outcome variable are independent (i.e., each score should come from a different observation - participants, or in this case movie)
+*c. All values of the outcome variable are independent (i.e., each score should come from a different observation - participants, or in this case movie)*
 
-d\. The predictors have non-zero variance
+By inspecting our data we can see that each score for our revenue data comes from a different participant/observation.
 
-e\. The relationship between outcome and predictor is linear
+*d. The relationship between outcome and predictor is linear*
 
-f\. The residuals should be normally distributed
+We will inspect this momentarily. But this assumption states that the relationship can be accurately described a straight line.
 
-g\. The assumption of homoscedasticity.
+*e. The residuals should be normally distributed*
 
-**Assumption d.** **The predictors have non-zero variance**
+This is similar to our normality distribution. Residuals here mean that rather than looking at the distribution of your predictor variables, or your outcome variables, you look at the difference between your predicted scores (based on our regression model) and our actual scores. These differences should form a normal distribution.
+
+*f. The assumption of homoscedasticity.*
+
+Same as we encountered in correlation, points should have uniform variance across difference points of our predictors and outcome variable.
+
+**g.** **The predictors have non-zero variance**
 
 This assumption means that there is spread / variance in the dataset. In short there would be no real point in running a regression if every observation (movie) had the same value. We can best assess this via visualisation, in this case a scatterplot between budget and revenue. We learned how to make a simple scatterplot last week.
 
-::: {.callout-tip collapse="true"}
 ## Scatterplot code for today
 
 ```{r}
 plot(x=df_movies$budget,y=df_movies$revenue)
 ```
-:::
 
 **Assumptions e-g:**
 
@@ -231,7 +241,11 @@ check_model(LR)
 ```
 
 ::: {.callout-tip collapse="true"}
-You may be finding it hard to see the individual plots for checking your assumptions here. We can then edit our code so that we get the plots individually, as below:
+## Help - I can't see my plots!
+
+If you cannot see your plots, then try change the size of the plots pane to take up a larger portion of your screen.
+
+Alternatively, you can then edit our code so that each plot is printed individually.
 
 ```{r}
 out <- plot(check_model(LR, panel = FALSE))

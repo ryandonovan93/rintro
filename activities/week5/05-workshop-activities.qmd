@@ -12,19 +12,21 @@ format:
 editor: visual
 ---
 
-In this weeks workshop, we are going to learn how to perform correlations (simple and multiple) which you covered in last weeks lecture, along with checking the relevant assumptions etc.
+In this week’s workshop, we will learn how to examine relationships between variables using correlation analysis. We will focus on both **simple correlations** (between two variables) and **multiple correlations** (between several variables), and we will learn how to:
 
-![](Corrs.png)
-
-\- Use the `jmv` package to run descriptive statistics and check assumptions.
+\- Run descriptive statistics and check assumptions using `jmv`
 
 \- Conduct a simple correlation in R.
 
 \- Conduct a multiple correlation R.
 
-\- Learn how to make pretty correlation graphs.
+\- Produce clear and informative correlation plots
 
-\- Conduct an apriori power analysis in R for correlations.
+\- Conduct an a priori power analysis for correlations
+
+As a reminder, there are three types of correlations, as illustrated in the image below.
+
+![](Corrs.png)
 
 ## Let's Get Set Up
 
@@ -32,7 +34,7 @@ Let's begin by ensuring your working environment is ready for today's session. O
 
 ## Activity 1: Set Up Your Working Directory & R Script for this week
 
-One of the first steps in each of these workshops is setting up your \*working directory\*. The working directory is the default folder where R will look to import files or save any files you export.
+One of the first steps in each of these workshops is setting up your ***working directory***. The working directory is the default folder where R will look to import files or save any files you export.
 
 If you don't set the working directory, R might not be able to locate the files you need (e.g., when importing a dataset) or you might not know where your exported files have been saved. Setting the working directory beforehand ensures that everything is in the right place and avoids these issues.
 
@@ -48,9 +50,7 @@ If you don't set the working directory, R might not be able to locate the files 
 
 4.  Select the `week5` folder and click **Open**.
 
-Don't forget to verify your working directory before we get started
-
-You can always check your current working directory by typing in the following command in the console:
+Don't forget to verify your working directory before we get started. You do this by typing in the following command into the console
 
 ```{r}
 getwd()
@@ -76,7 +76,7 @@ As in previous weeks we will create an **R script** that we can use for today's 
     Click **Save**
 :::
 
-At the top of your R script type in and run the following code (this turns off scientific notation from your output:
+To make the output of our results appear more intuitive, we are going to turn off scientific notation. Scientific notation is a way of minimising space when reporting results with multiple decimal places. For example, if p = `1.1e-7`, this corresponds to p = 0.00000011 (i.e., the decimal point is moved seven places to the left). In psychological research, extremely small p-values are typically reported as: p \< .001. Therefore, scientific notation is not necessary for our purposes. We can turn it off by running:
 
 ```{r}
 options(scipen = 999)
@@ -84,36 +84,41 @@ options(scipen = 999)
 
 ## Activity 2: Installing / Loading R Packages
 
-We'll be using several **R packages** to make our analysis easier. The `jmv` package is particularly helpful for running descriptive statistics, while `pwr` helps us calculate power for our tests. The `car` package will allow us to check additional assumptions. We will be using a new package this week also: `correlation`, this package will be used for running our correlations.
+Today we will use the following packages: • `jmv` for descriptive statistics and assumption checks • `pwr` for power analysis • `car` for additional assumption testing • `correlation` for running correlation analyses • `performance` for diagnostic checks • `psych`, ggplot2, and ggcorrplot for visualisations
 
-**REMEMBER**: If you encounter an error message like "`Error in library(package name): there is no packaged calledpackage name`", you'll need to install the package first by editing the following for your console:
+**REMEMBER**: If you see the error - "`Error in library(package name): there is no packaged calledpackage name`", you'll need to install the package first by editing the following for your console:
 
 ```{r eval=FALSE}
 install.packages("package name") #replace "package name" with the actual package name
 ```
 
-Here are the packages we will be using today:
+Now load the required packages:
 
-```{r }
+```{r warning = F, message = F}
 library(jmv) # this will help us run descriptive statistics 
 library(pwr) # this will enable us to conduct power analysis  
 library(car) # this is for checking assumptions
 library(correlation) #this runs our correlation
 library(performance) # this helps with our assumption checks
 library(psych) # this will be helpful for our multiple correlation graph
-library(ggplot2) # we will be useful for making lots of pretty graphs
-library(ggcorrplot) # we will be useful for making lots of pretty graphs
+library(ggplot2) #for generating plots
+library(ggcorrplot) # for generating matrix correlation plots
 ```
 
 ## Activity 3: Download and load in your dataset
 
-Today we are going to analyse data from a study on sleep quality, personality factors, and psychological wellbeing which you will find it on Canvas under the Module **Week 5**
+Today we will analyse data from a study on sleep quality, personality factors, and psychological wellbeing. You will find the dataset on Canvas under **Week 5**.
 
-\- **SleepQuality.csv** **→** our dataset
+-   **SleepQuality.csv** → the dataset we will use today
 
-### Download this file onto your computer and move it to your `week5` folder.
+### Step 1: Download the file
 
-Once this is done load the dataset into R and save it as a dataframe called "df_sleep":
+1.  Download **SleepQuality.csv** from Canvas.
+2.  Move it into your `week5` folder (this should be your working directory).
+
+### Step 2: Load the dataset into R
+
+Once the file is in your `week5` folder, load it into R and save it as a dataframe called `df_sleep`.
 
 ::: {.callout-tip collapse="true"}
 ```{r}
@@ -123,43 +128,48 @@ df_sleep <- read.csv("SleepQuality.csv")
 
 ## Correlations
 
-Todays data was collected from a cross-sectional study examining the relationship between sleep difficulty, anxiety, and depression.
+This dataset comes from a cross-sectional study examining the relationship between sleep difficulty, anxiety, and depression.
 
-After loading the datasets, it's always good practice to inspect it before doing any analyses. You can use the `head()` function to get an overview of the sleep quality dataset.
+Before doing any analysis, it is always good practice to quickly inspect your dataset. The `head()` function prints the first few rows:
 
 ```{r}
 head(df_sleep)
 ```
 
-Now that our environment is set up and our dataset is loaded, we are ready to dive into descriptive statistics & check our assumptions.
+Now that our environment is set up and our dataset is loaded, we are ready to run descriptive statistics and check our assumptions (using the same `descriptives` approach you learned last week).
 
-Last week we learned how to use `descriptives` function to do both of these things.
+## Activity 4: Descriptive Statistics and Assumption Checks
 
-## Activity 4: Get descriptive statistics & check assumptions
+We are interested in examining the relationship between **depression** and **anxiety**.
 
-Let's imagine we're interested in investigating the relationship between **depression** and **anxiety**. Specifically we predict that higher levels of depression (as shown by higher scores) will be associated with higher anxiety levels (as shown by higher scores).
+Specifically, we predict that higher depression scores will be associated with higher anxiety scores.
 
-In this case:
+### Hypotheses
 
-Our **variables** are 1) depression and 2) anxiety
+**H₀:** There is no significant correlation between depression and anxiety. 
 
-We could specify our hypothesis as such:
+**H₁:** Higher depression scores will be positively correlated with higher anxiety scores.
 
-**H1:** We predict that higher depression will be positively correlated with higher anxiety scores.
+Because we are examining the relationship between two continuous variables, the appropriate analysis is a **simple correlation**.
 
-**H0 (Null hypothesis):** There will not be a significant correlation between depression scores and anxiety scores
+Since our hypothesis specifies a direction (positive association), this is a **directional hypothesis**. Note that as we do specify the direction of the association / correlation that this is a **directional hypothesis**
 
-Note that as we do specify the direction of the association / correlation that this is a **directional hypothesis**
+## Choosing the Correct Type of Correlation
 
-As we are interested in the relationship between two continuous variables, this would be best addressed via a **simple correlation**. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the assumptions required for a correlation.
+There are two main types of correlation:
 
-### Checking our assumptions
+-   **Pearson’s correlation** – used when assumptions are met\
+-   **Spearman’s correlation** – used when assumptions are violated
 
-There are two main types of correlation you might use: **Pearsons** and **Spearmans** , for an overview of both check the associated textbook chapter on correlations. For the purposes of this workshop, you would typically use **Pearsons** correlation, unless the below assumptions are not met.
+For this workshop, we will use **Pearson’s correlation**, provided its assumptions are satisfied.
 
-There are several key assumptions for conducting Pearsons simple correlation:
 
-a\. The data are continuous, and are either interval or ratio.
+
+## Assumptions of Pearson’s Correlation
+
+Before running the correlation, we must check the following:
+
+1.  Both variables are continuous (interval or ratio scale)
 
 ::: {.callout-tip collapse="true"}
 **Interval data** = Data that is measured on a numeric scale with equal distance between adjacent values, that does **not** have a true zero. This is a very common data type in research (e.g. Test scores, IQ etc).
@@ -169,46 +179,92 @@ a\. The data are continuous, and are either interval or ratio.
 Here we know our two variables are outcomes on a wellbeing test, as such they are interval data and this assumption has been met
 :::
 
-b\. There is a data point for each participant for both variables.
+2.  Each participant has a score on both variables (no problematic missing data)
 
 ::: {.callout-note collapse="true"}
 A quick way to check this assumption is to see if there is any missing data. If there isn't then this assumption is met. Note that number of missing data points is one of the values you automatically get when using the descriptives function.
 :::
 
-c\. The data are normally distributed for your two variables.
+3.  Both variables are approximately normally distributed
+4.  The relationship between the variables is linear
+5.  The data are homoscedastic
 
-d\. The relationship between the two variables is linear.
+**Checking Our Assumptions**
 
-e\. The assumption of homoscedasticity.
+### 1. Continuous Variables
 
-**Assumptions (c-d): Normality & linearity**
+Both depression and anxiety are measured using psychological scales. These are treated as **interval-level data**, meaning the distance between values is equal. This assumption is therefore met.
 
-For correlations we can check these assumptions via visualization. Please refer to the associated textbook chapter for detailed guidance on checking these assumptions via visualization.
+### 2. Missing Data
 
-Normality can be assessed using a histogram and qqplot (both of with we can get using the descriptives function), and also **Shapiro-Wilks test** which we learned last week. We can also take this opportunity to get some of our descriptive statistics for our write-up, we need **mean** and **standard deviation** for both variables.
-
-Remember if you type `?descriptives` into your console it will give you an overview of the arguments you can use.
-
-::: {.callout-tip collapse="true"}
-## Code in case you get stuck / to double check your work
+A quick way to check for missing data is via descriptive statistics. If there are no missing values for either variable, this assumption is satisfied.
 
 ```{r}
 descriptives(df_sleep, # our data
+             vars = c("Depression", "Anxiety")# our two variables
+)
+
+```
+
+You can see that no participants are identified as "missing".
+
+### 3. Normality
+
+Normality can be assessed visually (histogram and Q–Q plot) and statistically (Shapiro–Wilk test).
+
+We can obtain descriptive statistics and check normality simultaneously:
+
+```{r}
+
+descriptives(df_sleep, # our data
              vars = c("Depression", "Anxiety"), # our two variables
              hist = TRUE, # this generates a histogram
+             dens = TRUE, #draws a density plot over our histogram
              sw = TRUE, # this runs shapiro-wilks test
              qq=TRUE) # this generates a qq plot 
 
 ```
-:::
 
-To check for linearity can use a scatterplot. The below code will generate a simple scatterplot for this purpose of checking normality (later on we'll learn to generate prettier graphs that you can use in your reports).
+For the *histograms*, we are looking for a roughly “bell-shaped” distribution. It does not need to be perfect. Real data almost never are. What we are trying to avoid is:
+
+-   Strong skew (lots of values piled up on one side)
+-   Very long tails
+-   Obvious extreme outliers
+
+For the *Q-Q plot*, here's what to look for:
+
+-   If the dots fall roughly along the straight diagonal line → the data are approximately normal.
+-   If the dots form a clear curve (like an S-shape) → there may be skew.
+-   If the ends of the plot bend sharply away from the line → there may be heavy tails or outliers.
+
+For both depression and anxiety, the points closely follow the diagonal line, with only very small deviations at the extremes. This suggests the distributions are very close to normal.
+
+For the *Shapiro-Wilk's test*, it gives us a p-value. That p-value tells us whether the data significantly deviates from a normal bell-shaped distribution.
+
+-   If *p* \> .05 → we do not have evidence that the data deviate from normality.
+-   If *p* \< .05 → the test detects a deviation.
+
+Our result show that for both depression (*W* = 0.99, *p* = .82) and anxiety (*W* = 0.99, *p* = .50), both p-values are well above .05, which means there is no statistical evidence that either variable violates normality.
+
+Looking at the histograms, the Q–Q plots, and the Shapiro–Wilk tests together, both depression and anxiety appear to be approximately normally distributed.
+
+This means the normality assumption for Pearson’s correlation has been met, and we can proceed with the analysis.
+
+### 4. Linearity
+
+Pearson’s correlation assumes that the relationship between variables is linear.
+
+We can examine this using a scatterplot:
 
 ```{r}
-plot(x=df_sleep$Depression,y=df_sleep$Anxiety)
+plot(df_sleep$Depression, df_sleep$Anxiety)
 ```
 
+The points should form a roughly straight-line pattern rather than a curved pattern. Which they do, so we have linearity.
+
 **e.** **Homoscedasticity**
+
+Homoscedasticity means that the variability of one variable is similar across levels of the other variable.
 
 There are a number of ways to check this assumption: visually via plotting of the residuals (which we will cover in Week 7 for Regression), or via a test. Here we will use a Breusch-Pagan test (1979) for heteroscedasticity.
 
@@ -222,28 +278,43 @@ check_heteroscedasticity(model) # this function performs a Breusch-Pagan test fo
 
 ```
 
-Based on the above we can ascertain that:
-
--   the variables are normally distributed
-
--   the relationship between the two variables is linear
-
--   the assumption of homoscedasticity is met
+We can see that our data does display homoscedasticity. We have met all our assumptions now.
 
 As such we can use a **Pearson** correlation to test our hypotheses.
 
 ## Activity 5: Running the Simple Correlation
 
-We use the `correlation` function to perform the correlation. The syntax is:
+Now that we have checked our assumptions, we can run the correlation.
 
-```{r eval = F}
+We use the `cor.test()` function in R. The basic structure and syntax of the code is:
 
-# Remember you need to edit the specific names/variables below to make it work for our data and needs
+```{r eval = FALSE}
 
-cor.test(DataframeName$Variable1, DataframeName$Variable2, method = "pearson" OR "spearman", alternative = "two.sided" or "less" or "greater")
+#REMINDER: This is SYNTAX/PLACEHOLDER CODE - it will not work unless you substitute the values for your dataset
 
-# alternative specifies whether it's a one or two-sided test, or one-sided. "greater" corresponds to positive association, "less" to negative association
+cor.test(
+  DataframeName$Variable1,
+  DataframeName$Variable2,
+  method = c("pearson", "spearman"), #we choose just 1, e.g. method = "pearson", method = "spearman"
+  alternative = c("two.sided", "less", "greater") #we choose one, e.g. alternative = "two.sided" or alternative = "less" or alternative = "greater"
+)
 ```
+
+**What do these arguments mean?**
+
+-   `method = "pearson"` → used when assumptions are met.
+
+-   `method = "spearman"` → used if assumptions are violated.
+
+-   `alternative` controls whether the test is:
+
+    -   "two.sided" → testing for any relationship (positive or negative)
+
+    -   "greater" → testing for a positive relationship
+
+    -   "less" → testing for a negative relationship
+
+Because our hypothesis predicts a positive relationship, we will run a one-sided test using "greater".
 
 As we have a **directional hypothesis** where we expect a **positive** correlation we will run a one-sided correlation. Let's run this correlation for depression and anxiety on our `df_sleep` dataset:
 
@@ -251,8 +322,12 @@ As we have a **directional hypothesis** where we expect a **positive** correlati
 ## Our simple correlation code
 
 ```{r}
-cor.test(df_sleep$Depression, df_sleep$Anxiety, method = "pearson", alternative = "greater")
-
+cor.test(
+  df_sleep$Depression,
+  df_sleep$Anxiety,
+  method = "pearson",
+  alternative = "greater"
+)
 ```
 :::
 
@@ -260,52 +335,160 @@ The correlation results show a significant correlation between the depression an
 
 **Here's how we might write up the results in APA style:**
 
-A Pearsons correlation was conducted to assess the relationship between depression (*M*= 25.05, *SD*= 6.17) and anxiety scores (*M*= 50.3, *SD*= 12.34). The test showed that there was a significant positive correlation between the two variables *r*(148) = 0.98, *p* \< 0.01. As such we reject the null hypothesis.
+A Pearson's correlation was conducted to assess the relationship between depression (*M*= 25.05, *SD*= 6.17) and anxiety scores (*M*= 50.3, *SD*= 12.34). There was a significant large positive correlation between depression and anxiety, *r*(148) = 0.98, *p* \< 0.01. This indicates that higher levels of depression are associated with higher levels of anxiety. As such we can reject the null hypothesis.
+
+### Plotting our Results
+
+It is always a good idea to represent our results visually. For a simple correlation, this would mean a scatterplot. while we already generated a scatterplot earlier, we can make it more informative and nicer to look at. For example, the following code will generate a scatterplot between Depression and Anxiety, with a title, appropriate labels for the x and y-axis, and a regression line of best fit. 
+
+```{r}
+plot(
+  x = df_sleep$Depression,
+  y = df_sleep$Anxiety,
+  main = "Scatterplot of Depression and Anxiety",
+  xlab = "Depression",
+  ylab = "Anxiety"
+)
+
+abline(lm(Anxiety ~ Depression, data = df_sleep), col = "blue", lwd = 2)
+```
+
+::: {.callout-note collapse = "true"}
+
+## How does this code work? 
+
+
+What each argument in `plot()` does
+
+-   `x = df_sleep$Depression` → This sets the variable on the horizontal (x) axis.
+
+-   `y = df_sleep$Anxiety` → This sets the variable on the vertical (y) axis.
+
+-   `main` = → This controls the title of the graph.
+
+-   `xlab = and ylab =` → These control the axis labels.
+
+If you want to change variables, simply replace the x and y variables with different variables.
+
+For example:
+
+```{r}
+
+plot(
+  x = df_sleep$SleepDifficulty,
+  y = df_sleep$Depression,
+  main = "Scatterplot of Sleep Difficulty and Depression",
+  xlab = "Sleep Difficulty",
+  ylab = "Depression"
+)
+```
+
+What does the code `abline(lm(Depression ~ SleepDifficulty, data = df_sleep), col = "blue", lwd = 2)` do?
+
+This adds a straight line showing the best linear fit, where
+
+-   `lm(Anxiety ~ Depression, data = df_sleep)` → This creates a linear model predicting Anxiety from Depression.
+
+-   `abline()` → Draws the regression line from that model onto the existing plot.
+
+-   `col = "blue"` → Changes the colour of the line.
+
+-   `lwd = 2` → Controls the thickness of the line (higher = thicker).
+
+If you change the variables in your plot, you must also change them here to match.
+
+For example:
+
+```{r}
+
+plot(
+  x = df_sleep$SleepDifficulty,
+  y = df_sleep$Depression,
+  main = "Scatterplot of Sleep Difficulty and Depression",
+  xlab = "Sleep Difficulty",
+  ylab = "Depression"
+)
+
+abline(lm(Depression ~ SleepDifficulty, data = df_sleep), col = "red", lwd = 3)
+
+
+```
+
+:::
 
 ## Multiple Correlations
 
-Sometimes we're interested in the associations between multiple variables. In todays dataset we have sleep difficulty, optimism, depression, and anxiety. As such we might be interested in the relationship between all four variables.
+In the previous activity, we examined the relationship between two variables (depression and anxiety).
 
-In addition to our earlier prediction regarding depression and anxiety we could also predict:
+However, we are often interested in understanding how **several variables relate to each other at the same time**.
 
-1\) that greater sleep difficulty (as shown by higher values) will be associated with higher anxiety and depression levels (as shown by higher scores).
+In this dataset, we have four continuous variables:
 
-2\) that greater optimism (as shown by higher values) will be associated with lower anxiety and depression levels (as shown by lower scores).
+-   Depression\
+-   Anxiety\
+-   SleepDifficulty\
+-   Optimism
 
-In this case:
+### Hypotheses
 
-Our **variables** are 1) depression, 2) anxiety, 3) sleep difficulty, and 4) optimism.
+*Set 1: The Relationship with Sleep Difficulty with Depression and Anxiety*
 
-As we are interested in the relationship between four continuous variables, this would be best addressed via a **multiple correlation**. Before we can do this, there are a couple of preliminary steps we need to take.
+**H₀:** There is no significant correlation between sleep difficulty with depression, and anxiety. 
 
-A lot of the steps are very similar to a simple correlation. So we can refer to the above sections for help if we get unsure.
+**H₁:** Higher **sleep difficulty** will be associated with higher **depression** and **anxiety**.
+
+
+*Set 2: The Relationship with Optimism with Depression and Anxiety*
+
+**H₀:** There is no significant correlation between optimism with depression and anxiety. 
+
+**H₁:** Higher **optimism** will be associated with lower **depression** and **anxiety** 
+
+Instead of running multiple separate correlations one at a time, we can examine all relationships simultaneously using a **multiple correlation matrix**.
+
+## Why Use a Multiple Correlation?
+
+A multiple correlation allows us to:
+
+-   Examine all pairwise relationships between several continuous variables
+-   See the direction (positive or negative)
+-   See the strength of each relationship
+-   Adjust p-values for multiple comparisons (e.g., Bonferroni correction)
+
+The logic is the same as before, as we are still testing associations between continuous variables.
 
 ## Activity 6: Descriptive statistics and assumption checking
 
-We already checked that depression and anxiety meet the assumptions for a Pearsons correlation but now we need to do the same for **sleep difficulty** and **optimism**. Double-check **Activity 4** for a reminder on the steps to check the below.
+Before running the multiple correlation, we must ensure that **all four variables** meet the assumptions of Pearson’s correlation.
 
-a\. The data are continuous, and are either interval or ratio.
+We already checked depression and anxiety earlier. Now we must also check:
 
-b\. There is a data point for each participant for both variables.
+-   SleepDifficulty\
+-   Optimism
 
-c\. The data are normally distributed for your two variables.
+### Assumptions to Check
 
-d\. The relationship between the two variables is linear.
+For each variable:
 
-e\. The assumption of homoscedasticity.
+1.  The variable is continuous\
+2.  There is no problematic missing data\
+3.  The variable is approximately normally distributed\
+4.  The relationships appear linear\
+5.  Homoscedasticity is reasonable
 
-::: {.callout-note collapse="true"}
-## Code to double-check your work when you're done
+Using the same steps as for the simple correlation, check the assumptions for the variables `SleepDifficulty` and `Optimism`. 
 
 ```{r}
 descriptives(df_sleep, # our data
              vars = c("Depression", "Anxiety", "SleepDifficulty", "Optimism"), # our four variables
              hist = TRUE, # this generates a histogram
+             dens = TRUE,
              sw = TRUE, # this runs shapiro-wilks test
              qq=TRUE) # this generates a qq plot 
 
 ```
-:::
+
+
 
 ::: callout-tip
 If you want to try the pairs.panel function it enables you to check the visual assumptions for all the variables at once.
@@ -314,11 +497,25 @@ If you want to try the pairs.panel function it enables you to check the visual a
 pairs.panels(df_sleep)
 
 ```
+
+The `pairs.panels()` output shows:
+
+-   Histograms on the diagonal (distribution of each variable)
+-   Correlation coefficients (i.e. strength and direction of the relationship) in the upper right triangle
+-   Scatterplots with regression lines in the lower left triangle
+
+When interpreting the scatterplots: - Look for a straight-line pattern (linearity) - Check that no extreme outliers dominate the relationship - Observe the direction of the red line (positive or negative)
+
+The red ellipses in the scatterplots indicate strength: - Narrow diagonal ellipse = strong relationship - Wide circular shape = weak relationship
 :::
 
 ## Activity 7: Running the multiple correlation
 
-To run our multiple correlation we need to use slightly different syntax than before:
+Now that we have checked the assumptions for all four variables, we can run a multiple correlation.
+
+Instead of testing one pair of variables at a time, we will examine all pairwise relationships simultaneously.
+
+We use the `correlation()` function from the `correlation` package.
 
 ```{r eval=FALSE}
 
@@ -326,15 +523,28 @@ To run our multiple correlation we need to use slightly different syntax than be
 
 correlation(DataframeName, # our data
             select = c("Variable1", "Variable2", "Variable3", "Variable4"), # our variables
-             method = "pearson" OR "spearman",
+             method = c("pearson", "spearman"), #we choose just 1, e.g. method = "pearson", method = "spearman"
             p_adjust = "bonferroni") # our bonferroni adjustment for multiple comparisons - see the associated textbook chapter for a discussion of this
 
 # Note that we do not specify the direction of our predicted correlation here as some may be positive and others may be negative
 
 ```
 
-::: {.callout-note collapse="true"}
-## Code to double-check your work when you're done
+***What do these arguments mean?***
+
+-   `select` → specifies which variables to include.
+
+-   `method = "pearson"` → used when assumptions are met.
+
+-   `method = "spearman"` → used when assumptions are not met.
+
+-   `p_adjust = "bonferroni"` → adjusts p-values to control for inflated Type I error when running multiple comparisons.
+
+When we run multiple correlations at once, we increase the risk of false positives. The Bonferroni correction makes the test more conservative to reduce this risk.
+
+Note that we do **not** specify `"greater"` or `"less"` here, because some relationships may be positive and others negative. Therefore, this is effectively a two-sided test for each pair.
+
+The following code runs the multiple correlation and saves it to the variable `mcor`. We are saving this information to a variable as we will need it later to generate a graph.
 
 ```{r}
 
@@ -345,53 +555,144 @@ mcor <- correlation(df_sleep, # our data
             p_adjust = "bonferroni") # our bonferroni adjustment for multiple comparisons
 mcor
 ```
-:::
+
+*Interpreting the Output*
+
+The output provides:
+
+-   The correlation coefficient (r)
+
+-   The p-value (adjusted using Bonferroni)
+
+-   Confidence intervals
+
+**Key Findings**
+
+-   Depression and anxiety were very strongly positively correlated, r(148) = .98. p \< .01.
+
+-   Depression and sleep difficulty were strongly positively correlated, r(148) = .90, p \< .01.
+
+-   Anxiety and sleep difficulty were also strongly positively correlated, r(148) = .88, p \< .01.
+
+These indicate that higher sleep difficulty is associated with higher depression and anxiety, and that depression and anxiety are closely related.
+
+In contrast:
+
+-   Depression and optimism were weakly negatively correlated, r(148) = −.16, p = .30.
+
+-   Anxiety and optimism were weakly negatively correlated, r(148) = −.14, p = .52.
+
+-   Sleep difficulty and optimism were weakly negatively correlated, r(148) = −.10, p \> .99.
+
+These weak negative correlations were not statistically significant after Bonferroni correction.
 
 **How we might write up the results in APA style?**
 
-A Pearsons multiple correlation with bonferroni correction was conducted to assess the relationship between depression (*M*= 24.26, *SD*= 5.89), anxiety scores (*M*= 48.62, *SD*= 12.48), sleep difficulty (*M*= **?**, *SD*= **?**), and optimism (*M*= **?**, *SD*= **?**). The test showed that there was a significant positive correlation between depression and anxiety *r*(148) = 0.97, *p* \< 0.01, and depression and sleep difficulty *r*(148) = 0.9, *p* \< 0.01, but no significant correlation between depression and optimism *r*(148) = -0.16, *p* = 0.29**.** There was also a significant positive correlation between anxiety and sleep difficulty *r*(148) = 0.88, *p* \< 0.01, but no significant correlation between optimism and anxiety *r*(148) = -0.14, *p* = 0.52 or optimism and sleep difficulty *r*(148) = -0.1, *p* = \>.99.
+A Pearson's multiple correlation test with bonferroni correction was conducted to assess the relationship between depression (*M*= 24.26, *SD*= 5.89), anxiety scores (*M*= 48.62, *SD*= 12.48), sleep difficulty (*M*= 12.37, *SD*= 2.74), and optimism (*M*= 10.58, *SD*= 3.28). The test showed that there was a significant positive correlation between sleep difficulty and depression, *r*(148) = 0.90, *p* \< 0.01, and sleep difficulty and anxiety, *r*(148) = 0.88, *p* \< 0.01.  This result indicates that people experiencing poorer sleep quality are more likely to experience depression and anxiety. The test also showed that there was a significant positive correlation between depression and anxiety *r*(148) = 0.98, *p* \< 0.01. Therefore one is able to reject the null hypothesis that there is no significant correlation between sleep difficulty with depression and anxiety. 
+
+It was also hypothesised that higher optimism will be associated with lower depression and anxiety. The test showed that there was no significant correlation between optimism and anxiety *r*(148) = -0.14, *p* = 0.52 or optimism and sleep difficulty *r*(148) = -0.1, *p* = \>.99. Therefore, one is unable to reject the null hypothesis. 
 
 ## Activity 8: Graphs
 
-We need to visualize our data not only to check our assumptions but also to include in our write-up / results / dissertations. As you may see above the write-up for a multiple correlation can be lengthy/confusing, and a good graphic can help your reader (and you) understand the results more easily.
+When analysing multiple correlations, reporting every correlation in text can quickly become overwhelming. A correlation matrix provides a clear visual summary of:
 
-Today we'll be using the `ggcorrplot` function. We will learn a lot more about making visualizations in week 9, but for today we will learn how to clearly visualize our correlation results. The code below makes a correlation matrix for the multiple correlation we just ran.
+-   The direction of each relationship (positive or negative)
+-   The strength of each relationship
+-   The overall pattern across variables
+
+Today we will use the `ggcorrplot()` function to visualise the correlation matrix we created in Activity 7.
 
 ```{r}
-ggcorrplot(mcor)
+ggcorrplot(
+  mcor,
+  colors = c("red", "white", "blue")
+)
 ```
 
-If you type in `?ggcorrplot` to your console you can see there are many optional arguments you can use to customize your graph. Using this try to do the following:
+*What Does This Show?*
 
-1.  Give your graph a meaningful title (e.g. "Super cool correlation matrix")
+-   Blue cells represent positive correlations.
+
+-   Red cells represent negative correlations.
+
+-   Darker colours indicate stronger relationships.
+
+-   Lighter colours indicate weaker relationships.
+
+This makes it much easier to see patterns across all variables at once.
+
+### Customising the Graph
+
+The `ggcorrplot()` function has many optional arguments. If you type in `?ggcorrplot` to your console you can see there are many optional arguments. Try make the following changes to your graph
+
+1.  Add a meaningful title.
 2.  Try changing the display type lower and upper, see what looks best.
-3.  Display the correlation values on the graph
-4.  Try changing method to "circle"
-5.  Try some of the arguments, see what you think looks best
+3.  Display the correlation values (lab = TRUE).
+4.  Change the colours of the correlations
+5.  Change the method to "circle" instead of squares.
+6.  Try some of the arguments, see what you think looks best
 
 ::: {.callout-tip collapse="true"}
-## Ciara's attempt at "super cool correlation matrix" code
+## One example of customising the code code
 
 ```{r}
-ggcorrplot(mcor, type = "lower", method = "circle", title = "Super cool correlation matrix",
-   lab = TRUE)
+ggcorrplot(
+  mcor,
+  type = "lower",
+  method = "circle",
+  lab = TRUE,
+  title = "Correlation Matrix of Psychological Variables",
+  colors = c("red", "white", "green")
+)
 ```
 :::
+
+### Saving the graph using \``ggsave()`
+
+Rather than exporting manually from the Plots panel, it is better practice to save graphs directly using code. This improves reproducibility.
+
+First, assign the plot to a variable name, then use ggsave() to export it.
+
+```{r}
+
+corr_plot <- ggcorrplot(
+  mcor,
+  type = "lower",
+  method = "circle",
+  lab = TRUE,
+  title = "Correlation Matrix of Psychological Variables",
+  colors = c("red", "white", "blue")
+)
+
+ggsave(
+  filename = "correlation_matrix.png",
+  plot = corr_plot,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+```
+
+How `ggsave()` Works
+
+-   `filename` → the name of the file to save.
+
+-   `plot` → the name of the plot variable you want to save.
+
+-   `width` and `height` → the size of the image (in inches by default).
+
+-   `dpi` → resolution (300 is standard for reports and publications).
+
+The file will be saved to your working directory unless you specify a different file path.
+
+### Saving the graph using RStudio functions
 
 You may also want to save your graphs outside of R (e.g. to use in a report or paper). There are a few ways to do this.
 
 1.  To simply export from the "Plots" panel in R (as below).
 
 ![](ExportImage.gif)
-
-2.  To export via code as below:
-
-```{r}
-png("myplot.png")  #specify you want a png file, and your file name
-myplot <- ggcorrplot(mcor) # create an object with that same name that is your plot
-print(myplot) # print the plot
-dev.off() # #this tells R that we are done with adding stuff to our png
-```
 
 ## Activity 9: Power analyses!
 
@@ -443,3 +744,107 @@ alternative = "two.sided") # Indicates a two-tailed test, #can be changed to les
 1.  Try running the above power-analyses again but for a one sided (directional) test. What does this do to our required sample size?
 
 2.  What happens if we increase the correlation value we expect to find?
+
+## Activity 10: Choose and Run the Correct Correlation Analysis (Try on your own!)
+
+In this final activity, you will be given a research scenario and a new dataset.
+
+Your task is to:
+
+1.  Decide what type of correlation analysis is appropriate.
+2.  Carry out the full analysis following the same steps used earlier in this workshop.
+3.  Write up your results clearly.
+
+### Research Scenario
+
+A researcher is interested in understanding how different psychological factors relate to academic stress in university students.
+
+They collected data from 180 students on the following variables:
+
+-   **Stress** – overall academic stress score (higher = more stress)
+-   **SleepQuality** – overall sleep quality score (higher = better sleep)
+-   **Optimism** – optimism score (higher = more optimistic)
+-   **SocialMediaUse** – average minutes per day spent on social media
+
+The research question is:
+
+> How are sleep quality, optimism, and social media use related to academic stress?
+
+You'll find the dataset called **student_stress.csv** on Canvas for this week.
+
+### Step 1: Decide the correct analysis
+
+Before running anything, decide:
+
+-   Should you run a **simple correlation** or a **multiple correlation**?
+
+Write one sentence explaining your decision.
+
+### Step 2: Load and inspect the dataset
+
+-   Load `student_stress.csv` and save it as `df_stress`.
+-   Inspect the datase to make sure you have loaded it correctly.
+
+### Step 3: Descriptive statistics
+
+Run descriptive statistics for all relevant variables.
+
+You should be able to report:
+
+-   Sample size
+-   Means
+-   Standard deviations
+-   Whether there is missing data
+
+### Step 4: Check assumptions
+
+Using the same procedure as earlier in the workshop, evaluate whether Pearson’s correlation is appropriate.
+
+Check:
+
+1.  Are the variables continuous?
+2.  Are the distributions approximately normal?
+    -   Histograms
+    -   Q–Q plots
+    -   Shapiro–Wilk tests
+3.  Are the relationships linear?
+    -   Scatterplots or pairs panel
+4.  Is homoscedasticity displayed?
+
+If assumptions are not met, make a note of it and run Spearman's correlation.
+
+### Step 5: Run the analysis
+
+Run the appropriate correlation analysis based on your decision in Step 1.
+
+If you are running multiple correlations:
+
+-   Include all relevant variables.
+-   Apply a correction for multiple comparisons (e.g., Bonferroni).
+
+### Step 6: Interpret the results
+
+For each relevant relationship, interpret:
+
+-   The direction (positive or negative)
+-   The strength (weak, moderate, strong)
+-   The statistical significance
+
+Then answer the research question clearly in plain English.
+
+### Step 7: Create a visualisation
+
+Create one clear figure that would help someone understand the results:
+
+-   A scatterplot (if simple correlation), or
+-   A correlation matrix (if multiple correlation).
+
+### Step 8: Write up your results
+
+Write a short APA-style results paragraph including:
+
+-   Descriptive statistics
+-   The test conducted
+-   Correlation coefficient(s)
+-   p-value(s)
+-   A clear conclusion linked back to the research question.

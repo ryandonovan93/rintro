@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -63,10 +63,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="05-workshop-activities_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="05-workshop-activities_files/libs/quarto-html/anchor.min.js"></script>
 <link href="05-workshop-activities_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="05-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="05-workshop-activities_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="05-workshop-activities_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="05-workshop-activities_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="05-workshop-activities_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="05-workshop-activities_files/libs/bootstrap/bootstrap-8e86427a6cc1d18ca4cd6587f8769fcf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -84,20 +84,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#activity-2-installing-loading-r-packages" id="toc-activity-2-installing-loading-r-packages" class="nav-link" data-scroll-target="#activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</a></li>
   <li><a href="#activity-3-download-and-load-in-your-dataset" id="toc-activity-3-download-and-load-in-your-dataset" class="nav-link" data-scroll-target="#activity-3-download-and-load-in-your-dataset">Activity 3: Download and load in your dataset</a>
   <ul>
-  <li><a href="#download-this-file-onto-your-computer-and-move-it-to-your-week5-folder." id="toc-download-this-file-onto-your-computer-and-move-it-to-your-week5-folder." class="nav-link" data-scroll-target="#download-this-file-onto-your-computer-and-move-it-to-your-week5-folder.">Download this file onto your computer and move it to your <code>week5</code> folder.</a></li>
+  <li><a href="#step-1-download-the-file" id="toc-step-1-download-the-file" class="nav-link" data-scroll-target="#step-1-download-the-file">Step 1: Download the file</a></li>
+  <li><a href="#step-2-load-the-dataset-into-r" id="toc-step-2-load-the-dataset-into-r" class="nav-link" data-scroll-target="#step-2-load-the-dataset-into-r">Step 2: Load the dataset into R</a></li>
   </ul></li>
   <li><a href="#correlations" id="toc-correlations" class="nav-link" data-scroll-target="#correlations">Correlations</a></li>
-  <li><a href="#activity-4-get-descriptive-statistics-check-assumptions" id="toc-activity-4-get-descriptive-statistics-check-assumptions" class="nav-link" data-scroll-target="#activity-4-get-descriptive-statistics-check-assumptions">Activity 4: Get descriptive statistics &amp; check assumptions</a>
+  <li><a href="#activity-4-descriptive-statistics-and-assumption-checks" id="toc-activity-4-descriptive-statistics-and-assumption-checks" class="nav-link" data-scroll-target="#activity-4-descriptive-statistics-and-assumption-checks">Activity 4: Descriptive Statistics and Assumption Checks</a>
   <ul>
-  <li><a href="#checking-our-assumptions" id="toc-checking-our-assumptions" class="nav-link" data-scroll-target="#checking-our-assumptions">Checking our assumptions</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
   </ul></li>
-  <li><a href="#activity-5-running-the-simple-correlation" id="toc-activity-5-running-the-simple-correlation" class="nav-link" data-scroll-target="#activity-5-running-the-simple-correlation">Activity 5: Running the Simple Correlation</a></li>
-  <li><a href="#multiple-correlations" id="toc-multiple-correlations" class="nav-link" data-scroll-target="#multiple-correlations">Multiple Correlations</a></li>
-  <li><a href="#activity-6-descriptive-statistics-and-assumption-checking" id="toc-activity-6-descriptive-statistics-and-assumption-checking" class="nav-link" data-scroll-target="#activity-6-descriptive-statistics-and-assumption-checking">Activity 6: Descriptive statistics and assumption checking</a></li>
+  <li><a href="#choosing-the-correct-type-of-correlation" id="toc-choosing-the-correct-type-of-correlation" class="nav-link" data-scroll-target="#choosing-the-correct-type-of-correlation">Choosing the Correct Type of Correlation</a></li>
+  <li><a href="#assumptions-of-pearsons-correlation" id="toc-assumptions-of-pearsons-correlation" class="nav-link" data-scroll-target="#assumptions-of-pearsons-correlation">Assumptions of Pearson’s Correlation</a>
+  <ul>
+  <li><a href="#continuous-variables" id="toc-continuous-variables" class="nav-link" data-scroll-target="#continuous-variables">1. Continuous Variables</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">2. Missing Data</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">3. Normality</a></li>
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">4. Linearity</a></li>
+  </ul></li>
+  <li><a href="#activity-5-running-the-simple-correlation" id="toc-activity-5-running-the-simple-correlation" class="nav-link" data-scroll-target="#activity-5-running-the-simple-correlation">Activity 5: Running the Simple Correlation</a>
+  <ul>
+  <li><a href="#plotting-our-results" id="toc-plotting-our-results" class="nav-link" data-scroll-target="#plotting-our-results">Plotting our Results</a></li>
+  </ul></li>
+  <li><a href="#multiple-correlations" id="toc-multiple-correlations" class="nav-link" data-scroll-target="#multiple-correlations">Multiple Correlations</a>
+  <ul>
+  <li><a href="#hypotheses-1" id="toc-hypotheses-1" class="nav-link" data-scroll-target="#hypotheses-1">Hypotheses</a></li>
+  </ul></li>
+  <li><a href="#why-use-a-multiple-correlation" id="toc-why-use-a-multiple-correlation" class="nav-link" data-scroll-target="#why-use-a-multiple-correlation">Why Use a Multiple Correlation?</a></li>
+  <li><a href="#activity-6-descriptive-statistics-and-assumption-checking" id="toc-activity-6-descriptive-statistics-and-assumption-checking" class="nav-link" data-scroll-target="#activity-6-descriptive-statistics-and-assumption-checking">Activity 6: Descriptive statistics and assumption checking</a>
+  <ul>
+  <li><a href="#assumptions-to-check" id="toc-assumptions-to-check" class="nav-link" data-scroll-target="#assumptions-to-check">Assumptions to Check</a></li>
+  </ul></li>
   <li><a href="#activity-7-running-the-multiple-correlation" id="toc-activity-7-running-the-multiple-correlation" class="nav-link" data-scroll-target="#activity-7-running-the-multiple-correlation">Activity 7: Running the multiple correlation</a></li>
-  <li><a href="#activity-8-graphs" id="toc-activity-8-graphs" class="nav-link" data-scroll-target="#activity-8-graphs">Activity 8: Graphs</a></li>
+  <li><a href="#activity-8-graphs" id="toc-activity-8-graphs" class="nav-link" data-scroll-target="#activity-8-graphs">Activity 8: Graphs</a>
+  <ul>
+  <li><a href="#customising-the-graph" id="toc-customising-the-graph" class="nav-link" data-scroll-target="#customising-the-graph">Customising the Graph</a></li>
+  <li><a href="#saving-the-graph-using-ggsave" id="toc-saving-the-graph-using-ggsave" class="nav-link" data-scroll-target="#saving-the-graph-using-ggsave">Saving the graph using `<code>ggsave()</code></a></li>
+  <li><a href="#saving-the-graph-using-rstudio-functions" id="toc-saving-the-graph-using-rstudio-functions" class="nav-link" data-scroll-target="#saving-the-graph-using-rstudio-functions">Saving the graph using RStudio functions</a></li>
+  </ul></li>
   <li><a href="#activity-9-power-analyses" id="toc-activity-9-power-analyses" class="nav-link" data-scroll-target="#activity-9-power-analyses">Activity 9: Power analyses!</a></li>
   <li><a href="#power-analysis-for-a-simple-correlation" id="toc-power-analysis-for-a-simple-correlation" class="nav-link" data-scroll-target="#power-analysis-for-a-simple-correlation">Power analysis for a simple correlation</a></li>
+  <li><a href="#activity-10-choose-and-run-the-correct-correlation-analysis-try-on-your-own" id="toc-activity-10-choose-and-run-the-correct-correlation-analysis-try-on-your-own" class="nav-link" data-scroll-target="#activity-10-choose-and-run-the-correct-correlation-analysis-try-on-your-own">Activity 10: Choose and Run the Correct Correlation Analysis (Try on your own!)</a>
+  <ul>
+  <li><a href="#research-scenario" id="toc-research-scenario" class="nav-link" data-scroll-target="#research-scenario">Research Scenario</a></li>
+  <li><a href="#step-1-decide-the-correct-analysis" id="toc-step-1-decide-the-correct-analysis" class="nav-link" data-scroll-target="#step-1-decide-the-correct-analysis">Step 1: Decide the correct analysis</a></li>
+  <li><a href="#step-2-load-and-inspect-the-dataset" id="toc-step-2-load-and-inspect-the-dataset" class="nav-link" data-scroll-target="#step-2-load-and-inspect-the-dataset">Step 2: Load and inspect the dataset</a></li>
+  <li><a href="#step-3-descriptive-statistics" id="toc-step-3-descriptive-statistics" class="nav-link" data-scroll-target="#step-3-descriptive-statistics">Step 3: Descriptive statistics</a></li>
+  <li><a href="#step-4-check-assumptions" id="toc-step-4-check-assumptions" class="nav-link" data-scroll-target="#step-4-check-assumptions">Step 4: Check assumptions</a></li>
+  <li><a href="#step-5-run-the-analysis" id="toc-step-5-run-the-analysis" class="nav-link" data-scroll-target="#step-5-run-the-analysis">Step 5: Run the analysis</a></li>
+  <li><a href="#step-6-interpret-the-results" id="toc-step-6-interpret-the-results" class="nav-link" data-scroll-target="#step-6-interpret-the-results">Step 6: Interpret the results</a></li>
+  <li><a href="#step-7-create-a-visualisation" id="toc-step-7-create-a-visualisation" class="nav-link" data-scroll-target="#step-7-create-a-visualisation">Step 7: Create a visualisation</a></li>
+  <li><a href="#step-8-write-up-your-results" id="toc-step-8-write-up-your-results" class="nav-link" data-scroll-target="#step-8-write-up-your-results">Step 8: Write up your results</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="05-workshop-activities.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
 </div>
@@ -122,20 +158,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this weeks workshop, we are going to learn how to perform correlations (simple and multiple) which you covered in last weeks lecture, along with checking the relevant assumptions etc.</p>
-<p><img src="Corrs.png" class="img-fluid"></p>
-<p>- Use the <code>jmv</code> package to run descriptive statistics and check assumptions.</p>
+<p>In this week’s workshop, we will learn how to examine relationships between variables using correlation analysis. We will focus on both <strong>simple correlations</strong> (between two variables) and <strong>multiple correlations</strong> (between several variables), and we will learn how to:</p>
+<p>- Run descriptive statistics and check assumptions using <code>jmv</code></p>
 <p>- Conduct a simple correlation in R.</p>
 <p>- Conduct a multiple correlation R.</p>
-<p>- Learn how to make pretty correlation graphs.</p>
-<p>- Conduct an apriori power analysis in R for correlations.</p>
+<p>- Produce clear and informative correlation plots</p>
+<p>- Conduct an a priori power analysis for correlations</p>
+<p>As a reminder, there are three types of correlations, as illustrated in the image below.</p>
+<p><img src="Corrs.png" class="img-fluid"></p>
 <section id="lets-get-set-up" class="level2">
 <h2 class="anchored" data-anchor-id="lets-get-set-up">Let’s Get Set Up</h2>
 <p>Let’s begin by ensuring your working environment is ready for today’s session. Open RStudio or Posit Cloud and complete the following tasks to set everything up.</p>
 </section>
 <section id="activity-1-set-up-your-working-directory-r-script-for-this-week" class="level2">
 <h2 class="anchored" data-anchor-id="activity-1-set-up-your-working-directory-r-script-for-this-week">Activity 1: Set Up Your Working Directory &amp; R Script for this week</h2>
-<p>One of the first steps in each of these workshops is setting up your *working directory*. The working directory is the default folder where R will look to import files or save any files you export.</p>
+<p>One of the first steps in each of these workshops is setting up your <strong><em>working directory</em></strong>. The working directory is the default folder where R will look to import files or save any files you export.</p>
 <p>If you don’t set the working directory, R might not be able to locate the files you need (e.g., when importing a dataset) or you might not know where your exported files have been saved. Setting the working directory beforehand ensures that everything is in the right place and avoids these issues.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -156,12 +193,11 @@ Reminder on Steps to Set Up Your Working Directory
 <li><p>Create a new folder called <code>week5</code> inside this directory.</p></li>
 <li><p>Select the <code>week5</code> folder and click <strong>Open</strong>.</p></li>
 </ol>
-<p>Don’t forget to verify your working directory before we get started</p>
-<p>You can always check your current working directory by typing in the following command in the console:</p>
+<p>Don’t forget to verify your working directory before we get started. You do this by typing in the following command into the console</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/ryandonovan 1/Desktop/rintro/activities/week5"</code></pre>
+<pre><code>[1] "C:/Users/0131045s/Desktop/Legacy/Programming/R/Workshops/rintro/activities/week5"</code></pre>
 </div>
 </div>
 </div>
@@ -192,72 +228,46 @@ Reminder on creating an R script
 </div>
 </div>
 </div>
-<p>At the top of your R script type in and run the following code (this turns off scientific notation from your output:</p>
+<p>To make the output of our results appear more intuitive, we are going to turn off scientific notation. Scientific notation is a way of minimising space when reporting results with multiple decimal places. For example, if p = <code>1.1e-7</code>, this corresponds to p = 0.00000011 (i.e., the decimal point is moved seven places to the left). In psychological research, extremely small p-values are typically reported as: p &lt; .001. Therefore, scientific notation is not necessary for our purposes. We can turn it off by running:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="activity-2-installing-loading-r-packages" class="level2">
 <h2 class="anchored" data-anchor-id="activity-2-installing-loading-r-packages">Activity 2: Installing / Loading R Packages</h2>
-<p>We’ll be using several <strong>R packages</strong> to make our analysis easier. The <code>jmv</code> package is particularly helpful for running descriptive statistics, while <code>pwr</code> helps us calculate power for our tests. The <code>car</code> package will allow us to check additional assumptions. We will be using a new package this week also: <code>correlation</code>, this package will be used for running our correlations.</p>
-<p><strong>REMEMBER</strong>: If you encounter an error message like “<code>Error in library(package name): there is no packaged calledpackage name</code>”, you’ll need to install the package first by editing the following for your console:</p>
+<p>Today we will use the following packages: • <code>jmv</code> for descriptive statistics and assumption checks • <code>pwr</code> for power analysis • <code>car</code> for additional assumption testing • <code>correlation</code> for running correlation analyses • <code>performance</code> for diagnostic checks • <code>psych</code>, ggplot2, and ggcorrplot for visualisations</p>
+<p><strong>REMEMBER</strong>: If you see the error - “<code>Error in library(package name): there is no packaged calledpackage name</code>”, you’ll need to install the package first by editing the following for your console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"package name"</span>) <span class="co">#replace "package name" with the actual package name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here are the packages we will be using today:</p>
+<p>Now load the required packages:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv) <span class="co"># this will help us run descriptive statistics </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'jmv' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr) <span class="co"># this will enable us to conduct power analysis  </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># this is for checking assumptions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: carData</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(correlation) <span class="co">#this runs our correlation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'correlation' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># this helps with our assumption checks</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'performance' was built under R version 4.3.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) <span class="co"># this will be helpful for our multiple correlation graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'psych'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:car':
-
-    logit</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:jmv':
-
-    pca, reliability</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># we will be useful for making lots of pretty graphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ggplot2'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:psych':
-
-    %+%, alpha</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot) <span class="co"># we will be useful for making lots of pretty graphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv) <span class="co"># this will help us run descriptive statistics </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr) <span class="co"># this will enable us to conduct power analysis  </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># this is for checking assumptions</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(correlation) <span class="co">#this runs our correlation</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># this helps with our assumption checks</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) <span class="co"># this will be helpful for our multiple correlation graph</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co">#for generating plots</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot) <span class="co"># for generating matrix correlation plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="activity-3-download-and-load-in-your-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="activity-3-download-and-load-in-your-dataset">Activity 3: Download and load in your dataset</h2>
-<p>Today we are going to analyse data from a study on sleep quality, personality factors, and psychological wellbeing which you will find it on Canvas under the Module <strong>Week 5</strong></p>
-<p>- <strong>SleepQuality.csv</strong> <strong>→</strong> our dataset</p>
-<section id="download-this-file-onto-your-computer-and-move-it-to-your-week5-folder." class="level3">
-<h3 class="anchored" data-anchor-id="download-this-file-onto-your-computer-and-move-it-to-your-week5-folder.">Download this file onto your computer and move it to your <code>week5</code> folder.</h3>
-<p>Once this is done load the dataset into R and save it as a dataframe called “df_sleep”:</p>
+<p>Today we will analyse data from a study on sleep quality, personality factors, and psychological wellbeing. You will find the dataset on Canvas under <strong>Week 5</strong>.</p>
+<ul>
+<li><strong>SleepQuality.csv</strong> → the dataset we will use today</li>
+</ul>
+<section id="step-1-download-the-file" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-download-the-file">Step 1: Download the file</h3>
+<ol type="1">
+<li>Download <strong>SleepQuality.csv</strong> from Canvas.</li>
+<li>Move it into your <code>week5</code> folder (this should be your working directory).</li>
+</ol>
+</section>
+<section id="step-2-load-the-dataset-into-r" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-load-the-dataset-into-r">Step 2: Load the dataset into R</h3>
+<p>Once the file is in your <code>week5</code> folder, load it into R and save it as a dataframe called <code>df_sleep</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -271,7 +281,7 @@ Tip
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepQuality.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepQuality.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -280,10 +290,10 @@ Tip
 </section>
 <section id="correlations" class="level2">
 <h2 class="anchored" data-anchor-id="correlations">Correlations</h2>
-<p>Todays data was collected from a cross-sectional study examining the relationship between sleep difficulty, anxiety, and depression.</p>
-<p>After loading the datasets, it’s always good practice to inspect it before doing any analyses. You can use the <code>head()</code> function to get an overview of the sleep quality dataset.</p>
+<p>This dataset comes from a cross-sectional study examining the relationship between sleep difficulty, anxiety, and depression.</p>
+<p>Before doing any analysis, it is always good practice to quickly inspect your dataset. The <code>head()</code> function prints the first few rows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Participant SleepDifficulty  Optimism Depression  Anxiety
 1           1        12.32332  6.895218   25.73838 50.14666
@@ -294,24 +304,36 @@ Tip
 6           6        18.55490  5.819719   36.75899 73.08169</code></pre>
 </div>
 </div>
-<p>Now that our environment is set up and our dataset is loaded, we are ready to dive into descriptive statistics &amp; check our assumptions.</p>
-<p>Last week we learned how to use <code>descriptives</code> function to do both of these things.</p>
+<p>Now that our environment is set up and our dataset is loaded, we are ready to run descriptive statistics and check our assumptions (using the same <code>descriptives</code> approach you learned last week).</p>
 </section>
-<section id="activity-4-get-descriptive-statistics-check-assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="activity-4-get-descriptive-statistics-check-assumptions">Activity 4: Get descriptive statistics &amp; check assumptions</h2>
-<p>Let’s imagine we’re interested in investigating the relationship between <strong>depression</strong> and <strong>anxiety</strong>. Specifically we predict that higher levels of depression (as shown by higher scores) will be associated with higher anxiety levels (as shown by higher scores).</p>
-<p>In this case:</p>
-<p>Our <strong>variables</strong> are 1) depression and 2) anxiety</p>
-<p>We could specify our hypothesis as such:</p>
-<p><strong>H1:</strong> We predict that higher depression will be positively correlated with higher anxiety scores.</p>
-<p><strong>H0 (Null hypothesis):</strong> There will not be a significant correlation between depression scores and anxiety scores</p>
-<p>Note that as we do specify the direction of the association / correlation that this is a <strong>directional hypothesis</strong></p>
-<p>As we are interested in the relationship between two continuous variables, this would be best addressed via a <strong>simple correlation</strong>. Before we can do this, there are a couple of preliminary steps we need to take. First, we need to check the assumptions required for a correlation.</p>
-<section id="checking-our-assumptions" class="level3">
-<h3 class="anchored" data-anchor-id="checking-our-assumptions">Checking our assumptions</h3>
-<p>There are two main types of correlation you might use: <strong>Pearsons</strong> and <strong>Spearmans</strong> , for an overview of both check the associated textbook chapter on correlations. For the purposes of this workshop, you would typically use <strong>Pearsons</strong> correlation, unless the below assumptions are not met.</p>
-<p>There are several key assumptions for conducting Pearsons simple correlation:</p>
-<p>a. The data are continuous, and are either interval or ratio.</p>
+<section id="activity-4-descriptive-statistics-and-assumption-checks" class="level2">
+<h2 class="anchored" data-anchor-id="activity-4-descriptive-statistics-and-assumption-checks">Activity 4: Descriptive Statistics and Assumption Checks</h2>
+<p>We are interested in examining the relationship between <strong>depression</strong> and <strong>anxiety</strong>.</p>
+<p>Specifically, we predict that higher depression scores will be associated with higher anxiety scores.</p>
+<section id="hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="hypotheses">Hypotheses</h3>
+<p><strong>H₀:</strong> There is no significant correlation between depression and anxiety.</p>
+<p><strong>H₁:</strong> Higher depression scores will be positively correlated with higher anxiety scores.</p>
+<p>Because we are examining the relationship between two continuous variables, the appropriate analysis is a <strong>simple correlation</strong>.</p>
+<p>Since our hypothesis specifies a direction (positive association), this is a <strong>directional hypothesis</strong>. Note that as we do specify the direction of the association / correlation that this is a <strong>directional hypothesis</strong></p>
+</section>
+</section>
+<section id="choosing-the-correct-type-of-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-the-correct-type-of-correlation">Choosing the Correct Type of Correlation</h2>
+<p>There are two main types of correlation:</p>
+<ul>
+<li><strong>Pearson’s correlation</strong> – used when assumptions are met<br>
+</li>
+<li><strong>Spearman’s correlation</strong> – used when assumptions are violated</li>
+</ul>
+<p>For this workshop, we will use <strong>Pearson’s correlation</strong>, provided its assumptions are satisfied.</p>
+</section>
+<section id="assumptions-of-pearsons-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions-of-pearsons-correlation">Assumptions of Pearson’s Correlation</h2>
+<p>Before running the correlation, we must check the following:</p>
+<ol type="1">
+<li>Both variables are continuous (interval or ratio scale)</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -330,7 +352,9 @@ Tip
 </div>
 </div>
 </div>
-<p>b. There is a data point for each participant for both variables.</p>
+<ol start="2" type="1">
+<li>Each participant has a score on both variables (no problematic missing data)</li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -347,31 +371,54 @@ Note
 </div>
 </div>
 </div>
-<p>c. The data are normally distributed for your two variables.</p>
-<p>d. The relationship between the two variables is linear.</p>
-<p>e. The assumption of homoscedasticity.</p>
-<p><strong>Assumptions (c-d): Normality &amp; linearity</strong></p>
-<p>For correlations we can check these assumptions via visualization. Please refer to the associated textbook chapter for detailed guidance on checking these assumptions via visualization.</p>
-<p>Normality can be assessed using a histogram and qqplot (both of with we can get using the descriptives function), and also <strong>Shapiro-Wilks test</strong> which we learned last week. We can also take this opportunity to get some of our descriptive statistics for our write-up, we need <strong>mean</strong> and <strong>standard deviation</strong> for both variables.</p>
-<p>Remember if you type <code>?descriptives</code> into your console it will give you an overview of the arguments you can use.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code in case you get stuck / to double check your work
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<ol start="3" type="1">
+<li>Both variables are approximately normally distributed</li>
+<li>The relationship between the variables is linear</li>
+<li>The data are homoscedastic</li>
+</ol>
+<p><strong>Checking Our Assumptions</strong></p>
+<section id="continuous-variables" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-variables">1. Continuous Variables</h3>
+<p>Both depression and anxiety are measured using psychological scales. These are treated as <strong>interval-level data</strong>, meaning the distance between values is equal. This assumption is therefore met.</p>
+</section>
+<section id="missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data">2. Missing Data</h3>
+<p>A quick way to check for missing data is via descriptive statistics. If there are no missing values for either variable, this assumption is satisfied.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_sleep, <span class="co"># our data</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>), <span class="co"># our two variables</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>, <span class="co"># this generates a histogram</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>, <span class="co"># this runs shapiro-wilks test</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">qq=</span><span class="cn">TRUE</span>) <span class="co"># this generates a qq plot </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_sleep, <span class="co"># our data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>)<span class="co"># our two variables</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                     
+ ──────────────────────────────────────────────── 
+                         Depression    Anxiety    
+ ──────────────────────────────────────────────── 
+   N                            150         150   
+   Missing                        0           0   
+   Mean                    25.05236    50.30168   
+   Median                  25.14149    50.21348   
+   Standard deviation      6.173965    12.34318   
+   Minimum                 8.203621    16.32001   
+   Maximum                 40.04161    78.15740   
+ ──────────────────────────────────────────────── </code></pre>
+</div>
+</div>
+<p>You can see that no participants are identified as “missing”.</p>
+</section>
+<section id="normality" class="level3">
+<h3 class="anchored" data-anchor-id="normality">3. Normality</h3>
+<p>Normality can be assessed visually (histogram and Q–Q plot) and statistically (Shapiro–Wilk test).</p>
+<p>We can obtain descriptive statistics and check normality simultaneously:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_sleep, <span class="co"># our data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>), <span class="co"># our two variables</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>, <span class="co"># this generates a histogram</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">dens =</span> <span class="cn">TRUE</span>, <span class="co">#draws a density plot over our histogram</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>, <span class="co"># this runs shapiro-wilks test</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">qq=</span><span class="cn">TRUE</span>) <span class="co"># this generates a qq plot </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -394,79 +441,114 @@ Code in case you get stuck / to double check your work
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>To check for linearity can use a scatterplot. The below code will generate a simple scatterplot for this purpose of checking normality (later on we’ll learn to generate prettier graphs that you can use in your reports).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>df_sleep<span class="sc">$</span>Depression,<span class="at">y=</span>df_sleep<span class="sc">$</span>Anxiety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
 <p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the <em>histograms</em>, we are looking for a roughly “bell-shaped” distribution. It does not need to be perfect. Real data almost never are. What we are trying to avoid is:</p>
+<ul>
+<li>Strong skew (lots of values piled up on one side)</li>
+<li>Very long tails</li>
+<li>Obvious extreme outliers</li>
+</ul>
+<p>For the <em>Q-Q plot</em>, here’s what to look for:</p>
+<ul>
+<li>If the dots fall roughly along the straight diagonal line → the data are approximately normal.</li>
+<li>If the dots form a clear curve (like an S-shape) → there may be skew.</li>
+<li>If the ends of the plot bend sharply away from the line → there may be heavy tails or outliers.</li>
+</ul>
+<p>For both depression and anxiety, the points closely follow the diagonal line, with only very small deviations at the extremes. This suggests the distributions are very close to normal.</p>
+<p>For the <em>Shapiro-Wilk’s test</em>, it gives us a p-value. That p-value tells us whether the data significantly deviates from a normal bell-shaped distribution.</p>
+<ul>
+<li>If <em>p</em> &gt; .05 → we do not have evidence that the data deviate from normality.</li>
+<li>If <em>p</em> &lt; .05 → the test detects a deviation.</li>
+</ul>
+<p>Our result show that for both depression (<em>W</em> = 0.99, <em>p</em> = .82) and anxiety (<em>W</em> = 0.99, <em>p</em> = .50), both p-values are well above .05, which means there is no statistical evidence that either variable violates normality.</p>
+<p>Looking at the histograms, the Q–Q plots, and the Shapiro–Wilk tests together, both depression and anxiety appear to be approximately normally distributed.</p>
+<p>This means the normality assumption for Pearson’s correlation has been met, and we can proceed with the analysis.</p>
+</section>
+<section id="linearity" class="level3">
+<h3 class="anchored" data-anchor-id="linearity">4. Linearity</h3>
+<p>Pearson’s correlation assumes that the relationship between variables is linear.</p>
+<p>We can examine this using a scatterplot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_sleep<span class="sc">$</span>Depression, df_sleep<span class="sc">$</span>Anxiety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The points should form a roughly straight-line pattern rather than a curved pattern. Which they do, so we have linearity.</p>
 <p><strong>e.</strong> <strong>Homoscedasticity</strong></p>
+<p>Homoscedasticity means that the variability of one variable is similar across levels of the other variable.</p>
 <p>There are a number of ways to check this assumption: visually via plotting of the residuals (which we will cover in Week 7 for Regression), or via a test. Here we will use a Breusch-Pagan test (1979) for heteroscedasticity.</p>
 <p>To do this we will create a linear model, and then use the function <code>check_heteroscasticity</code> from the performance package.</p>
 <p>If we get a non-significant p-value then the data is homoscedastic and our assumption has been met.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Depression <span class="sc">~</span> Anxiety, <span class="at">data =</span> df_sleep) <span class="co"># here we are creating an object "model" which contatins a linear model of our DV ~ IV </span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(model) <span class="co"># this function performs a Breusch-Pagan test for our model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Depression <span class="sc">~</span> Anxiety, <span class="at">data =</span> df_sleep) <span class="co"># here we are creating an object "model" which contatins a linear model of our DV ~ IV </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(model) <span class="co"># this function performs a Breusch-Pagan test for our model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>OK: Error variance appears to be homoscedastic (p = 0.771).</code></pre>
 </div>
 </div>
-<p>Based on the above we can ascertain that:</p>
-<ul>
-<li><p>the variables are normally distributed</p></li>
-<li><p>the relationship between the two variables is linear</p></li>
-<li><p>the assumption of homoscedasticity is met</p></li>
-</ul>
+<p>We can see that our data does display homoscedasticity. We have met all our assumptions now.</p>
 <p>As such we can use a <strong>Pearson</strong> correlation to test our hypotheses.</p>
 </section>
 </section>
 <section id="activity-5-running-the-simple-correlation" class="level2">
 <h2 class="anchored" data-anchor-id="activity-5-running-the-simple-correlation">Activity 5: Running the Simple Correlation</h2>
-<p>We use the <code>correlation</code> function to perform the correlation. The syntax is:</p>
+<p>Now that we have checked our assumptions, we can run the correlation.</p>
+<p>We use the <code>cor.test()</code> function in R. The basic structure and syntax of the code is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember you need to edit the specific names/variables below to make it work for our data and needs</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(DataframeName<span class="sc">$</span>Variable1, DataframeName<span class="sc">$</span>Variable2, <span class="at">method =</span> <span class="st">"pearson"</span> OR <span class="st">"spearman"</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span> or <span class="st">"less"</span> or <span class="st">"greater"</span>)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative specifies whether it's a one or two-sided test, or one-sided. "greater" corresponds to positive association, "less" to negative association</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#REMINDER: This is SYNTAX/PLACEHOLDER CODE - it will not work unless you substitute the values for your dataset</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  DataframeName<span class="sc">$</span>Variable1,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  DataframeName<span class="sc">$</span>Variable2,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"pearson"</span>, <span class="st">"spearman"</span>), <span class="co">#we choose just 1, e.g. method = "pearson", method = "spearman"</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>) <span class="co">#we choose one, e.g. alternative = "two.sided" or alternative = "less" or alternative = "greater"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>What do these arguments mean?</strong></p>
+<ul>
+<li><p><code>method = "pearson"</code> → used when assumptions are met.</p></li>
+<li><p><code>method = "spearman"</code> → used if assumptions are violated.</p></li>
+<li><p><code>alternative</code> controls whether the test is:</p>
+<ul>
+<li><p>“two.sided” → testing for any relationship (positive or negative)</p></li>
+<li><p>“greater” → testing for a positive relationship</p></li>
+<li><p>“less” → testing for a negative relationship</p></li>
+</ul></li>
+</ul>
+<p>Because our hypothesis predicts a positive relationship, we will run a one-sided test using “greater”.</p>
 <p>As we have a <strong>directional hypothesis</strong> where we expect a <strong>positive</strong> correlation we will run a one-sided correlation. Let’s run this correlation for depression and anxiety on our <code>df_sleep</code> dataset:</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -475,10 +557,15 @@ Our simple correlation code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df_sleep<span class="sc">$</span>Depression, df_sleep<span class="sc">$</span>Anxiety, <span class="at">method =</span> <span class="st">"pearson"</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  df_sleep<span class="sc">$</span>Depression,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  df_sleep<span class="sc">$</span>Anxiety,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"pearson"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"greater"</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -498,45 +585,165 @@ sample estimates:
 </div>
 <p>The correlation results show a significant correlation between the depression and anxiety scores.</p>
 <p><strong>Here’s how we might write up the results in APA style:</strong></p>
-<p>A Pearsons correlation was conducted to assess the relationship between depression (<em>M</em>= 25.05, <em>SD</em>= 6.17) and anxiety scores (<em>M</em>= 50.3, <em>SD</em>= 12.34). The test showed that there was a significant positive correlation between the two variables <em>r</em>(148) = 0.98, <em>p</em> &lt; 0.01. As such we reject the null hypothesis.</p>
-</section>
-<section id="multiple-correlations" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-correlations">Multiple Correlations</h2>
-<p>Sometimes we’re interested in the associations between multiple variables. In todays dataset we have sleep difficulty, optimism, depression, and anxiety. As such we might be interested in the relationship between all four variables.</p>
-<p>In addition to our earlier prediction regarding depression and anxiety we could also predict:</p>
-<p>1) that greater sleep difficulty (as shown by higher values) will be associated with higher anxiety and depression levels (as shown by higher scores).</p>
-<p>2) that greater optimism (as shown by higher values) will be associated with lower anxiety and depression levels (as shown by lower scores).</p>
-<p>In this case:</p>
-<p>Our <strong>variables</strong> are 1) depression, 2) anxiety, 3) sleep difficulty, and 4) optimism.</p>
-<p>As we are interested in the relationship between four continuous variables, this would be best addressed via a <strong>multiple correlation</strong>. Before we can do this, there are a couple of preliminary steps we need to take.</p>
-<p>A lot of the steps are very similar to a simple correlation. So we can refer to the above sections for help if we get unsure.</p>
-</section>
-<section id="activity-6-descriptive-statistics-and-assumption-checking" class="level2">
-<h2 class="anchored" data-anchor-id="activity-6-descriptive-statistics-and-assumption-checking">Activity 6: Descriptive statistics and assumption checking</h2>
-<p>We already checked that depression and anxiety meet the assumptions for a Pearsons correlation but now we need to do the same for <strong>sleep difficulty</strong> and <strong>optimism</strong>. Double-check <strong>Activity 4</strong> for a reminder on the steps to check the below.</p>
-<p>a. The data are continuous, and are either interval or ratio.</p>
-<p>b. There is a data point for each participant for both variables.</p>
-<p>c. The data are normally distributed for your two variables.</p>
-<p>d. The relationship between the two variables is linear.</p>
-<p>e. The assumption of homoscedasticity.</p>
+<p>A Pearson’s correlation was conducted to assess the relationship between depression (<em>M</em>= 25.05, <em>SD</em>= 6.17) and anxiety scores (<em>M</em>= 50.3, <em>SD</em>= 12.34). There was a significant large positive correlation between depression and anxiety, <em>r</em>(148) = 0.98, <em>p</em> &lt; 0.01. This indicates that higher levels of depression are associated with higher levels of anxiety. As such we can reject the null hypothesis.</p>
+<section id="plotting-our-results" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-our-results">Plotting our Results</h3>
+<p>It is always a good idea to represent our results visually. For a simple correlation, this would mean a scatterplot. while we already generated a scatterplot earlier, we can make it more informative and nicer to look at. For example, the following code will generate a scatterplot between Depression and Anxiety, with a title, appropriate labels for the x and y-axis, and a regression line of best fit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> df_sleep<span class="sc">$</span>Depression,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df_sleep<span class="sc">$</span>Anxiety,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Scatterplot of Depression and Anxiety"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Depression"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Anxiety"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(Anxiety <span class="sc">~</span> Depression, <span class="at">data =</span> df_sleep), <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Code to double-check your work when you’re done
+How does this code work?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>What each argument in <code>plot()</code> does</p>
+<ul>
+<li><p><code>x = df_sleep$Depression</code> → This sets the variable on the horizontal (x) axis.</p></li>
+<li><p><code>y = df_sleep$Anxiety</code> → This sets the variable on the vertical (y) axis.</p></li>
+<li><p><code>main</code> = → This controls the title of the graph.</p></li>
+<li><p><code>xlab = and ylab =</code> → These control the axis labels.</p></li>
+</ul>
+<p>If you want to change variables, simply replace the x and y variables with different variables.</p>
+<p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_sleep, <span class="co"># our data</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>, <span class="st">"SleepDifficulty"</span>, <span class="st">"Optimism"</span>), <span class="co"># our four variables</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>, <span class="co"># this generates a histogram</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>, <span class="co"># this runs shapiro-wilks test</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">qq=</span><span class="cn">TRUE</span>) <span class="co"># this generates a qq plot </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> df_sleep<span class="sc">$</span>SleepDifficulty,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df_sleep<span class="sc">$</span>Depression,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Scatterplot of Sleep Difficulty and Depression"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Sleep Difficulty"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Depression"</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What does the code <code>abline(lm(Depression ~ SleepDifficulty, data = df_sleep), col = "blue", lwd = 2)</code> do?</p>
+<p>This adds a straight line showing the best linear fit, where</p>
+<ul>
+<li><p><code>lm(Anxiety ~ Depression, data = df_sleep)</code> → This creates a linear model predicting Anxiety from Depression.</p></li>
+<li><p><code>abline()</code> → Draws the regression line from that model onto the existing plot.</p></li>
+<li><p><code>col = "blue"</code> → Changes the colour of the line.</p></li>
+<li><p><code>lwd = 2</code> → Controls the thickness of the line (higher = thicker).</p></li>
+</ul>
+<p>If you change the variables in your plot, you must also change them here to match.</p>
+<p>For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> df_sleep<span class="sc">$</span>SleepDifficulty,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df_sleep<span class="sc">$</span>Depression,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Scatterplot of Sleep Difficulty and Depression"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Sleep Difficulty"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Depression"</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(Depression <span class="sc">~</span> SleepDifficulty, <span class="at">data =</span> df_sleep), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="multiple-correlations" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-correlations">Multiple Correlations</h2>
+<p>In the previous activity, we examined the relationship between two variables (depression and anxiety).</p>
+<p>However, we are often interested in understanding how <strong>several variables relate to each other at the same time</strong>.</p>
+<p>In this dataset, we have four continuous variables:</p>
+<ul>
+<li>Depression<br>
+</li>
+<li>Anxiety<br>
+</li>
+<li>SleepDifficulty<br>
+</li>
+<li>Optimism</li>
+</ul>
+<section id="hypotheses-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypotheses-1">Hypotheses</h3>
+<p><em>Set 1: The Relationship with Sleep Difficulty with Depression and Anxiety</em></p>
+<p><strong>H₀:</strong> There is no significant correlation between sleep difficulty with depression, and anxiety.</p>
+<p><strong>H₁:</strong> Higher <strong>sleep difficulty</strong> will be associated with higher <strong>depression</strong> and <strong>anxiety</strong>.</p>
+<p><em>Set 2: The Relationship with Optimism with Depression and Anxiety</em></p>
+<p><strong>H₀:</strong> There is no significant correlation between optimism with depression and anxiety.</p>
+<p><strong>H₁:</strong> Higher <strong>optimism</strong> will be associated with lower <strong>depression</strong> and <strong>anxiety</strong></p>
+<p>Instead of running multiple separate correlations one at a time, we can examine all relationships simultaneously using a <strong>multiple correlation matrix</strong>.</p>
+</section>
+</section>
+<section id="why-use-a-multiple-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-a-multiple-correlation">Why Use a Multiple Correlation?</h2>
+<p>A multiple correlation allows us to:</p>
+<ul>
+<li>Examine all pairwise relationships between several continuous variables</li>
+<li>See the direction (positive or negative)</li>
+<li>See the strength of each relationship</li>
+<li>Adjust p-values for multiple comparisons (e.g., Bonferroni correction)</li>
+</ul>
+<p>The logic is the same as before, as we are still testing associations between continuous variables.</p>
+</section>
+<section id="activity-6-descriptive-statistics-and-assumption-checking" class="level2">
+<h2 class="anchored" data-anchor-id="activity-6-descriptive-statistics-and-assumption-checking">Activity 6: Descriptive statistics and assumption checking</h2>
+<p>Before running the multiple correlation, we must ensure that <strong>all four variables</strong> meet the assumptions of Pearson’s correlation.</p>
+<p>We already checked depression and anxiety earlier. Now we must also check:</p>
+<ul>
+<li>SleepDifficulty<br>
+</li>
+<li>Optimism</li>
+</ul>
+<section id="assumptions-to-check" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-to-check">Assumptions to Check</h3>
+<p>For each variable:</p>
+<ol type="1">
+<li>The variable is continuous<br>
+</li>
+<li>There is no problematic missing data<br>
+</li>
+<li>The variable is approximately normally distributed<br>
+</li>
+<li>The relationships appear linear<br>
+</li>
+<li>Homoscedasticity is reasonable</li>
+</ol>
+<p>Using the same steps as for the simple correlation, check the assumptions for the variables <code>SleepDifficulty</code> and <code>Optimism</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(df_sleep, <span class="co"># our data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>, <span class="st">"SleepDifficulty"</span>, <span class="st">"Optimism"</span>), <span class="co"># our four variables</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>, <span class="co"># this generates a histogram</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">dens =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sw =</span> <span class="cn">TRUE</span>, <span class="co"># this runs shapiro-wilks test</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">qq=</span><span class="cn">TRUE</span>) <span class="co"># this generates a qq plot </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -559,60 +766,57 @@ Code to double-check your work when you’re done
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-6.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-6.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-7.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-7.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-12-8.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-8.png" class="img-fluid figure-img" width="672"></p>
 </figure>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -628,50 +832,59 @@ Tip
 <div class="callout-body-container callout-body">
 <p>If you want to try the pairs.panel function it enables you to check the visual assumptions for all the variables at once.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(df_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(df_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>The <code>pairs.panels()</code> output shows:</p>
+<ul>
+<li>Histograms on the diagonal (distribution of each variable)</li>
+<li>Correlation coefficients (i.e.&nbsp;strength and direction of the relationship) in the upper right triangle</li>
+<li>Scatterplots with regression lines in the lower left triangle</li>
+</ul>
+<p>When interpreting the scatterplots: - Look for a straight-line pattern (linearity) - Check that no extreme outliers dominate the relationship - Observe the direction of the red line (positive or negative)</p>
+<p>The red ellipses in the scatterplots indicate strength: - Narrow diagonal ellipse = strong relationship - Wide circular shape = weak relationship</p>
 </div>
 </div>
 </section>
+</section>
 <section id="activity-7-running-the-multiple-correlation" class="level2">
 <h2 class="anchored" data-anchor-id="activity-7-running-the-multiple-correlation">Activity 7: Running the multiple correlation</h2>
-<p>To run our multiple correlation we need to use slightly different syntax than before:</p>
+<p>Now that we have checked the assumptions for all four variables, we can run a multiple correlation.</p>
+<p>Instead of testing one pair of variables at a time, we will examine all pairwise relationships simultaneously.</p>
+<p>We use the <code>correlation()</code> function from the <code>correlation</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember you need to edit the specific names/variables below to make it work for our data and needs</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">correlation</span>(DataframeName, <span class="co"># our data</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"Variable1"</span>, <span class="st">"Variable2"</span>, <span class="st">"Variable3"</span>, <span class="st">"Variable4"</span>), <span class="co"># our variables</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"pearson"</span> OR <span class="st">"spearman"</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">p_adjust =</span> <span class="st">"bonferroni"</span>) <span class="co"># our bonferroni adjustment for multiple comparisons - see the associated textbook chapter for a discussion of this</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we do not specify the direction of our predicted correlation here as some may be positive and others may be negative</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember you need to edit the specific names/variables below to make it work for our data and needs</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">correlation</span>(DataframeName, <span class="co"># our data</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"Variable1"</span>, <span class="st">"Variable2"</span>, <span class="st">"Variable3"</span>, <span class="st">"Variable4"</span>), <span class="co"># our variables</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"pearson"</span>, <span class="st">"spearman"</span>), <span class="co">#we choose just 1, e.g. method = "pearson", method = "spearman"</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">p_adjust =</span> <span class="st">"bonferroni"</span>) <span class="co"># our bonferroni adjustment for multiple comparisons - see the associated textbook chapter for a discussion of this</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we do not specify the direction of our predicted correlation here as some may be positive and others may be negative</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code to double-check your work when you’re done
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p><strong><em>What do these arguments mean?</em></strong></p>
+<ul>
+<li><p><code>select</code> → specifies which variables to include.</p></li>
+<li><p><code>method = "pearson"</code> → used when assumptions are met.</p></li>
+<li><p><code>method = "spearman"</code> → used when assumptions are not met.</p></li>
+<li><p><code>p_adjust = "bonferroni"</code> → adjusts p-values to control for inflated Type I error when running multiple comparisons.</p></li>
+</ul>
+<p>When we run multiple correlations at once, we increase the risk of false positives. The Bonferroni correction makes the test more conservative to reduce this risk.</p>
+<p>Note that we do <strong>not</strong> specify <code>"greater"</code> or <code>"less"</code> here, because some relationships may be positive and others negative. Therefore, this is effectively a two-sided test for each pair.</p>
+<p>The following code runs the multiple correlation and saves it to the variable <code>mcor</code>. We are saving this information to a variable as we will need it later to generate a graph.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we are saving the results of our correlation as an object called "mcor"</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>mcor <span class="ot">&lt;-</span> <span class="fu">correlation</span>(df_sleep, <span class="co"># our data</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>, <span class="st">"SleepDifficulty"</span>, <span class="st">"Optimism"</span>), <span class="co"># our variables</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"pearson"</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">p_adjust =</span> <span class="st">"bonferroni"</span>) <span class="co"># our bonferroni adjustment for multiple comparisons</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>mcor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we are saving the results of our correlation as an object called "mcor"</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>mcor <span class="ot">&lt;-</span> <span class="fu">correlation</span>(df_sleep, <span class="co"># our data</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"Anxiety"</span>, <span class="st">"SleepDifficulty"</span>, <span class="st">"Optimism"</span>), <span class="co"># our variables</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"pearson"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">p_adjust =</span> <span class="st">"bonferroni"</span>) <span class="co"># our bonferroni adjustment for multiple comparisons</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>mcor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Correlation Matrix (pearson-method)
 
@@ -688,53 +901,97 @@ p-value adjustment method: Bonferroni
 Observations: 150</code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
+<p><em>Interpreting the Output</em></p>
+<p>The output provides:</p>
+<ul>
+<li><p>The correlation coefficient (r)</p></li>
+<li><p>The p-value (adjusted using Bonferroni)</p></li>
+<li><p>Confidence intervals</p></li>
+</ul>
+<p><strong>Key Findings</strong></p>
+<ul>
+<li><p>Depression and anxiety were very strongly positively correlated, r(148) = .98. p &lt; .01.</p></li>
+<li><p>Depression and sleep difficulty were strongly positively correlated, r(148) = .90, p &lt; .01.</p></li>
+<li><p>Anxiety and sleep difficulty were also strongly positively correlated, r(148) = .88, p &lt; .01.</p></li>
+</ul>
+<p>These indicate that higher sleep difficulty is associated with higher depression and anxiety, and that depression and anxiety are closely related.</p>
+<p>In contrast:</p>
+<ul>
+<li><p>Depression and optimism were weakly negatively correlated, r(148) = −.16, p = .30.</p></li>
+<li><p>Anxiety and optimism were weakly negatively correlated, r(148) = −.14, p = .52.</p></li>
+<li><p>Sleep difficulty and optimism were weakly negatively correlated, r(148) = −.10, p &gt; .99.</p></li>
+</ul>
+<p>These weak negative correlations were not statistically significant after Bonferroni correction.</p>
 <p><strong>How we might write up the results in APA style?</strong></p>
-<p>A Pearsons multiple correlation with bonferroni correction was conducted to assess the relationship between depression (<em>M</em>= 24.26, <em>SD</em>= 5.89), anxiety scores (<em>M</em>= 48.62, <em>SD</em>= 12.48), sleep difficulty (<em>M</em>= <strong>?</strong>, <em>SD</em>= <strong>?</strong>), and optimism (<em>M</em>= <strong>?</strong>, <em>SD</em>= <strong>?</strong>). The test showed that there was a significant positive correlation between depression and anxiety <em>r</em>(148) = 0.97, <em>p</em> &lt; 0.01, and depression and sleep difficulty <em>r</em>(148) = 0.9, <em>p</em> &lt; 0.01, but no significant correlation between depression and optimism <em>r</em>(148) = -0.16, <em>p</em> = 0.29<strong>.</strong> There was also a significant positive correlation between anxiety and sleep difficulty <em>r</em>(148) = 0.88, <em>p</em> &lt; 0.01, but no significant correlation between optimism and anxiety <em>r</em>(148) = -0.14, <em>p</em> = 0.52 or optimism and sleep difficulty <em>r</em>(148) = -0.1, <em>p</em> = &gt;.99.</p>
+<p>A Pearson’s multiple correlation test with bonferroni correction was conducted to assess the relationship between depression (<em>M</em>= 24.26, <em>SD</em>= 5.89), anxiety scores (<em>M</em>= 48.62, <em>SD</em>= 12.48), sleep difficulty (<em>M</em>= 12.37, <em>SD</em>= 2.74), and optimism (<em>M</em>= 10.58, <em>SD</em>= 3.28). The test showed that there was a significant positive correlation between sleep difficulty and depression, <em>r</em>(148) = 0.90, <em>p</em> &lt; 0.01, and sleep difficulty and anxiety, <em>r</em>(148) = 0.88, <em>p</em> &lt; 0.01. This result indicates that people experiencing poorer sleep quality are more likely to experience depression and anxiety. The test also showed that there was a significant positive correlation between depression and anxiety <em>r</em>(148) = 0.98, <em>p</em> &lt; 0.01. Therefore one is able to reject the null hypothesis that there is no significant correlation between sleep difficulty with depression and anxiety.</p>
+<p>It was also hypothesised that higher optimism will be associated with lower depression and anxiety. The test showed that there was no significant correlation between optimism and anxiety <em>r</em>(148) = -0.14, <em>p</em> = 0.52 or optimism and sleep difficulty <em>r</em>(148) = -0.1, <em>p</em> = &gt;.99. Therefore, one is unable to reject the null hypothesis.</p>
 </section>
 <section id="activity-8-graphs" class="level2">
 <h2 class="anchored" data-anchor-id="activity-8-graphs">Activity 8: Graphs</h2>
-<p>We need to visualize our data not only to check our assumptions but also to include in our write-up / results / dissertations. As you may see above the write-up for a multiple correlation can be lengthy/confusing, and a good graphic can help your reader (and you) understand the results more easily.</p>
-<p>Today we’ll be using the <code>ggcorrplot</code> function. We will learn a lot more about making visualizations in week 9, but for today we will learn how to clearly visualize our correlation results. The code below makes a correlation matrix for the multiple correlation we just ran.</p>
+<p>When analysing multiple correlations, reporting every correlation in text can quickly become overwhelming. A correlation matrix provides a clear visual summary of:</p>
+<ul>
+<li>The direction of each relationship (positive or negative)</li>
+<li>The strength of each relationship</li>
+<li>The overall pattern across variables</li>
+</ul>
+<p>Today we will use the <code>ggcorrplot()</code> function to visualise the correlation matrix we created in Activity 7.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(mcor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  mcor,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"white"</span>, <span class="st">"blue"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>If you type in <code>?ggcorrplot</code> to your console you can see there are many optional arguments you can use to customize your graph. Using this try to do the following:</p>
+<p><em>What Does This Show?</em></p>
+<ul>
+<li><p>Blue cells represent positive correlations.</p></li>
+<li><p>Red cells represent negative correlations.</p></li>
+<li><p>Darker colours indicate stronger relationships.</p></li>
+<li><p>Lighter colours indicate weaker relationships.</p></li>
+</ul>
+<p>This makes it much easier to see patterns across all variables at once.</p>
+<section id="customising-the-graph" class="level3">
+<h3 class="anchored" data-anchor-id="customising-the-graph">Customising the Graph</h3>
+<p>The <code>ggcorrplot()</code> function has many optional arguments. If you type in <code>?ggcorrplot</code> to your console you can see there are many optional arguments. Try make the following changes to your graph</p>
 <ol type="1">
-<li>Give your graph a meaningful title (e.g.&nbsp;“Super cool correlation matrix”)</li>
+<li>Add a meaningful title.</li>
 <li>Try changing the display type lower and upper, see what looks best.</li>
-<li>Display the correlation values on the graph</li>
-<li>Try changing method to “circle”</li>
+<li>Display the correlation values (lab = TRUE).</li>
+<li>Change the colours of the correlations</li>
+<li>Change the method to “circle” instead of squares.</li>
 <li>Try some of the arguments, see what you think looks best</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Ciara’s attempt at “super cool correlation matrix” code
+One example of customising the code code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(mcor, <span class="at">type =</span> <span class="st">"lower"</span>, <span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">title =</span> <span class="st">"Super cool correlation matrix"</span>,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  mcor,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"circle"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lab =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Correlation Matrix of Psychological Variables"</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"white"</span>, <span class="st">"green"</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="05-workshop-activities_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -742,24 +999,46 @@ Ciara’s attempt at “super cool correlation matrix” code
 </div>
 </div>
 </div>
+</section>
+<section id="saving-the-graph-using-ggsave" class="level3">
+<h3 class="anchored" data-anchor-id="saving-the-graph-using-ggsave">Saving the graph using `<code>ggsave()</code></h3>
+<p>Rather than exporting manually from the Plots panel, it is better practice to save graphs directly using code. This improves reproducibility.</p>
+<p>First, assign the plot to a variable name, then use ggsave() to export it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>corr_plot <span class="ot">&lt;-</span> <span class="fu">ggcorrplot</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  mcor,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"circle"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lab =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Correlation Matrix of Psychological Variables"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"white"</span>, <span class="st">"blue"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"correlation_matrix.png"</span>,</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> corr_plot,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">8</span>,</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">6</span>,</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>How <code>ggsave()</code> Works</p>
+<ul>
+<li><p><code>filename</code> → the name of the file to save.</p></li>
+<li><p><code>plot</code> → the name of the plot variable you want to save.</p></li>
+<li><p><code>width</code> and <code>height</code> → the size of the image (in inches by default).</p></li>
+<li><p><code>dpi</code> → resolution (300 is standard for reports and publications).</p></li>
+</ul>
+<p>The file will be saved to your working directory unless you specify a different file path.</p>
+</section>
+<section id="saving-the-graph-using-rstudio-functions" class="level3">
+<h3 class="anchored" data-anchor-id="saving-the-graph-using-rstudio-functions">Saving the graph using RStudio functions</h3>
 <p>You may also want to save your graphs outside of R (e.g.&nbsp;to use in a report or paper). There are a few ways to do this.</p>
 <ol type="1">
 <li>To simply export from the “Plots” panel in R (as below).</li>
 </ol>
 <p><img src="ExportImage.gif" class="img-fluid"></p>
-<ol start="2" type="1">
-<li>To export via code as below:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"myplot.png"</span>)  <span class="co">#specify you want a png file, and your file name</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span> <span class="fu">ggcorrplot</span>(mcor) <span class="co"># create an object with that same name that is your plot</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(myplot) <span class="co"># print the plot</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() <span class="co"># #this tells R that we are done with adding stuff to our png</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>quartz_off_screen 
-                2 </code></pre>
-</div>
-</div>
+</section>
 </section>
 <section id="activity-9-power-analyses" class="level2">
 <h2 class="anchored" data-anchor-id="activity-9-power-analyses">Activity 9: Power analyses!</h2>
@@ -773,7 +1052,7 @@ Ciara’s attempt at “super cool correlation matrix” code
 </ol>
 <p>Reminder that this <a href="https://rpsychologist.com/d3/nhst/">interactive visualization</a> can be helpful in understanding how these things interact.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -782,7 +1061,7 @@ How do I know what the minimum correlation size of interest is?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This is a good question! Correlation (r) values can be split into arbitrary bands as shown below (Cohen, 1988):</p>
 <ul>
@@ -801,11 +1080,11 @@ How do I know what the minimum correlation size of interest is?
 <h2 class="anchored" data-anchor-id="power-analysis-for-a-simple-correlation">Power analysis for a simple correlation</h2>
 <p>The syntax for conducting an apriori statistical power analysis for a simple correlation is the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct power analysis for a simple correlation</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.r.test</span>(<span class="at">r =</span> <span class="fl">0.2</span>, <span class="co"># your expected correlation value</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>, <span class="co"># Desired power level</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="at">alternative =</span> <span class="st">"two.sided"</span>) <span class="co"># Indicates a two-tailed test, #can be changed to less or greater</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct power analysis for a simple correlation</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.r.test</span>(<span class="at">r =</span> <span class="fl">0.2</span>, <span class="co"># your expected correlation value</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="co"># Significance level</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>, <span class="co"># Desired power level</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="at">alternative =</span> <span class="st">"two.sided"</span>) <span class="co"># Indicates a two-tailed test, #can be changed to less or greater</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      approximate correlation power calculation (arctangh transformation) 
@@ -821,6 +1100,116 @@ How do I know what the minimum correlation size of interest is?
 <li><p>Try running the above power-analyses again but for a one sided (directional) test. What does this do to our required sample size?</p></li>
 <li><p>What happens if we increase the correlation value we expect to find?</p></li>
 </ol>
+</section>
+<section id="activity-10-choose-and-run-the-correct-correlation-analysis-try-on-your-own" class="level2">
+<h2 class="anchored" data-anchor-id="activity-10-choose-and-run-the-correct-correlation-analysis-try-on-your-own">Activity 10: Choose and Run the Correct Correlation Analysis (Try on your own!)</h2>
+<p>In this final activity, you will be given a research scenario and a new dataset.</p>
+<p>Your task is to:</p>
+<ol type="1">
+<li>Decide what type of correlation analysis is appropriate.</li>
+<li>Carry out the full analysis following the same steps used earlier in this workshop.</li>
+<li>Write up your results clearly.</li>
+</ol>
+<section id="research-scenario" class="level3">
+<h3 class="anchored" data-anchor-id="research-scenario">Research Scenario</h3>
+<p>A researcher is interested in understanding how different psychological factors relate to academic stress in university students.</p>
+<p>They collected data from 180 students on the following variables:</p>
+<ul>
+<li><strong>Stress</strong> – overall academic stress score (higher = more stress)</li>
+<li><strong>SleepQuality</strong> – overall sleep quality score (higher = better sleep)</li>
+<li><strong>Optimism</strong> – optimism score (higher = more optimistic)</li>
+<li><strong>SocialMediaUse</strong> – average minutes per day spent on social media</li>
+</ul>
+<p>The research question is:</p>
+<blockquote class="blockquote">
+<p>How are sleep quality, optimism, and social media use related to academic stress?</p>
+</blockquote>
+<p>You’ll find the dataset called <strong>student_stress.csv</strong> on Canvas for this week.</p>
+</section>
+<section id="step-1-decide-the-correct-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-decide-the-correct-analysis">Step 1: Decide the correct analysis</h3>
+<p>Before running anything, decide:</p>
+<ul>
+<li>Should you run a <strong>simple correlation</strong> or a <strong>multiple correlation</strong>?</li>
+</ul>
+<p>Write one sentence explaining your decision.</p>
+</section>
+<section id="step-2-load-and-inspect-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-load-and-inspect-the-dataset">Step 2: Load and inspect the dataset</h3>
+<ul>
+<li>Load <code>student_stress.csv</code> and save it as <code>df_stress</code>.</li>
+<li>Inspect the datase to make sure you have loaded it correctly.</li>
+</ul>
+</section>
+<section id="step-3-descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-descriptive-statistics">Step 3: Descriptive statistics</h3>
+<p>Run descriptive statistics for all relevant variables.</p>
+<p>You should be able to report:</p>
+<ul>
+<li>Sample size</li>
+<li>Means</li>
+<li>Standard deviations</li>
+<li>Whether there is missing data</li>
+</ul>
+</section>
+<section id="step-4-check-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-check-assumptions">Step 4: Check assumptions</h3>
+<p>Using the same procedure as earlier in the workshop, evaluate whether Pearson’s correlation is appropriate.</p>
+<p>Check:</p>
+<ol type="1">
+<li>Are the variables continuous?</li>
+<li>Are the distributions approximately normal?
+<ul>
+<li>Histograms</li>
+<li>Q–Q plots</li>
+<li>Shapiro–Wilk tests</li>
+</ul></li>
+<li>Are the relationships linear?
+<ul>
+<li>Scatterplots or pairs panel</li>
+</ul></li>
+<li>Is homoscedasticity displayed?</li>
+</ol>
+<p>If assumptions are not met, make a note of it and run Spearman’s correlation.</p>
+</section>
+<section id="step-5-run-the-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-run-the-analysis">Step 5: Run the analysis</h3>
+<p>Run the appropriate correlation analysis based on your decision in Step 1.</p>
+<p>If you are running multiple correlations:</p>
+<ul>
+<li>Include all relevant variables.</li>
+<li>Apply a correction for multiple comparisons (e.g., Bonferroni).</li>
+</ul>
+</section>
+<section id="step-6-interpret-the-results" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-interpret-the-results">Step 6: Interpret the results</h3>
+<p>For each relevant relationship, interpret:</p>
+<ul>
+<li>The direction (positive or negative)</li>
+<li>The strength (weak, moderate, strong)</li>
+<li>The statistical significance</li>
+</ul>
+<p>Then answer the research question clearly in plain English.</p>
+</section>
+<section id="step-7-create-a-visualisation" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-create-a-visualisation">Step 7: Create a visualisation</h3>
+<p>Create one clear figure that would help someone understand the results:</p>
+<ul>
+<li>A scatterplot (if simple correlation), or</li>
+<li>A correlation matrix (if multiple correlation).</li>
+</ul>
+</section>
+<section id="step-8-write-up-your-results" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-write-up-your-results">Step 8: Write up your results</h3>
+<p>Write a short APA-style results paragraph including:</p>
+<ul>
+<li>Descriptive statistics</li>
+<li>The test conducted</li>
+<li>Correlation coefficient(s)</li>
+<li>p-value(s)</li>
+<li>A clear conclusion linked back to the research question.</li>
+</ul>
+</section>
 </section>
 
 </main>
@@ -907,8 +1296,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1019,7 +1406,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
